@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Cosmoz Behaviors</title>
+
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../polymer/polymer.html">
+	<link rel="import" href="../cosmoz-behaviors.html">
+</head>
+<body>
+	<template is="dom-bind" id="t">
+		<cosmoz-behavior-test></cosmoz-behavior-test>
+	</template>
+	<dom-module id="cosmoz-behavior-test">
+		<template>
+			<h3>Simple tests</h3>
+			<div>Empty string isEmpty: {{ isEmpty("") }}</div>
+			<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
+			<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
+		</template>
+		<script type="text/javascript">
+			/*global Polymer, Cosmoz*/
+			"use strict";
+			Polymer({
+				behaviors: [
+					Cosmoz.TemplateHelperBehavior,
+				],
+				is: 'cosmoz-behavior-test',
+				properties: {
+					emptyArray: {
+						type: Array,
+						value: function () {
+							return [];
+						}
+					}
+				}
+			});
+		</script>
+	</dom-module>
+</body>
+</html>

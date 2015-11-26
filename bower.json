@@ -1,0 +1,29 @@
+{
+  "name": "cosmoz-behaviors",
+  "main": "cosmoz-behaviors.html",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Neovici/cosmoz-behaviors",
+  "authors": [
+    "Neovici Development"
+  ],
+  "description": "Cosmoz base Polymer behaviors",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "cosmoz"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.2.3"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}
