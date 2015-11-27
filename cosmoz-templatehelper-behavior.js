@@ -1,8 +1,4 @@
-/*global Cosmoz, Polymer */
-
-if (typeof Cosmoz === 'undefined') {
-	var Cosmoz = {};
-}
+/*global Cosmoz */
 
 (function () {
 
@@ -39,6 +35,8 @@ if (typeof Cosmoz === 'undefined') {
 				return true;
 			}
 			return false;
-		},
+		}
 	};
+
+	Cosmoz.CommonBehaviors.push(Cosmoz.TemplateHelperBehavior);
 }());
