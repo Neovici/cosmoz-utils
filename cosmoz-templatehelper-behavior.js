@@ -8,6 +8,17 @@
 	 * @polymerBehavior
 	 */
 	Cosmoz.TemplateHelperBehavior = {
+		abs: Math.abs,
+		/**
+		 * Helper function to see if any of the arguments are true
+		 * @return {Boolean} [description]
+		 */
+		anyTrue: function () {
+			var argumentArray = Array.prototype.slice.call(arguments);
+			return argumentArray.some(function (arg) {
+				return !!arg;
+			});
+		},
 		/**
 		 * Concatenate all arguments to a string
 		 */
@@ -35,6 +46,9 @@
 				return true;
 			}
 			return false;
+		},
+		toFixed: function (number, fixval) {
+			return number.toFixed(fixval);
 		}
 	};
 
