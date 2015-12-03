@@ -21,7 +21,9 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "^1.2.3"
+    "polymer": "^1.2.3",
+    "moment": "momentjs#~2.10.6",
+    "accounting": "~0.3.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
