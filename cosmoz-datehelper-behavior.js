@@ -55,7 +55,6 @@
 			return this.isoDate(date);
 		},
 		renderDatetime: function (date) {
-			console.log('renderDatetime');
 			return this.isoDT(date);
 		}
 	};

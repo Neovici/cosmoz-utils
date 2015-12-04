@@ -61,7 +61,14 @@
 					? ''
 					: money.currency);
 			}
-			return accounting.formatMoney(money.amount, formats[money.currency].currency);
+			var format = formats[money.currency];
+			if (!format) {
+				return money.amount + ' ' + money.currency;
+			}
+			return accounting.formatMoney(money.amount, format.currency);
+		},
+		renderMoney: function (money) {
+			return this.renderAmount(money);
 		}
 	};
 
