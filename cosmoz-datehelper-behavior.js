@@ -1,5 +1,9 @@
 /*global Cosmoz, moment */
 
+if (typeof Cosmoz === 'undefined') {
+	var Cosmoz = {};
+}
+
 (function () {
 
 	"use strict";
@@ -58,6 +62,5 @@
 			return this.isoDT(date);
 		}
 	};
-
-	Cosmoz.CommonBehaviors.push(Cosmoz.DateHelperBehavior);
+	
 }());

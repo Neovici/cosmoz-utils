@@ -21,8 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "^1.2.3",
-    "moment": "momentjs#~2.10.6",
+    "polymer": "^1.0.0",
+    "moment": "momentjs#^2.0.0",
     "accounting": "~0.3.2"
   },
   "devDependencies": {

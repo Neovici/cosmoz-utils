@@ -1,14 +1,7 @@
-<!--
-`<cosmoz-i18next>` is a translation component based on i18next
+<link rel="import" href="cosmoz-datehelper-behavior.html"/>
+<link rel="import" href="cosmoz-moneyhelper-behavior.html"/>
+<link rel="import" href="cosmoz-templatehelper-behavior.html"/>
 
-### Usage
-
-    <cosmoz-i18next translations="{{ translations }}"></cosmoz-i18next>
-
-@group Cosmoz Elements
-@element cosmoz-behaviors
-@demo demo/index.html
--->
 <script type="text/javascript">
 /*global Cosmoz*/
 
@@ -23,10 +16,10 @@ if (typeof Cosmoz === 'undefined') {
 	/**
 	 * @polymerBehavior
 	 */
-	Cosmoz.CommonBehaviors = [];
+	Cosmoz.CommonBehaviors = [
+		Cosmoz.DateHelperBehavior,
+		Cosmoz.MoneyHelperBehavior,
+		Cosmoz.TemplateHelperBehavior
+	];
 }());
 </script>
-
-<link rel="import" href="cosmoz-datehelper-behavior.html"/>
-<link rel="import" href="cosmoz-moneyhelper-behavior.html"/>
-<link rel="import" href="cosmoz-templatehelper-behavior.html"/>

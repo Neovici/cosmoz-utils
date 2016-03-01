@@ -12,11 +12,12 @@
 </head>
 <body>
 	<template is="dom-bind" id="t">
-		<cosmoz-behavior-test></cosmoz-behavior-test>
+		<cosmoz-templatehelper-test></cosmoz-templatehelper-test>
+		<cosmoz-common-test></cosmoz-common-test>
 	</template>
-	<dom-module id="cosmoz-behavior-test">
+	<dom-module id="cosmoz-templatehelper-test">
 		<template>
-			<h3>Simple tests</h3>
+			<h3>Template helper test</h3>
 			<div>Empty string isEmpty: {{ isEmpty("") }}</div>
 			<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
 			<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
@@ -28,7 +29,34 @@
 				behaviors: [
 					Cosmoz.TemplateHelperBehavior,
 				],
-				is: 'cosmoz-behavior-test',
+				is: 'cosmoz-templatehelper-test',
+				properties: {
+					emptyArray: {
+						type: Array,
+						value: function () {
+							return [];
+						}
+					}
+				}
+			});
+		</script>
+	</dom-module>
+
+	<dom-module id="cosmoz-common-test">
+		<template>
+			<h3>Common test</h3>
+			<div>Empty string isEmpty: {{ isEmpty("") }}</div>
+			<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
+			<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
+		</template>
+		<script type="text/javascript">
+			/*global Polymer, Cosmoz*/
+			"use strict";
+			Polymer({
+				behaviors: [
+					Cosmoz.CommonBehaviors,
+				],
+				is: 'cosmoz-common-test',
 				properties: {
 					emptyArray: {
 						type: Array,

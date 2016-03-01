@@ -1,4 +1,7 @@
 /*global Cosmoz, accounting */
+if (typeof Cosmoz === 'undefined') {
+	var Cosmoz = {};
+}
 
 (function () {
 
@@ -71,6 +74,4 @@
 			return this.renderAmount(money);
 		}
 	};
-
-	Cosmoz.CommonBehaviors.push(Cosmoz.MoneyHelperBehavior);
 }());

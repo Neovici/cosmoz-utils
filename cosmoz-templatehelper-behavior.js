@@ -1,4 +1,7 @@
 /*global Cosmoz */
+if (typeof Cosmoz === 'undefined') {
+	var Cosmoz = {};
+}
 
 (function () {
 
@@ -51,6 +54,5 @@
 			return number.toFixed(fixval);
 		}
 	};
-
-	Cosmoz.CommonBehaviors.push(Cosmoz.TemplateHelperBehavior);
+	
 }());
