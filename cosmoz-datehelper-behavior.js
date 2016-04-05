@@ -6,23 +6,25 @@ if (typeof Cosmoz === 'undefined') {
 
 (function () {
 
-	"use strict";
+	'use strict';
 
 	/**
 	 * @polymerBehavior
 	 */
 	Cosmoz.DateHelperBehavior = {
 		isoDate: function (date) {
-			if (date === undefined) {
-				return "";
+			date = this.ensureDate(date);
+			if (!date) {
+				return '';
 			}
-			return moment(date).format("YYYY-MM-DD");
+			return moment(date).format('YYYY-MM-DD');
 		},
 		isoDT: function (date) {
-			if (date === undefined) {
-				return "";
+			date = this.ensureDate(date);
+			if (!date) {
+				return '';
 			}
-			return moment(date).format("YYYY-MM-DD HH:mm:ss");
+			return moment(date).format('YYYY-MM-DD HH:mm:ss');
 		},
 		/**
 		 * Check if date is in the past
@@ -30,13 +32,9 @@ if (typeof Cosmoz === 'undefined') {
 		 * @return {boolean}      In the past?
 		 */
 		pastDate: function (date) {
-			if (date === undefined) {
-				return false;
-			}
-			try {
-				date = new Date(date);
-			} catch (err) {
-				return false;
+			date = this.ensureDate(date);
+			if (!date) {
+				return '';
 			}
 			if (date > new Date()) {
 				return false;
@@ -49,10 +47,10 @@ if (typeof Cosmoz === 'undefined') {
 		 * @return {String}   Date representation string
 		 */
 		timeago: function (date) {
-			if (date === undefined) {
-				return "";
+			date = this.ensureDate(date);
+			if (!date) {
+				return '';
 			}
-
 			return moment(date).fromNow();
 		},
 		renderDate: function (date) {
@@ -60,7 +58,21 @@ if (typeof Cosmoz === 'undefined') {
 		},
 		renderDatetime: function (date) {
 			return this.isoDT(date);
+		},
+		ensureDate: function (date) {
+			if (date === undefined) {
+				return;
+			}
+			if (date instanceof Date) {
+				return date;
+			}
+			try {
+				date = new Date(date);
+			} catch (err) {
+				return;
+			}
+			return date;
 		}
 	};
-	
+
 }());
