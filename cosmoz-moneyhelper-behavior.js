@@ -57,6 +57,9 @@ if (typeof Cosmoz === 'undefined') {
 	 */
 	Cosmoz.MoneyHelperBehavior = {
 		renderAmount: function (money) {
+			if (money === undefined) {
+				return;
+			}
 			if (money.amount === undefined || money.currency === undefined) {
 				return (money.amount === undefined
 					? ''
