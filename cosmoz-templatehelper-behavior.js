@@ -52,6 +52,9 @@ if (typeof Cosmoz === 'undefined') {
 		},
 		toFixed: function (number, fixval) {
 			return number.toFixed(fixval);
+		},
+		ifElse: function (iftrue, result, elseresult) {
+			return iftrue ? result : elseresult;
 		}
 	};
 	
