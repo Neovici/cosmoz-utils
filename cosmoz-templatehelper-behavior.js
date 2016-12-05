@@ -11,6 +11,9 @@ if (typeof Cosmoz === 'undefined') {
 	 * @polymerBehavior
 	 */
 	Cosmoz.TemplateHelperBehavior = {
+		/**
+		 * Math.abs
+		 */
 		abs: Math.abs,
 		/**
 		 * Helper function to see if any of the arguments are true
@@ -27,6 +30,18 @@ if (typeof Cosmoz === 'undefined') {
 		 */
 		concat: function () {
 			return Array.prototype.join.call(arguments, '');
+		},
+		/**
+		 * If iftrue is true, return result, otherwise return elseresult
+		 */
+		ifElse: function (iftrue, result, elseresult) {
+			return iftrue ? result : elseresult;
+		},
+		/**
+		 * Check if item exists in array
+		 */
+		inArray: function (item, array) {
+			return array.indexOf(item) > -1;
 		},
 		/**
 		 * Check if variable is undefined, null, empty Array list,
@@ -50,11 +65,11 @@ if (typeof Cosmoz === 'undefined') {
 			}
 			return false;
 		},
+		/**
+		 * Helper for Number.toFixed(arg)
+		 */
 		toFixed: function (number, fixval) {
 			return number.toFixed(fixval);
-		},
-		ifElse: function (iftrue, result, elseresult) {
-			return iftrue ? result : elseresult;
 		}
 	};
 	
