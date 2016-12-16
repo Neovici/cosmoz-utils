@@ -1,21 +1,19 @@
 language: node_js
-node_js: stable
+node_js: '6'
+dist: trusty
+sudo: required
 addons:
   firefox: latest
   apt:
     sources:
     - google-chrome
-    - ubuntu-toolchain-r-test
     packages:
     - google-chrome-stable
-    - g++-4.8
 before_script:
-- npm install -g bower web-component-tester
+- npm install -g bower polylint web-component-tester
 - bower install
+- polylint
 script: xvfb-run wct
-env:
-  global:
-  - CXX=g++-4.8
 notifications:
   slack:
     secure: lskikigS+9djhBsz/gps5F9mRV7nHhRurN44aSb5LzKZTmiWqchZE2XpcpOpJHkGcO/e5Yl1tWVhD8P6Qif1RweW0sgwMH7TvcJazvbncTVSIojbXDw4vmPut+IMAVe2IwhfrY8FvksRlAAsL7wsGY4QTCL9XGfXy72UHL/53Pzfyf9XMkKkCIMRASUXXu6M6iF0yBcZhQCAb3NmccwRrH3sjwE29fn4f4P5IeP/7LHM3MJHEDZsOGzY7dqOocfahuXK1R1M00IwgEu5jvgUzjm+wRRnG47sdWlGw6mDLT0h0eDi3q5Zoy3WxnVFAqjfJtB+P17QiMP39yDkjIe9gR1ph0x46lKppKN2QhGFUX31K253V21esrHlDf1+V+bZFATinvh2XJBpIlTR8C4f9MW2tAzAw8NEQGWBKaS11LGNa12We9RT8kLGFSqWtsEkOoykiYnII1/Ayt//o1OJwbKM+7/Ps9ugOBSl6kdJpflx1D4hNwZOBCM8+VIuVw4SPthy+x8MTycAIDpHFhOa+3QsnaI1V86JcJPJ1MXF58abtXkgRqfOBpcn+7/i54K55u3uGu678qcHL2oN8s/QNA4KKeN1VjIWrhsfZQXq1ERhm7i0d7phOP2fgvYEZCKqVGmXv/dd2FfZ3c+xAQMKeP5WM4b3aad8cum9y9QLZ1E=

@@ -8,7 +8,7 @@ if (typeof Cosmoz === 'undefined') {
 
 	'use strict';
 
-	/** @polymerBehavior DateHelperBehavior */
+	/** @polymerBehavior */
 	Cosmoz.DateHelperBehavior = {
 		isoDate: function (date) {
 			date = this.ensureDate(date);
