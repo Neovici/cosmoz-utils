@@ -66,9 +66,7 @@ if (typeof Cosmoz === 'undefined') {
 		}
 	};
 
-	/**
-	 * @polymerBehavior
-	 */
+	/** @polymerBehavior */
 	Cosmoz.MoneyHelperBehavior = {
 		renderAmount: function (money) {
 			if (money === undefined) {

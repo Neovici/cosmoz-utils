@@ -7,9 +7,7 @@ if (typeof Cosmoz === 'undefined') {
 
 	"use strict";
 
-	/**
-	 * @polymerBehavior
-	 */
+	/** @polymerBehavior */
 	Cosmoz.TemplateHelperBehavior = {
 		/**
 		 * Math.abs
