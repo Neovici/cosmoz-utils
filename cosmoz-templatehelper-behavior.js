@@ -5,7 +5,7 @@ if (typeof Cosmoz === 'undefined') {
 
 (function () {
 
-	"use strict";
+	'use strict';
 
 	/** @polymerBehavior */
 	Cosmoz.TemplateHelperBehavior = {
@@ -42,6 +42,12 @@ if (typeof Cosmoz === 'undefined') {
 			return array.indexOf(item) > -1;
 		},
 		/**
+		 * Check equality
+		 */
+		isEqual: function (arg1, arg2) {
+			return arg1 === arg2;
+		},
+		/**
 		 * Check if variable is undefined, null, empty Array list,
 		 * empty String or 0 number (like length).
 		 * @param  {Object}  obj variable
@@ -70,5 +76,4 @@ if (typeof Cosmoz === 'undefined') {
 			return number.toFixed(fixval);
 		}
 	};
-	
 }());
