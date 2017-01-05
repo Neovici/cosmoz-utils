@@ -1,5 +1,5 @@
 language: node_js
-node_js: '6'
+node_js: stable
 dist: trusty
 sudo: required
 addons:
@@ -12,7 +12,7 @@ addons:
 before_script:
 - npm install -g bower polylint web-component-tester
 - bower install
-- polylint
+- polylint --no-recursion
 script: xvfb-run wct
 notifications:
   slack:
