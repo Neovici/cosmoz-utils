@@ -69,6 +69,17 @@ if (typeof Cosmoz === 'undefined') {
 	/** @polymerBehavior */
 	Cosmoz.MoneyHelperBehavior = {
 		renderAmount: function (money) {
+			var format = this._renderFormat(money);
+			return accounting.formatMoney(money.amount, format.currency);
+		},
+		renderMoney: function (money) {
+			return this.renderAmount(money);
+		},
+		renderNumberAmount: function (money) {
+			var format = this._renderFormat(money);
+			return accounting.formatNumber(money.amount, format.currency);
+		},
+		_renderFormat: function (money) {
 			if (money === undefined) {
 				return;
 			}
@@ -83,10 +94,7 @@ if (typeof Cosmoz === 'undefined') {
 			if (!format) {
 				return money.amount + ' ' + money.currency;
 			}
-			return accounting.formatMoney(money.amount, format.currency);
-		},
-		renderMoney: function (money) {
-			return this.renderAmount(money);
+			return format;
 		}
 	};
 }());

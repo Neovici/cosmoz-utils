@@ -14,6 +14,7 @@
 	<template is="dom-bind" id="t">
 		<cosmoz-templatehelper-test></cosmoz-templatehelper-test>
 		<cosmoz-common-test></cosmoz-common-test>
+		<cosmoz-moneyhelper-test></cosmoz-moneyhelper-test>
 	</template>
 	<dom-module id="cosmoz-templatehelper-test">
 		<template>
@@ -64,6 +65,50 @@
 							return [];
 						}
 					}
+				}
+			});
+		</script>
+	</dom-module>
+
+	<dom-module id="cosmoz-moneyhelper-test">
+		<template>
+			<h3>Money helper test</h3>
+			<div><input value="{{ money::change }}"></input></div>
+			<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+			<div>renderAmount(money): [[ renderedAmount ]]</div>
+		</template>
+		<script type="text/javascript">
+			/*global polymer, Cosmoz*/
+			'use strict';
+			Polymer({
+				behaviors: [
+					Cosmoz.CommonBehaviors
+				],
+				is: 'cosmoz-moneyhelper-test',
+				properties: {
+					money: {
+						type: Number
+					},
+					renderedNumberAmount: {
+						type: String,
+						computed: '_computeNumberAmount(money)'
+					},
+					renderedAmount: {
+						type: String,
+						computed: '_computeAmount(money)'
+					}
+				},
+				_computeNumberAmount: function (money) {
+					return this.renderNumberAmount({
+						amount: money,
+						currency: 'SEK'
+					});
+				},
+				_computeAmount: function (money) {
+					return this.renderAmount({
+						amount: money,
+						currency: 'SEK'
+					});
 				}
 			});
 		</script>
