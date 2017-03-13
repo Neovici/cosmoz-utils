@@ -82,6 +82,9 @@ if (typeof Cosmoz === 'undefined') {
 		unformatRenderedAmount: function (amountString, decimalSeparator) {
 			return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
 		},
+		round: function (number, precision) {
+			return parseFloat(accounting.toFixed(number, precision));
+		},
 		_renderFormat: function (money) {
 			if (money === undefined) {
 				return;
