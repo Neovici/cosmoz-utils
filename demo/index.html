@@ -76,6 +76,7 @@
 			<div><input value="{{ money::change }}"></input></div>
 			<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
 			<div>renderAmount(money): [[ renderedAmount ]]</div>
+			<div>unformat(amount string): [[ unformatedValue ]]</div>
 		</template>
 		<script type="text/javascript">
 			/*global polymer, Cosmoz*/
@@ -96,6 +97,10 @@
 					renderedAmount: {
 						type: String,
 						computed: '_computeAmount(money)'
+					},
+					unformatedValue: {
+						type: Number,
+						computed: '_computeUnformatedValue(renderedAmount)'
 					}
 				},
 				_computeNumberAmount: function (money) {
@@ -109,6 +114,9 @@
 						amount: money,
 						currency: 'SEK'
 					});
+				},
+				_computeUnformatedValue: function (renderedAmount) {
+					return this.unformatRenderedAmount(renderedAmount, ',');
 				}
 			});
 		</script>

@@ -79,6 +79,9 @@ if (typeof Cosmoz === 'undefined') {
 			var format = this._renderFormat(money);
 			return accounting.formatNumber(money.amount, format.currency);
 		},
+		unformatRenderedAmount: function (amountString, decimalSeparator) {
+			return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
+		},
 		_renderFormat: function (money) {
 			if (money === undefined) {
 				return;
