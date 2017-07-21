@@ -20,22 +20,22 @@
 	(function () {
 		'use strict';
 
-		suite('cosmoz-moneyhelper-behavior', function() {
+		suite('cosmoz-moneyhelper-behavior', function () {
 			var moneyHelper,
 				amount = 2200200.3333333333;
 
 
-			setup( function() {
+			setup(function () {
 				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
 			});
 
-			test('faketest ', function(done) {
+			test('faketest ', function (done) {
 				assert.equal(moneyHelper.renderAmount({amount: amount}),'$2,200,200.33');
-				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "EUR"}), '€ 2.200.200,33');
-				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "SEK"}), '2 200 200,33 kr');
-				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "NOK"}), '2 200 200,33 kr');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'EUR'}), '€ 2.200.200,33');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'SEK'}), '2 200 200,33 kr');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'NOK'}), '2 200 200,33 kr');
 				assert.equal(moneyHelper.unformatRenderedAmount('2.200.200,33', ','), 2200200.33);
-				done()
+				done();
 			});
 
 		});
