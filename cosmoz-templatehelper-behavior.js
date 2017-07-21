@@ -55,7 +55,7 @@
 		/**
 		 * Check equality
 		 * @param {*} arg1 Object to compare
-		 * @param {*} arg2 Objects to compare
+		 * @param {*} arg2 Object to compare
 		 * @return {Boolean} true if arg1 and arg2 are equal
 		 */
 		isEqual: function (arg1, arg2) {
