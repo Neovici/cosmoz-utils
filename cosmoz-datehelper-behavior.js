@@ -10,31 +10,34 @@ if (typeof Cosmoz === 'undefined') {
 
 	/** @polymerBehavior */
 	Cosmoz.DateHelperBehavior = {
+
 		isoDate: function (date) {
-			date = this.ensureDate(date);
-			if (!date) {
+			var ensuredDate = this.ensureDate(date);
+			if (!ensuredDate) {
 				return '';
 			}
-			return moment(date).format('YYYY-MM-DD');
+			return moment(ensuredDate).format('YYYY-MM-DD');
 		},
+
 		isoDT: function (date) {
-			date = this.ensureDate(date);
-			if (!date) {
+			var ensuredDate = this.ensureDate(date);
+			if (!ensuredDate) {
 				return '';
 			}
-			return moment(date).format('YYYY-MM-DD HH:mm:ss');
+			return moment(ensuredDate).format('YYYY-MM-DD HH:mm:ss');
 		},
+
 		/**
 		 * Check if date is in the past
 		 * @param  {date/string} date Date to check
 		 * @return {boolean}      In the past?
 		 */
 		pastDate: function (date) {
-			date = this.ensureDate(date);
-			if (!date) {
+			var ensuredDate = this.ensureDate(date);
+			if (!ensuredDate) {
 				return '';
 			}
-			if (date > new Date()) {
+			if (ensuredDate > new Date()) {
 				return false;
 			}
 			return true;
@@ -45,11 +48,11 @@ if (typeof Cosmoz === 'undefined') {
 		 * @return {String}   Date representation string
 		 */
 		timeago: function (date) {
-			date = this.ensureDate(date);
-			if (!date) {
+			var ensuredDate = this.ensureDate(date);
+			if (!ensuredDate) {
 				return '';
 			}
-			return moment(date).fromNow();
+			return moment(ensuredDate).fromNow();
 		},
 		renderDate: function (date) {
 			return this.isoDate(date);
@@ -58,6 +61,7 @@ if (typeof Cosmoz === 'undefined') {
 			return this.isoDT(date);
 		},
 		ensureDate: function (date) {
+			var ensuredDate;
 			if (date === undefined) {
 				return;
 			}
@@ -65,16 +69,16 @@ if (typeof Cosmoz === 'undefined') {
 				return date;
 			}
 			try {
-				date = new Date(date);
+				ensuredDate = new Date(date);
 			} catch (err) {
 				return;
 			}
-			return date;
+			return ensuredDate;
 		},
 		dayDiff: function (date1, date2) {
-			date1 = this.ensureDate(date1);
-			date2 = this.ensureDate(date2);
-			return Math.round((date1 - date2) / (1000 * 60 * 60 * 24));
+			var ensuredDate1 = this.ensureDate(date1)
+				, ensuredDate2 = this.ensureDate(date2);
+			return Math.round((ensuredDate1 - ensuredDate2) / (1000 * 60 * 60 * 24));
 		}
 	};
 
