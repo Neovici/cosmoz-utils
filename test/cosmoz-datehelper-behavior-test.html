@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>cosmoz-datehelper-behavior test</title>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes'>
+  <script src='../../webcomponentsjs/webcomponents-lite.js'></script>
+  <script src='../../web-component-tester/browser.js'></script>
+  <link rel='import' href='./fixtures/cosmoz-datehelper-behavior.html'>
+</head>
+<body>s
+	<test-fixture id="cosmoz-datehelper-behavior-fixture">
+		<template>
+			<test-cosmoz-datehelper-behavior></test-cosmoz-datehelper-behavior>
+		</template>
+	</test-fixture>
+  <script type="text/javascript">
+  (function () {
+		'use strict';
+    
+    suite('cosmoz-datehelper-behavior' ,function() {
+      var dateHelper
+        , date = new Date("October 13, 2014 11:13:20")
+        , futureDate = new Date("October 13, 2022 11:13:20")
+        , invalidDate = ''
+        , undefinedDate
+        , dateNow, dateHourAgo, dateWeekDiff = new Date(date.getTime() - 1000 * 60 * 60 * 24 * 7) ;
+      
+      
+      setup(function() {
+        dateHelper = fixture('cosmoz-datehelper-behavior-fixture');
+        dateNow = new Date();
+        dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000)
+      });
+      
+      test('isoDate invalid ', function(done) {
+        assert.equal(dateHelper.isoDate(invalidDate), '');
+        done()
+      });
+        
+      test('isoDate undefined ', function(done) {
+        assert.equal(dateHelper.isoDate(undefinedDate), '');
+        done()
+      });
+      
+      test('isoDate', function(done) {
+        assert.equal(dateHelper.isoDate(date), '2014-10-13');
+        done()
+      });
+      
+      test('isoDT invalid', function(done) {
+        assert.equal(dateHelper.isoDT(invalidDate), '');
+        done()
+      });
+      
+      test('isoDT undefined', function(done) {
+        assert.equal(dateHelper.isoDT(undefinedDate), '');
+        done()
+      });
+      
+      test('isoDT', function(done) {
+        assert.equal(dateHelper.isoDT(date), '2014-10-13 11:13:20');
+        done()
+      });
+      
+      test('pastDate true', function(done) {
+        assert.isTrue(dateHelper.pastDate(date));
+        done()
+      });
+      
+      test('pastDate false', function(done) {
+        assert.isFalse(dateHelper.pastDate(futureDate));
+        done()
+      });
+      
+      test('timeago one hour', function(done) {
+        assert.equal(dateHelper.timeago(dateHourAgo),'an hour ago');
+        done()
+      });
+      
+      test('timediff a week', function(done) {
+        assert.equal(dateHelper.dayDiff(date, dateWeekDiff),7);
+        done()
+      });
+      
+    });
+  })();
+  </script>
+</body>
