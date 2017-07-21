@@ -1,11 +1,9 @@
 /*global Cosmoz */
-if (typeof Cosmoz === 'undefined') {
-	var Cosmoz = {};
-}
-
 (function () {
 
 	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
 
 	/** @polymerBehavior */
 	Cosmoz.TemplateHelperBehavior = {

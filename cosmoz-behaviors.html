@@ -3,15 +3,11 @@
 <link rel="import" href="cosmoz-templatehelper-behavior.html">
 
 <script type="text/javascript">
-/*global Cosmoz*/
-
-if (typeof Cosmoz === 'undefined') {
-	var Cosmoz = {};
-}
-
 (function () {
 
 	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
 
 	/** @polymerBehavior */
 	Cosmoz.CommonBehaviors = [

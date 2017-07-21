@@ -1,11 +1,8 @@
 /*global Cosmoz, accounting */
-if (typeof Cosmoz === 'undefined') {
-	var Cosmoz = {};
-}
-
 (function () {
 
 	'use strict';
+	window.Cosmoz = window.Cosmoz || {};
 
 	var formats = {
 		EUR: {
