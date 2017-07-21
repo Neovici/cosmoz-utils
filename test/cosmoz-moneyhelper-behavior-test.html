@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>cosmoz-moneyhelper-behavior test</title>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes'>
+	<script src='../../webcomponentsjs/webcomponents-lite.js'></script>
+	<script src='../../web-component-tester/browser.js'></script>
+	<link rel='import' href='./fixtures/cosmoz-moneyhelper-behavior.html'>
+</head>
+<body>s
+	<test-fixture id="cosmoz-moneyhelper-behavior-fixture">
+		<template>
+			<test-cosmoz-moneyhelper-behavior></test-cosmoz-moneyhelper-behavior>
+		</template>
+	</test-fixture>
+	<script type="text/javascript">
+	(function () {
+		'use strict';
+
+		suite('cosmoz-moneyhelper-behavior', function() {
+			var moneyHelper,
+				amount = 2200200.3333333333;
+
+
+			setup( function() {
+				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
+			});
+
+			test('faketest ', function(done) {
+				assert.equal(moneyHelper.renderAmount({amount: amount}),'$2,200,200.33');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "EUR"}), '€ 2.200.200,33');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "SEK"}), '2 200 200,33 kr');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: "NOK"}), '2 200 200,33 kr');
+				assert.equal(moneyHelper.unformatRenderedAmount('2.200.200,33', ','), 2200200.33);
+				done()
+			});
+
+		});
+	})();
+	</script>
+</body>
