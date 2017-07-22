@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>cosmoz-templatehelper-behavior test</title>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes'>
+	<script src='../../webcomponentsjs/webcomponents-lite.js'></script>
+	<script src='../../web-component-tester/browser.js'></script>
+	<link rel='import' href='./fixtures/cosmoz-templatehelper-behavior.html'>
+</head>
+<body>
+	<test-fixture id="cosmoz-templatehelper-behavior-fixture">
+		<template>
+			<test-cosmoz-templatehelper-behavior></test-cosmoz-templatehelper-behavior>
+		</template>
+	</test-fixture>
+	<script type="text/javascript">
+	(function () {
+		'use strict';
+
+		suite('cosmoz-templatehelper-behavior', function () {
+			var templateHelper;
+
+			setup(function () {
+				templateHelper = fixture('cosmoz-templatehelper-behavior-fixture');
+			});
+
+			test('anyTrue ', function (done) {
+				assert.equal(templateHelper.anyTrue(0, null, false), false);
+				assert.equal(templateHelper.anyTrue(1, null, false), true);
+				assert.equal(templateHelper.anyTrue(0, null, true), true);
+				done();
+			});
+
+			test('concat ', function (done) {
+				assert.equal(templateHelper.concat('1', '2', '3'), '123');
+				assert.equal(templateHelper.concat('a', 'b', 'c'), 'abc');
+				done();
+			});
+
+			test('ifElse ', function (done) {
+				var vif = new Object(),
+					velse = new Object();
+
+				assert.equal(templateHelper.ifElse(true, vif, velse), vif);
+				assert.equal(templateHelper.ifElse(false, vif, velse), velse);
+				done();
+			});
+
+		});
+	})();
+	</script>
+</body>
