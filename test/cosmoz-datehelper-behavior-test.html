@@ -21,14 +21,14 @@
 		'use strict';
 
 		suite('cosmoz-datehelper-behavior' , function () {
-			var dateHelper
-				, date = new Date('October 13, 2014 11:13:20')
-				, futureDate = new Date('October 13, 2022 11:13:20')
-				, invalidDate = ''
-				, undefinedDate
-				, dateNow
-				, dateHourAgo
-				, dateWeekDiff = new Date(date.getTime() - 1000 * 60 * 60 * 24 * 7);
+			var dateHelper,
+				date = new Date('October 13, 2014 11:13:20'),
+				futureDate = new Date('October 13, 2022 11:13:20'),
+				invalidDate = '',
+				undefinedDate,
+				dateNow,
+				dateHourAgo,
+				dateWeekDiff = new Date(date.getTime() - 1000 * 60 * 60 * 24 * 7);
 
 
 			setup(function () {

@@ -29,8 +29,9 @@
 				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
 			});
 
-			test('faketest ', function (done) {
+			test('renderAmount ', function (done) {
 				assert.equal(moneyHelper.renderAmount({amount: amount}),'$2,200,200.33');
+				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'USD'}),'$ 2,200,200.33');
 				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'EUR'}), '€ 2.200.200,33');
 				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'SEK'}), '2 200 200,33 kr');
 				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'NOK'}), '2 200 200,33 kr');
