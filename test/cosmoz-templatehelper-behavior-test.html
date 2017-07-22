@@ -27,25 +27,54 @@
 				templateHelper = fixture('cosmoz-templatehelper-behavior-fixture');
 			});
 
-			test('anyTrue ', function (done) {
-				assert.equal(templateHelper.anyTrue(0, null, false), false);
-				assert.equal(templateHelper.anyTrue(1, null, false), true);
-				assert.equal(templateHelper.anyTrue(0, null, true), true);
+			test('anyTrue', function (done) {
+				assert.isFalse(templateHelper.anyTrue(0, null, false), false);
+				assert.isTrue(templateHelper.anyTrue(1, null, false), true);
+				assert.isTrue(templateHelper.anyTrue(0, null, true), true);
 				done();
 			});
 
-			test('concat ', function (done) {
+			test('concat', function (done) {
 				assert.equal(templateHelper.concat('1', '2', '3'), '123');
 				assert.equal(templateHelper.concat('a', 'b', 'c'), 'abc');
 				done();
 			});
 
-			test('ifElse ', function (done) {
+			test('ifElse', function (done) {
 				var vif = new Object(),
 					velse = new Object();
-
 				assert.equal(templateHelper.ifElse(true, vif, velse), vif);
 				assert.equal(templateHelper.ifElse(false, vif, velse), velse);
+				done();
+			});
+
+			test('inArray', function (done) {
+				var obj = new Object(),
+					array = [1, 2, obj];
+				assert.isTrue(templateHelper.inArray(obj, array));
+				assert.isFalse(templateHelper.inArray(new Object(), array));
+				done();
+			});
+
+			test('isEqual', function (done) {
+				assert.isTrue(templateHelper.isEqual('123', '123'));
+				assert.isFalse(templateHelper.isEqual(0, true));
+				done();
+			});
+
+			test('isEmpty', function (done) {
+				assert.isTrue(templateHelper.isEmpty(null));
+				assert.isTrue(templateHelper.isEmpty(undefined));
+				assert.isTrue(templateHelper.isEmpty([]));
+				assert.isTrue(templateHelper.isEmpty(''));
+				assert.isTrue(templateHelper.isEmpty(0));
+				assert.isTrue(templateHelper.isEmpty());
+				done();
+			});
+
+			test('toFixed', function (done) {
+				assert.equal(templateHelper.toFixed(1.124123123,2),'1.12');
+				assert.equal(templateHelper.toFixed(33.13941313,0),'33');
 				done();
 			});
 
