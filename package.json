@@ -15,9 +15,9 @@
   },
   "scripts": {
     "start": "polymer serve -o",
-    "postinstall": "./node_modules/.bin/bower i",
-    "lint": "./node_modules/.bin/eslint --cache cosmoz-*.html cosmoz-*.js test/cosmoz-*.html && ./node_modules/.bin/polymer lint cosmoz-*.html",
-    "test": "./node_modules/.bin/polymer test"
+    "postinstall": "bower i",
+    "lint": "eslint --cache cosmoz-*.html cosmoz-*.js test/cosmoz-*.html && polymer lint cosmoz-*.html",
+    "test": "polymer test"
   },
   "repository": {
     "type": "git",
