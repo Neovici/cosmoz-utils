@@ -20,7 +20,7 @@
 	(function () {
 		'use strict';
 
-		suite('cosmoz-datehelper-behavior' , function () {
+		suite('cosmoz-datehelper-behavior', function () {
 			var dateHelper,
 				date = new Date('October 13, 2014 11:13:20'),
 				futureDate = new Date('October 13, 2022 11:13:20'),
@@ -58,12 +58,12 @@
 			});
 
 			test('timeago one hour', function (done) {
-				assert.equal(dateHelper.timeago(dateHourAgo),'an hour ago');
+				assert.equal(dateHelper.timeago(dateHourAgo), 'an hour ago');
 				done();
 			});
 
 			test('timediff a week', function (done) {
-				assert.equal(dateHelper.dayDiff(date, dateWeekDiff),7);
+				assert.equal(dateHelper.dayDiff(date, dateWeekDiff), 7);
 				done();
 			});
 
