@@ -3,9 +3,10 @@
     "mocha": true
   },
   "globals": {
+    "suite": false,
+    "test": false,
     "assert": false,
     "fixture": false,
-    "expect": false,
     "a11ySuite": false,
     "MockInteractions": false,
   }

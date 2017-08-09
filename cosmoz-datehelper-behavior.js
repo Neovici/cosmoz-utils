@@ -62,7 +62,7 @@
 		dayDiff: function (date1, date2) {
 			var time1 = moment(date1),
 				time2 = moment(date2);
-			if(time1.isValid() && time2.isValid()) {
+			if (time1.isValid() && time2.isValid()) {
 				return time1.diff(time2, 'days');
 			}
 			return '';
