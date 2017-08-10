@@ -8,6 +8,7 @@
 		"fixture": false,
 		"MockInteractions": false,
 		"suite": false,
-		"test": false
+		"test": false,
+		"WCT": false
 	}
 }
