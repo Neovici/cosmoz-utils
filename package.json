@@ -1,35 +1,35 @@
 {
-  "name": "cosmoz-behaviors",
-  "version": "1.0.0",
-  "description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-behaviors.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-behaviors)",
-  "main": "cosmoz-behaviors.html",
-  "directories": {
-    "test": "test"
-  },
-  "devDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-plugin-html": "^3.1.1",
-    "eslint-plugin-mocha": "^4.11.0",
-    "polymer-cli": "^1.4.1"
-  },
-  "scripts": {
-    "start": "polymer serve -o",
-    "postinstall": "polymer install",
-    "lint": "eslint --cache cosmoz-* test/*.html test/fixtures/*.html demo/*.html && polymer lint cosmoz-*.html",
-    "test": "polymer test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/neovici/cosmoz-behaviors.git"
-  },
-  "keywords": [
-    "polymer",
-    "web-components"
-  ],
-  "author": "",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/neovici/cosmoz-behaviors/issues"
-  },
-  "homepage": "https://github.com/neovici/cosmoz-behaviors#readme"
+	"name": "cosmoz-behaviors",
+	"version": "1.0.0",
+	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-behaviors.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-behaviors)",
+	"main": "cosmoz-behaviors.html",
+	"directories": {
+		"test": "test"
+	},
+	"devDependencies": {
+		"eslint": "^3.9.1",
+		"eslint-plugin-html": "^3.1.1",
+		"eslint-plugin-mocha": "^4.11.0",
+		"polymer-cli": "^1.4.1"
+	},
+	"scripts": {
+		"start": "polymer serve -o",
+		"postinstall": "polymer install",
+		"lint": "eslint --cache cosmoz-* test/*.html test/fixtures/*.html demo/*.html && polymer lint cosmoz-*.html",
+		"test": "polymer test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/neovici/cosmoz-behaviors.git"
+	},
+	"keywords": [
+		"polymer",
+		"web-components"
+	],
+	"author": "",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/neovici/cosmoz-behaviors/issues"
+	},
+	"homepage": "https://github.com/neovici/cosmoz-behaviors#readme"
 }
