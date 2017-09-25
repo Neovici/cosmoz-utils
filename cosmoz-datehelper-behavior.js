@@ -1,6 +1,4 @@
-/*global Cosmoz, moment */
 (function () {
-
 	'use strict';
 	window.Cosmoz = window.Cosmoz || {};
 

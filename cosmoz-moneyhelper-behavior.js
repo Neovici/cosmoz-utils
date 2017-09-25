@@ -1,6 +1,4 @@
-/*global Cosmoz, accounting */
 (function () {
-
 	'use strict';
 	window.Cosmoz = window.Cosmoz || {};
 

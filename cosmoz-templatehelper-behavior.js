@@ -1,8 +1,5 @@
-/*global Cosmoz */
 (function () {
-
 	'use strict';
-
 	window.Cosmoz = window.Cosmoz || {};
 
 	/** @polymerBehavior */
