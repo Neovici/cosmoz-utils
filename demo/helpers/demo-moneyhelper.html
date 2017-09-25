@@ -1,0 +1,61 @@
+<link rel="import" href="../../../polymer/polymer.html" />
+<link rel="import" href="../../cosmoz-moneyhelper-behavior.html" />
+
+<dom-module id="demo-moneyhelper">
+	<template>
+		<h3>Money helper test</h3>
+		<div><input value="{{ money::change }}"></input></div>
+		<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+		<div>renderAmount(money): [[ renderedAmount ]]</div>
+		<div>unformat(amount string): [[ unformatedValue ]]</div>
+		<div>round(number): [[ roundedValue ]]</div>
+	</template>
+	<script type="text/javascript">
+		'use strict';
+		Polymer({
+			behaviors: [
+				Cosmoz.MoneyHelperBehavior
+			],
+			is: 'cosmoz-moneyhelper-test',
+			properties: {
+				money: {
+					type: Number
+				},
+				renderedNumberAmount: {
+					type: String,
+					computed: '_computeNumberAmount(money)'
+				},
+				renderedAmount: {
+					type: String,
+					computed: '_computeAmount(money)'
+				},
+				unformatedValue: {
+					type: Number,
+					computed: '_computeUnformatedValue(renderedAmount)'
+				},
+				roundedValue: {
+					type: Number,
+					computed: '_computedRoundedValue(unformatedValue)'
+				}
+			},
+			_computeNumberAmount: function (money) {
+				return this.renderNumberAmount({
+					amount: money,
+					currency: 'SEK'
+				});
+			},
+			_computeAmount: function (money) {
+				return this.renderAmount({
+					amount: money,
+					currency: 'SEK'
+				});
+			},
+			_computeUnformatedValue: function (renderedAmount) {
+				return this.unformatRenderedAmount(renderedAmount, ',');
+			},
+			_computedRoundedValue: function (number) {
+				return this.round(number, 0);
+			}
+		});
+	</script>
+</dom-module>

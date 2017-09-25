@@ -10,9 +10,10 @@
 
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
-		<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+		<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html" />
 
 		<link rel="import" href="./helpers/demo-templatehelper.html" />
+		<link rel="import" href="./helpers/demo-moneyhelper.html" />
 
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles iron-flex">
@@ -24,6 +25,7 @@
 	</head>
 	<body unresolved>
 		<div id="container" class="vertical-section-container centered">
+			<h3><code>Cosmoz.TemplateHelperBehavior</code> Demo</h3>
 			<demo-snippet>
 				<demo-templatehelper></demo-templatehelper>
 				<template is>
@@ -55,7 +57,73 @@
 					</dom-module>
 				</template>
 			</demo-snippet>
+
+			<h3><code>Cosmoz.MoneyHelperBehavior</code> Demo</h3>
+			<demo-snippet>
+				<demo-moneyhelper></demo-moneyhelper>
+				<template is>
+					<dom-module id="demo-moneyhelper">
+						<template>
+							<h3>Money helper test</h3>
+							<div><input value="{{ money::change }}"></input></div>
+							<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+							<div>renderAmount(money): [[ renderedAmount ]]</div>
+							<div>unformat(amount string): [[ unformatedValue ]]</div>
+							<div>round(number): [[ roundedValue ]]</div>
+						</template>
+						<script type="text/javascript">
+							'use strict';
+							Polymer({
+								behaviors: [
+									Cosmoz.MoneyHelperBehavior
+								],
+								is: 'cosmoz-moneyhelper-test',
+								properties: {
+									money: {
+										type: Number
+									},
+									renderedNumberAmount: {
+										type: String,
+										computed: '_computeNumberAmount(money)'
+									},
+									renderedAmount: {
+										type: String,
+										computed: '_computeAmount(money)'
+									},
+									unformatedValue: {
+										type: Number,
+										computed: '_computeUnformatedValue(renderedAmount)'
+									},
+									roundedValue: {
+										type: Number,
+										computed: '_computedRoundedValue(unformatedValue)'
+									}
+								},
+								_computeNumberAmount: function (money) {
+									return this.renderNumberAmount({
+										amount: money,
+										currency: 'SEK'
+									});
+								},
+								_computeAmount: function (money) {
+									return this.renderAmount({
+										amount: money,
+										currency: 'SEK'
+									});
+								},
+								_computeUnformatedValue: function (renderedAmount) {
+									return this.unformatRenderedAmount(renderedAmount, ',');
+								},
+								_computedRoundedValue: function (number) {
+									return this.round(number, 0);
+								}
+							});
+						</script>
+					</dom-module>
+				</template>
+			</demo-snippet>
 		</div>
+
 		<script type="text/javascript">
 			(function () {
 				//
