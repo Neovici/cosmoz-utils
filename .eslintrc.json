@@ -9,7 +9,9 @@
 		"CustomElements": false,
 		"HTMLImports": false,
 		"Polymer": false,
-		"WeakMap": false
+		"WeakMap": false,
+		"accounting": false,
+		"moment": false
 	},
 	"parserOptions": {
 		"ecmaVersion": 6
