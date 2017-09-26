@@ -1,133 +1,135 @@
 <!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-	<title>Cosmoz Behaviors</title>
+		<title>cosmoz-tabs demo</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../../polymer/polymer.html">
-	<link rel="import" href="../cosmoz-behaviors.html">
-</head>
-<body>
-	<template is="dom-bind" id="t">
-		<cosmoz-templatehelper-test></cosmoz-templatehelper-test>
-		<cosmoz-common-test></cosmoz-common-test>
-		<cosmoz-moneyhelper-test></cosmoz-moneyhelper-test>
-	</template>
-	<dom-module id="cosmoz-templatehelper-test">
-		<template>
-			<h3>Template helper test</h3>
-			<div>Empty string isEmpty: {{ isEmpty("") }}</div>
-			<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
-			<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
-		</template>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html" />
+
+		<link rel="import" href="./helpers/demo-templatehelper.html" />
+		<link rel="import" href="./helpers/demo-moneyhelper.html" />
+
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles iron-flex">
+				#container {
+					 max-width: 800px;
+				 }
+			</style>
+		</custom-style>
+	</head>
+	<body unresolved>
+		<div id="container" class="vertical-section-container centered">
+			<h3><code>Cosmoz.TemplateHelperBehavior</code> Demo</h3>
+			<demo-snippet>
+				<demo-templatehelper></demo-templatehelper>
+				<!-- `is` attribute is added to prevent demo-snippet from stamping the template -->
+				<template is>
+					<dom-module id="demo-templatehelper">
+						<template>
+							<h3>Template helper test</h3>
+							<div>Empty string isEmpty: {{ isEmpty("") }}</div>
+							<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
+							<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
+						</template>
+						<script type="text/javascript">
+							'use strict';
+
+							Polymer({
+								behaviors: [
+									Cosmoz.TemplateHelperBehavior,
+								],
+								is: 'demo-templatehelper',
+								properties: {
+									emptyArray: {
+										type: Array,
+										value: function () {
+											return [];
+										}
+									}
+								}
+							});
+						</script>
+					</dom-module>
+				</template>
+			</demo-snippet>
+
+			<h3><code>Cosmoz.MoneyHelperBehavior</code> Demo</h3>
+			<demo-snippet>
+				<demo-moneyhelper></demo-moneyhelper>
+				<!-- `is` attribute is added to prevent demo-snippet from stamping the template -->
+				<template is>
+					<dom-module id="demo-moneyhelper">
+						<template>
+							<h3>Money helper test</h3>
+							<div><input value="{{ money::change }}"></input></div>
+							<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+							<div>renderAmount(money): [[ renderedAmount ]]</div>
+							<div>unformat(amount string): [[ unformatedValue ]]</div>
+							<div>round(number): [[ roundedValue ]]</div>
+						</template>
+						<script type="text/javascript">
+							'use strict';
+							Polymer({
+								behaviors: [
+									Cosmoz.MoneyHelperBehavior
+								],
+								is: 'cosmoz-moneyhelper-test',
+								properties: {
+									money: {
+										type: Number
+									},
+									renderedNumberAmount: {
+										type: String,
+										computed: '_computeNumberAmount(money)'
+									},
+									renderedAmount: {
+										type: String,
+										computed: '_computeAmount(money)'
+									},
+									unformatedValue: {
+										type: Number,
+										computed: '_computeUnformatedValue(renderedAmount)'
+									},
+									roundedValue: {
+										type: Number,
+										computed: '_computedRoundedValue(unformatedValue)'
+									}
+								},
+								_computeNumberAmount: function (money) {
+									return this.renderNumberAmount({
+										amount: money,
+										currency: 'SEK'
+									});
+								},
+								_computeAmount: function (money) {
+									return this.renderAmount({
+										amount: money,
+										currency: 'SEK'
+									});
+								},
+								_computeUnformatedValue: function (renderedAmount) {
+									return this.unformatRenderedAmount(renderedAmount, ',');
+								},
+								_computedRoundedValue: function (number) {
+									return this.round(number, 0);
+								}
+							});
+						</script>
+					</dom-module>
+				</template>
+			</demo-snippet>
+		</div>
+
 		<script type="text/javascript">
-			/*global Polymer, Cosmoz*/
-			'use strict';
-			Polymer({
-				behaviors: [
-					Cosmoz.TemplateHelperBehavior,
-				],
-				is: 'cosmoz-templatehelper-test',
-				properties: {
-					emptyArray: {
-						type: Array,
-						value: function () {
-							return [];
-						}
-					}
-				}
-			});
+			(function () {
+				//
+			})();
 		</script>
-	</dom-module>
-
-	<dom-module id="cosmoz-common-test">
-		<template>
-			<h3>Common test</h3>
-			<div>Empty string isEmpty: {{ isEmpty("") }}</div>
-			<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
-			<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
-		</template>
-		<script type="text/javascript">
-			/*global Polymer, Cosmoz*/
-			'use strict';
-			Polymer({
-				behaviors: [
-					Cosmoz.CommonBehaviors,
-				],
-				is: 'cosmoz-common-test',
-				properties: {
-					emptyArray: {
-						type: Array,
-						value: function () {
-							return [];
-						}
-					}
-				}
-			});
-		</script>
-	</dom-module>
-
-	<dom-module id="cosmoz-moneyhelper-test">
-		<template>
-			<h3>Money helper test</h3>
-			<div><input value="{{ money::change }}"></input></div>
-			<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
-			<div>renderAmount(money): [[ renderedAmount ]]</div>
-			<div>unformat(amount string): [[ unformatedValue ]]</div>
-			<div>round(number): [[ roundedValue ]]</div>
-		</template>
-		<script type="text/javascript">
-			/*global Polymer, Cosmoz*/
-			'use strict';
-			Polymer({
-				behaviors: [
-					Cosmoz.CommonBehaviors
-				],
-				is: 'cosmoz-moneyhelper-test',
-				properties: {
-					money: {
-						type: Number
-					},
-					renderedNumberAmount: {
-						type: String,
-						computed: '_computeNumberAmount(money)'
-					},
-					renderedAmount: {
-						type: String,
-						computed: '_computeAmount(money)'
-					},
-					unformatedValue: {
-						type: Number,
-						computed: '_computeUnformatedValue(renderedAmount)'
-					},
-					roundedValue: {
-						type: Number,
-						computed: '_computedRoundedValue(unformatedValue)'
-					}
-				},
-				_computeNumberAmount: function (money) {
-					return this.renderNumberAmount({
-						amount: money,
-						currency: 'SEK'
-					});
-				},
-				_computeAmount: function (money) {
-					return this.renderAmount({
-						amount: money,
-						currency: 'SEK'
-					});
-				},
-				_computeUnformatedValue: function (renderedAmount) {
-					return this.unformatRenderedAmount(renderedAmount, ',');
-				},
-				_computedRoundedValue: function (number) {
-					return this.round(number, 0);
-				}
-			});
-		</script>
-	</dom-module>
-</body>
+	</body>
 </html>
