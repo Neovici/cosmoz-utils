@@ -83,8 +83,11 @@
 	 * @demo
 	 */
 	Cosmoz.MoneyHelperBehavior = {
-		renderAmount: function (money) {
-			var format = this._renderFormat(money);
+		renderAmount(money) {
+			if (money == null) {
+				return;
+			}
+			const format = this._renderFormat(money);
 			return accounting.formatMoney(money.amount, format.currency);
 		},
 		renderMoney: function (money) {
