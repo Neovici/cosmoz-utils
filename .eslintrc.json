@@ -9,12 +9,7 @@
 		"CustomElements": false,
 		"HTMLImports": false,
 		"Polymer": false,
-		"WeakMap": false,
-		"accounting": false,
-		"moment": false
-	},
-	"parserOptions": {
-		"ecmaVersion": 6
+		"WeakMap": false
 	},
 	"plugins": [
 		"html"
@@ -24,6 +19,17 @@
 		"array-bracket-spacing": [
 			"error",
 			"never"
+		],
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
+		"arrow-spacing": [
+			"error",
+			{
+				"before": true,
+				"after": true
+			}
 		],
 		"brace-style": "error",
 		"camelcase": "error",
@@ -41,7 +47,10 @@
 			"error",
 			"all"
 		],
-		"eqeqeq": "error",
+		"eqeqeq": [
+			"error",
+			"smart"
+		],
 		"guard-for-in": "error",
 		"indent": [
 			"error",
@@ -50,14 +59,14 @@
 		"key-spacing": [
 			"error",
 			{
-					"afterColon": true,
-					"beforeColon": false
+				"afterColon": true,
+				"beforeColon": false
 			}
 		],
 		"keyword-spacing": [
 			"error",
 			{
-					"before": true
+				"before": true
 			}
 		],
 		"no-console": "off",
@@ -95,11 +104,15 @@
 			"error",
 			"always"
 		],
+		"space-before-blocks": [
+			"error",
+			"always"
+		],
 		"space-before-function-paren": [
 			"error",
 			{
-					"anonymous": "always",
-					"named": "never"
+				"anonymous": "always",
+				"named": "never"
 			}
 		],
 		"space-in-parens": "error",
