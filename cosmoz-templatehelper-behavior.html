@@ -18,7 +18,7 @@
 		 * Helper function to see if any of the arguments are true
 		 * @return {Boolean} true if any of the arguments are true
 		 */
-		anyTrue: function () {
+		anyTrue() {
 			var argumentArray = Array.prototype.slice.call(arguments);
 			return argumentArray.some(function (arg) {
 				return !!arg;
@@ -29,7 +29,7 @@
 		 * Concatenate all arguments to a string
 		 * @return {String} String containing concatenated parameters
 		 */
-		concat: function () {
+		concat() {
 			return Array.prototype.join.call(arguments, '');
 		},
 
@@ -40,7 +40,7 @@
 		 * @param {*} elseresult Result when iftrue is false
 		 * @return {Boolean} result or elseresult depending on iftrue
 		 */
-		ifElse: function (iftrue, result, elseresult) {
+		ifElse(iftrue, result, elseresult) {
 			return iftrue ? result : elseresult;
 		},
 
@@ -50,7 +50,7 @@
 		 * @param {Array} array The array to search
 		 * @return {Boolean} true if found
 		 */
-		inArray: function (item, array) {
+		inArray(item, array) {
 			return array.indexOf(item) > -1;
 		},
 
@@ -60,7 +60,7 @@
 		 * @param {*} arg2 Object to compare
 		 * @return {Boolean} true if arg1 and arg2 are equal
 		 */
-		isEqual: function (arg1, arg2) {
+		isEqual(arg1, arg2) {
 			return arg1 === arg2;
 		},
 
@@ -70,7 +70,7 @@
 		 * @param  {Object}  obj variable
 		 * @return {Boolean}  true if "empty", false otherwise
 		 */
-		isEmpty: function (obj) {
+		isEmpty(obj) {
 			if (obj === undefined || obj === null) {
 				return true;
 			}
@@ -93,7 +93,7 @@
 		 * @param {Number} fixval The number of decimals
 		 * @return {String} The number converted to string keep only fixval number of decimals
 		 */
-		toFixed: function (number, fixval) {
+		toFixed(number, fixval) {
 			return number.toFixed(fixval);
 		}
 	};

@@ -91,20 +91,20 @@
 			const format = this._renderFormat(money);
 			return accounting.formatMoney(money.amount, format.currency);
 		},
-		renderMoney: function (money) {
+		renderMoney(money) {
 			return this.renderAmount(money);
 		},
-		renderNumberAmount: function (money) {
+		renderNumberAmount(money) {
 			var format = this._renderFormat(money);
 			return accounting.formatNumber(money.amount, format.currency);
 		},
-		unformatRenderedAmount: function (amountString, decimalSeparator) {
+		unformatRenderedAmount(amountString, decimalSeparator) {
 			return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
 		},
-		round: function (number, precision) {
+		round(number, precision) {
 			return parseFloat(accounting.toFixed(number, precision));
 		},
-		_renderFormat: function (money) {
+		_renderFormat(money) {
 			if (money === undefined) {
 				return;
 			}
