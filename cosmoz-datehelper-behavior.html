@@ -3,6 +3,7 @@
 <script type="text/javascript">
 (function () {
 	'use strict';
+	/* global moment */
 	window.Cosmoz = window.Cosmoz || {};
 
 	/**
@@ -11,12 +12,12 @@
 	 */
 	Cosmoz.DateHelperBehavior = {
 
-		isoDate: function (date) {
+		isoDate(date) {
 			var time = date && moment(date);
 			return time && time.isValid() && time.format('YYYY-MM-DD') || '';
 		},
 
-		isoDT: function (date) {
+		isoDT(date) {
 			var time = date && moment(date);
 			return time && time.isValid() && time.format('YYYY-MM-DD HH:mm:ss') || '';
 		},
@@ -26,7 +27,7 @@
 		 * @param  {date/string} date Date to check
 		 * @return {boolean} In the past?
 		 */
-		pastDate: function (date) {
+		pastDate(date) {
 			var time = date && moment(date);
 			return time && time.isValid() && time.isBefore(new Date());
 
@@ -36,18 +37,18 @@
 		 * @param  {date} date Date to check
 		 * @return {String}   Date representation string
 		 */
-		timeago: function (date) {
+		timeago(date) {
 			var time = date && moment(date);
 			return time && time.isValid() && time.fromNow() || '';
 		},
-		renderDate: function (date) {
+		renderDate(date) {
 			return this.isoDate(date);
 		},
-		renderDatetime: function (date) {
+		renderDatetime(date) {
 			return this.isoDT(date);
 		},
 
-		ensureDate: function (date) {
+		ensureDate(date) {
 			var ensuredDate;
 			if (date === undefined) {
 				return;
@@ -63,7 +64,7 @@
 			return ensuredDate;
 		},
 
-		dayDiff: function (date1, date2) {
+		dayDiff(date1, date2) {
 			var time1 = moment(date1),
 				time2 = moment(date2);
 			if (time1.isValid() && time2.isValid()) {
