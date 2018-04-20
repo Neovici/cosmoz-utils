@@ -12,6 +12,8 @@
 			});
 
 		/**
+		 * Behavior for amount and money management.
+		 *
 		 * @polymerBehavior Cosmoz.MoneyHelperBehavior
 		 * @demo
 		 */
@@ -41,6 +43,11 @@
 					typeof potentialAmount.currency === 'string' &&
 					potentialAmount.currency.length === 3;
 			},
+			/**
+			 * Render an amount with decimal separator and currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted amount.
+			 */
 			renderAmount(money) {
 				if (money == null) {
 					return;
@@ -51,12 +58,28 @@
 				}
 				return formatter.format(money.amount);
 			},
+			/**
+			 * Alias for renderAmount(money). Render an amount with decimal separator and currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted amount.
+			 */
 			renderMoney(money) {
 				return this.renderAmount(money);
 			},
+			/**
+			 * Render an amount with decimal separator but without currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted number.
+			 */
 			renderNumberAmount(money) {
 				return NUMBER_FORMATTER.format(money.amount);
 			},
+			/**
+			 * Round a number to a given precision.
+			 * @param  {string} number Number with decimals to round.
+			 * @param  {number} precision Number of decimals to round amount to.
+			 * @return {number} Rounded number.
+			 */
 			round(number, precision) {
 				const fixed = Number(Math.round(number + 'e' + precision) + 'e-' + precision).toFixed(precision);
 				return parseFloat(fixed);
