@@ -28,7 +28,7 @@
 
 			/**
 			 * Concatenate all arguments to a string.
-			 * @return {String} Concatenated arguments.
+			 * @return {string} Concatenated arguments.
 			 */
 			concat() {
 				return Array.prototype.join.call(arguments, '');
@@ -36,10 +36,10 @@
 
 			/**
 			 * If iftrue argument is true, return result argument, otherwise return elseresult argument.
-			 * @param {Boolean} iftrue Codition for result
-			 * @param  {*} result Result when iftrue is true.
+			 * @param {boolean} iftrue Codition for result
+			 * @param {*} result Result when iftrue is true.
 			 * @param {*} elseresult Result when iftrue is false.
-			 * @return {Boolean} result or elseresult depending on iftrue evaluation.
+			 * @return {boolean} result or elseresult depending on iftrue evaluation.
 			 */
 			ifElse(iftrue, result, elseresult) {
 				return iftrue ? result : elseresult;
@@ -48,8 +48,8 @@
 			/**
 			 * Check if item argument exists in array argument.
 			 * @param {*} item Item to search for in the array.
-			 * @param {Array} array Array to search.
-			 * @return {Boolean} Whether the item was found in array or not.
+			 * @param {array} array Array to search.
+			 * @return {boolean} Whether the item was found in array or not.
 			 */
 			inArray(item, array) {
 				return array.indexOf(item) > -1;
@@ -59,7 +59,7 @@
 			 * Check equality of the arguments.
 			 * @param {*} arg1 First argument to compare.
 			 * @param {*} arg2 Second argument to compare
-			 * @return {Boolean} Whether the first and second arguments are equal or not.
+			 * @return {boolean} Whether the first and second arguments are equal or not.
 			 */
 			isEqual(arg1, arg2) {
 				return arg1 === arg2;
@@ -68,8 +68,8 @@
 			/**
 			 * Check if argument is undefined, null, empty Array list,
 			 * empty String or 0 number (like length).
-			 * @param  {Object}  obj Argument to evaluate.
-			 * @return {Boolean}  Whether the argument is empty or not.
+			 * @param  {object}  obj Argument to evaluate.
+			 * @return {boolean}  Whether the argument is empty or not.
 			 */
 			isEmpty(obj) {
 				if (obj === undefined || obj === null) {
@@ -90,8 +90,8 @@
 
 			/**
 			 * Formats a number using fixed-point notation.
-			 * @param {Number} number Number with decimals to be formatted.
-			 * @param {Number} fixval Number of decimals to use.
+			 * @param {number} number Number with decimals to be formatted.
+			 * @param {number} fixval Number of decimals to use.
 			 * @return {String} The number converted to string keep only fixval number of decimals, if number empty, returns empty string
 			 */
 			toFixed(number, fixval) {
