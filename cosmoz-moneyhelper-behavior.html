@@ -10,56 +10,56 @@
 		const formats = {
 			CNY: {
 				currency: {
-					symbol: '¥',   // default currency symbol is '$'
-					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-					decimal: ',',  // decimal point separator
-					thousand: ' ',  // thousands separator
-					precision: 2   // decimal places
+					symbol: '¥',     // Default currency symbol is '$'.
+					format: '%s %v', // Controls output: %s = symbol, %v = value/number (can be object: see below).
+					decimal: ',',    // Decimal point separator.
+					thousand: ' ',   // Thousands separator.
+					precision: 2     // Decimal places.
 				},
 				number: {
-					precision: 0,  // default precision on numbers is 0
+					precision: 0,  // Default precision on numbers is 0.
 					thousand: ',',
 					decimal: '.'
 				}
 			},
 			DKK: {
 				currency: {
-					symbol: 'kr',   // default currency symbol is '$'
-					format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
-					decimal: ',',  // decimal point separator
-					thousand: ' ',  // thousands separator
-					precision: 2   // decimal places
+					symbol: 'kr',    // Default currency symbol is '$'.
+					format: '%v %s', // Controls output: %s = symbol, %v = value/number (can be object: see below).
+					decimal: ',',    // Decimal point separator.
+					thousand: ' ',   // Thousands separator.
+					precision: 2     // Decimal places.
 				},
 				number: {
-					precision: 0,  // default precision on numbers is 0
+					precision: 0, // Default precision on numbers is 0.
 					thousand: ',',
 					decimal: '.'
 				}
 			},
 			EUR: {
 				currency: {
-					symbol: '€',   // default currency symbol is '$'
-					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-					decimal: ',',  // decimal point separator
-					thousand: '.',  // thousands separator
-					precision: 2   // decimal places
+					symbol: '€',     // Default currency symbol is '$'.
+					format: '%s %v', // Controls output: %s = symbol, %v = value/number (can be object: see below).
+					decimal: ',',    // Decimal point separator.
+					thousand: '.',   // Thousands separator.
+					precision: 2     // Decimal places.
 				},
 				number: {
-					precision: 0,  // default precision on numbers is 0
+					precision: 0, // Default precision on numbers is 0.
 					thousand: ',',
 					decimal: '.'
 				}
 			},
 			NOK: {
 				currency: {
-					symbol: 'kr',   // default currency symbol is '$'
-					format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
-					decimal: ',',  // decimal point separator
-					thousand: ' ',  // thousands separator
-					precision: 2   // decimal places
+					symbol: 'kr',    // Default currency symbol is '$'.
+					format: '%v %s', // Controls output: %s = symbol, %v = value/number (can be object: see below).
+					decimal: ',',    // Decimal point separator.
+					thousand: ' ',   // Thousands separator.
+					precision: 2     // Decimal places.
 				},
 				number: {
-					precision: 0,  // default precision on numbers is 0
+					precision: 0, // Default precision on numbers is 0.
 					thousand: ',',
 					decimal: '.'
 				}
@@ -107,8 +107,9 @@
 				}
 			}
 		};
-
 		/**
+		 * Behavior for amount and money management.
+		 *
 		 * @polymerBehavior Cosmoz.MoneyHelperBehavior
 		 * @demo
 		 */
@@ -137,7 +138,11 @@
 				typeof potentialAmount.amount === 'number' &&
 				typeof potentialAmount.currency === 'string' &&
 				potentialAmount.currency.length === 3,
-
+			/**
+			 * Render an amount with decimal separator and currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted amount.
+			 */
 			renderAmount(money) {
 				if (money == null) {
 					return;
@@ -145,16 +150,38 @@
 				const format = this._renderFormat(money);
 				return accounting.formatMoney(money.amount, format.currency);
 			},
+			/**
+			 * Alias for renderAmount(money). Render an amount with decimal separator and currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted amount.
+			 */
 			renderMoney(money) {
 				return this.renderAmount(money);
 			},
+			/**
+			 * Render an amount with decimal separator but without currency symbol.
+			 * @param  {object} money Money with amount property and optionally currency property.
+			 * @return {string} Formatted number.
+			 */
 			renderNumberAmount(money) {
 				const format = this._renderFormat(money);
 				return accounting.formatNumber(money.amount, format.currency);
 			},
+			/**
+			 * Remove currency formatting including decimal separator and currency symbol.
+			 * @param  {string} amountString Amount to unformat.
+			 * @param  {string} decimalSeparator Decimal separator to use, all but comma are ignored.
+			 * @return {number} Unformatted amount with decimals.
+			 */
 			unformatRenderedAmount(amountString, decimalSeparator) {
 				return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
 			},
+			/**
+			 * Round a number to a given precision.
+			 * @param  {string} number Number with decimals to round.
+			 * @param  {number} precision Number of decimals to round amount to.
+			 * @return {number} Rounded number.
+			 */
 			round(number, precision) {
 				return parseFloat(accounting.toFixed(number, precision));
 			},
