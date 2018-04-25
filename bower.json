@@ -11,7 +11,7 @@
 		"polymer",
 		"cosmoz"
 	],
-	"license": "Apache 2.0",
+	"license": "Apache-2.0",
 	"ignore": [
 		"**/.*",
 		"node_modules",
