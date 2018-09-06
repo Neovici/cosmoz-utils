@@ -117,23 +117,23 @@
 		 * @param {object} amount1 Amount 1.
 		 * @param {object} amount2 Amount 2.
 		 * @param {number} precision Decimal precision, defaults to 2 decimals.
-		 * @returns {boolean} Comparison result.
+		 * @returns {boolean} Whether the amounts are equal regarding amount to the specified precision and the currency.
 		 */
 		amountEquals(amount1, amount2, precision = 2) {
-			return this.round(amount1.amount, precision) === this.round(amount2.amount, precision) &&
-				amount1.currency === amount2.currency;
+			return this.isAmount(amount1) && this.isAmount(amount2) &&
+				this.round(amount1.amount, precision) === this.round(amount2.amount, precision) &&
+					amount1.currency === amount2.currency;
 		},
 		/**
 		 * Determine if a constant or a variable is an amount.
 		 * @param {object} potentialAmount Potential amount.
-		 * @returns {boolean} Result of determination.
+		 * @returns {boolean} Whether the potential amount is a valid amount object with amount and currency.
 		 */
 		isAmount: potentialAmount =>
-			potentialAmount !== null &&
-					typeof potentialAmount === 'object' &&
+			potentialAmount != null &&
 					potentialAmount.amount != null &&
+					potentialAmount.currency != null &&
 					typeof potentialAmount.amount === 'number' &&
-					potentialAmount.currency &&
 					typeof potentialAmount.currency === 'string' &&
 					potentialAmount.currency.length === 3,
 		renderAmount(money) {

@@ -32,6 +32,35 @@
 				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
 			});
 
+			test('amountEquals ', function (done) {
+				assert.equal(moneyHelper.amountEquals(null, null), false);
+				assert.equal(moneyHelper.amountEquals(null, false), false);
+				assert.equal(moneyHelper.amountEquals(100, 100), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount}, {amount: amount}), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount}, {amount: amount, currency: 'USD'}), false);
+				assert.equal(moneyHelper.amountEquals({amount: null, currency: 'USD'}, {amount: null, currency: 'USD'}), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount, currency: null}, {amount: amount, currency: null}), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'SEK'}, {amount: amount}), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: -amount, currency: 'EUR'}), false);
+				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: amount, currency: 'EUR'}), true);
+				assert.equal(moneyHelper.amountEquals({amount: 1.100, currency: 'EUR'}, {amount: 1.1001, currency: 'EUR'}, 2), true);
+				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: amount, currency: 'EUR'}, 4), true);
+				done();
+			});
+
+			test('isAmount ', function (done) {
+				assert.equal(moneyHelper.isAmount(null), false);
+				assert.equal(moneyHelper.isAmount(false), false);
+				assert.equal(moneyHelper.isAmount(100), false);
+				assert.equal(moneyHelper.isAmount({amount: amount}), false);
+				assert.equal(moneyHelper.isAmount({currency: 'EUR'}), false);
+				assert.equal(moneyHelper.isAmount({amount: amount, currency: 'EUR'}), true);
+				assert.equal(moneyHelper.isAmount({amount: amount.toString(), currency: 'EUR'}), false);
+				assert.equal(moneyHelper.isAmount({amount: null, currency: 'USD'}), false);
+				assert.equal(moneyHelper.isAmount({amount: amount, currency: null}), false);
+				done();
+			});
+
 			test('renderAmount ', function (done) {
 				assert.equal(moneyHelper.renderAmount({amount: amount}), '$2,200,200.33');
 				assert.equal(moneyHelper.renderAmount({amount: amount, currency: 'USD'}), '$ 2,200,200.33');
@@ -41,7 +70,6 @@
 				assert.equal(moneyHelper.unformatRenderedAmount('2.200.200,33', ','), 2200200.33);
 				done();
 			});
-
 		});
 	})();
 	</script>
