@@ -112,6 +112,30 @@
 	 * @demo
 	 */
 	Cosmoz.MoneyHelperBehavior = {
+		/**
+		 * Compare amounts.
+		 * @param {object} amount1 Amount 1.
+		 * @param {object} amount2 Amount 2.
+		 * @param {number} precision Decimal precision, defaults to 2 decimals.
+		 * @returns {boolean} Comparison result.
+		 */
+		amountEquals(amount1, amount2, precision = 2) {
+			return this.round(amount1.amount, precision) === this.round(amount2.amount, precision) &&
+				amount1.currency === amount2.currency;
+		},
+		/**
+		 * Determine if a constant or a variable is an amount.
+		 * @param {object} potentialAmount Potential amount.
+		 * @returns {boolean} Result of determination.
+		 */
+		isAmount: potentialAmount =>
+			potentialAmount !== null &&
+					typeof potentialAmount === 'object' &&
+					potentialAmount.amount != null &&
+					typeof potentialAmount.amount === 'number' &&
+					potentialAmount.currency &&
+					typeof potentialAmount.currency === 'string' &&
+					potentialAmount.currency.length === 3,
 		renderAmount(money) {
 			if (money == null) {
 				return;
