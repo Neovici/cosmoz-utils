@@ -43,7 +43,10 @@
 				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'SEK'}, {amount: amount}), false);
 				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: -amount, currency: 'EUR'}), false);
 				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: amount, currency: 'EUR'}), true);
+				assert.equal(moneyHelper.amountEquals({amount: 1.01, currency: 'EUR'}, {amount: 1.009, currency: 'EUR'}, 2), true);
+				assert.equal(moneyHelper.amountEquals({amount: 1.01, currency: 'EUR'}, {amount: 1.009, currency: 'EUR'}, 3), false);
 				assert.equal(moneyHelper.amountEquals({amount: 1.100, currency: 'EUR'}, {amount: 1.1001, currency: 'EUR'}, 2), true);
+				assert.equal(moneyHelper.amountEquals({amount: -1.1001, currency: 'EUR'}, {amount: -1.100, currency: 'EUR'}, 2), true);
 				assert.equal(moneyHelper.amountEquals({amount: amount, currency: 'EUR'}, {amount: amount, currency: 'EUR'}, 4), true);
 				done();
 			});
