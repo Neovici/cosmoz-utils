@@ -1,178 +1,180 @@
 <link rel="import" href="../polymer/polymer.html">
 <script type="text/javascript" src="../accounting/accounting.min.js"></script>
+
 <script type="text/javascript">
-(function () {
-	'use strict';
-	/* global accounting */
-	window.Cosmoz = window.Cosmoz || {};
+	(function () {
+		'use strict';
+		/* global accounting */
+		window.Cosmoz = window.Cosmoz || {};
 
-	var formats = {
-		CNY: {
-			currency: {
-				symbol: '¥',   // default currency symbol is '$'
-				format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: ' ',  // thousands separator
-				precision: 2   // decimal places
+		const formats = {
+			CNY: {
+				currency: {
+					symbol: '¥',   // default currency symbol is '$'
+					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: ' ',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
-			}
-		},
-		DKK: {
-			currency: {
-				symbol: 'kr',   // default currency symbol is '$'
-				format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: ' ',  // thousands separator
-				precision: 2   // decimal places
+			DKK: {
+				currency: {
+					symbol: 'kr',   // default currency symbol is '$'
+					format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: ' ',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
-			}
-		},
-		EUR: {
-			currency: {
-				symbol: '€',   // default currency symbol is '$'
-				format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: '.',  // thousands separator
-				precision: 2   // decimal places
+			EUR: {
+				currency: {
+					symbol: '€',   // default currency symbol is '$'
+					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: '.',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
-			}
-		},
-		NOK: {
-			currency: {
-				symbol: 'kr',   // default currency symbol is '$'
-				format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: ' ',  // thousands separator
-				precision: 2   // decimal places
+			NOK: {
+				currency: {
+					symbol: 'kr',   // default currency symbol is '$'
+					format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: ' ',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
-			}
-		},
-		SEK: {
-			currency: {
-				symbol: 'kr',   // default currency symbol is '$'
-				format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: ' ',  // thousands separator
-				precision: 2   // decimal places
+			SEK: {
+				currency: {
+					symbol: 'kr',   // default currency symbol is '$'
+					format: '%v %s', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: ' ',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
-			}
-		},
-		USD: {
-			currency: {
-				symbol: '$',   // default currency symbol is '$'
-				format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: '.',  // decimal point separator
-				thousand: ',',  // thousands separator
-				precision: 2   // decimal places
+			USD: {
+				currency: {
+					symbol: '$',   // default currency symbol is '$'
+					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: '.',  // decimal point separator
+					thousand: ',',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ',',
+					decimal: '.'
+				}
 			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ',',
-				decimal: '.'
+			ZAR: {
+				currency: {
+					symbol: 'ZAR',   // default currency symbol is '$'
+					format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
+					decimal: ',',  // decimal point separator
+					thousand: ' ',  // thousands separator
+					precision: 2   // decimal places
+				},
+				number: {
+					precision: 0,  // default precision on numbers is 0
+					thousand: ' ',
+					decimal: ','
+				}
 			}
-		},
-		ZAR: {
-			currency: {
-				symbol: 'ZAR',   // default currency symbol is '$'
-				format: '%s %v', // controls output: %s = symbol, %v = value/number (can be object: see below)
-				decimal: ',',  // decimal point separator
-				thousand: ' ',  // thousands separator
-				precision: 2   // decimal places
-			},
-			number: {
-				precision: 0,  // default precision on numbers is 0
-				thousand: ' ',
-				decimal: ','
-			}
-		}
-	};
+		};
 
-	/**
-	 * @polymerBehavior Cosmoz.MoneyHelperBehavior
-	 * @demo
-	 */
-	Cosmoz.MoneyHelperBehavior = {
 		/**
-		 * Compare amounts.
-		 * @param {object} amount1 Amount 1.
-		 * @param {object} amount2 Amount 2.
-		 * @param {number} precision Decimal precision, defaults to 2 decimals.
-		 * @returns {boolean} Whether the amounts are equal regarding amount to the specified precision and the currency.
+		 * @polymerBehavior Cosmoz.MoneyHelperBehavior
+		 * @demo
 		 */
-		amountEquals(amount1, amount2, precision = 2) {
-			return this.isAmount(amount1) && this.isAmount(amount2) &&
-				this.round(amount1.amount, precision) === this.round(amount2.amount, precision) &&
+		Cosmoz.MoneyHelperBehavior = {
+			/**
+			 * Compare amounts.
+			 * @param {object} amount1 Amount 1.
+			 * @param {object} amount2 Amount 2.
+			 * @param {number} precision Decimal precision, defaults to 2 decimals.
+			 * @returns {boolean} Whether the amounts are equal regarding amount to the specified precision and the currency.
+			 */
+			amountEquals(amount1, amount2, precision = 2) {
+				return this.isAmount(amount1) && this.isAmount(amount2) &&
+					this.round(amount1.amount, precision) === this.round(amount2.amount, precision) &&
 					amount1.currency === amount2.currency;
-		},
-		/**
-		 * Determine if a constant or a variable is an amount.
-		 * @param {object} potentialAmount Potential amount.
-		 * @returns {boolean} Whether the potential amount is a valid amount object with amount and currency.
-		 */
-		isAmount: potentialAmount =>
-			potentialAmount != null &&
-					potentialAmount.amount != null &&
-					potentialAmount.currency != null &&
-					typeof potentialAmount.amount === 'number' &&
-					typeof potentialAmount.currency === 'string' &&
-					potentialAmount.currency.length === 3,
-		renderAmount(money) {
-			if (money == null) {
-				return;
+			},
+			/**
+			 * Determine if a constant or a variable is an amount.
+			 * @param {object} potentialAmount Potential amount.
+			 * @returns {boolean} Whether the potential amount is a valid amount object with amount and currency.
+			 */
+			isAmount: potentialAmount =>
+				potentialAmount != null &&
+				potentialAmount.amount != null &&
+				potentialAmount.currency != null &&
+				typeof potentialAmount.amount === 'number' &&
+				typeof potentialAmount.currency === 'string' &&
+				potentialAmount.currency.length === 3,
+
+			renderAmount(money) {
+				if (money == null) {
+					return;
+				}
+				const format = this._renderFormat(money);
+				return accounting.formatMoney(money.amount, format.currency);
+			},
+			renderMoney(money) {
+				return this.renderAmount(money);
+			},
+			renderNumberAmount(money) {
+				const format = this._renderFormat(money);
+				return accounting.formatNumber(money.amount, format.currency);
+			},
+			unformatRenderedAmount(amountString, decimalSeparator) {
+				return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
+			},
+			round(number, precision) {
+				return parseFloat(accounting.toFixed(number, precision));
+			},
+			_renderFormat(money) {
+				if (money === undefined) {
+					return;
+				}
+				if (money.amount === undefined || money.currency === undefined) {
+					return (money.amount === undefined
+						? ''
+						: money.amount) + ' ' + (money.currency === undefined
+						? ''
+						: money.currency);
+				}
+				const format = formats[money.currency];
+				if (!format) {
+					return money.amount + ' ' + money.currency;
+				}
+				return format;
 			}
-			const format = this._renderFormat(money);
-			return accounting.formatMoney(money.amount, format.currency);
-		},
-		renderMoney(money) {
-			return this.renderAmount(money);
-		},
-		renderNumberAmount(money) {
-			var format = this._renderFormat(money);
-			return accounting.formatNumber(money.amount, format.currency);
-		},
-		unformatRenderedAmount(amountString, decimalSeparator) {
-			return accounting.unformat(amountString, decimalSeparator === ',' ? ',' : '');
-		},
-		round(number, precision) {
-			return parseFloat(accounting.toFixed(number, precision));
-		},
-		_renderFormat(money) {
-			if (money === undefined) {
-				return;
-			}
-			if (money.amount === undefined || money.currency === undefined) {
-				return (money.amount === undefined
-					? ''
-					: money.amount) + ' ' + (money.currency === undefined
-					? ''
-					: money.currency);
-			}
-			var format = formats[money.currency];
-			if (!format) {
-				return money.amount + ' ' + money.currency;
-			}
-			return format;
-		}
-	};
-}());
+		};
+	}());
 </script>

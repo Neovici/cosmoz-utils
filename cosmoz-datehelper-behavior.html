@@ -1,78 +1,79 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../cosmoz-moment/cosmoz-moment.html">
+
 <script type="text/javascript">
-(function () {
-	'use strict';
-	/* global moment */
-	window.Cosmoz = window.Cosmoz || {};
-
-	/**
-	 * @polymerBehavior Cosmoz.DateHelperBehavior
-	 * @demo
-	 */
-	Cosmoz.DateHelperBehavior = {
-
-		isoDate(date) {
-			var time = date && moment(date);
-			return time && time.isValid() && time.format('YYYY-MM-DD') || '';
-		},
-
-		isoDT(date) {
-			var time = date && moment(date);
-			return time && time.isValid() && time.format('YYYY-MM-DD HH:mm:ss') || '';
-		},
+	(function () {
+		'use strict';
+		/* global moment */
+		window.Cosmoz = window.Cosmoz || {};
 
 		/**
-		 * Check if date is in the past
-		 * @param  {date/string} date Date to check
-		 * @return {boolean} In the past?
-		 */
-		pastDate(date) {
-			var time = date && moment(date);
-			return time && time.isValid() && time.isBefore(new Date());
+			* @polymerBehavior Cosmoz.DateHelperBehavior
+			* @demo
+			*/
+		Cosmoz.DateHelperBehavior = {
 
-		},
-		/**
-		 * Get human readable string describing date's difference from now
-		 * @param  {date} date Date to check
-		 * @return {String}   Date representation string
-		 */
-		timeago(date) {
-			var time = date && moment(date);
-			return time && time.isValid() && time.fromNow() || '';
-		},
-		renderDate(date) {
-			return this.isoDate(date);
-		},
-		renderDatetime(date) {
-			return this.isoDT(date);
-		},
+			isoDate(date) {
+				const time = date && moment(date);
+				return time && time.isValid() && time.format('YYYY-MM-DD') || '';
+			},
 
-		ensureDate(date) {
-			var ensuredDate;
-			if (date === undefined) {
-				return;
-			}
-			if (date instanceof Date) {
-				return date;
-			}
-			try {
-				ensuredDate = new Date(date);
-			} catch (err) {
-				return;
-			}
-			return ensuredDate;
-		},
+			isoDT(date) {
+				const time = date && moment(date);
+				return time && time.isValid() && time.format('YYYY-MM-DD HH:mm:ss') || '';
+			},
 
-		dayDiff(date1, date2) {
-			var time1 = moment(date1),
-				time2 = moment(date2);
-			if (time1.isValid() && time2.isValid()) {
-				return time1.diff(time2, 'days');
-			}
-			return '';
-		}
-	};
+			/**
+				* Check if date is in the past
+				* @param  {date/string} date Date to check
+				* @return {boolean} In the past?
+				*/
+			pastDate(date) {
+				const time = date && moment(date);
+				return time && time.isValid() && time.isBefore(new Date());
 
-}());
+			},
+			/**
+				* Get human readable string describing date's difference from now
+				* @param  {date} date Date to check
+				* @return {String}   Date representation string
+				*/
+			timeago(date) {
+				const time = date && moment(date);
+				return time && time.isValid() && time.fromNow() || '';
+			},
+			renderDate(date) {
+				return this.isoDate(date);
+			},
+			renderDatetime(date) {
+				return this.isoDT(date);
+			},
+
+			ensureDate(date) {
+				let ensuredDate;
+				if (date === undefined) {
+					return;
+				}
+				if (date instanceof Date) {
+					return date;
+				}
+				try {
+					ensuredDate = new Date(date);
+				} catch (err) {
+					return;
+				}
+				return ensuredDate;
+			},
+
+			dayDiff(date1, date2) {
+				const time1 = moment(date1),
+					time2 = moment(date2);
+				if (time1.isValid() && time2.isValid()) {
+					return time1.diff(time2, 'days');
+				}
+				return '';
+			}
+		};
+
+	}());
 </script>
