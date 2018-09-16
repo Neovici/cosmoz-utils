@@ -1,5 +1,4 @@
 language: node_js
-sudo: required
 env:
   global:
     - CC_TEST_REPORTER_ID=0633d054e8bc3a1dfdc6b4fd8755540553f093491e5eabbd9caedb1966fefbdb
@@ -24,7 +23,7 @@ before_script:
   - ./cc-test-reporter before-build
   - yarn run lint
 script:
-  - xvfb-run yarn test
+  - yarn test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
