@@ -38,22 +38,22 @@
 					computed: '_computedRoundedValue(unformatedValue)'
 				}
 			},
-			_computeNumberAmount: function (money) {
+			_computeNumberAmount(money) {
 				return this.renderNumberAmount({
 					amount: money,
 					currency: 'SEK'
 				});
 			},
-			_computeAmount: function (money) {
+			_computeAmount(money) {
 				return this.renderAmount({
 					amount: money,
 					currency: 'SEK'
 				});
 			},
-			_computeUnformatedValue: function (renderedAmount) {
+			_computeUnformatedValue(renderedAmount) {
 				return this.unformatRenderedAmount(renderedAmount, ',');
 			},
-			_computedRoundedValue: function (number) {
+			_computedRoundedValue(number) {
 				return this.round(number, 0);
 			}
 		});

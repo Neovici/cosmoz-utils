@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
@@ -14,21 +15,24 @@
 
 	<link rel="import" href="../cosmoz-behaviors.html">
 </head>
+
 <body>
 	<script>
-	(function () {
-		'use strict';
+		(function () {
+			'use strict';
 
-		suite('<cosmoz-behaviors>', function () {
+			suite('<cosmoz-behaviors>', () => {
 
-			test('behaviors are defined', function () {
-				assert.isArray(Cosmoz.CommonBehaviors);
-				assert.isObject(Cosmoz.DateHelperBehavior);
-				assert.isObject(Cosmoz.MoneyHelperBehavior);
-				assert.isObject(Cosmoz.TemplateHelperBehavior);
+				test('behaviors are defined', () => {
+					assert.isArray(Cosmoz.CommonBehaviors);
+					assert.isObject(Cosmoz.DateHelperBehavior);
+					assert.isObject(Cosmoz.MoneyHelperBehavior);
+					assert.isObject(Cosmoz.TemplateHelperBehavior);
+				});
+
 			});
-
-		});
-	}());
+		}());
 	</script>
-</body></html>
+</body>
+
+</html>

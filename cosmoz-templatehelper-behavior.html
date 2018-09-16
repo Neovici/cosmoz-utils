@@ -1,101 +1,100 @@
 <link rel="import" href="../polymer/polymer.html">
+
 <script type="text/javascript">
-(function () {
-	'use strict';
-	window.Cosmoz = window.Cosmoz || {};
-
-	/**
-	 * @polymerBehavior Cosmoz.TemplateHelperBehavior
-	 * @demo
-	 */
-	Cosmoz.TemplateHelperBehavior = {
-		/**
-		 * Math.abs
-		 */
-		abs: Math.abs,
+	(function () {
+		'use strict';
+		window.Cosmoz = window.Cosmoz || {};
 
 		/**
-		 * Helper function to see if any of the arguments are true
-		 * @return {Boolean} true if any of the arguments are true
+		 * @polymerBehavior Cosmoz.TemplateHelperBehavior
+		 * @demo
 		 */
-		anyTrue() {
-			var argumentArray = Array.prototype.slice.call(arguments);
-			return argumentArray.some(function (arg) {
-				return !!arg;
-			});
-		},
+		Cosmoz.TemplateHelperBehavior = {
+			/**
+			 * Math.abs
+			 */
+			abs: Math.abs,
 
-		/**
-		 * Concatenate all arguments to a string
-		 * @return {String} String containing concatenated parameters
-		 */
-		concat() {
-			return Array.prototype.join.call(arguments, '');
-		},
+			/**
+			 * Helper function to see if any of the arguments are true
+			 * @return {Boolean} true if any of the arguments are true
+			 */
+			anyTrue() {
+				const argumentArray = Array.prototype.slice.call(arguments);
+				return argumentArray.some(arg => !!arg);
+			},
 
-		/**
-		 * If iftrue is true, return result, otherwise return elseresult
-		 * @param {Boolean} iftrue Codition for result
-		 * @param  {*} result Result when iftrue is true
-		 * @param {*} elseresult Result when iftrue is false
-		 * @return {Boolean} result or elseresult depending on iftrue
-		 */
-		ifElse(iftrue, result, elseresult) {
-			return iftrue ? result : elseresult;
-		},
+			/**
+			 * Concatenate all arguments to a string
+			 * @return {String} String containing concatenated parameters
+			 */
+			concat() {
+				return Array.prototype.join.call(arguments, '');
+			},
 
-		/**
-		 * Check if item exists in array
-		 * @param {*} item The item to search for in the array
-		 * @param {Array} array The array to search
-		 * @return {Boolean} true if found
-		 */
-		inArray(item, array) {
-			return array.indexOf(item) > -1;
-		},
+			/**
+			 * If iftrue is true, return result, otherwise return elseresult
+			 * @param {Boolean} iftrue Codition for result
+			 * @param  {*} result Result when iftrue is true
+			 * @param {*} elseresult Result when iftrue is false
+			 * @return {Boolean} result or elseresult depending on iftrue
+			 */
+			ifElse(iftrue, result, elseresult) {
+				return iftrue ? result : elseresult;
+			},
 
-		/**
-		 * Check equality
-		 * @param {*} arg1 Object to compare
-		 * @param {*} arg2 Object to compare
-		 * @return {Boolean} true if arg1 and arg2 are equal
-		 */
-		isEqual(arg1, arg2) {
-			return arg1 === arg2;
-		},
+			/**
+			 * Check if item exists in array
+			 * @param {*} item The item to search for in the array
+			 * @param {Array} array The array to search
+			 * @return {Boolean} true if found
+			 */
+			inArray(item, array) {
+				return array.indexOf(item) > -1;
+			},
 
-		/**
-		 * Check if variable is undefined, null, empty Array list,
-		 * empty String or 0 number (like length).
-		 * @param  {Object}  obj variable
-		 * @return {Boolean}  true if "empty", false otherwise
-		 */
-		isEmpty(obj) {
-			if (obj === undefined || obj === null) {
-				return true;
+			/**
+			 * Check equality
+			 * @param {*} arg1 Object to compare
+			 * @param {*} arg2 Object to compare
+			 * @return {Boolean} true if arg1 and arg2 are equal
+			 */
+			isEqual(arg1, arg2) {
+				return arg1 === arg2;
+			},
+
+			/**
+			 * Check if variable is undefined, null, empty Array list,
+			 * empty String or 0 number (like length).
+			 * @param  {Object}  obj variable
+			 * @return {Boolean}  true if "empty", false otherwise
+			 */
+			isEmpty(obj) {
+				if (obj === undefined || obj === null) {
+					return true;
+				}
+				if (obj instanceof Array && obj.length === 0) {
+					return true;
+				}
+				const objType = typeof obj;
+				if (objType === 'string' && obj.length === 0) {
+					return true;
+				}
+				if (objType === 'number' && obj === 0) {
+					return true;
+				}
+				return false;
+			},
+
+			/**
+			 * Helper for Number.toFixed(arg)
+			 * @param {Number} number The number argument
+			 * @param {Number} fixval The number of decimals
+			 * @return {String} The number converted to string keep only fixval number of decimals
+			 */
+			toFixed(number, fixval) {
+				return number.toFixed(fixval);
 			}
-			if (obj instanceof Array && obj.length === 0) {
-				return true;
-			}
-			var objType = typeof obj;
-			if (objType === 'string' && obj.length === 0) {
-				return true;
-			}
-			if (objType === 'number' && obj === 0) {
-				return true;
-			}
-			return false;
-		},
-
-		/**
-		 * Helper for Number.toFixed(arg)
-		 * @param {Number} number The number argument
-		 * @param {Number} fixval The number of decimals
-		 * @return {String} The number converted to string keep only fixval number of decimals
-		 */
-		toFixed(number, fixval) {
-			return number.toFixed(fixval);
-		}
-	};
-}());
+		};
+	}());
 </script>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
@@ -14,6 +15,7 @@
 
 	<link rel="import" href="./fixtures/cosmoz-templatehelper-behavior.html">
 </head>
+
 <body>
 	<test-fixture id="cosmoz-templatehelper-behavior-fixture">
 		<template>
@@ -21,68 +23,70 @@
 		</template>
 	</test-fixture>
 	<script type="text/javascript">
-	(function () {
-		'use strict';
+		(function () {
+			'use strict';
 
-		suite('cosmoz-templatehelper-behavior', function () {
-			var templateHelper;
+			suite('cosmoz-templatehelper-behavior', () => {
+				let templateHelper;
 
-			setup(function () {
-				templateHelper = fixture('cosmoz-templatehelper-behavior-fixture');
+				setup(() => {
+					templateHelper = fixture('cosmoz-templatehelper-behavior-fixture');
+				});
+
+				test('anyTrue', done => {
+					assert.isFalse(templateHelper.anyTrue(0, null, false), false);
+					assert.isTrue(templateHelper.anyTrue(1, null, false), true);
+					assert.isTrue(templateHelper.anyTrue(0, null, true), true);
+					done();
+				});
+
+				test('concat', done => {
+					assert.equal(templateHelper.concat('1', '2', '3'), '123');
+					assert.equal(templateHelper.concat('a', 'b', 'c'), 'abc');
+					done();
+				});
+
+				test('ifElse', done => {
+					const vif = new Object(),
+						velse = new Object();
+					assert.equal(templateHelper.ifElse(true, vif, velse), vif);
+					assert.equal(templateHelper.ifElse(false, vif, velse), velse);
+					done();
+				});
+
+				test('inArray', done => {
+					const obj = new Object(),
+						array = [1, 2, obj];
+					assert.isTrue(templateHelper.inArray(obj, array));
+					assert.isFalse(templateHelper.inArray(new Object(), array));
+					done();
+				});
+
+				test('isEqual', done => {
+					assert.isTrue(templateHelper.isEqual('123', '123'));
+					assert.isFalse(templateHelper.isEqual(0, true));
+					done();
+				});
+
+				test('isEmpty', done => {
+					assert.isTrue(templateHelper.isEmpty(null));
+					assert.isTrue(templateHelper.isEmpty(undefined));
+					assert.isTrue(templateHelper.isEmpty([]));
+					assert.isTrue(templateHelper.isEmpty(''));
+					assert.isTrue(templateHelper.isEmpty(0));
+					assert.isTrue(templateHelper.isEmpty());
+					done();
+				});
+
+				test('toFixed', done => {
+					assert.equal(templateHelper.toFixed(1.124123123, 2), '1.12');
+					assert.equal(templateHelper.toFixed(33.13941313, 0), '33');
+					done();
+				});
+
 			});
-
-			test('anyTrue', function (done) {
-				assert.isFalse(templateHelper.anyTrue(0, null, false), false);
-				assert.isTrue(templateHelper.anyTrue(1, null, false), true);
-				assert.isTrue(templateHelper.anyTrue(0, null, true), true);
-				done();
-			});
-
-			test('concat', function (done) {
-				assert.equal(templateHelper.concat('1', '2', '3'), '123');
-				assert.equal(templateHelper.concat('a', 'b', 'c'), 'abc');
-				done();
-			});
-
-			test('ifElse', function (done) {
-				var vif = new Object(),
-					velse = new Object();
-				assert.equal(templateHelper.ifElse(true, vif, velse), vif);
-				assert.equal(templateHelper.ifElse(false, vif, velse), velse);
-				done();
-			});
-
-			test('inArray', function (done) {
-				var obj = new Object(),
-					array = [1, 2, obj];
-				assert.isTrue(templateHelper.inArray(obj, array));
-				assert.isFalse(templateHelper.inArray(new Object(), array));
-				done();
-			});
-
-			test('isEqual', function (done) {
-				assert.isTrue(templateHelper.isEqual('123', '123'));
-				assert.isFalse(templateHelper.isEqual(0, true));
-				done();
-			});
-
-			test('isEmpty', function (done) {
-				assert.isTrue(templateHelper.isEmpty(null));
-				assert.isTrue(templateHelper.isEmpty(undefined));
-				assert.isTrue(templateHelper.isEmpty([]));
-				assert.isTrue(templateHelper.isEmpty(''));
-				assert.isTrue(templateHelper.isEmpty(0));
-				assert.isTrue(templateHelper.isEmpty());
-				done();
-			});
-
-			test('toFixed', function (done) {
-				assert.equal(templateHelper.toFixed(1.124123123, 2), '1.12');
-				assert.equal(templateHelper.toFixed(33.13941313, 0), '33');
-				done();
-			});
-
-		});
-	})();
+		})();
 	</script>
-</body></html>
+</body>
+
+</html>
