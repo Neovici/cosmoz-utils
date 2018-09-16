@@ -45,6 +45,14 @@
 					dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000);
 				});
 
+				test('ensureDate', done => {
+					assert.equal(dateHelper.ensureDate(undefined), undefined);
+					assert.equal(dateHelper.ensureDate(date), date);
+					const dateObj = dateHelper.ensureDate('October 13, 2014 11:13:20');
+					assert.equal(dateObj instanceof Date, true);
+					done();
+				});
+
 				test('isoDate()', done => {
 					assert.equal(dateHelper.isoDate(invalidDate), '');
 					assert.equal(dateHelper.isoDate(undefinedDate), '');
@@ -62,6 +70,12 @@
 				test('pastDate', done => {
 					assert.isTrue(dateHelper.pastDate(date));
 					assert.isFalse(dateHelper.pastDate(futureDate));
+					done();
+				});
+
+				test('renderDate, renderDateTime', done => {
+					assert.equal(dateHelper.renderDate(date), dateHelper.isoDate(date));
+					assert.equal(dateHelper.renderDatetime(date), dateHelper.isoDT(date));
 					done();
 				});
 

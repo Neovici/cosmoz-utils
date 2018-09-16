@@ -72,7 +72,14 @@
 					assert.equal(moneyHelper.renderAmount({ amount, currency: 'EUR' }), '€ 2.200.200,33');
 					assert.equal(moneyHelper.renderAmount({ amount, currency: 'SEK' }), '2 200 200,33 kr');
 					assert.equal(moneyHelper.renderAmount({ amount, currency: 'NOK' }), '2 200 200,33 kr');
+					assert.equal(moneyHelper.renderAmount(null), undefined);
+					assert.equal(moneyHelper.renderAmount(), undefined);
 					assert.equal(moneyHelper.unformatRenderedAmount('2.200.200,33', ','), 2200200.33);
+					done();
+				});
+
+				test('renderAmount ', done => {
+					assert.equal(moneyHelper.renderAmount({ amount }), moneyHelper.renderMoney({ amount }));
 					done();
 				});
 			});
