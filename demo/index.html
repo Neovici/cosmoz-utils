@@ -13,8 +13,8 @@
 	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
 	<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html" />
 
-	<link rel="import" href="./helpers/demo-templatehelper.html" />
-	<link rel="import" href="./helpers/demo-moneyhelper.html" />
+	<link rel="import" href="../cosmoz-templatehelper-behavior.html" />
+	<link rel="import" href="../cosmoz-moneyhelper-behavior.html" />
 
 	<custom-style>
 		<style is="custom-style" include="demo-pages-shared-styles iron-flex">
@@ -25,112 +25,114 @@
 	</custom-style>
 </head>
 
+<script type="text/javascript" id="demoTemplateHelperSource">
+	class DemoTemplateHelper extends Polymer.mixinBehaviors([Cosmoz.TemplateHelperBehavior], Polymer.Element) {
+		static get properties() {
+			return {
+				emptyArray: {
+					type: Array,
+					value: () => []
+				}
+			};
+		}
+		static get template() {
+			return Polymer.html`
+				<h3>Template helper demo</h3>
+				<div>Empty string isEmpty: {{ isEmpty('') }}</div>
+				<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
+				<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
+			`;
+		}
+	}
+	customElements.define('demo-templatehelper', DemoTemplateHelper);
+</script>
+
+<script type="text/javascript" id="demoMoneyHelperSource">
+	class DemoMoneyHelper extends Polymer.mixinBehaviors([Cosmoz.MoneyHelperBehavior], Polymer.Element) {
+		static get properties() {
+			return {
+				money: {
+					type: Number
+				},
+				renderedNumberAmount: {
+					type: String,
+					computed: '_computeNumberAmount(money)'
+				},
+				renderedAmount: {
+					type: String,
+					computed: '_computeAmount(money)'
+				},
+				unformatedValue: {
+					type: Number,
+					computed: '_computeUnformatedValue(renderedAmount)'
+				},
+				roundedValue: {
+					type: Number,
+					computed: '_computedRoundedValue(unformatedValue)'
+				}
+			};
+		}
+		static get template() {
+			return Polymer.html`
+				<h3>Money helper demo</h3>
+				<div><input value="{{ money::keyup }}"/></div>
+				<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+				<div>renderAmount(money): [[ renderedAmount ]]</div>
+				<div>unformat(amount string): [[ unformatedValue ]]</div>
+				<div>round(number): [[ roundedValue ]]</div>
+			`;
+		}
+		_computeNumberAmount(money) {
+			return this.renderNumberAmount({
+				amount: money,
+				currency: 'SEK'
+			});
+		}
+		_computeAmount(money) {
+			return this.renderAmount({
+				amount: money,
+				currency: 'SEK'
+			});
+		}
+		_computeUnformatedValue(renderedAmount) {
+			return this.unformatRenderedAmount(renderedAmount, ',');
+		}
+		_computedRoundedValue(number) {
+			return this.round(number, 0);
+		}
+	}
+	customElements.define('demo-moneyhelper', DemoMoneyHelper);
+</script>
+
 <body unresolved>
 	<div id="container" class="vertical-section-container centered">
 		<h3><code>Cosmoz.TemplateHelperBehavior</code> Demo</h3>
 		<demo-snippet>
-			<demo-templatehelper></demo-templatehelper>
-			<!-- `is` attribute is added to prevent demo-snippet from stamping the template -->
-			<template is>
-				<dom-module id="demo-templatehelper">
-					<template>
-						<h3>Template helper test</h3>
-						<div>Empty string isEmpty: {{ isEmpty("") }}</div>
-						<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
-						<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
-					</template>
-					<script type="text/javascript">
-						'use strict';
-
-						Polymer({
-							behaviors: [
-								Cosmoz.TemplateHelperBehavior,
-							],
-							is: 'demo-templatehelper',
-							properties: {
-								emptyArray: {
-									type: Array,
-									value() {
-										return [];
-									}
-								}
-							}
-						});
-					</script>
-				</dom-module>
+			<template id="demoTemplateHelperTemplate">
+				<demo-templatehelper></demo-templatehelper>
 			</template>
 		</demo-snippet>
 
 		<h3><code>Cosmoz.MoneyHelperBehavior</code> Demo</h3>
 		<demo-snippet>
-			<demo-moneyhelper></demo-moneyhelper>
-			<!-- `is` attribute is added to prevent demo-snippet from stamping the template -->
-			<template is>
-				<dom-module id="demo-moneyhelper">
-					<template>
-						<h3>Money helper test</h3>
-						<div><input value="{{ money::change }}"></input></div>
-						<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
-						<div>renderAmount(money): [[ renderedAmount ]]</div>
-						<div>unformat(amount string): [[ unformatedValue ]]</div>
-						<div>round(number): [[ roundedValue ]]</div>
-					</template>
-					<script type="text/javascript">
-						'use strict';
-						Polymer({
-							behaviors: [
-								Cosmoz.MoneyHelperBehavior
-							],
-							is: 'cosmoz-moneyhelper-test',
-							properties: {
-								money: {
-									type: Number
-								},
-								renderedNumberAmount: {
-									type: String,
-									computed: '_computeNumberAmount(money)'
-								},
-								renderedAmount: {
-									type: String,
-									computed: '_computeAmount(money)'
-								},
-								unformatedValue: {
-									type: Number,
-									computed: '_computeUnformatedValue(renderedAmount)'
-								},
-								roundedValue: {
-									type: Number,
-									computed: '_computedRoundedValue(unformatedValue)'
-								}
-							},
-							_computeNumberAmount(money) {
-								return this.renderNumberAmount({
-									amount: money,
-									currency: 'SEK'
-								});
-							},
-							_computeAmount(money) {
-								return this.renderAmount({
-									amount: money,
-									currency: 'SEK'
-								});
-							},
-							_computeUnformatedValue(renderedAmount) {
-								return this.unformatRenderedAmount(renderedAmount, ',');
-							},
-							_computedRoundedValue(number) {
-								return this.round(number, 0);
-							}
-						});
-					</script>
-				</dom-module>
+			<template id="demoMoneyHelperTemplate">
+				<demo-moneyhelper></demo-moneyhelper>
 			</template>
 		</demo-snippet>
 	</div>
 
 	<script type="text/javascript">
 		(function () {
-			//
+			const demos = ['Template', 'Money'],
+				snippets = document.querySelectorAll('demo-snippet');
+
+			demos.forEach(demo => {
+				const source = document.getElementById(`demo${demo}HelperSource`),
+					template = document.getElementById(`demo${demo}HelperTemplate`);
+				template.innerHTML += `\n\n<script>${source.innerHTML}`;
+			});
+
+			Array.prototype.forEach.call(snippets, element => setTimeout(element._updateMarkdown.bind(element), 1));
 		})();
 	</script>
 </body>

@@ -1,0 +1,14 @@
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../cosmoz-datehelper-behavior.html">
+<link rel="import" href="../cosmoz-moneyhelper-behavior.html">
+<link rel="import" href="../cosmoz-templatehelper-behavior.html">
+
+<script>
+    class TestCosmozDatehelperBehavior extends Polymer.mixinBehaviors([Cosmoz.DateHelperBehavior], Polymer.Element) {}
+    class TestCosmozMoneyhelperBehavior extends Polymer.mixinBehaviors([Cosmoz.MoneyHelperBehavior], Polymer.Element) {}
+    class TestCosmozTemplatehelperBehavior extends Polymer.mixinBehaviors([Cosmoz.TemplateHelperBehavior], Polymer.Element) {}
+
+    customElements.define('test-cosmoz-datehelper-behavior', TestCosmozDatehelperBehavior);
+    customElements.define('test-cosmoz-moneyhelper-behavior', TestCosmozMoneyhelperBehavior);
+    customElements.define('test-cosmoz-templatehelper-behavior', TestCosmozTemplatehelperBehavior);
+</script>
