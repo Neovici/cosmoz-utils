@@ -15,4 +15,6 @@ not contain any visual element.
 
 Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs][sauce_homepage]
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/nomego.svg)](https://saucelabs.com/u/nomego)
+
 [sauce_homepage]: https://saucelabs.com
