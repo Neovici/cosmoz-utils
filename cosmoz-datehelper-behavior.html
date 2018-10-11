@@ -62,6 +62,9 @@
 				} catch (err) {
 					return;
 				}
+				if (ensuredDate instanceof Date && isNaN(ensuredDate)) {
+					return;
+				}
 				return ensuredDate;
 			},
 
