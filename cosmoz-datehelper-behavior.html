@@ -51,7 +51,7 @@
 
 			ensureDate(date) {
 				let ensuredDate;
-				if (date === undefined) {
+				if (date == null) {
 					return;
 				}
 				if (date instanceof Date) {
@@ -60,6 +60,9 @@
 				try {
 					ensuredDate = new Date(date);
 				} catch (err) {
+					return;
+				}
+				if (ensuredDate instanceof Date && isNaN(ensuredDate)) {
 					return;
 				}
 				return ensuredDate;

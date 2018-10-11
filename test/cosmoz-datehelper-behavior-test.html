@@ -50,6 +50,9 @@
 					assert.equal(dateHelper.ensureDate(date), date);
 					const dateObj = dateHelper.ensureDate('October 13, 2014 11:13:20');
 					assert.equal(dateObj instanceof Date, true);
+					assert.equal(dateHelper.ensureDate(invalidDate), undefined);
+					assert.equal(dateHelper.ensureDate('abc'), undefined);
+					assert.equal(dateHelper.ensureDate(null), undefined);
 					done();
 				});
 
