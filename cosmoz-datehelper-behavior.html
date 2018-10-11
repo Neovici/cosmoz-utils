@@ -51,7 +51,7 @@
 
 			ensureDate(date) {
 				let ensuredDate;
-				if (date === undefined) {
+				if (date == null) {
 					return;
 				}
 				if (date instanceof Date) {

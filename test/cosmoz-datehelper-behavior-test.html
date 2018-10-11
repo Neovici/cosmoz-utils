@@ -52,6 +52,7 @@
 					assert.equal(dateObj instanceof Date, true);
 					assert.equal(dateHelper.ensureDate(invalidDate), undefined);
 					assert.equal(dateHelper.ensureDate('abc'), undefined);
+					assert.equal(dateHelper.ensureDate(null), undefined);
 					done();
 				});
 
