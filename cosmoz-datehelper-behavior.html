@@ -35,7 +35,7 @@
 			 * Check if date is in the past.
 			 * @param  {date/string} date Date to check.
 			 * @return {boolean} Whether the date is in the past or not.
-			 */				
+			 */
 			pastDate(date) {
 				const time = date && moment(date);
 				return time && time.isValid() && time.isBefore(new Date());
