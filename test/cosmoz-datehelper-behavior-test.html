@@ -13,7 +13,7 @@
 	<link rel="import" href="../../test-fixture/test-fixture.html">
 	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 
-	<link rel="import" href="./fixtures/cosmoz-datehelper-behavior.html">
+	<link rel="import" href="fixtures.html">
 </head>
 
 <body>
@@ -50,6 +50,9 @@
 					assert.equal(dateHelper.ensureDate(date), date);
 					const dateObj = dateHelper.ensureDate('October 13, 2014 11:13:20');
 					assert.equal(dateObj instanceof Date, true);
+					assert.equal(dateHelper.ensureDate(invalidDate), undefined);
+					assert.equal(dateHelper.ensureDate('abc'), undefined);
+					assert.equal(dateHelper.ensureDate(null), undefined);
 					done();
 				});
 
