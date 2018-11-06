@@ -43,6 +43,10 @@
 				"platform": "Windows 10",
 				"version": "beta"
 			}, {
+				"browserName": "firefox",
+				"platform": "Windows 10",
+				"version": ""
+			}, {
 				"browserName": "safari",
 				"platform": "macOS 10.13",
 				"version": "11.1"
