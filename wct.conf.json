@@ -1,11 +1,17 @@
 {
 	"plugins": {
 		"local": {
-			"browsers": ["chrome", "firefox"]
+			"browsers": [
+				"chrome",
+				"firefox"
+			]
 		},
 		"istanbul": {
 			"dir": "./coverage",
-			"reporters": ["text-summary", "lcov"],
+			"reporters": [
+				"text-summary",
+				"lcov"
+			],
 			"include": [
 				"cosmoz-behaviors.html",
 				"cosmoz-datehelper-behavior.html",
@@ -13,6 +19,25 @@
 				"cosmoz-templatehelper-behavior.html"
 			],
 			"exclude": []
+		},
+		"sauce": {
+			"browsers": [{
+				"browserName": "microsoftedge",
+				"platform": "Windows 10",
+				"version": ""
+			}, {
+				"browserName": "chrome",
+				"platform": "Windows 10",
+				"version": "dev"
+			}, {
+				"browserName": "chrome",
+				"platform": "Windows 10",
+				"version": "beta"
+			}, {
+				"browserName": "safari",
+				"platform": "macOS 10.13",
+				"version": "11.1"
+			}]
 		}
 	}
 }
