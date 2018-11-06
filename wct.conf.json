@@ -3,7 +3,17 @@
 		"local": {
 			"browsers": [
 				"chrome"
-			]
+			],
+			"browserOptions": {
+				"chrome": [
+					"headless",
+					"disable-gpu",
+					"no-sandbox"
+				],
+				"firefox": [
+					"--headless"
+				]
+			}
 		},
 		"istanbul": {
 			"dir": "./coverage",
