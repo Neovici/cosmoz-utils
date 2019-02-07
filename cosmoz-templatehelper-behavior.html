@@ -90,9 +90,12 @@
 			 * Helper for Number.toFixed(arg)
 			 * @param {Number} number The number argument
 			 * @param {Number} fixval The number of decimals
-			 * @return {String} The number converted to string keep only fixval number of decimals
+			 * @return {String} The number converted to string keep only fixval number of decimals, if number empty, returns empty string
 			 */
 			toFixed(number, fixval) {
+				if (this.isEmpty(number)) {
+					return '';
+				}
 				return number.toFixed(fixval);
 			}
 		};
