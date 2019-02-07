@@ -93,7 +93,7 @@
 			 * @return {String} The number converted to string keep only fixval number of decimals, if number empty, returns empty string
 			 */
 			toFixed(number, fixval) {
-				if (this.isEmpty(number)) {
+				if (this.isEmpty(number) && number !== 0) {
 					return '';
 				}
 				return number.toFixed(fixval);
