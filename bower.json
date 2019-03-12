@@ -22,7 +22,7 @@
 	"dependencies": {
 		"polymer": "Polymer/polymer#^2.0.0",
 		"accounting": "~0.3.2",
-		"cosmoz-moment": "neovici/cosmoz-moment#^1.0.0"
+		"cosmoz-moment": "neovici/cosmoz-moment#^2.0.0"
 	},
 	"devDependencies": {
 		"iron-component-page": "PolymerElements/iron-component-page#^3.0.0",
