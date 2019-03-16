@@ -42,7 +42,8 @@
 							SEK: 'SEK 2,200,200.33',
 							SEK2: 'SEK2,200,200.33',
 							NOK: 'NOK 2,200,200.33',
-							NOK2: 'NOK2,200,200.33'
+							NOK2: 'NOK2,200,200.33',
+							number: '2,200,200.33'
 						}
 					},
 					sv: {
@@ -50,11 +51,13 @@
 							USD: '2 200 200,33 US$',
 							EUR: '2 200 200,33 €',
 							SEK: '2 200 200,33 kr',
-							NOK: '2 200 200,33 Nkr'
+							NOK: '2 200 200,33 Nkr',
+							number: '2 200 200,33'
 						}
 					}
 				},
 				localizedOutput = localizedOutputs[lang],
+				locAmount = localizedOutput[amount],
 				isEdge = !!window.StyleMedia,
 				ua = window.navigator.userAgent,
 				isSafari = ua.indexOf('Chrome') === -1 && ua.indexOf('Safari') !== -1,
@@ -96,9 +99,8 @@
 				done();
 			});
 
-			test('renderAmount ', done => {
+			test('renderAmount ', () => {
 				assert.equal(moneyHelper.renderAmount({ amount }), undefined);
-				const locAmount = localizedOutput[amount];
 				assert.isObject(locAmount, 'testamount is configured for locale');
 				testCurrencies.forEach(currency => {
 					const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
@@ -107,12 +109,11 @@
 				});
 				assert.equal(moneyHelper.renderAmount(null), undefined);
 				assert.equal(moneyHelper.renderAmount(), undefined);
-				done();
+				assert.equal(moneyHelper.renderAmount({ amount, currency: 'USD' }), moneyHelper.renderMoney({ amount, currency: 'USD' }));
 			});
 
-			test('renderAmount ', done => {
-				assert.equal(moneyHelper.renderAmount({ amount, currency: 'USD' }), moneyHelper.renderMoney({ amount, currency: 'USD' }));
-				done();
+			test('renderNumberAmount ', () => {
+				assert.equal(moneyHelper.renderNumberAmount({ amount, currency: 'USD' }), locAmount.number);
 			});
 		});
 	</script>

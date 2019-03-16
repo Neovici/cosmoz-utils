@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/lib/utils/mixin.html"/>
+<link rel="import" href="../polymer/polymer.html"/>
 
 <script type="text/javascript">
 	(function () {
@@ -6,7 +6,10 @@
 		window.Cosmoz = window.Cosmoz || {};
 
 		const CURRENCY_FORMATTERS = {},
-			NUMBER_FORMATTER = new Intl.NumberFormat();
+			NUMBER_FORMATTER = new Intl.NumberFormat(undefined, {
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			});
 
 		/**
 		 * @polymerBehavior Cosmoz.MoneyHelperBehavior
