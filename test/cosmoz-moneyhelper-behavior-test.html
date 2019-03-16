@@ -26,7 +26,33 @@
 	<script type="text/javascript">
 		suite('cosmoz-moneyhelper-behavior', () => {
 			let moneyHelper;
-			const amount = 2200200.3333333333;
+			const amount = 2200200.3333333333,
+				lang = window.navigator.language.substr(0, 2),
+				testCurrencies = [
+					'EUR',
+					'NOK',
+					'SEK',
+					'USD'
+				],
+				localizedOutputs = {
+					en: {
+						2200200.3333333333: {
+							USD: '123',
+							EUR: '123',
+							SEK: '123',
+							NOK: '123'
+						}
+					},
+					sv: {
+						2200200.3333333333: {
+							USD: '2 200 200,33 US$',
+							EUR: '2 200 200,33 €',
+							SEK: '2 200 200,33 kr',
+							NOK: '2 200 200,33 Nkr'
+						}
+					}
+				},
+				localizedOutput = localizedOutputs[lang];
 
 			setup(() => {
 				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
@@ -66,10 +92,11 @@
 
 			test('renderAmount ', done => {
 				assert.equal(moneyHelper.renderAmount({ amount }), undefined);
-				assert.equal(moneyHelper.renderAmount({ amount, currency: 'USD' }), '2 200 200,33 US$');
-				assert.equal(moneyHelper.renderAmount({ amount, currency: 'EUR' }), '2 200 200,33 €');
-				assert.equal(moneyHelper.renderAmount({ amount, currency: 'SEK' }), '2 200 200,33 kr');
-				assert.equal(moneyHelper.renderAmount({ amount, currency: 'NOK' }), '2 200 200,33 Nkr');
+				assert.isObject(localizedOutput[amount], 'testamount is configured for locale');
+				testCurrencies.forEach(currency => {
+					assert.isString(localizedOutput[amount][currency], 'testcurrency is configured for testamount');
+					assert.equal(moneyHelper.renderAmount({ amount, currency }), localizedOutput[amount][currency]);
+				});
 				assert.equal(moneyHelper.renderAmount(null), undefined);
 				assert.equal(moneyHelper.renderAmount(), undefined);
 				done();
