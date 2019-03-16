@@ -61,14 +61,6 @@
 				renderedAmount: {
 					type: String,
 					computed: '_computeAmount(money)'
-				},
-				unformatedValue: {
-					type: Number,
-					computed: '_computeUnformatedValue(renderedAmount)'
-				},
-				roundedValue: {
-					type: Number,
-					computed: '_computedRoundedValue(unformatedValue)'
 				}
 			};
 		}
@@ -78,8 +70,6 @@
 				<div><input value="{{ money::keyup }}"/></div>
 				<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
 				<div>renderAmount(money): [[ renderedAmount ]]</div>
-				<div>unformat(amount string): [[ unformatedValue ]]</div>
-				<div>round(number): [[ roundedValue ]]</div>
 			`;
 		}
 		_computeNumberAmount(money) {
@@ -93,12 +83,6 @@
 				amount: money,
 				currency: 'SEK'
 			});
-		}
-		_computeUnformatedValue(renderedAmount) {
-			return this.unformatRenderedAmount(renderedAmount, ',');
-		}
-		_computedRoundedValue(number) {
-			return this.round(number, 0);
 		}
 	}
 	customElements.define('demo-moneyhelper', DemoMoneyHelper);
