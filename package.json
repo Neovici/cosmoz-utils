@@ -20,7 +20,7 @@
 		"pristine": "rm -rf bower_components/ node_modules/ package-lock.json && yarn install",
 		"start": "polymer serve -o",
 		"sync-npm": "rm -f package-lock.json && npm shrinkwrap && mv npm-shrinkwrap.json package-lock.json",
-		"test": "LC_ALL=sv_SE polymer test"
+		"test": "LANGUAGE=sv polymer test"
 	},
 	"repository": {
 		"type": "git",
