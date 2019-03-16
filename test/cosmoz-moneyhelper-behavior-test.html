@@ -40,7 +40,9 @@
 							USD: '$2,200,200.33',
 							EUR: '€2,200,200.33',
 							SEK: 'SEK 2,200,200.33',
-							NOK: 'NOK 2,200,200.33'
+							SEK2: 'SEK2,200,200.33',
+							NOK: 'NOK 2,200,200.33',
+							NOK2: 'NOK2,200,200.33'
 						}
 					},
 					sv: {
@@ -52,7 +54,11 @@
 						}
 					}
 				},
-				localizedOutput = localizedOutputs[lang];
+				localizedOutput = localizedOutputs[lang],
+				isEdge = !!window.StyleMedia,
+				ua = window.navigator.userAgent,
+				isSafari = ua.indexOf('Chrome') === -1 && ua.indexOf('Safari') !== -1,
+				alt = isEdge || isSafari;
 
 			setup(() => {
 				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
@@ -92,10 +98,12 @@
 
 			test('renderAmount ', done => {
 				assert.equal(moneyHelper.renderAmount({ amount }), undefined);
-				assert.isObject(localizedOutput[amount], 'testamount is configured for locale');
+				const locAmount = localizedOutput[amount];
+				assert.isObject(locAmount, 'testamount is configured for locale');
 				testCurrencies.forEach(currency => {
-					assert.isString(localizedOutput[amount][currency], 'testcurrency is configured for testamount');
-					assert.equal(moneyHelper.renderAmount({ amount, currency }), localizedOutput[amount][currency]);
+					const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
+					assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
+					assert.equal(moneyHelper.renderAmount({ amount, currency }), output);
 				});
 				assert.equal(moneyHelper.renderAmount(null), undefined);
 				assert.equal(moneyHelper.renderAmount(), undefined);
