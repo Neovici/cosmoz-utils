@@ -8,18 +8,11 @@
 </head>
 <body>
 	<script>
-		const pages = [
-				'basic.html',
-				'cosmoz-datehelper-behavior-test.html',
-				'cosmoz-moneyhelper-behavior-test.html',
-				'cosmoz-templatehelper-behavior-test.html'
-			],
-			suites = [];
-
-		for (let i = 0; i < pages.length; i++) {
-			suites.push(pages[i] + '?dom=shadow');
-			suites.push(pages[i] + '?wc-shadydom=true&wc-ce=true');
-		}
-		WCT.loadSuites(suites);
+		WCT.loadSuites([
+			'basic.html',
+			'cosmoz-datehelper-behavior-test.html',
+			'cosmoz-moneyhelper-behavior-test.html',
+			'cosmoz-templatehelper-behavior-test.html'
+		]);
 	</script>
 </body></html>
