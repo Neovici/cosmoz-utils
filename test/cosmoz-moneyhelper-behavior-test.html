@@ -22,68 +22,100 @@
 			<test-cosmoz-moneyhelper-behavior></test-cosmoz-moneyhelper-behavior>
 		</template>
 	</test-fixture>
+
 	<script type="text/javascript">
-		(function () {
-			'use strict';
+		suite('cosmoz-moneyhelper-behavior', () => {
+			let moneyHelper;
+			const amount = 2200200.3333333333,
+				lang = window.navigator.language.substr(0, 2),
+				testCurrencies = [
+					'EUR',
+					'NOK',
+					'SEK',
+					'USD'
+				],
+				localizedOutputs = {
+					en: {
+						2200200.3333333333: {
+							USD: '$2,200,200.33',
+							EUR: '€2,200,200.33',
+							SEK: 'SEK 2,200,200.33',
+							SEK2: 'SEK2,200,200.33',
+							NOK: 'NOK 2,200,200.33',
+							NOK2: 'NOK2,200,200.33',
+							number: '2,200,200.33'
+						}
+					},
+					sv: {
+						2200200.3333333333: {
+							USD: '2 200 200,33 US$',
+							EUR: '2 200 200,33 €',
+							SEK: '2 200 200,33 kr',
+							NOK: '2 200 200,33 Nkr',
+							number: '2 200 200,33'
+						}
+					}
+				},
+				localizedOutput = localizedOutputs[lang],
+				locAmount = localizedOutput[amount],
+				isEdge = !!window.StyleMedia,
+				ua = window.navigator.userAgent,
+				isSafari = ua.indexOf('Chrome') === -1 && ua.indexOf('Safari') !== -1,
+				alt = isEdge || isSafari;
 
-			suite('cosmoz-moneyhelper-behavior', () => {
-				let moneyHelper;
-				const amount = 2200200.3333333333;
-
-				setup(() => {
-					moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
-				});
-
-				test('amountEquals ', done => {
-					assert.equal(moneyHelper.amountEquals(null, null), false);
-					assert.equal(moneyHelper.amountEquals(null, false), false);
-					assert.equal(moneyHelper.amountEquals(100, 100), false);
-					assert.equal(moneyHelper.amountEquals({ amount }, { amount }), false);
-					assert.equal(moneyHelper.amountEquals({ amount }, { amount, currency: 'USD' }), false);
-					assert.equal(moneyHelper.amountEquals({ amount: null, currency: 'USD' }, { amount: null, currency: 'USD' }), false);
-					assert.equal(moneyHelper.amountEquals({ amount, currency: null }, { amount, currency: null }), false);
-					assert.equal(moneyHelper.amountEquals({ amount, currency: 'SEK' }, { amount }), false);
-					assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount: -amount, currency: 'EUR' }), false);
-					assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount, currency: 'EUR' }), true);
-					assert.equal(moneyHelper.amountEquals({ amount: 1.01, currency: 'EUR' }, { amount: 1.009, currency: 'EUR' }, 2), true);
-					assert.equal(moneyHelper.amountEquals({ amount: 1.01, currency: 'EUR' }, { amount: 1.009, currency: 'EUR' }, 3), false);
-					assert.equal(moneyHelper.amountEquals({ amount: 1.100, currency: 'EUR' }, { amount: 1.1001, currency: 'EUR' }, 2), true);
-					assert.equal(moneyHelper.amountEquals({ amount: -1.1001, currency: 'EUR' }, { amount: -1.100, currency: 'EUR' }, 2), true);
-					assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount, currency: 'EUR' }, 4), true);
-					done();
-				});
-
-				test('isAmount ', done => {
-					assert.equal(moneyHelper.isAmount(null), false);
-					assert.equal(moneyHelper.isAmount(false), false);
-					assert.equal(moneyHelper.isAmount(100), false);
-					assert.equal(moneyHelper.isAmount({ amount }), false);
-					assert.equal(moneyHelper.isAmount({ currency: 'EUR' }), false);
-					assert.equal(moneyHelper.isAmount({ amount, currency: 'EUR' }), true);
-					assert.equal(moneyHelper.isAmount({ amount: amount.toString(), currency: 'EUR' }), false);
-					assert.equal(moneyHelper.isAmount({ amount: null, currency: 'USD' }), false);
-					assert.equal(moneyHelper.isAmount({ amount, currency: null }), false);
-					done();
-				});
-
-				test('renderAmount ', done => {
-					assert.equal(moneyHelper.renderAmount({ amount }), '$2,200,200.33');
-					assert.equal(moneyHelper.renderAmount({ amount, currency: 'USD' }), '$ 2,200,200.33');
-					assert.equal(moneyHelper.renderAmount({ amount, currency: 'EUR' }), '€ 2.200.200,33');
-					assert.equal(moneyHelper.renderAmount({ amount, currency: 'SEK' }), '2 200 200,33 kr');
-					assert.equal(moneyHelper.renderAmount({ amount, currency: 'NOK' }), '2 200 200,33 kr');
-					assert.equal(moneyHelper.renderAmount(null), undefined);
-					assert.equal(moneyHelper.renderAmount(), undefined);
-					assert.equal(moneyHelper.unformatRenderedAmount('2.200.200,33', ','), 2200200.33);
-					done();
-				});
-
-				test('renderAmount ', done => {
-					assert.equal(moneyHelper.renderAmount({ amount }), moneyHelper.renderMoney({ amount }));
-					done();
-				});
+			setup(() => {
+				moneyHelper = fixture('cosmoz-moneyhelper-behavior-fixture');
 			});
-		})();
+
+			test('amountEquals ', done => {
+				assert.equal(moneyHelper.amountEquals(null, null), false);
+				assert.equal(moneyHelper.amountEquals(null, false), false);
+				assert.equal(moneyHelper.amountEquals(100, 100), false);
+				assert.equal(moneyHelper.amountEquals({ amount }, { amount }), false);
+				assert.equal(moneyHelper.amountEquals({ amount }, { amount, currency: 'USD' }), false);
+				assert.equal(moneyHelper.amountEquals({ amount: null, currency: 'USD' }, { amount: null, currency: 'USD' }), false);
+				assert.equal(moneyHelper.amountEquals({ amount, currency: null }, { amount, currency: null }), false);
+				assert.equal(moneyHelper.amountEquals({ amount, currency: 'SEK' }, { amount }), false);
+				assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount: -amount, currency: 'EUR' }), false);
+				assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount, currency: 'EUR' }), true);
+				assert.equal(moneyHelper.amountEquals({ amount: 1.01, currency: 'EUR' }, { amount: 1.009, currency: 'EUR' }, 2), true);
+				assert.equal(moneyHelper.amountEquals({ amount: 1.01, currency: 'EUR' }, { amount: 1.009, currency: 'EUR' }, 3), false);
+				assert.equal(moneyHelper.amountEquals({ amount: 1.100, currency: 'EUR' }, { amount: 1.1001, currency: 'EUR' }, 2), true);
+				assert.equal(moneyHelper.amountEquals({ amount: -1.1001, currency: 'EUR' }, { amount: -1.100, currency: 'EUR' }, 2), true);
+				assert.equal(moneyHelper.amountEquals({ amount, currency: 'EUR' }, { amount, currency: 'EUR' }, 4), true);
+				done();
+			});
+
+			test('isAmount ', done => {
+				assert.equal(moneyHelper.isAmount(null), false);
+				assert.equal(moneyHelper.isAmount(false), false);
+				assert.equal(moneyHelper.isAmount(100), false);
+				assert.equal(moneyHelper.isAmount({ amount }), false);
+				assert.equal(moneyHelper.isAmount({ currency: 'EUR' }), false);
+				assert.equal(moneyHelper.isAmount({ amount, currency: 'EUR' }), true);
+				assert.equal(moneyHelper.isAmount({ amount: amount.toString(), currency: 'EUR' }), false);
+				assert.equal(moneyHelper.isAmount({ amount: null, currency: 'USD' }), false);
+				assert.equal(moneyHelper.isAmount({ amount, currency: null }), false);
+				done();
+			});
+
+			test('renderAmount ', () => {
+				assert.equal(moneyHelper.renderAmount({ amount }), undefined);
+				assert.isObject(locAmount, 'testamount is configured for locale');
+				testCurrencies.forEach(currency => {
+					const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
+					assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
+					assert.equal(moneyHelper.renderAmount({ amount, currency }), output);
+				});
+				assert.equal(moneyHelper.renderAmount(null), undefined);
+				assert.equal(moneyHelper.renderAmount(), undefined);
+				assert.equal(moneyHelper.renderAmount({ amount, currency: 'USD' }), moneyHelper.renderMoney({ amount, currency: 'USD' }));
+			});
+
+			test('renderNumberAmount ', () => {
+				assert.equal(moneyHelper.renderNumberAmount({ amount, currency: 'USD' }), locAmount.number);
+			});
+		});
 	</script>
 </body>
 

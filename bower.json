@@ -21,7 +21,6 @@
 	],
 	"dependencies": {
 		"polymer": "Polymer/polymer#^2.0.0",
-		"accounting": "~0.3.2",
 		"cosmoz-moment": "neovici/cosmoz-moment#^2.0.0"
 	},
 	"devDependencies": {

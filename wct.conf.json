@@ -8,7 +8,8 @@
 				"chrome": [
 					"headless",
 					"disable-gpu",
-					"no-sandbox"
+					"no-sandbox",
+					"lang=sv-SE"
 				],
 				"firefox": [
 					"--headless"
@@ -34,10 +35,6 @@
 				"browserName": "microsoftedge",
 				"platform": "Windows 10",
 				"version": ""
-			}, {
-				"browserName": "chrome",
-				"platform": "Windows 10",
-				"version": "dev"
 			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",
