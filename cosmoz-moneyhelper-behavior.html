@@ -58,7 +58,8 @@
 				return NUMBER_FORMATTER.format(money.amount);
 			},
 			round(number, precision) {
-				return parseFloat(this.toFixed(number, precision));
+				const fixed = Number(Math.round(number + 'e' + precision) + 'e-' + precision).toFixed(precision);
+				return parseFloat(fixed);
 			},
 			_getCurrencyFormatter(currency) {
 				if (currency == null) {
@@ -72,9 +73,6 @@
 					});
 				}
 				return CURRENCY_FORMATTERS[key];
-			},
-			toFixed(num, precision) {
-				return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
 			}
 		};
 	}());
