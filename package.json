@@ -16,10 +16,9 @@
 	"scripts": {
 		"analyze": "polymer analyze --input cosmoz-*.html  > analysis.json",
 		"lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
-		"postinstall": "polymer install && yarn sync-npm",
-		"pristine": "rm -rf bower_components/ node_modules/ package-lock.json && yarn install",
+		"postinstall": "polymer install",
+		"pristine": "rm -rf bower_components/ node_modules/ && yarn install",
 		"start": "polymer serve -o",
-		"sync-npm": "rm -f package-lock.json && npm shrinkwrap && mv npm-shrinkwrap.json package-lock.json",
 		"test": "LANGUAGE=sv polymer test"
 	},
 	"repository": {
