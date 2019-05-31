@@ -1,6 +1,6 @@
 ---
 language: node_js
-node_js: "lts/*"
+node_js: lts/*
 
 addons:
   firefox: latest
@@ -30,10 +30,10 @@ env:
 
 before_script:
   - yarn lint
-  - ([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC
+  - '([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC'
   - $NEO_CC before-build
 script:
-  - yarn test $([ -z "$SAUCE_ACCESS_KEY"] && echo "--skip-plugin sauce")
+  - 'yarn test $([ -z "$SAUCE_ACCESS_KEY"] && echo "--skip-plugin sauce")'
   - $NEO_CC after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:

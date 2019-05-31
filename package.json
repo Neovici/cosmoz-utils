@@ -1,38 +1,55 @@
 {
 	"name": "cosmoz-behaviors",
 	"version": "1.0.0",
-	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-behaviors.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-behaviors)",
-	"main": "cosmoz-behaviors.html",
-	"directories": {
-		"test": "test"
-	},
-	"devDependencies": {
-		"eslint": "^4.10.0",
-		"eslint-plugin-html": "^3.2.2",
-		"eslint-plugin-mocha": "^4.11.0",
-		"polymer-cli": "^1.8.0",
-		"web-component-tester-istanbul": "Neovici/web-component-tester-istanbul"
-	},
-	"scripts": {
-		"analyze": "polymer analyze --input cosmoz-*.html  > analysis.json",
-		"lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
-		"postinstall": "polymer install",
-		"pristine": "rm -rf bower_components/ node_modules/ && yarn install",
-		"start": "polymer serve -o",
-		"test": "LANGUAGE=sv polymer test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-behaviors.git"
-	},
+	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-utils.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-utils)",
 	"keywords": [
 		"polymer",
 		"web-components"
 	],
-	"author": "",
-	"license": "Apache-2.0",
+	"homepage": "https://github.com/neovici/cosmoz-utils#readme",
 	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-behaviors/issues"
+		"url": "https://github.com/neovici/cosmoz-utils/issues"
 	},
-	"homepage": "https://github.com/neovici/cosmoz-behaviors#readme"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/neovici/cosmoz-utils.git"
+	},
+	"license": "Apache-2.0",
+	"author": "Neovici Development",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"analyze": "polymer analyze --input index.js > analysis.json",
+		"lint": "eslint --cache --ext .js,.html . && polymer lint index.js lib/*.js",
+		"pristine": "rm -rf node_modules/ && yarn install",
+		"start": "polymer serve -o",
+		"test": "LANGUAGE=sv polymer test"
+	},
+	"dependencies": {
+		"@polymer/polymer": "^3.0.0",
+		"moment": "^2.24.0"
+	},
+	"devDependencies": {
+		"@polymer/iron-component-page": "^4.0.0",
+		"@polymer/iron-demo-helpers": "^3.0.0",
+		"@polymer/iron-test-helpers": "^3.0.0",
+		"@polymer/test-fixture": "^4.0.2",
+		"@webcomponents/webcomponentsjs": "^2.0.0",
+		"chai": "^4.2.0",
+		"eslint": "^5.0.0",
+		"eslint-plugin-html": "^5.0.0",
+		"eslint-plugin-mocha": "^5.0.0",
+		"mocha": "^5.0.0",
+		"polymer-cli": "^1.8.0",
+		"wct-istanbul": "^0.14.3",
+		"wct-mocha": "^1.0.0"
+	},
+	"resolutions": {
+		"inherits": "2.0.3",
+		"samsam": "1.1.3",
+		"supports-color": "3.1.2",
+		"type-detect": "1.0.0"
+	}
 }

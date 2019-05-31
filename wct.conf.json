@@ -23,26 +23,16 @@
 				"lcov"
 			],
 			"include": [
-				"cosmoz-behaviors.html",
-				"cosmoz-datehelper-behavior.html",
-				"cosmoz-moneyhelper-behavior.html",
-				"cosmoz-templatehelper-behavior.html"
+				"**/index.js",
+				"**/lib/*.js"
 			],
 			"exclude": []
 		},
 		"sauce": {
 			"browsers": [{
-				"browserName": "microsoftedge",
-				"platform": "Windows 10",
-				"version": ""
-			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",
 				"version": "beta"
-			}, {
-				"browserName": "firefox",
-				"platform": "Windows 10",
-				"version": ""
 			}, {
 				"browserName": "safari",
 				"platform": "macOS 10.13",
