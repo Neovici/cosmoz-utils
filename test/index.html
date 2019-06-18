@@ -3,16 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-	<title>cosmoz-behaviors tests</title>
-	<script src="../../web-component-tester/browser.js"></script>
+	<title>@neovici/cosmoz-utils tests</title>
+	<script src="/components/mocha/mocha.js"></script>
+	<script src="/components/wct-mocha/wct-mocha.js"></script>
 </head>
 <body>
-	<script>
+	<script type="module">
 		WCT.loadSuites([
-			'basic.html',
-			'cosmoz-datehelper-behavior-test.html',
-			'cosmoz-moneyhelper-behavior-test.html',
-			'cosmoz-templatehelper-behavior-test.html'
+			'mixin.html',
+			'date.html',
+			'money.html',
+			'template.html'
 		]);
 	</script>
 </body></html>

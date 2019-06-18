@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+	<title>date functions test</title>
+
+	<script src="/components/mocha/mocha.js"></script>
+	<script src="/components/wct-mocha/wct-mocha.js"></script>
+	<script src="/components/chai/chai.js"></script>
+</head>
+
+<body>
+<script type="module">
+	import {ensureDate, isoDate, isoDT, pastDate, renderDate, renderDatetime, timeago, dayDiff} from '../lib/date';
+
+	suite('date utils', () => {
+		const date = new Date('October 13, 2014 11:13:20'),
+			futureDate = new Date('October 13, 2022 11:13:20'),
+			undefinedDate = undefined,
+			invalidDate = '',
+			dateWeekDiff = new Date(date.getTime() - 1000 * 60 * 60 * 24 * 7);
+
+		test('ensureDate', () => {
+			assert.equal(ensureDate(undefined), undefined);
+			assert.equal(ensureDate(date), date);
+			const dateObj = ensureDate('October 13, 2014 11:13:20');
+			assert.equal(dateObj instanceof Date, true);
+			assert.equal(ensureDate(invalidDate), undefined);
+			assert.equal(ensureDate('abc'), undefined);
+			assert.equal(ensureDate(null), undefined);
+		});
+
+		test('isoDate()', () => {
+			assert.equal(isoDate(invalidDate), '');
+			assert.equal(isoDate(undefinedDate), '');
+			assert.equal(isoDate(date), '2014-10-13');
+		});
+
+		test('isoDT()', () => {
+			assert.equal(isoDT(invalidDate), '');
+			assert.equal(isoDT(undefinedDate), '');
+			assert.equal(isoDT(date), '2014-10-13 11:13:20');
+		});
+
+		test('pastDate', () => {
+			assert.isTrue(pastDate(date));
+			assert.isFalse(pastDate(futureDate));
+		});
+
+		test('renderDate, renderDateTime', () => {
+			assert.equal(renderDate(date), isoDate(date));
+			assert.equal(renderDatetime(date), isoDT(date));
+		});
+
+		test('timeago one hour', () => {
+			const dateNow = new Date(),
+				dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000);
+
+			assert.equal(timeago(dateHourAgo), 'an hour ago');
+		});
+
+		test('timediff a week', () => {
+			assert.equal(dayDiff(date, dateWeekDiff), 7);
+		});
+	});
+</script>
+</body>
+
+</html>
