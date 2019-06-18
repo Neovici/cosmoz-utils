@@ -21,9 +21,9 @@
 	<script type="module">
 		import { mixin, Template, Date } from '../index.js';
 
-		import '/components/@polymer/test-fixture/test-fixture.js';
-		import { html } from '/components/@polymer/polymer/lib/utils/html-tag.js';
-		import { PolymerElement } from '/components/@polymer/polymer/polymer-element.js';
+		import '@polymer/test-fixture/test-fixture';
+		import { html } from '@polymer/polymer/lib/utils/html-tag';
+		import { PolymerElement } from '@polymer/polymer/polymer-element';
 
 		suite('mixin element', () => {
 			test('mixed in functions are available in the template', () => {
@@ -52,7 +52,7 @@
 
 				const element = fixture('basic');
 				assert.equal(
-					element.shadowRoot.textContent.replace(/\n|\t/ig, ''),
+					element.shadowRoot.textContent.replace(/\n|\t/igu, ''),
 					'truefalsetruefalse2019-05-31'
 				);
 			});
