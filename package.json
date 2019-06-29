@@ -1,6 +1,6 @@
 {
-	"name": "cosmoz-behaviors",
-	"version": "3.0.2",
+	"name": "@neovici/cosmoz-utils",
+	"version": "3.0.3",
 	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-utils.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-utils)",
 	"keywords": [
 		"polymer",
