@@ -24,7 +24,7 @@
 		"analyze": "polymer analyze --input index.js > analysis.json",
 		"lint": "eslint --cache --ext .js,.html . && polymer lint index.js lib/*.js",
 		"pristine": "rm -rf node_modules/ && yarn install",
-		"preversion": "npm run lint && npm run test -- --skip-plugin sauce",
+		"preversion": "npm run pristine && git add yarn.lock && npm run lint && npm run test -- --skip-plugin sauce",
 		"postversion": "git push && git push --tags",
 		"start": "polymer serve -o",
 		"test": "LANGUAGE=sv polymer test"
