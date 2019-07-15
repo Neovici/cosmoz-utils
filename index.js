@@ -27,7 +27,8 @@ export const mixin = function (helpers, superclass) {
 };
 
 import * as Template from './lib/template';
-import * as Date from './lib/date';
+import * as DateUtils from './lib/date';
 import * as Money from './lib/money';
 
-export { Template, Date, Money };
+// TODO remove deprecated Date export [issue #34]
+export { Template, DateUtils, Money, DateUtils as Date };
