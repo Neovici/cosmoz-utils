@@ -58,6 +58,7 @@
 		test('toFixed', () => {
 			assert.equal(toFixed(1.124123123, 2), '1.12');
 			assert.equal(toFixed(33.13941313, 0), '33');
+			assert.equal(toFixed('notnumber', 0), '');
 		});
 	});
 </script>
