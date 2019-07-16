@@ -3,7 +3,8 @@
 
 [![Build Status](https://travis-ci.org/Neovici/cosmoz-behaviors.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-behaviors)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/nomego)](https://saucelabs.com/u/nomego)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/cosmoz-behaviors)
+[![Maintainability](https://api.codeclimate.com/v1/badges/864f8d85f6b013e1caaa/maintainability)](https://codeclimate.com/github/Neovici/cosmoz-utils/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/864f8d85f6b013e1caaa/test_coverage)](https://codeclimate.com/github/Neovici/cosmoz-utils/test_coverage)
 
 ## Cosmoz Utils
 

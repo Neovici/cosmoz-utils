@@ -59,10 +59,19 @@
 				dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000);
 
 			assert.equal(timeago(dateHourAgo), 'an hour ago');
+			assert.equal(timeago(null), '');
+			assert.equal(timeago(undefined), '');
+			assert.equal(timeago(new Date('bogus')), '');
 		});
 
 		test('timediff a week', () => {
 			assert.equal(dayDiff(date, dateWeekDiff), 7);
+			assert.equal(dayDiff(dateWeekDiff, date), -7);
+			assert.equal(dayDiff(date, date), 0);
+
+			assert.equal(dayDiff(date, null), '');
+			assert.equal(dayDiff(null, dateWeekDiff), '');
+			assert.equal(dayDiff(null, null), '');
 		});
 
 		test('toLocalISOString', () => {
