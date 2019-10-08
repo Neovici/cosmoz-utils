@@ -1,10 +1,11 @@
 @neovici/cosmoz-utils
 =================
 
-[![Build Status](https://travis-ci.org/Neovici/cosmoz-behaviors.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-behaviors)
+[![Build Status](https://github.com/Neovici/cosmoz-utils/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-utils/actions?workflow=Github+CI)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/nomego)](https://saucelabs.com/u/nomego)
 [![Maintainability](https://api.codeclimate.com/v1/badges/864f8d85f6b013e1caaa/maintainability)](https://codeclimate.com/github/Neovici/cosmoz-utils/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/864f8d85f6b013e1caaa/test_coverage)](https://codeclimate.com/github/Neovici/cosmoz-utils/test_coverage)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Cosmoz Utils
 
@@ -13,7 +14,7 @@ needed in page views. This package does not contain any visual element.
 
 ## Upgrade guide
 
-Upgrading from `cosmoz-behaviors` is very straightforward. 
+Upgrading from `cosmoz-behaviors` is very straightforward.
 
 * `Cosmoz.TemplateHelperBehavior` -> `import { Template } from '@neovici/cosmoz-utils'`
 * `Cosmoz.MoneyHelperBehavior` -> `import { Money } from '@neovici/cosmoz-utils'`
