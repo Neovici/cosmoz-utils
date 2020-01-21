@@ -57,8 +57,12 @@
 		test('timeago one hour', () => {
 			const dateNow = new Date(),
 				dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000);
+			let text = 'for 1 hour ago';
+			if ((new Intl.NumberFormat()).resolvedOptions().locale === 'sv') {
+				text = 'för 1 timme sedan';
+			}
 
-			assert.equal(timeago(dateHourAgo), 'an hour ago');
+			assert.equal(timeago(dateHourAgo), text);
 			assert.equal(timeago(null), '');
 			assert.equal(timeago(undefined), '');
 			assert.equal(timeago(new Date('bogus')), '');
