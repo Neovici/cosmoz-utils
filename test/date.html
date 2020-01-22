@@ -57,7 +57,7 @@
 		test('timeago one hour', () => {
 			const dateNow = new Date(),
 				dateHourAgo = new Date(dateNow.getTime() - 60 * 60 * 1000);
-			let text = 'for 1 hour ago';
+			let text = '1 hour ago';
 			if ((new Intl.NumberFormat()).resolvedOptions().locale === 'sv') {
 				text = 'för 1 timme sedan';
 			}
