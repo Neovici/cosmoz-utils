@@ -84,20 +84,22 @@
 		});
 
 		test('renderAmount ', () => {
-			assert.equal(renderAmount({ amount }), undefined);
+			const locale = 'en-US';
+			assert.equal(renderAmount({ amount, locale }), undefined);
 			assert.isObject(locAmount, 'testamount is configured for locale');
 			testCurrencies.forEach(currency => {
 				const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
 				assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
-				assert.equal(renderAmount({ amount, currency }), output);
+				assert.equal(renderAmount({ amount, currency, locale }), output);
 			});
-			assert.equal(renderAmount(null), undefined);
+			assert.equal(renderAmount(null, 'en-US'), undefined);
 			assert.equal(renderAmount(), undefined);
-			assert.equal(renderAmount({ amount, currency: 'USD' }), renderMoney({ amount, currency: 'USD' }));
+			assert.equal(renderAmount({ amount, currency: 'USD', locale }), renderMoney({ amount, currency: 'USD', locale}));
 		});
 
 		test('renderNumberAmount ', () => {
-			assert.equal(renderNumberAmount({ amount, currency: 'USD' }), locAmount.number);
+			const locale = 'en-US';
+			assert.equal(renderNumberAmount({ amount, currency: 'USD', locale }), locAmount.number);
 		});
 	});
 </script>
