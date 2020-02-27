@@ -13,7 +13,9 @@
 
 <body>
 <script type="module">
-	import {amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney} from '../lib/money';
+	import {
+		amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney
+	} from '../lib/money';
 
 	suite('money utils', () => {
 		const amount = 2200200.3333333333,
@@ -37,11 +39,11 @@
 				},
 				'sv-SE': {
 					2200200.3333333333: {
-						USD: '2 200 200,33 US$',
-						EUR: '2 200 200,33 €',
-						SEK: '2 200 200,33 kr',
-						NOK: '2 200 200,33 Nkr',
-						number: '2 200 200,33'
+						USD: '2 200 200,33 US$',
+						EUR: '2 200 200,33 €',
+						SEK: '2 200 200,33 kr',
+						NOK: '2 200 200,33 Nkr',
+						number: '2 200 200,33'
 					}
 				}
 			},
@@ -88,6 +90,7 @@
 			test('renderAmount ', () => {
 				assert.equal(renderAmount({ amount, locale }), undefined);
 				assert.isObject(locAmount, 'testamount is configured for locale');
+
 				testCurrencies.forEach(currency => {
 					const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
 					assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
@@ -95,7 +98,11 @@
 				});
 				assert.equal(renderAmount(null), undefined);
 				assert.equal(renderAmount(), undefined);
-				assert.equal(renderAmount({ amount, currency: 'USD', locale }), renderMoney({ amount, currency: 'USD', locale}));
+				assert.equal(renderAmount({
+					amount, currency: 'USD', locale
+				}), renderMoney({
+					amount, currency: 'USD', locale
+				}));
 			});
 
 			test('renderNumberAmount ', () => {
