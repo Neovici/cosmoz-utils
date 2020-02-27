@@ -38,11 +38,11 @@
 				},
 				sv: {
 					2200200.3333333333: {
-						USD: '2 200 200,33 US$',
-						EUR: '2 200 200,33 €',
-						SEK: '2 200 200,33 kr',
-						NOK: '2 200 200,33 Nkr',
-						number: '2 200 200,33'
+						USD: '2 200 200,33 US$',
+						EUR: '2 200 200,33 €',
+						SEK: '2 200 200,33 kr',
+						NOK: '2 200 200,33 Nkr',
+						number: '2 200 200,33'
 					}
 				}
 			},
@@ -92,7 +92,7 @@
 				assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
 				assert.equal(renderAmount({ amount, currency, locale }), output);
 			});
-			assert.equal(renderAmount(null, 'en-US'), undefined);
+			assert.equal(renderAmount(null), undefined);
 			assert.equal(renderAmount(), undefined);
 			assert.equal(renderAmount({ amount, currency: 'USD', locale }), renderMoney({ amount, currency: 'USD', locale}));
 		});
