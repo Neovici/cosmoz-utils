@@ -85,7 +85,7 @@
 		test('renderAmount ', () => {
 			assert.equal(renderAmount(null), undefined);
 			assert.equal(renderAmount(), undefined);
-			assert.equal(typeof renderAmount({ amount: 100, currency: 'USD'}), 'string');
+			assert.isString(renderAmount({ amount: 100, currency: 'USD'}));
 			assert.isAtLeast(renderAmount({ amount: 100, currency: 'USD'}).length, 4);
 		});
 
@@ -117,8 +117,8 @@
 		});
 
 		test('renderNumberAmount ', () => {
-			assert.equal(typeof renderNumberAmount({ amount: 100, currency: 'USD' }), 'string');
-			assert.isAtLeast(renderAmount({ amount: 100, currency: 'USD'}).length, 3);
+			assert.isString(renderNumberAmount({ amount: 100, currency: 'USD' }));
+			assert.isAtLeast(renderNumberAmount({ amount: 100, currency: 'USD'}).length, 3);
 		});
 	});
 </script>
