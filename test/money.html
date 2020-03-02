@@ -13,11 +13,12 @@
 
 <body>
 <script type="module">
-	import {amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney} from '../lib/money';
+	import {
+		amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney
+	} from '../lib/money';
 
 	suite('money utils', () => {
 		const amount = 2200200.3333333333,
-			lang = window.navigator.language.substr(0, 2),
 			testCurrencies = [
 				'EUR',
 				'NOK',
@@ -25,7 +26,7 @@
 				'USD'
 			],
 			localizedOutputs = {
-				en: {
+				'en-US': {
 					2200200.3333333333: {
 						USD: '$2,200,200.33',
 						EUR: '€2,200,200.33',
@@ -36,7 +37,7 @@
 						number: '2,200,200.33'
 					}
 				},
-				sv: {
+				'sv-SE': {
 					2200200.3333333333: {
 						USD: '2 200 200,33 US$',
 						EUR: '2 200 200,33 €',
@@ -46,8 +47,6 @@
 					}
 				}
 			},
-			localizedOutput = localizedOutputs[lang],
-			locAmount = localizedOutput[amount],
 			isEdge = !!window.StyleMedia,
 			ua = window.navigator.userAgent,
 			isSafari = ua.indexOf('Chrome') === -1 && ua.indexOf('Safari') !== -1,
@@ -84,20 +83,42 @@
 		});
 
 		test('renderAmount ', () => {
-			assert.equal(renderAmount({ amount }), undefined);
-			assert.isObject(locAmount, 'testamount is configured for locale');
-			testCurrencies.forEach(currency => {
-				const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
-				assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
-				assert.equal(renderAmount({ amount, currency }), output);
-			});
 			assert.equal(renderAmount(null), undefined);
 			assert.equal(renderAmount(), undefined);
-			assert.equal(renderAmount({ amount, currency: 'USD' }), renderMoney({ amount, currency: 'USD' }));
+			assert.isString(renderAmount({ amount: 100, currency: 'USD'}));
+			assert.isAtLeast(renderAmount({ amount: 100, currency: 'USD'}).length, 4);
+		});
+
+		Object.entries(localizedOutputs).forEach(([locale, localizedOutput]) => {
+			const locAmount = localizedOutput[amount];
+
+			test('renderAmount ', () => {
+				assert.equal(renderAmount({ amount }, locale), undefined);
+				assert.isObject(locAmount, 'testamount is configured for locale');
+
+				testCurrencies.forEach(currency => {
+					const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
+					assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
+					assert.equal(renderAmount({ amount, currency}, locale), output);
+				});
+				assert.equal(
+					renderAmount({
+						amount, currency: 'USD'
+					}, locale),
+					renderMoney({
+						amount, currency: 'USD'
+					}, locale)
+				);
+			});
+
+			test('renderNumberAmount ', () => {
+				assert.equal(renderNumberAmount({ amount, currency: 'USD' }, locale), locAmount.number);
+			});
 		});
 
 		test('renderNumberAmount ', () => {
-			assert.equal(renderNumberAmount({ amount, currency: 'USD' }), locAmount.number);
+			assert.isString(renderNumberAmount({ amount: 100, currency: 'USD' }));
+			assert.isAtLeast(renderNumberAmount({ amount: 100, currency: 'USD'}).length, 3);
 		});
 	});
 </script>
