@@ -6,118 +6,105 @@
 	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
 	<title>@neovici/cosmoz-utils demo</title>
-
-	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-
-	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
-	<script type="module" src="/components/@polymer/iron-flex-layout/iron-flex-layout-classes.js"></script>
-
-	<custom-style>
-		<style is="custom-style" include="demo-pages-shared-styles">
-			#container {
-				max-width: 800px;
-			}
-		</style>
-	</custom-style>
 </head>
 
 <body>
 	<div id="container" class="vertical-section-container centered">
 		<h3>Basic usage</h3>
-		<demo-snippet>
-			<template id="demoTemplateHelperTemplate">
-				<demo-templatehelper></demo-templatehelper>
 
-				<script type="module">
-					import { html } from '@polymer/polymer/lib/utils/html-tag';
-					import { PolymerElement } from '@polymer/polymer/polymer-element';
+		<demo-templatehelper></demo-templatehelper>
 
-					import { mixin, Template } from '../index.js';
+		<script type="module">
+			import { html } from '@polymer/polymer/lib/utils/html-tag';
+			import { PolymerElement } from '@polymer/polymer/polymer-element';
 
-					class DemoTemplateHelper extends mixin(Template, PolymerElement) {
-						static get properties() {
-							return {
-								emptyArray: {
-									type: Array,
-									value: () => []
-								}
-							};
+			import {
+				mixin, Template
+			} from '../index.js';
+
+			class DemoTemplateHelper extends mixin(Template, PolymerElement) {
+				static get properties() {
+					return {
+						emptyArray: {
+							type: Array,
+							value: () => []
 						}
+					};
+				}
 
-						static get template() {
-							return html`
-								<div>Empty string isEmpty: {{ isEmpty('') }}</div>
-								<div>Empty array isEmpty: {{ isEmpty(emptyArray) }}</div>
-								<div>concat 'hel', 'lo': {{ concat('hel', 'lo') }}</div>
-							`;
-						}
-					}
+				static get template() {
+					return html`
+						<div>Empty string isEmpty: [[ isEmpty('') ]]</div>
+						<div>Empty array isEmpty: [[ isEmpty(emptyArray) ]]</div>
+						<div>concat 'hel', 'lo': [[ concat('hel', 'lo') ]]</div>
+					`;
+				}
+			}
 
-					customElements.define('demo-templatehelper', DemoTemplateHelper);
-				</script>
-			</template>
-		</demo-snippet>
+			customElements.define('demo-templatehelper', DemoTemplateHelper);
+		</script>
 
 		<h3>How to mix in multiple helpers</h3>
-		<demo-snippet>
-			<template id="demoMoneyHelperTemplate">
-				<demo-moneyhelper></demo-moneyhelper>
-				<script type="module">
-					import { html } from '@polymer/polymer/lib/utils/html-tag';
-					import { PolymerElement } from '@polymer/polymer/polymer-element';
+		<demo-moneyhelper></demo-moneyhelper>
+		<script type="module">
+			import { html } from '@polymer/polymer/lib/utils/html-tag';
+			import { PolymerElement } from '@polymer/polymer/polymer-element';
 
-					import { mixin, Money } from '../index.js';
-					import { isEmpty } from '../lib/template.js';
-					import { isoDate } from '../lib/date.js';
+			import {
+				mixin, Money
+			} from '../index.js';
+			import { isEmpty } from '../lib/template.js';
+			import { isoDate } from '../lib/date.js';
 
-					class DemoMoneyHelper extends mixin({isEmpty, isoDate, ...Money}, PolymerElement) {
-						static get properties() {
-							return {
-								money: {
-									type: Number,
-									value: 0
-								},
-								renderedNumberAmount: {
-									type: String,
-									computed: '_computeNumberAmount(money)'
-								},
-								renderedAmount: {
-									type: String,
-									computed: '_computeAmount(money)'
-								}
-							};
+			class DemoMoneyHelper extends mixin({
+				isEmpty,
+				isoDate,
+				...Money
+			}, PolymerElement) {
+				static get properties() {
+					return {
+						money: {
+							type: Number,
+							value: 0
+						},
+						renderedNumberAmount: {
+							type: String,
+							computed: '_computeNumberAmount(money)'
+						},
+						renderedAmount: {
+							type: String,
+							computed: '_computeAmount(money)'
 						}
+					};
+				}
 
-						static get template() {
-							return html`
-								<div><input value="{{ money::keyup }}"/></div>
-								<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
-								<div>renderAmount(money): [[ renderedAmount ]]</div>
-								<div>isEmpty(money): [[ isEmpty(money) ]]</div>
-								<div>isoDate(1559304252199): [[ isoDate(1559304252199) ]]</div>
-							`;
-						}
+				static get template() {
+					return html`
+						<div><input value="{{ money::keyup }}"/></div>
+						<div>renderNumberAmount(money): [[ renderedNumberAmount ]]</div>
+						<div>renderAmount(money): [[ renderedAmount ]]</div>
+						<div>isEmpty(money): [[ isEmpty(money) ]]</div>
+						<div>isoDate(1559304252199): [[ isoDate(1559304252199) ]]</div>
+					`;
+				}
 
-						_computeNumberAmount(money) {
-							return this.renderNumberAmount({
-								amount: money,
-								currency: 'SEK'
-							});
-						}
+				_computeNumberAmount(money) {
+					return this.renderNumberAmount({
+						amount: money,
+						currency: 'SEK'
+					});
+				}
 
-						_computeAmount(money) {
-							return this.renderAmount({
-								amount: money,
-								currency: 'SEK'
-							});
-						}
-					}
+				_computeAmount(money) {
+					return this.renderAmount({
+						amount: money,
+						currency: 'SEK'
+					});
+				}
+			}
 
-					customElements.define('demo-moneyhelper', DemoMoneyHelper);
-				</script>
-			</template>
-		</demo-snippet>
+			customElements.define('demo-moneyhelper', DemoMoneyHelper);
+		</script>
 	</div>
 </body>
 </html>
