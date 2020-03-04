@@ -42,7 +42,7 @@ jobs:
       run: |
         ([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC
         $NEO_CC before-build
-        npm run test $([ -z "$SAUCE_ACCESS_KEY"] && echo "-- --skip-plugin sauce")
+        npm test
         $NEO_CC after-build --exit-code $?
 
     - name: Semantic release
