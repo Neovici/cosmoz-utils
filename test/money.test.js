@@ -16,29 +16,23 @@ suite('money utils', () => {
 		localizedOutputs = {
 			'en-US': {
 				2200200.3333333333: {
-					USD: '$2,200,200.33',
-					EUR: '€2,200,200.33',
-					SEK: 'SEK 2,200,200.33',
-					SEK2: 'SEK2,200,200.33',
-					NOK: 'NOK 2,200,200.33',
-					NOK2: 'NOK2,200,200.33',
+					USD: ['$2,200,200.33'],
+					EUR: ['€2,200,200.33'],
+					SEK: ['SEK 2,200,200.33', 'SEK2,200,200.33'],
+					NOK: ['NOK 2,200,200.33', 'NOK2,200,200.33'],
 					number: '2,200,200.33'
 				}
 			},
 			'sv-SE': {
 				2200200.3333333333: {
-					USD: '2 200 200,33 US$',
-					EUR: '2 200 200,33 €',
-					SEK: '2 200 200,33 kr',
-					NOK: '2 200 200,33 Nkr',
+					USD: ['2 200 200,33 US$'],
+					EUR: ['2 200 200,33 €'],
+					SEK: ['2 200 200,33 kr'],
+					NOK: ['2 200 200,33 Nkr'],
 					number: '2 200 200,33'
 				}
 			}
-		},
-		isEdge = !!window.StyleMedia,
-		ua = window.navigator.userAgent,
-		isSafari = ua.indexOf('Chrome') === -1 && ua.indexOf('Safari') !== -1,
-		alt = isEdge || isSafari;
+		};
 
 	test('amountEquals ', () => {
 		assert.equal(amountEquals(null, null), false);
@@ -173,20 +167,9 @@ suite('money utils', () => {
 	});
 
 	Object.entries(localizedOutputs).forEach(([locale, localizedOutput]) => {
-		const locAmount = localizedOutput[amount];
-
-		test('renderAmount ', () => {
+		test('renderAmount with locale ' + locale, () => {
 			assert.equal(renderAmount({ amount }, locale), undefined);
-			assert.isObject(locAmount, 'testamount is configured for locale');
 
-			testCurrencies.forEach(currency => {
-				const output = locAmount[alt ? currency + '2' : currency] || locAmount[currency];
-				assert.isString(output, `testcurrency is configured for testamount - ${alt} ${isEdge} ${isSafari}`);
-				assert.equal(renderAmount({
-					amount,
-					currency
-				}, locale), output);
-			});
 			assert.equal(
 				renderAmount({
 					amount,
@@ -199,11 +182,27 @@ suite('money utils', () => {
 			);
 		});
 
+
+		testCurrencies.forEach(currency => {
+			test(`renderAmount with locale ${locale} and currency ${currency}`, () => {
+				assert.oneOf(
+					renderAmount(
+						{
+							amount,
+							currency
+						},
+						locale
+					),
+					localizedOutput[amount][currency]
+				);
+			});
+		});
+
 		test('renderNumberAmount ', () => {
 			assert.equal(renderNumberAmount({
 				amount,
 				currency: 'USD'
-			}, locale), locAmount.number);
+			}, locale), localizedOutput[amount].number);
 		});
 	});
 
