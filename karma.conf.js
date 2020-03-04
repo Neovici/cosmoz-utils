@@ -30,6 +30,7 @@ const { createDefaultConfig } = require('@open-wc/testing-karma'),
 		...sauceCustomLaunchers
 	};
 
+// eslint-disable-next-line max-lines-per-function
 module.exports = config => {
 
 	const useSauce = process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY,
@@ -64,7 +65,49 @@ module.exports = config => {
 			}],
 
 			esm: {
-				nodeResolve: true
+				nodeResolve: true,
+				polyfillsLoader: {
+					polyfills: {
+						custom: [
+							{
+								name: 'plural-rules',
+
+								test: '!window.Intl || !("PluralRules" in window.Intl)',
+								path: require.resolve('@formatjs/intl-pluralrules/dist/umd/polyfill.js')
+							},
+							{
+								name: 'plural-rules-en',
+
+								test: '!window.Intl || !("PluralRules" in window.Intl)',
+								path: require.resolve('@formatjs/intl-pluralrules/dist/locale-data/en.js')
+							},
+							{
+								name: 'plural-rules-sv',
+
+								test: '!window.Intl || !("PluralRules" in window.Intl)',
+								path: require.resolve('@formatjs/intl-pluralrules/dist/locale-data/sv.js')
+							},
+							{
+								name: 'relative-time-format',
+
+								test: '!window.Intl || !("RelativeTimeFormat" in window.Intl)',
+								path: require.resolve('@formatjs/intl-relativetimeformat/dist/umd/polyfill-intl-relativetimeformat.js')
+							},
+							{
+								name: 'relative-time-format-en',
+
+								test: '!window.Intl || !("RelativeTimeFormat" in window.Intl)',
+								path: require.resolve('@formatjs/intl-relativetimeformat/dist/locale-data/en.js')
+							},
+							{
+								name: 'relative-time-format-sv',
+
+								test: '!window.Intl || !("RelativeTimeFormat" in window.Intl)',
+								path: require.resolve('@formatjs/intl-relativetimeformat/dist/locale-data/sv.js')
+							}
+						]
+					}
+				}
 			},
 			client: {
 				mocha: {

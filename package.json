@@ -57,6 +57,8 @@
 	"devDependencies": {
 		"@commitlint/cli": "^8.3.5",
 		"@commitlint/config-conventional": "^8.3.4",
+		"@formatjs/intl-pluralrules": "^1.5.2",
+		"@formatjs/intl-relativetimeformat": "^4.5.9",
 		"@neovici/eslint-config": "^1.2.0",
 		"@neovici/github-actions-eslint-annotator": "^0.4.0",
 		"@open-wc/testing": "^2.5.4",
