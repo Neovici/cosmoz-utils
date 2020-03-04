@@ -43,6 +43,9 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"files": [
+		"lib/*.js"
+	],
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
