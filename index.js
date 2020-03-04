@@ -9,14 +9,13 @@
  * class DemoMoneyHelper extends mixin({isEmpty, isoDate, ...Money}, PolymerElement) {
  * ```
  *
- * @polymer
  * @mixinFunction
  * @demo demo/index.html
  * @param  {object} helpers   the functions to add to the class
  * @param  {class} superclass the class to extend
  * @return {class}            a new class
  */
-export const mixin = function (helpers, superclass) {
+const mixin = (helpers, superclass) => {
 	/**
 	 * @polymer
 	 * @mixinClass
@@ -31,4 +30,10 @@ import * as DateUtils from './lib/date';
 import * as Money from './lib/money';
 
 // TODO remove deprecated Date export [issue #34]
-export { Template, DateUtils, Money, DateUtils as Date };
+export {
+	Template,
+	DateUtils,
+	mixin,
+	Money,
+	DateUtils as Date
+};
