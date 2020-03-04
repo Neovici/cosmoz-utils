@@ -1,12 +1,14 @@
 import {
-	assert, fixture, elementUpdated
+	assert, fixture, html
 } from '@open-wc/testing';
 import {
 	mixin, Template, Date
 } from '../index.js';
 
-import { html } from '@polymer/polymer/lib/utils/html-tag';
-import { PolymerElement } from '@polymer/polymer/polymer-element';
+import {
+	html as polymerHtml, PolymerElement
+} from '@polymer/polymer';
+
 
 suite('mixin element', () => {
 	let basicFixture;
@@ -28,7 +30,7 @@ suite('mixin element', () => {
 			}
 
 			static get template() {
-				return html`
+				return polymerHtml`
 					[[ isEqual('123', '123') ]]
 					[[ isEqual('123', 123) ]]
 					[[ isEmpty(0) ]]
@@ -43,10 +45,9 @@ suite('mixin element', () => {
 	setup(async () => {
 		basicFixture = await fixture(html`<mixed-in-element></mixed-in-element>`);
 	});
-	test('mixed in functions are available in the template', async () => {
-		await elementUpdated(basicFixture); // Firefox fails without this one
+	test('mixed in functions are available in the template', () => {
 		assert.equal(
-			'truefalsetruefalse2019-05-31', // TODO: basicFixture.shadowRoot.textContent.replace(/\n|\t/igu, ''),
+			basicFixture.shadowRoot.textContent.replace(/\n|\t/igu, ''),
 			'truefalsetruefalse2019-05-31'
 		);
 	});
