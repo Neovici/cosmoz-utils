@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/neovici/cosmoz-utils/compare/v3.1.4...v3.1.5) (2020-03-04)
+
+
+### Bug Fixes
+
+* upgrade repo ([f82b8d2](https://github.com/neovici/cosmoz-utils/commit/f82b8d2226501bd29bab40c5b42ac1346f76e780))
+
 ## [3.1.4](https://github.com/neovici/cosmoz-utils/compare/v3.1.3...v3.1.4) (2020-03-02)
 
 
