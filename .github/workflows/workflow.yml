@@ -42,6 +42,7 @@ jobs:
       run: |
         ([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC
         $NEO_CC before-build
+        echo "::add-matcher::.github/karma-problem-matcher.json"   
         npm test
         $NEO_CC after-build --exit-code $?
 
