@@ -26,9 +26,7 @@ jobs:
       run: npx commitlint --from origin/master --to HEAD
 
     - name: ESLint
-      run: npx github-actions-eslint-annotator
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run lint
 
     - name: Test and report
       env:
