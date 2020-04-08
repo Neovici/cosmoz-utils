@@ -1,12 +1,12 @@
 import {
 	assert
 } from '@open-wc/testing';
+
 import {
 	action,
 	reduce,
 	type
 } from '../lib/reduce';
-
 
 suite('reduce', () => {
 	suite('action', () => {
@@ -45,5 +45,19 @@ suite('reduce', () => {
 				}
 			}), 'TYPE');
 		});
+	});
+
+	suite('reduce', () => {
+		test('handle action', () => {
+			const doit = action('doit'),
+				reducer = reduce({}, handle => [
+					handle(doit, () => ({
+						doneit: true
+					}))
+				]);
+			assert.isUndefined(reducer(undefined, action('something')).doneit);
+			assert.isTrue(reducer({ doneit: false }, doit()).doneit);
+		});
+
 	});
 });
