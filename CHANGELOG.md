@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/neovici/cosmoz-utils/compare/v3.1.5...v3.2.0) (2020-04-08)
+
+
+### Features
+
+* adds reduce implementation ([305f60d](https://github.com/neovici/cosmoz-utils/commit/305f60d8b236736a55dedb1d2b313b9145c41ab6))
+
 ## [3.1.5](https://github.com/neovici/cosmoz-utils/compare/v3.1.4...v3.1.5) (2020-03-04)
 
 
