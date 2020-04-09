@@ -44,7 +44,7 @@
 		"access": "public"
 	},
 	"files": [
-		"lib/*.js"
+		"lib/**/*.js"
 	],
 	"commitlint": {
 		"extends": [
