@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/neovici/cosmoz-utils/compare/v3.2.0...v3.2.1) (2020-04-09)
+
+
+### Bug Fixes
+
+* adds ignored files to release ([1d4856c](https://github.com/neovici/cosmoz-utils/commit/1d4856caa05cde0a69e46749aec0ccdf7f475d8c))
+
 # [3.2.0](https://github.com/neovici/cosmoz-utils/compare/v3.1.5...v3.2.0) (2020-04-08)
 
 
