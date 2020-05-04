@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/neovici/cosmoz-utils/compare/v3.2.1...v3.3.0) (2020-05-04)
+
+
+### Features
+
+* **reduce:** simplify reduce and action API ([d4f4dc7](https://github.com/neovici/cosmoz-utils/commit/d4f4dc76df4995b0101bed709ac525253a08c885))
+
 ## [3.2.1](https://github.com/neovici/cosmoz-utils/compare/v3.2.0...v3.2.1) (2020-04-09)
 
 
