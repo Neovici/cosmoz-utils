@@ -20,14 +20,14 @@ suite('reduce', () => {
 
 		test('payload', () => {
 			const ACT = 'SOME_ACT',
-				act = action(ACT, resolve => p => resolve(p));
+				act = action(ACT, payload => ({ payload }));
 			assert.equal(act, ACT);
 			assert.equal(act('payload').payload, 'payload');
 		});
 
 		test('meta', () => {
 			const ACT = 'OTHER_ACT',
-				act = action(ACT, resolve => m => resolve(undefined, m));
+				act = action(ACT, meta => ({ meta }));
 			assert.equal(act, ACT);
 			assert.equal(act('meta').meta, 'meta');
 			assert.isUndefined(act('meta').payload);
@@ -50,14 +50,16 @@ suite('reduce', () => {
 	suite('reduce', () => {
 		test('handle action', () => {
 			const doit = action('doit'),
-				reducer = reduce({}, handle => [
-					handle(doit, () => ({
-						doneit: true
-					}))
-				]);
+				reducer = reduce({}, [doit, () => ({ doneit: true })]);
 			assert.isUndefined(reducer(undefined, action('something')).doneit);
 			assert.isTrue(reducer({ doneit: false }, doit()).doneit);
 		});
 
+		test('handle action (array)', () => {
+			const doit = action('doit'),
+				reducer = reduce({}, [[doit, () => ({ doneit: true })]]);
+			assert.isUndefined(reducer(undefined, action('something')).doneit);
+			assert.isTrue(reducer({ doneit: false }, doit()).doneit);
+		});
 	});
 });
