@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/neovici/cosmoz-utils/compare/v3.3.0...v3.4.0) (2020-05-14)
+
+
+### Features
+
+* **hooks:** some tasty generic hooks ([de295ed](https://github.com/neovici/cosmoz-utils/commit/de295ed7302764ff045c8b1fe89a361429066b21))
+
 # [3.3.0](https://github.com/neovici/cosmoz-utils/compare/v3.2.1...v3.3.0) (2020-05-04)
 
 
