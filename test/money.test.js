@@ -184,7 +184,7 @@ suite('money utils', () => {
 
 
 		testCurrencies.forEach(currency => {
-			test(`renderAmount with locale ${locale} and currency ${currency}`, () => {
+			test(`renderAmount with locale ${ locale } and currency ${ currency }`, () => {
 				assert.oneOf(
 					renderAmount(
 						{
