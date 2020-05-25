@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/neovici/cosmoz-utils/compare/v3.4.0...v3.5.0) (2020-05-25)
+
+
+### Features
+
+* add useHost hook ([36b4de5](https://github.com/neovici/cosmoz-utils/commit/36b4de55b6b40eb7926fc2b5e28b3d5c05c674c1))
+
 # [3.4.0](https://github.com/neovici/cosmoz-utils/compare/v3.3.0...v3.4.0) (2020-05-14)
 
 
