@@ -14,15 +14,6 @@ const { createDefaultConfig } = require('@open-wc/testing-karma'),
 			browserName: 'chrome',
 			browserVersion: 'beta',
 			platformName: 'Windows 10'
-		},
-		slIphoneSimulator: {
-			base: 'SauceLabs',
-			browserName: 'Safari',
-			appiumVersion: '1.15.0',
-			deviceName: 'iPhone Simulator',
-			deviceOrientation: 'portrait',
-			platformVersion: '13.0',
-			platformName: 'iOS'
 		}
 	},
 	allCustomLaunchers = {
