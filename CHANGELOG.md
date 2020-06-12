@@ -1,3 +1,11 @@
+## [3.5.1](https://github.com/neovici/cosmoz-utils/compare/v3.5.0...v3.5.1) (2020-06-12)
+
+
+### Bug Fixes
+
+* **sauce:** drop non-working ios configuration ([f569d71](https://github.com/neovici/cosmoz-utils/commit/f569d71d177fbc8e73e126185213f852b08f0495))
+* update default currencyDisplay to code ([11bed68](https://github.com/neovici/cosmoz-utils/commit/11bed68410a23987e580c557cd1ab3f69b2ed11b))
+
 # [3.5.0](https://github.com/neovici/cosmoz-utils/compare/v3.4.0...v3.5.0) (2020-05-25)
 
 
