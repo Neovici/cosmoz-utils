@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/neovici/cosmoz-utils/compare/v3.5.1...v3.6.0) (2020-06-15)
+
+
+### Features
+
+* **portal:** new directive for rendering parts in remote outlets ([6fa34db](https://github.com/neovici/cosmoz-utils/commit/6fa34dba18a3ea2d3c1fd65305dc4a7a7ffedf3a))
+
 ## [3.5.1](https://github.com/neovici/cosmoz-utils/compare/v3.5.0...v3.5.1) (2020-06-12)
 
 
