@@ -19,12 +19,6 @@ customElements.define(
 
 
 suite('portal', () => {
-	setup(async () => {
-		// wait two frames between tests so the outlet is cleaned up
-		await nextFrame();
-		await nextFrame();
-	});
-
 	test('renders in body', async () => {
 		const component = await fixture(html`<test-portal .value=${ 1 } />`);
 
@@ -42,10 +36,6 @@ suite('portal', () => {
 
 		component.parentNode.removeChild(component);
 
-		// it takes two frames for the outlet to be cleaned up
-		await nextFrame();
-		await nextFrame();
-
 		assert.isNull(document.querySelector('body > .portal-outlet'));
 	});
 
@@ -62,9 +52,6 @@ suite('portal', () => {
 		assert.equal(target.querySelector('.portal-outlet').textContent, 2);
 
 		component.parentNode.removeChild(component);
-		await nextFrame();
-		await nextFrame();
-
 		assert.isNull(target.querySelector('.portal-outlet'));
 	});
 
@@ -77,10 +64,11 @@ suite('portal', () => {
 		assert.equal(target.querySelector('.portal-outlet').textContent, 1);
 		assert.isNull(target2.querySelector('.portal-outlet'));
 
+		component.value = 2;
 		component.target = target2;
 		await nextFrame();
 
 		assert.isNull(target.querySelector('.portal-outlet'));
-		assert.equal(target2.querySelector('.portal-outlet').textContent, 1);
+		assert.equal(target2.querySelector('.portal-outlet').textContent, 2);
 	});
 });
