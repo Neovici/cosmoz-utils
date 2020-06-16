@@ -29,8 +29,11 @@ import * as Template from './lib/template';
 import * as DateUtils from './lib/date';
 import * as Money from './lib/money';
 
+import { hauntedPolymer } from './lib/haunted-polymer';
+
 // TODO remove deprecated Date export [issue #34]
 export {
+	hauntedPolymer,
 	Template,
 	DateUtils,
 	mixin,
