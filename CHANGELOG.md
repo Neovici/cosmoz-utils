@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/neovici/cosmoz-utils/compare/v3.6.0...v3.6.1) (2020-06-17)
+
+
+### Bug Fixes
+
+* **portal:** outlet part is not cleaned up ([d8c8c7c](https://github.com/neovici/cosmoz-utils/commit/d8c8c7c4825740bd608eec6ba473c10c6dff36c4))
+
 # [3.6.0](https://github.com/neovici/cosmoz-utils/compare/v3.5.1...v3.6.0) (2020-06-15)
 
 
