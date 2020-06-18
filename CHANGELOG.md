@@ -1,3 +1,16 @@
+# [3.7.0](https://github.com/neovici/cosmoz-utils/compare/v3.6.2...v3.7.0) (2020-06-18)
+
+
+### Bug Fixes
+
+* **haunted-polymer:** replace usage of polymer Debouncer ([248218a](https://github.com/neovici/cosmoz-utils/commit/248218af6d9e3b103464ccce63eea6f641e50eca))
+* **test:** wip: haunted-polymer ([64c6a2e](https://github.com/neovici/cosmoz-utils/commit/64c6a2ef9b9ad2c92a169c68f2fcae8d09a922e9))
+
+
+### Features
+
+* add haunted-polymer mixin ([d974457](https://github.com/neovici/cosmoz-utils/commit/d974457d90abd4176d83ef4ac2895797887d964c))
+
 ## [3.6.2](https://github.com/neovici/cosmoz-utils/compare/v3.6.1...v3.6.2) (2020-06-17)
 
 
