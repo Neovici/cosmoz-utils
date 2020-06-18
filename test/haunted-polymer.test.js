@@ -1,5 +1,5 @@
 import {
-	assert, fixture, html, aTimeout
+	assert, fixture, html, nextFrame
 } from '@open-wc/testing';
 
 import {
@@ -26,7 +26,10 @@ class MyHauntedPolymer extends hauntedPolymer('scared', useTestHook)(PolymerElem
 			},
 			mood: {
 				type: String,
-				value: 'happy'
+				value: 'happy',
+				// In order for hauntedPolymer to detect a change, property effects need to be initialized for that specific property.
+				// To do this make sure there exists a template binding for that prop or that it is a notifying prop.
+				notify: true
 			}
 		};
 	}
@@ -45,7 +48,7 @@ suite('haunted polymer', () => {
 	});
 	test('👻', async () => {
 		basicFixture.mood = 'frightened';
-		await aTimeout(1000);
+		await nextFrame();
 		assert.equal(basicFixture.scared, 'very scared');
 	});
 });
