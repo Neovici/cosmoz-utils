@@ -1,3 +1,10 @@
+# [3.8.0](https://github.com/neovici/cosmoz-utils/compare/v3.7.0...v3.8.0) (2020-06-22)
+
+
+### Features
+
+* **measure:** new directive ([231909b](https://github.com/neovici/cosmoz-utils/commit/231909bf4e935cd0120e08154cd480cdc36cd538))
+
 # [3.7.0](https://github.com/neovici/cosmoz-utils/compare/v3.6.2...v3.7.0) (2020-06-18)
 
 
