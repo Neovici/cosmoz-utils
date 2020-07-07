@@ -3,7 +3,7 @@ import {
 } from '@open-wc/testing';
 
 import {
-	PolymerElement
+	PolymerElement, html as polymerHtml
 } from '@polymer/polymer';
 
 import { hauntedPolymer } from '../lib/haunted-polymer.js';
@@ -50,5 +50,43 @@ suite('haunted polymer', () => {
 		basicFixture.mood = 'frightened';
 		await nextFrame();
 		assert.equal(basicFixture.scared, 'very scared');
+	});
+});
+
+const useLitTemplate = ({ text }) => {
+	return useMemo(() => html`lit says: ${ text }`, [text]);
+};
+
+class RendersFromHook extends hauntedPolymer('lit', useLitTemplate)(PolymerElement) {
+	static get properties() {
+		return {
+			text: {
+				type: String,
+				notify: true
+			}
+		};
+	}
+
+	static get template() {
+		return polymerHtml`<div id="outlet"></div>`;
+	}
+
+	static get observers() {
+		return ['renderLitTo(lit, $.outlet)'];
+	}
+}
+
+customElements.define('renders-from-hook', RendersFromHook);
+
+suite('haunted polymer render lit', () => {
+	test('basic', async () => {
+		const basicFixture = await fixture(html`<renders-from-hook text=${ 'hi' }></renders-from-hook>`);
+		await nextFrame();
+		assert.equal(basicFixture.shadowRoot.textContent, 'lit says: hi');
+
+		basicFixture.text = 'bye';
+		await nextFrame();
+		await nextFrame();
+		assert.equal(basicFixture.shadowRoot.textContent, 'lit says: bye');
 	});
 });
