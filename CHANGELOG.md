@@ -1,3 +1,10 @@
+# [3.9.0](https://github.com/neovici/cosmoz-utils/compare/v3.8.0...v3.9.0) (2020-07-08)
+
+
+### Features
+
+* **haunted-polymer:** renderLitTo ([2af1ce6](https://github.com/neovici/cosmoz-utils/commit/2af1ce689b3fac4d4e9553eecae5202fb888a5fa))
+
 # [3.8.0](https://github.com/neovici/cosmoz-utils/compare/v3.7.0...v3.8.0) (2020-06-22)
 
 
