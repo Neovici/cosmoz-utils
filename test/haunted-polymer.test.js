@@ -90,3 +90,40 @@ suite('haunted polymer render lit', () => {
 		assert.equal(basicFixture.shadowRoot.textContent, 'lit says: bye');
 	});
 });
+
+
+
+const useSum = ({
+	a, b
+}) => {
+	return { sum: useMemo(() => a + b, [a, b]) };
+};
+
+class myCalculator extends hauntedPolymer(useSum)(PolymerElement) {
+	static get properties() {
+		return {
+			a: {
+				type: Number
+			},
+			b: {
+				type: Number
+			}
+		};
+	}
+
+	static get template() {
+		return polymerHtml`[[ a ]] + [[ b ]] = [[ sum ]]`;
+	}
+}
+
+customElements.define('my-calculator', myCalculator);
+
+suite('haunted polymer without outputPath', () => {
+	test('basic', async () => {
+		const calculator = await fixture(html`<my-calculator a="1" b="2"></my-calculator>`);
+		assert.equal(calculator.shadowRoot.textContent, '1 + 2 = 3');
+		calculator.a = 5;
+		await nextFrame();
+		assert.equal(calculator.shadowRoot.textContent, '5 + 2 = 7');
+	});
+});
