@@ -1,3 +1,10 @@
+# [3.10.0](https://github.com/neovici/cosmoz-utils/compare/v3.9.0...v3.10.0) (2020-07-10)
+
+
+### Features
+
+* **haunted-polymer:** use setProperties instead of outputPath ([80ea80e](https://github.com/neovici/cosmoz-utils/commit/80ea80e79d2af0278d395ce1184f475554f48860))
+
 # [3.9.0](https://github.com/neovici/cosmoz-utils/compare/v3.8.0...v3.9.0) (2020-07-08)
 
 
