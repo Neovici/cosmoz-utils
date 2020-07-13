@@ -1,3 +1,10 @@
+## [3.10.1](https://github.com/neovici/cosmoz-utils/compare/v3.10.0...v3.10.1) (2020-07-13)
+
+
+### Bug Fixes
+
+* **haunted-polymer:** haunted state is updated even if only haunted props have changed ([d81316b](https://github.com/neovici/cosmoz-utils/commit/d81316b6c892e4cc831b5cfecb64610c4e1c2a0a))
+
 # [3.10.0](https://github.com/neovici/cosmoz-utils/compare/v3.9.0...v3.10.0) (2020-07-10)
 
 
