@@ -21,6 +21,7 @@ suite('use-host-bounds', () => {
 
 		await nextFrame();
 		await nextFrame();
+		await nextFrame();
 
 		assert.equal(Math.round(result.current.width), 120);
 	});
