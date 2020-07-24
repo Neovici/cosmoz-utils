@@ -1,3 +1,10 @@
+## [3.10.2](https://github.com/neovici/cosmoz-utils/compare/v3.10.1...v3.10.2) (2020-07-24)
+
+
+### Bug Fixes
+
+* adds use-host-bounds ([2d172c8](https://github.com/neovici/cosmoz-utils/commit/2d172c83381aaefc61a70f542e3108469a23eb6c))
+
 ## [3.10.1](https://github.com/neovici/cosmoz-utils/compare/v3.10.0...v3.10.1) (2020-07-13)
 
 
