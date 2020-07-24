@@ -1,3 +1,10 @@
+## [3.10.3](https://github.com/neovici/cosmoz-utils/compare/v3.10.2...v3.10.3) (2020-07-24)
+
+
+### Bug Fixes
+
+* **use-host-bounds:** handle resizes in a frame ([e0dd67d](https://github.com/neovici/cosmoz-utils/commit/e0dd67d68aef835e7797862e0abd34e9a70835e7))
+
 ## [3.10.2](https://github.com/neovici/cosmoz-utils/compare/v3.10.1...v3.10.2) (2020-07-24)
 
 
