@@ -14,6 +14,10 @@ suite('array', () => {
 		assert.equal(array(empty), empty);
 		assert.equal(array(obj)[0], obj);
 		assert.lengthOf(array(), 0);
+
+		const nodeList = document.querySelectorAll('*');
+		assert.lengthOf(array(nodeList), nodeList.length);
+		assert.isTrue(Array.isArray(array(nodeList)));
 	});
 	test('without', () => {
 		assert.lengthOf(without(obj)(obj), 0);
