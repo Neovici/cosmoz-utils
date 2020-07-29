@@ -6,9 +6,6 @@ import {
 } from '../lib/object';
 import { identity } from '../lib/function';
 
-const empty = [],
-	obj = {};
-
 suite('prop', () => {
 	test('prop', () => {
 		assert.equal(prop('b')({ b: 2 }), 2);

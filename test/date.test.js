@@ -48,28 +48,28 @@ suite('date', () => {
 			second = 1000,
 			secondsAgo = new Date(dateNow.getTime() - 5 * second),
 			minute = 60 * second,
-			minuteAgo = new Date(dateNow.getTime() - minute),
+			minutesAgo = new Date(dateNow.getTime() - 2 * minute),
 			hour = 60 * minute,
 			hourAgo = new Date(dateNow.getTime() - hour),
-			day = 24* hour,
+			day = 24 * hour,
 			dayAgo = new Date(dateNow.getTime() - day),
-			monthsAgo = (()=>{
+			monthsAgo = (() => {
 				const d = new Date();
 				d.setMonth(d.getMonth() - 2);
 				return d;
 			})(),
-			yearsAgo = (()=>{
+			yearsAgo = (() => {
 				const d = new Date();
 				d.setFullYear(d.getFullYear() - 2);
 				return d;
 			})();
-			;
+
 
 		assert.include(timeago(secondsAgo), 'seconds ago');
 		assert.include(timeago(secondsAgo, 'sv'), 'sekunder sedan');
 
-		assert.equal(timeago(minuteAgo), '1 minute ago');
-		assert.equal(timeago(minuteAgo, 'sv'), 'för 1 minut sedan');
+		assert.include(timeago(minutesAgo), 'minutes ago');
+		assert.include(timeago(minutesAgo, 'sv'), 'minuter sedan');
 
 		assert.equal(timeago(hourAgo), '1 hour ago');
 		assert.equal(timeago(hourAgo, 'sv'), 'för 1 timme sedan');

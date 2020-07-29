@@ -16,6 +16,6 @@ suite('function', () => {
 
 	test('or', () => {
 		assert.equal(or(() => false, () => true)(), true);
-		assert.equal(or(() => {}, () => obj)(), obj);
+		assert.equal(or(() => {}, () => obj)(), obj); /* eslint-disable-line no-empty-function */
 	});
 });
