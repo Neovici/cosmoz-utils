@@ -60,13 +60,13 @@
 		"haunted": "^4.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^8.3.5",
-		"@commitlint/config-conventional": "^8.3.4",
+		"@commitlint/cli": "^9.1.0",
+		"@commitlint/config-conventional": "^9.1.0",
 		"@formatjs/intl-pluralrules": "^2.2.6",
 		"@formatjs/intl-relativetimeformat": "^5.2.6",
 		"@neovici/eslint-config": "^1.2.0",
 		"@open-wc/testing": "^2.5.18",
-		"@open-wc/testing-karma": "^3.4.4",
+		"@open-wc/testing-karma": "^3.0.0",
 		"@polymer/polymer": "^3.3.1",
 		"@semantic-release/changelog": "^5.0.0",
 		"@semantic-release/git": "^9.0.0",
