@@ -1,3 +1,15 @@
+# [3.11.0](https://github.com/neovici/cosmoz-utils/compare/v3.10.3...v3.11.0) (2020-07-30)
+
+
+### Bug Fixes
+
+* improves measure, array ([df43e2c](https://github.com/neovici/cosmoz-utils/commit/df43e2cfbc83a5e4c221dd28ba890f6a6ba10c1d))
+
+
+### Features
+
+* adds array, object,function utils ([92f70a4](https://github.com/neovici/cosmoz-utils/commit/92f70a4c5f739267d057559e7b80d8d24dc42575))
+
 ## [3.10.3](https://github.com/neovici/cosmoz-utils/compare/v3.10.2...v3.10.3) (2020-07-24)
 
 
