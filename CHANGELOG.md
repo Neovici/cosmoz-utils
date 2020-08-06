@@ -1,3 +1,10 @@
+## [3.11.1](https://github.com/neovici/cosmoz-utils/compare/v3.11.0...v3.11.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* handle strings in array helper ([db452e8](https://github.com/neovici/cosmoz-utils/commit/db452e89f7e4ba153bf4a5233f4bb273cb649a1d))
+
 # [3.11.0](https://github.com/neovici/cosmoz-utils/compare/v3.10.3...v3.11.0) (2020-07-30)
 
 
