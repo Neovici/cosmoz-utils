@@ -14,6 +14,7 @@ suite('array', () => {
 		assert.equal(array(empty), empty);
 		assert.equal(array(obj)[0], obj);
 		assert.lengthOf(array(), 0);
+		assert.lengthOf(array(null), 0);
 
 		assert(array('asd')[0], 'asd');
 
