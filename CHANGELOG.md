@@ -1,3 +1,10 @@
+## [3.11.2](https://github.com/neovici/cosmoz-utils/compare/v3.11.1...v3.11.2) (2020-08-07)
+
+
+### Bug Fixes
+
+* handle null in array ([6436f31](https://github.com/neovici/cosmoz-utils/commit/6436f3115a6ec8407f568070562abf7a6a0432ad))
+
 ## [3.11.1](https://github.com/neovici/cosmoz-utils/compare/v3.11.0...v3.11.1) (2020-08-06)
 
 
