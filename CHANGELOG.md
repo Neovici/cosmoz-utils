@@ -1,3 +1,10 @@
+# [3.12.0](https://github.com/neovici/cosmoz-utils/compare/v3.11.2...v3.12.0) (2020-08-13)
+
+
+### Features
+
+* **ref:** add directive ([8667223](https://github.com/neovici/cosmoz-utils/commit/8667223faf124ef5065e68bdf9ca53fc6105793d))
+
 ## [3.11.2](https://github.com/neovici/cosmoz-utils/compare/v3.11.1...v3.11.2) (2020-08-07)
 
 
