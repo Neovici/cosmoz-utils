@@ -3,10 +3,11 @@
 with import
   (
     builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/28fce08.tar.gz";
-      sha256 = "1pzmqgby1g9ypdn6wgxmbhp6hr55dhhrccn67knrpy93vib9wf8r";
+      url = "https://github.com/NixOS/nixpkgs/archive/2a35f66.tar.gz";
+      sha256 = "1ac01hyvniiwrwgqlvmx76dxc7aqg71nx3d05d0dc35lbyjq7acf";
     }
-  ) { };
+  )
+{ };
 mkShell {
   buildInputs = [ nodejs-12_x python3 firefox ];
   shellHook = ''
