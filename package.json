@@ -60,8 +60,8 @@
 		"haunted": "^4.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^9.1.0",
-		"@commitlint/config-conventional": "^9.1.0",
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
 		"@formatjs/intl-pluralrules": "^2.2.6",
 		"@formatjs/intl-relativetimeformat": "^5.2.6",
 		"@neovici/eslint-config": "^1.2.0",
