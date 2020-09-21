@@ -1,3 +1,10 @@
+# [3.13.0](https://github.com/neovici/cosmoz-utils/compare/v3.12.0...v3.13.0) (2020-09-21)
+
+
+### Features
+
+* add useNotifiProperty hook ([89b5a63](https://github.com/neovici/cosmoz-utils/commit/89b5a63eea8ccb8b9ea88c0b4d40f3eaeb747f3b))
+
 # [3.12.0](https://github.com/neovici/cosmoz-utils/compare/v3.11.2...v3.12.0) (2020-08-13)
 
 
