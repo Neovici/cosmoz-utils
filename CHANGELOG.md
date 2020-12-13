@@ -1,3 +1,10 @@
+# [3.14.0](https://github.com/neovici/cosmoz-utils/compare/v3.13.0...v3.14.0) (2020-12-13)
+
+
+### Features
+
+* **use-imperative-api:** hook that exposes an imperative API on the host ([5a98102](https://github.com/neovici/cosmoz-utils/commit/5a98102c3c339453fe084ec1b7a8f7c17767825f))
+
 # [3.13.0](https://github.com/neovici/cosmoz-utils/compare/v3.12.0...v3.13.0) (2020-09-21)
 
 
