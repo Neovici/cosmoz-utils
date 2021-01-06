@@ -1,3 +1,10 @@
+# [3.15.0](https://github.com/neovici/cosmoz-utils/compare/v3.14.0...v3.15.0) (2021-01-06)
+
+
+### Features
+
+* **tag:** dynamic component helper ([6a21750](https://github.com/neovici/cosmoz-utils/commit/6a217501231d1af4b2d05e3a03b00d848fc05328))
+
 # [3.14.0](https://github.com/neovici/cosmoz-utils/compare/v3.13.0...v3.14.0) (2020-12-13)
 
 
