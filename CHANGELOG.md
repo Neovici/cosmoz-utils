@@ -1,3 +1,10 @@
+# [3.16.0](https://github.com/neovici/cosmoz-utils/compare/v3.15.0...v3.16.0) (2021-01-28)
+
+
+### Features
+
+* adds useMeta hook ([f9b1e95](https://github.com/neovici/cosmoz-utils/commit/f9b1e95531a7cd6611d5fc050cac65649c235b73))
+
 # [3.15.0](https://github.com/neovici/cosmoz-utils/compare/v3.14.0...v3.15.0) (2021-01-06)
 
 
