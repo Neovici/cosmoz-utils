@@ -1,3 +1,10 @@
+# [3.17.0](https://github.com/neovici/cosmoz-utils/compare/v3.16.0...v3.17.0) (2021-03-17)
+
+
+### Features
+
+* **object:** add merge utility ([ac4a4d4](https://github.com/neovici/cosmoz-utils/commit/ac4a4d4ffcad940b550031787af81d002517f0a8))
+
 # [3.16.0](https://github.com/neovici/cosmoz-utils/compare/v3.15.0...v3.16.0) (2021-01-28)
 
 
