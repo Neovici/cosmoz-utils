@@ -1,3 +1,10 @@
+# [3.18.0](https://github.com/neovici/cosmoz-utils/compare/v3.17.0...v3.18.0) (2021-04-14)
+
+
+### Features
+
+* **object:** transform helper ([8bff6cd](https://github.com/neovici/cosmoz-utils/commit/8bff6cd431ca539b34142815af2aa9e6cacaa7a3))
+
 # [3.17.0](https://github.com/neovici/cosmoz-utils/compare/v3.16.0...v3.17.0) (2021-03-17)
 
 
