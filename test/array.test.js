@@ -25,5 +25,6 @@ suite('array', () => {
 	test('without', () => {
 		assert.lengthOf(without(obj)(obj), 0);
 		assert.lengthOf(without([1])([obj, 1]), 1);
+		assert.lengthOf(without([{ id: 1 }, { id: 2 }], o => o.id)([{ id: 1 }, { id: 2 }, { id: 3 }]), 1);
 	});
 });
