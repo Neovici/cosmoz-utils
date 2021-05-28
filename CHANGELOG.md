@@ -1,3 +1,10 @@
+# [3.19.0](https://github.com/neovici/cosmoz-utils/compare/v3.18.0...v3.19.0) (2021-05-28)
+
+
+### Features
+
+* predicate support for `without` ([720ca67](https://github.com/neovici/cosmoz-utils/commit/720ca670ed2a459cc694ae576c750826bb1c0e41))
+
 # [3.18.0](https://github.com/neovici/cosmoz-utils/compare/v3.17.0...v3.18.0) (2021-04-14)
 
 
