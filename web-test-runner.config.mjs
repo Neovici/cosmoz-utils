@@ -29,6 +29,7 @@ export default {
 		seleniumLauncher({
 			driverBuilder: new webdriver.Builder().forBrowser('firefox').setFirefoxOptions(new firefox.Options().headless())
 		})
-	]
+	],
+	browserStartTimeout: 40000
 
 };
