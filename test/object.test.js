@@ -1,10 +1,6 @@
 import { assert } from '@open-wc/testing';
 
-import {
-	prop,
-	strProp,
-	merge
-} from '../lib/object';
+import { prop, props, strProp, merge, omit } from '../lib/object';
 import { identity } from '../lib/function';
 
 suite('prop', () => {
@@ -55,6 +51,15 @@ suite('merge', () => {
 		assert.deepEqual(merge({ a: [1, 2]}, { a: [3, 4]}), {
 			a: [1, 2, 3, 4]
 		});
+	});
+});
+
+suite('props', () => {
+	test('picks props', () => {
+		assert.deepEqual(props(['a', 'b'])({ a: 1, b: 2, c: 3 }), { a: 1, b: 2 });
+	});
+	test('omit props', () => {
+		assert.deepEqual(omit(['a', 'b'])({ a: 1, b: 2, c: 3 }), { c: 3 });
 	});
 });
 
