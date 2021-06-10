@@ -1,3 +1,11 @@
+# [3.20.0](https://github.com/neovici/cosmoz-utils/compare/v3.19.0...v3.20.0) (2021-06-10)
+
+
+### Features
+
+* **lib/object:** add `omit` helper ([110f3d7](https://github.com/neovici/cosmoz-utils/commit/110f3d7cb48050c9a33a1e2231e4b62d9160ce67))
+* **lib/object:** add `props` helper ([80b5573](https://github.com/neovici/cosmoz-utils/commit/80b5573ea6cbb668e8374fea44eaeeec3ef3916d))
+
 # [3.19.0](https://github.com/neovici/cosmoz-utils/compare/v3.18.0...v3.19.0) (2021-05-28)
 
 
