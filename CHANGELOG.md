@@ -1,3 +1,10 @@
+# [3.21.0](https://github.com/neovici/cosmoz-utils/compare/v3.20.0...v3.21.0) (2021-07-27)
+
+
+### Features
+
+* **date:** add parseDate and inputDate helpers ([b1cebb7](https://github.com/neovici/cosmoz-utils/commit/b1cebb79b40f75427af21c67489c65f88af48fe1))
+
 # [3.20.0](https://github.com/neovici/cosmoz-utils/compare/v3.19.0...v3.20.0) (2021-06-10)
 
 
