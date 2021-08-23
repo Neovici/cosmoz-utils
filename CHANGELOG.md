@@ -1,3 +1,10 @@
+## [3.21.1](https://github.com/neovici/cosmoz-utils/compare/v3.21.0...v3.21.1) (2021-08-23)
+
+
+### Bug Fixes
+
+* **renderamount:** adds more explicit null check on amount ([fced66b](https://github.com/neovici/cosmoz-utils/commit/fced66b9a260dd11030b90fe288cc6791101bb38))
+
 # [3.21.0](https://github.com/neovici/cosmoz-utils/compare/v3.20.0...v3.21.0) (2021-07-27)
 
 
