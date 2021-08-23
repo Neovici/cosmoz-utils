@@ -155,6 +155,15 @@ suite('money utils', () => {
 		assert.equal(renderAmount(null), undefined);
 		assert.equal(renderAmount(), undefined);
 
+		assert.equal(renderAmount({
+			amount: null,
+			currency: 'USD'
+		}), undefined);
+
+		assert.equal(renderAmount({
+			currency: 'USD'
+		}), undefined);
+
 		assert.isString(renderAmount({
 			amount: 100,
 			currency: 'USD'
