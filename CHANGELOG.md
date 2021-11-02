@@ -1,3 +1,10 @@
+# [3.22.0](https://github.com/neovici/cosmoz-utils/compare/v3.21.1...v3.22.0) (2021-11-02)
+
+
+### Features
+
+* **function:** add once utility function ([dfc42ff](https://github.com/neovici/cosmoz-utils/commit/dfc42ffadd772b4f749cb6305cbba97c58e2179e))
+
 ## [3.21.1](https://github.com/neovici/cosmoz-utils/compare/v3.21.0...v3.21.1) (2021-08-23)
 
 
