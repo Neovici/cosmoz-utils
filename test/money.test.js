@@ -1,9 +1,8 @@
-import {
-	assert
-} from '@open-wc/testing';
+import { assert } from '@open-wc/testing';
 import {
 	amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney
 } from '../lib/money';
+/* eslint-disable no-loss-of-precision */
 
 suite('money utils', () => {
 	const amount = 2200200.3333333333,
