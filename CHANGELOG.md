@@ -1,3 +1,10 @@
+# [3.23.0](https://github.com/neovici/cosmoz-utils/compare/v3.22.0...v3.23.0) (2021-11-11)
+
+
+### Features
+
+* **function:** improve function module ([7d6a837](https://github.com/neovici/cosmoz-utils/commit/7d6a837919549446be325d06c498c8bc6d02d89c))
+
 # [3.22.0](https://github.com/neovici/cosmoz-utils/compare/v3.21.1...v3.22.0) (2021-11-02)
 
 
