@@ -40,3 +40,5 @@ export {
 	Money,
 	DateUtils as Date
 };
+
+export * from './lib/tagged';
