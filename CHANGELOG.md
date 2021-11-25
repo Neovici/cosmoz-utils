@@ -1,3 +1,10 @@
+# [3.24.0](https://github.com/neovici/cosmoz-utils/compare/v3.23.0...v3.24.0) (2021-11-25)
+
+
+### Features
+
+* **tagged:** add basic implementation ([b6dc61e](https://github.com/neovici/cosmoz-utils/commit/b6dc61e9b7ebe30307e69ec21e9da225b45ebba0))
+
 # [3.23.0](https://github.com/neovici/cosmoz-utils/compare/v3.22.0...v3.23.0) (2021-11-11)
 
 
