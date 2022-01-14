@@ -1,3 +1,10 @@
+## [3.24.1](https://github.com/neovici/cosmoz-utils/compare/v3.24.0...v3.24.1) (2022-01-14)
+
+
+### Bug Fixes
+
+* parse yyyy-mm-dd as local ([7dd1293](https://github.com/neovici/cosmoz-utils/commit/7dd12936d81a367184ba202a95c19be07d9c0b1f))
+
 # [3.24.0](https://github.com/neovici/cosmoz-utils/compare/v3.23.0...v3.24.0) (2021-11-25)
 
 
