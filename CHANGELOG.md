@@ -1,3 +1,15 @@
+# [3.25.0](https://github.com/neovici/cosmoz-utils/compare/v3.24.1...v3.25.0) (2022-02-10)
+
+
+### Bug Fixes
+
+* **event$:** increase timeout to 5 min ([5d48067](https://github.com/neovici/cosmoz-utils/commit/5d4806737deec7e3d3f0e8e6c183430ae788c655))
+
+
+### Features
+
+* **promise:** add helpers ([beec837](https://github.com/neovici/cosmoz-utils/commit/beec8379698b0d7ed2d9fb60f3ca457680d02d95))
+
 ## [3.24.1](https://github.com/neovici/cosmoz-utils/compare/v3.24.0...v3.24.1) (2022-01-14)
 
 
