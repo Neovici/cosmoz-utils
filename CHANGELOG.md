@@ -1,3 +1,10 @@
+# [3.26.0](https://github.com/neovici/cosmoz-utils/compare/v3.25.0...v3.26.0) (2022-03-14)
+
+
+### Features
+
+* **limit$:** generic async function rate limiter ([0278263](https://github.com/neovici/cosmoz-utils/commit/02782638f16d6cd1552a6570aad1ae2ccb12df32))
+
 # [3.25.0](https://github.com/neovici/cosmoz-utils/compare/v3.24.1...v3.25.0) (2022-02-10)
 
 
