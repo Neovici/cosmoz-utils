@@ -1,3 +1,10 @@
+# [3.27.0](https://github.com/neovici/cosmoz-utils/compare/v3.26.0...v3.27.0) (2022-03-16)
+
+
+### Features
+
+* **debounce$:** generic async function debouncer ([4c307ad](https://github.com/neovici/cosmoz-utils/commit/4c307ade229cc44d548d56064491fdd58d5f645a))
+
 # [3.26.0](https://github.com/neovici/cosmoz-utils/compare/v3.25.0...v3.26.0) (2022-03-14)
 
 
