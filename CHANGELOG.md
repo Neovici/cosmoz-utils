@@ -1,3 +1,11 @@
+# [3.28.0](https://github.com/neovici/cosmoz-utils/compare/v3.27.0...v3.28.0) (2022-03-29)
+
+
+### Features
+
+* **hauntedPolymer:** render part as function ([852af5e](https://github.com/neovici/cosmoz-utils/commit/852af5ed0f8556d849c51ff5f450d9d63b197564))
+* **ManagedPromise:** a promise that can be resolved externally ([c822bcf](https://github.com/neovici/cosmoz-utils/commit/c822bcfdc7f70dff48fcaf5ea023dd01af3a92cf))
+
 # [3.27.0](https://github.com/neovici/cosmoz-utils/compare/v3.26.0...v3.27.0) (2022-03-16)
 
 
