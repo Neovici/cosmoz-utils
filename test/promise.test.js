@@ -1,6 +1,8 @@
 import { assert, aTimeout, nextFrame } from '@open-wc/testing';
 import { spy } from 'sinon';
-import { debounce$, limit$ } from '../lib/promise';
+import { debounce$, limit$, ManagedPromise } from '../lib/promise';
+
+const nextMicrotask = () => new Promise(queueMicrotask);
 
 suite('limit$', () => {
 	test('rate limits a function', async () => {
@@ -95,5 +97,46 @@ suite('debounce$', () => {
 		const result3 = fetch$(3);
 
 		assert.deepEqual(await Promise.all([result1, result2, result3]), [6, 6, 6]);
+	});
+});
+
+suite('ManagedPromise', () => {
+	test('can substitute a normal Promise', async () => {
+		const p = new ManagedPromise(resolve => resolve(10)),
+			cb = spy();
+		p.then(cb);
+		await p;
+		assert.isTrue(cb.called);
+		assert.isTrue(cb.calledWith(10));
+	});
+
+	test('can be resolved externally', async () => {
+		const p = new ManagedPromise(),
+			cb = spy();
+		p.then(cb);
+		p.resolve();
+		await nextMicrotask();
+		assert.isTrue(cb.called);
+	});
+
+	test('can be rejected externally', async () => {
+		const p = new ManagedPromise(),
+			cb = spy();
+		p.catch(cb);
+		p.reject();
+		await nextMicrotask();
+		assert.isTrue(cb.called);
+	});
+
+	test('only resolves once', async () => {
+		const p = new ManagedPromise(),
+			cb = spy();
+		p.then(cb);
+		p.resolve();
+		await nextMicrotask();
+		p.resolve();
+		await nextMicrotask();
+		assert.isTrue(cb.called);
+		assert.isTrue(cb.calledOnce);
 	});
 });
