@@ -1,3 +1,10 @@
+# [3.29.0](https://github.com/neovici/cosmoz-utils/compare/v3.28.0...v3.29.0) (2022-03-31)
+
+
+### Features
+
+* **lazy-until:** alternate until implementation ([812a1b0](https://github.com/neovici/cosmoz-utils/commit/812a1b0fcb47fe5d596caf2c769baf95ee399615))
+
 # [3.28.0](https://github.com/neovici/cosmoz-utils/compare/v3.27.0...v3.28.0) (2022-03-29)
 
 
