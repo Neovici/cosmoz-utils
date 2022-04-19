@@ -1,3 +1,10 @@
+## [3.29.1](https://github.com/neovici/cosmoz-utils/compare/v3.29.0...v3.29.1) (2022-04-19)
+
+
+### Bug Fixes
+
+* **object:** strProp should handle string ([22bf227](https://github.com/neovici/cosmoz-utils/commit/22bf227480e5a1028abf7ddebd6608c90028a945))
+
 # [3.29.0](https://github.com/neovici/cosmoz-utils/compare/v3.28.0...v3.29.0) (2022-03-31)
 
 
