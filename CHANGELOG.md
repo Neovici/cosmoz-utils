@@ -1,3 +1,10 @@
+# [3.30.0](https://github.com/neovici/cosmoz-utils/compare/v3.29.1...v3.30.0) (2022-05-04)
+
+
+### Features
+
+* **icons:** add svg icons ([e23e1a2](https://github.com/neovici/cosmoz-utils/commit/e23e1a26d1869597c8d3863a462b7773c6dec26b))
+
 ## [3.29.1](https://github.com/neovici/cosmoz-utils/compare/v3.29.0...v3.29.1) (2022-04-19)
 
 
