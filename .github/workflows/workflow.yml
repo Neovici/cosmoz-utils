@@ -22,16 +22,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
-
-    - name: Restore npm cache
-      id: node-cache
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-0-${{ hashFiles('**/package-lock.json') }}
+        cache: 'npm'
 
     - name: Install
-      if: steps.node-cache.outputs.cache-hit != 'true'
       run: npm ci
 
     - name: Lint commit messages
