@@ -6,7 +6,7 @@ import {
 	nextFrame
 } from '@open-wc/testing';
 import { lazyUntil } from '../lib/directives/lazy-until';
-import { until } from 'lit-html/directives/until';
+import { until } from 'lit-html/directives/until.js';
 
 suite('lazy-until', () => {
 	customElements.define(
