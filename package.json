@@ -50,19 +50,19 @@
 		]
 	},
 	"dependencies": {
-		"haunted": "^4.8.0"
+		"haunted": "^5.0.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.0",
 		"@commitlint/config-conventional": "^17.0.0",
 		"@neovici/cfg": "^1.15.1",
-		"@open-wc/testing": "^2.5.0",
+		"@open-wc/testing": "^3.1.0",
 		"@polymer/polymer": "^3.3.1",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
 		"@web/test-runner": "^0.13.0",
 		"husky": "^8.0.0",
-		"lit-html": "^1.0.0",
+		"lit-html": "^2.0.0",
 		"semantic-release": "^19.0.0",
 		"sinon": "^14.0.0"
 	}
