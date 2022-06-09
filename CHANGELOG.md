@@ -1,3 +1,10 @@
+# [4.0.0-beta.2](https://github.com/neovici/cosmoz-utils/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2022-06-09)
+
+
+### Features
+
+* **spread-props:** initialize ([6af9c54](https://github.com/neovici/cosmoz-utils/commit/6af9c54a9f1174c0e3545cdd46a28bf575c9221c))
+
 # [4.0.0-beta.1](https://github.com/neovici/cosmoz-utils/compare/v3.30.0...v4.0.0-beta.1) (2022-06-08)
 
 
