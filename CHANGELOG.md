@@ -1,3 +1,31 @@
+# [4.0.0-beta.2](https://github.com/neovici/cosmoz-utils/compare/v4.0.0-beta.1...v4.0.0-beta.2) (2022-06-09)
+
+
+### Features
+
+* **spread-props:** initialize ([6af9c54](https://github.com/neovici/cosmoz-utils/commit/6af9c54a9f1174c0e3545cdd46a28bf575c9221c))
+
+# [4.0.0-beta.1](https://github.com/neovici/cosmoz-utils/compare/v3.30.0...v4.0.0-beta.1) (2022-06-08)
+
+
+### Bug Fixes
+
+* **lazy-until:** convert to haunted ([4410331](https://github.com/neovici/cosmoz-utils/commit/4410331fc5a8690a06c56a7c688815dd936d0590))
+
+
+### Features
+
+*  upgrade to latest lit/haunted ([211bc67](https://github.com/neovici/cosmoz-utils/commit/211bc6724e1a4929f60b7a7456f7f6793b63ac84))
+* **deps:** upgrade lit-html & haunted ([115b0f5](https://github.com/neovici/cosmoz-utils/commit/115b0f53f37567566733ce2eb0bbb7dbc588f950))
+* **directives/portal:** convert to lit-html@2 ([9ebe831](https://github.com/neovici/cosmoz-utils/commit/9ebe831a61c32fa1d3a8258643c651436baceb4c))
+* **measure:** refactor & upgrade ([f657994](https://github.com/neovici/cosmoz-utils/commit/f6579940facd850339e2ab06bc3f389032991522))
+* **ref:** remove ([e07eb30](https://github.com/neovici/cosmoz-utils/commit/e07eb30dcecc7b4b553e65aeefcdf95004b57fc5))
+
+
+### BREAKING CHANGES
+
+* upgrade to latest lit/haunted
+
 # [3.30.0](https://github.com/neovici/cosmoz-utils/compare/v3.29.1...v3.30.0) (2022-05-04)
 
 
