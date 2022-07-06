@@ -1,8 +1,8 @@
 import { html as htm } from 'haunted';
 
-const html = (arr, ...thru) =>
+const html: typeof htm = (arr, ...thru) =>
 	htm(
-		Object.assign(arr, { raw: true }),
+		Object.assign(arr, { raw: true }) as unknown as TemplateStringsArray,
 		...thru
 	);
 
@@ -28,7 +28,7 @@ export const
 	 *
 	 * @return  {TemplateResult}          The lit template result.
 	 */
-	tag = (strings, component, ...values) => html([
+	tag = (strings: string[], component: string, ...values: unknown[]) => html([
 		strings[0] + component + strings[1],
 		...strings.slice(2)
-	], ...values);
+	] as unknown as  TemplateStringsArray, ...values);
