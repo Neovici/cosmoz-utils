@@ -1,6 +1,15 @@
-const CURRENCY_FORMATTERS = {},
-	NUMBER_FORMATTERS = {},
-	_getCurrencyFormatter = function (currency, locale, currencyDisplay = 'code') {
+export interface Amount {
+	amount: number;
+	currency: string;
+}
+
+const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
+	NUMBER_FORMATTERS: Record<string, Intl.NumberFormat> = {},
+	_getCurrencyFormatter = function (
+		currency: string,
+		locale?: string,
+		currencyDisplay = 'code'
+	) {
 		if (currency == null) {
 			return;
 		}
@@ -9,7 +18,7 @@ const CURRENCY_FORMATTERS = {},
 			CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(locale, {
 				style: 'currency',
 				currency,
-				currencyDisplay
+				currencyDisplay,
 			});
 		}
 		return CURRENCY_FORMATTERS[key];
@@ -19,23 +28,19 @@ const CURRENCY_FORMATTERS = {},
 	 * @param {object} potentialAmount Potential amount.
 	 * @returns {boolean} Whether the potential amount is a valid amount object with amount and currency.
 	 */
-	isAmount = function (potentialAmount) {
-		return (
-			potentialAmount != null &&
-			potentialAmount.amount != null &&
-			potentialAmount.currency != null &&
-			typeof potentialAmount.amount === 'number' &&
-			typeof potentialAmount.currency === 'string' &&
-			potentialAmount.currency.length === 3
-		);
-	},
+	isAmount = (potentialAmount: unknown): potentialAmount is Amount =>
+		potentialAmount != null &&
+		typeof potentialAmount === 'object' &&
+		typeof (potentialAmount as { amount: unknown }).amount === 'number' &&
+		typeof (potentialAmount as { currency: unknown }).currency === 'string' &&
+		(potentialAmount as { currency: string }).currency.length === 3,
 	/**
 	 * Render an amount with decimal separator and currency symbol.
 	 * @param	 {object} money Money with amount property and optionally currency property.
 	 * @param	{void|string} locale Locale to format the amount in.
 	 * @return {string} Formatted amount.
 	 */
-	renderAmount = function (money, locale) {
+	renderAmount = (money: Amount | null, locale?: string) => {
 		if (money?.amount == null) {
 			return;
 		}
@@ -57,12 +62,12 @@ const CURRENCY_FORMATTERS = {},
 	 * @param	{void|string} locale Locale to format the amount in.
 	 * @return {string} Formatted number.
 	 */
-	renderNumberAmount = function (money, locale) {
+	renderNumberAmount = (money: Amount, locale?: string) => {
 		const key = locale || '0';
 		if (NUMBER_FORMATTERS[key] == null) {
 			NUMBER_FORMATTERS[key] = new Intl.NumberFormat(locale, {
 				minimumFractionDigits: 2,
-				maximumFractionDigits: 2
+				maximumFractionDigits: 2,
 			});
 		}
 		return NUMBER_FORMATTERS[key].format(money.amount);
@@ -73,9 +78,9 @@ const CURRENCY_FORMATTERS = {},
 	 * @param	 {number} precision Number of decimals to round amount to.
 	 * @return {number} Rounded number.
 	 */
-	round = function (number, precision) {
+	round = (number: number | string, precision: number) => {
 		const fixed = Number(
-			Math.round(number + 'e' + precision) + 'e-' + precision
+			Math.round(Number(number + 'e' + precision)) + 'e-' + precision
 		).toFixed(precision);
 		return parseFloat(fixed);
 	},
@@ -86,7 +91,7 @@ const CURRENCY_FORMATTERS = {},
 	 * @param {number} precision Decimal precision, defaults to 2 decimals.
 	 * @returns {boolean} Whether the amounts are equal regarding amount to the specified precision and the currency.
 	 */
-	amountEquals = function (amount1, amount2, precision = 2) {
+	amountEquals = <T1, T2>(amount1: T1, amount2: T2, precision = 2) => {
 		return (
 			isAmount(amount1) &&
 			isAmount(amount2) &&
@@ -101,5 +106,5 @@ export {
 	renderMoney,
 	renderNumberAmount,
 	round,
-	amountEquals
+	amountEquals,
 };
