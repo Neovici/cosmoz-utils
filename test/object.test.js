@@ -1,7 +1,6 @@
 import { assert } from '@open-wc/testing';
-
-import { prop, props, strProp, merge, omit } from '../lib/object';
-import { identity } from '../lib/function';
+import { identity } from '../src/function';
+import { prop, props, strProp, merge, omit } from '../src/object';
 
 suite('prop', () => {
 	test('prop', () => {
@@ -20,36 +19,49 @@ suite('merge', () => {
 	test('merges', () => {
 		assert.deepEqual(merge({ a: 1 }, { b: 2 }), {
 			a: 1,
-			b: 2
+			b: 2,
 		});
-		assert.deepEqual(merge({
-			a: 1,
-			b: 3
-		}, { b: 2 }), {
-			a: 1,
-			b: 2
-		});
-		assert.deepEqual(merge({
-			a: 1,
-			b: 3
-		}, { b: 2 }, null), {
-			a: 1,
-			b: 2
-		});
+		assert.deepEqual(
+			merge(
+				{
+					a: 1,
+					b: 3,
+				},
+				{ b: 2 }
+			),
+			{
+				a: 1,
+				b: 2,
+			}
+		);
+		assert.deepEqual(
+			merge(
+				{
+					a: 1,
+					b: 3,
+				},
+				{ b: 2 },
+				null
+			),
+			{
+				a: 1,
+				b: 2,
+			}
+		);
 	});
 
 	test('merges objects', () => {
-		assert.deepEqual(merge({ a: { a1: 1 }}, { a: { a2: 2 }}), {
+		assert.deepEqual(merge({ a: { a1: 1 } }, { a: { a2: 2 } }), {
 			a: {
 				a1: 1,
-				a2: 2
-			}
+				a2: 2,
+			},
 		});
 	});
 
 	test('merges array', () => {
-		assert.deepEqual(merge({ a: [1, 2]}, { a: [3, 4]}), {
-			a: [1, 2, 3, 4]
+		assert.deepEqual(merge({ a: [1, 2] }, { a: [3, 4] }), {
+			a: [1, 2, 3, 4],
 		});
 	});
 });
@@ -62,4 +74,3 @@ suite('props', () => {
 		assert.deepEqual(omit(['a', 'b'])({ a: 1, b: 2, c: 3 }), { c: 3 });
 	});
 });
-

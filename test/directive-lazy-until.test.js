@@ -5,7 +5,7 @@ import {
 	fixture,
 	nextFrame
 } from '@open-wc/testing';
-import { lazyUntil } from '../lib/directives/lazy-until';
+import { lazyUntil } from '../src/directives/lazy-until';
 import { until } from 'lit-html/directives/until.js';
 
 suite('lazy-until', () => {

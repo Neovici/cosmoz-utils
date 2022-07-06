@@ -3,7 +3,7 @@ import {
 } from '@open-wc/testing';
 import {
 	ensureDate, isoDate, isoDT, pastDate, renderDate, timeago, toLocalISOString, pad
-} from '../lib/date';
+} from '../src/date';
 
 suite('date', () => {
 	const date = new Date('October 13, 2014 11:13:20'),

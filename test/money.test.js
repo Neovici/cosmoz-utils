@@ -1,7 +1,7 @@
 import { assert } from '@open-wc/testing';
 import {
 	amountEquals, isAmount, renderAmount, renderNumberAmount, renderMoney
-} from '../lib/money';
+} from '../src/money';
 /* eslint-disable no-loss-of-precision */
 
 suite('money utils', () => {

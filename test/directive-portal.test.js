@@ -5,7 +5,7 @@ import {
 	fixture,
 	nextFrame
 } from '@open-wc/testing';
-import { portal } from '../lib/directives/portal';
+import { portal } from '../src/directives/portal';
 
 customElements.define(
 	'test-portal',

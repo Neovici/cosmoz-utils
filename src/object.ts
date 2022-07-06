@@ -5,11 +5,12 @@ import { identity } from './function';
 type Rec<K extends PropertyKey = PropertyKey, V = any> = Record<K, V>;
 
 export function prop(): typeof identity;
+export function prop(a: '' | null | false | undefined | 0): typeof identity;
 export function prop<K extends PropertyKey>(
 	key: K
 ): <O extends Rec<K>>(obj: O) => O[K];
 export function prop<K extends PropertyKey>(key?: K) {
-	if (key == null) {
+	if (!key) {
 		return identity;
 	}
 	return <O extends Rec<K>>(obj: O) => obj[key];

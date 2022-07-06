@@ -1,4 +1,4 @@
-import { usePromise } from '../lib/hooks/use-promise';
+import { usePromise } from '../src/hooks/use-promise';
 import { component } from 'haunted';
 import {
 	assert,

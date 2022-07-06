@@ -3,7 +3,7 @@ import {
 } from '@open-wc/testing';
 import {
 	anyTrue, concat, ifElse, inArray, isEqual, isEmpty, toFixed
-} from '../lib/template';
+} from '../src/template';
 
 suite('template utils', () => {
 	test('anyTrue', () => {

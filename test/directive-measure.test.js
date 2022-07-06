@@ -1,6 +1,6 @@
 import { component } from 'haunted';
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
-import { measure } from '../lib/directives/measure';
+import { measure } from '../src/directives/measure';
 import { spy, match } from 'sinon';
 
 const select = (el) => el.querySelectorAll('span'),
