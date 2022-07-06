@@ -1,8 +1,6 @@
-import {
-	component, html
-} from 'haunted';
+import { component, html } from 'haunted';
 
-const Spinner = () => html`<style>
+export const Spinner = () => html`<style>
 	@keyframes rotating {
 		100% {
 			transform: rotate(360deg);
