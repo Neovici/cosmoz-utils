@@ -50,6 +50,19 @@
 			"@commitlint/config-conventional"
 		]
 	},
+	"exports": {
+		".": "./dist/index.js",
+		"./object": "./dist/object.js",
+		"./function": "./dist/function.js",
+		"./array": "./dist/array.js",
+		"./promise": "./dist/promise.js",
+		"./tag": "./dist/tag.js",
+		"./reduce": "./dist/reduce/index.js",
+		"./elements": "./dist/elements/index.js",
+		"./elements/*": "./dist/elements/*.js",
+		"./directives/*": "./dist/directives/*.js",
+		"./hooks/*": "./dist/hooks/*.js"
+	},
 	"dependencies": {
 		"haunted": "^5.0.0"
 	},
