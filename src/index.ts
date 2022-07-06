@@ -15,7 +15,11 @@
  * @param  {class} superclass the class to extend
  * @return {class}            a new class
  */
-const mixin = (helpers, superclass) => {
+
+import { hauntedPolymer, Constructor } from './haunted-polymer';
+
+
+const mixin = <H, S extends object>(helpers:H, superclass: Constructor<S>) => {
 	/**
 	 * @polymer
 	 * @mixinClass
@@ -25,11 +29,10 @@ const mixin = (helpers, superclass) => {
 	return MixedElement;
 };
 
-import * as Template from './lib/template';
-import * as DateUtils from './lib/date';
-import * as Money from './lib/money';
+import * as Template from './template';
+import * as DateUtils from './date';
+import * as Money from './money';
 
-import { hauntedPolymer } from './lib/haunted-polymer';
 
 // TODO remove deprecated Date export [issue #34]
 export {
@@ -41,4 +44,4 @@ export {
 	DateUtils as Date
 };
 
-export * from './lib/tagged';
+export * from './tagged';
