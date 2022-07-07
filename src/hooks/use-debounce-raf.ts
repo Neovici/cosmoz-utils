@@ -1,7 +1,4 @@
-import {
-	useState,
-	useEffect
-} from 'haunted';
+import { useState, useEffect } from 'haunted';
 
 /**
  * Debounces a value by updating it via a double requestAnimationFrame call.
@@ -18,16 +15,13 @@ import {
  * @param {T} value the value to debounce
  * @returns {T} the debounced value
  */
-export const useDebounceRaf = value => {
+export const useDebounceRaf = <T>(value: T) => {
 	// State and setters for debounced value
-	const [debouncedValue, setDebouncedValue] = useState(value);
+	const [debouncedValue, setDebouncedValue] = useState(() => value);
 
 	useEffect(
 		() => {
-			/**
-			 * @type {?number}
-			 */
-			let double;
+			let double: number;
 
 			// Update debounced value after double RAF
 			const handler = requestAnimationFrame(() => {
