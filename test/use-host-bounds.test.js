@@ -1,4 +1,4 @@
-import { useHostBounds } from '../src/hooks/use-host-bounds.js';
+import { useHostBounds } from '../src/hooks/use-host-bounds';
 import { component } from 'haunted';
 import { assert, html, fixtureSync, nextFrame } from '@open-wc/testing';
 
