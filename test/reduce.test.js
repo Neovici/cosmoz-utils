@@ -6,7 +6,7 @@ import {
 	action,
 	reduce,
 	type
-} from '../lib/reduce';
+} from '../src/reduce';
 
 suite('reduce', () => {
 	suite('action', () => {

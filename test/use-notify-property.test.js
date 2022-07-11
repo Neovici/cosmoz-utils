@@ -1,11 +1,6 @@
-import { useNotifyProperty } from '../lib/hooks/use-notify-property.js';
+import { useNotifyProperty } from '../src/hooks/use-notify-property.js';
 import { component } from 'haunted';
-import {
-	assert,
-	html,
-	fixture,
-	oneEvent
-} from '@open-wc/testing';
+import { assert, html, fixture, oneEvent } from '@open-wc/testing';
 
 customElements.define(
 	'use-notify-property',

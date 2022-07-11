@@ -7,8 +7,10 @@ import { useMemo } from 'haunted';
  * @param {Object} meta - The source object
  * @returns {Object} The memoized object.
  */
-export const useMeta = meta => {
+export const useMeta = <T>(meta: T) => {
 	const ref = useMemo(() => ({}), []);
-	return useMemo(() => Object.assign(ref, meta), [ref, ...Object.values(meta)]);
+	return useMemo(
+		() => Object.assign(ref, meta) as T,
+		[ref, ...Object.values(meta)]
+	);
 };
-

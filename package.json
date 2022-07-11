@@ -16,12 +16,16 @@
 	},
 	"license": "Apache-2.0",
 	"author": "Neovici Development",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"directories": {
 		"test": "test"
 	},
+	"files": [
+		"dist/"
+	],
 	"scripts": {
-		"lint": "eslint --cache --ext .js .",
+		"lint": "tsc && eslint --cache .",
+		"build": "tsc -p tsconfig.build.json",
 		"start": "wds",
 		"test": "wtr --coverage",
 		"test:watch": "wtr --watch",
@@ -41,13 +45,23 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": [
-		"lib/**/*.js"
-	],
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
 		]
+	},
+	"exports": {
+		".": "./dist/index.js",
+		"./object": "./dist/object.js",
+		"./function": "./dist/function.js",
+		"./array": "./dist/array.js",
+		"./promise": "./dist/promise.js",
+		"./tag": "./dist/tag.js",
+		"./reduce": "./dist/reduce/index.js",
+		"./elements": "./dist/elements/index.js",
+		"./elements/*": "./dist/elements/*.js",
+		"./directives/*": "./dist/directives/*.js",
+		"./hooks/*": "./dist/hooks/*.js"
 	},
 	"dependencies": {
 		"haunted": "^5.0.0"

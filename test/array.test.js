@@ -3,7 +3,7 @@ import { assert } from '@open-wc/testing';
 import {
 	array,
 	without
-} from '../lib/array';
+} from '../src/array';
 
 
 const empty = [],

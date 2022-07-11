@@ -33,6 +33,9 @@ jobs:
     - name: ESLint
       run: npm run lint
 
+    - name: Build
+      run: npm run build
+
     - name: Test and report
       env:
         CC_TEST_REPORTER_ID: 1cb11188c73191890ed71e51f3fdced4a4deb41631033a84cd56eba9dc0355d0

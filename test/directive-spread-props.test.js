@@ -1,6 +1,6 @@
 import { component } from 'haunted';
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
-import { spreadProps } from '../lib/directives/spread-props';
+import { spreadProps } from '../src/directives/spread-props';
 
 customElements.define(
 	'test-spread-props',

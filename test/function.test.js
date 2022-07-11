@@ -3,7 +3,7 @@ import { assert } from '@open-wc/testing';
 import {
 	identity,
 	or
-} from '../lib/function';
+} from '../src/function';
 
 
 const obj = {};

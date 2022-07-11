@@ -1,6 +1,6 @@
 import { assert, aTimeout, nextFrame } from '@open-wc/testing';
 import { spy } from 'sinon';
-import { debounce$, limit$, ManagedPromise } from '../lib/promise';
+import { debounce$, limit$, ManagedPromise } from '../src/promise';
 
 const nextMicrotask = () => new Promise(queueMicrotask);
 

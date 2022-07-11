@@ -3,7 +3,7 @@ import {
 } from '@open-wc/testing';
 import {
 	mixin, Template, Date
-} from '../index.js';
+} from '../src/index';
 
 import {
 	html as polymerHtml, PolymerElement

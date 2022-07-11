@@ -1,4 +1,4 @@
-import { useDebounceRaf } from '../lib/hooks/use-debounce-raf';
+import { useDebounceRaf } from '../src/hooks/use-debounce-raf';
 import { component } from 'haunted';
 import {
 	assert,

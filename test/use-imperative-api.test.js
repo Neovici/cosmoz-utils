@@ -1,4 +1,4 @@
-import { useImperativeApi } from '../lib/hooks/use-imperative-api';
+import { useImperativeApi } from '../src/hooks/use-imperative-api';
 import {
 	component, useCallback
 } from 'haunted';

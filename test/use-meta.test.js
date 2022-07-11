@@ -1,4 +1,4 @@
-import { useMeta } from '../lib/hooks/use-meta.js';
+import { useMeta } from '../src/hooks/use-meta';
 import { component } from 'haunted';
 import {
 	assert,
