@@ -1,14 +1,17 @@
 import { useEffect } from 'haunted';
 
-export const useHandleDrop = (el, callback) =>
+export const useHandleDrop = <T extends HTMLElement>(
+	el: T,
+	callback: (e: DragEvent)=>void
+) =>
 	useEffect(() => {
-		const dragStop = event => {
+		const dragStop = (event: DragEvent) => {
 				event.stopPropagation();
 				event.preventDefault();
 			},
-			handleDrop = event => {
+			handleDrop = (event: DragEvent) => {
 				dragStop(event);
-				callback(event);
+				callback(event as DragEvent);
 			};
 
 		el.addEventListener('dragenter', dragStop);

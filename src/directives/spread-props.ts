@@ -1,7 +1,7 @@
-import { nothing } from 'lit-html';
+import { AttributePart, noChange } from 'lit-html';
 import { Directive, directive } from 'lit-html/directive.js';
 
-const undefs = (prev, obj) => {
+const undefs = <T extends object, P extends object>(prev?: T, obj?: P) => {
 	if (!prev || !obj) {
 		return;
 	}
@@ -11,20 +11,22 @@ const undefs = (prev, obj) => {
 	);
 };
 
-class SpreadPropsDirective extends Directive {
+class SpreadPropsDirective<T extends object> extends Directive {
+	_props?: T;
+
 	render() {
-		return nothing;
+		return noChange;
 	}
 
-	update(part, [props]) {
+	update(part: AttributePart, [props]: [T]) {
 		if (this._props !== props) {
 			Object.assign(
 				part.element,
-				undefs(this._props, props),
+				undefs<T, T>(this._props, props),
 				(this._props = props)
 			);
 		}
-		return nothing;
+		return noChange;
 	}
 }
 
