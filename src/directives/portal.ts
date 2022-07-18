@@ -1,24 +1,32 @@
-import { html, nothing, render } from 'lit-html';
+import { html, nothing, render, Part, ChildPart } from 'lit-html';
 import { AsyncDirective, directive } from 'lit-html/async-directive.js';
 import {
 	setChildPartValue,
 	clearPart,
 	removePart,
 } from 'lit-html/directive-helpers.js';
+
+type ChildPartCC = new (...args: unknown[]) => ChildPart;
+
 const createMarker = () => document.createComment(''),
-	ChildPart = render(nothing, new DocumentFragment()).constructor;
+	ChildPartC = render(nothing, new DocumentFragment())
+		.constructor as ChildPartCC;
 
 /**
  * Helper element with a customizable disconnect behavior.
  */
 class DisconnectObserver extends HTMLElement {
+	onDisconnect?: () => void;
 	disconnectedCallback() {
-		this.onDisconnect();
+		this.onDisconnect?.();
 	}
 }
 customElements.define('disconnect-observer', DisconnectObserver);
 
 class PortalDirective extends AsyncDirective {
+	_op?: ChildPart;
+	_outlet?: HTMLElement;
+	_content?: Part;
 	render() {
 		return html`<disconnect-observer
 			.onDisconnect=${() => {
@@ -27,21 +35,21 @@ class PortalDirective extends AsyncDirective {
 			}}
 		></disconnect-observer>`;
 	}
-	update(part, [content, outlet = document.body]) {
+	update(part: Part, [content, outlet = document.body]: [Part, HTMLElement]) {
 		this.updateOutlet(outlet, content);
 		return this.render();
 	}
 
-	updateOutlet(outlet, content) {
+	updateOutlet(outlet: HTMLElement, content: Part) {
 		if (this._outlet !== outlet) {
 			this.clearOutlet();
 		}
 		this._outlet = outlet;
-		const part = (this._op ??= new ChildPart(
+		const part = (this._op ??= new ChildPartC(
 			outlet.appendChild(createMarker()),
 			outlet.appendChild(createMarker())
 		));
-		setChildPartValue(part, (this.content = content));
+		setChildPartValue(part, (this._content = content));
 	}
 
 	clearOutlet() {
@@ -58,7 +66,9 @@ class PortalDirective extends AsyncDirective {
 		this.clearOutlet();
 	}
 	reconnected() {
-		this.updateOutlet(this._outlet, this._content);
+		if (this._outlet && this._content) {
+			this.updateOutlet(this._outlet, this._content);
+		}
 	}
 }
 

@@ -1,18 +1,22 @@
-import { nothing } from 'lit-html';
+import { AttributePart, noChange } from 'lit-html';
 import { Directive, directive } from 'lit-html/directive.js';
 import { array } from '../array';
 
+type OnMeasure = (rects: DOMRectReadOnly[]) => void;
+type Select = (el: HTMLElement) => HTMLElement[];
+
 class MeasureDirective extends Directive {
+	_observer?: ResizeObserver;
 	render() {
-		return nothing;
+		return noChange;
 	}
 
-	update(part, [select, onMeasure]) {
+	update(part: AttributePart, [select, onMeasure]: [Select, OnMeasure]) {
 		this.measure(part.element, select, onMeasure);
-		return nothing;
+		return noChange;
 	}
 
-	measure(element, select, onMeasure) {
+	measure(element: HTMLElement, select: Select, onMeasure: OnMeasure) {
 		this._observer?.disconnect();
 		const elements = array(select(element)),
 			observer = (this._observer = new ResizeObserver((entries) => {
@@ -25,7 +29,7 @@ class MeasureDirective extends Directive {
 				);
 			}));
 		elements.forEach((el) => observer.observe(el));
-		return nothing;
+		return noChange;
 	}
 }
 
