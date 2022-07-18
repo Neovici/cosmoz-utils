@@ -4,59 +4,61 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 /* eslint-disable import/group-exports */
-import { noChange } from 'lit-html';
+import { Part, noChange } from 'lit-html';
 import { directive } from 'lit-html/directive.js';
 import { isPrimitive } from 'lit-html/directive-helpers.js';
 import { AsyncDirective } from 'lit-html/async-directive.js';
 
-class PseudoWeakRef {
-  constructor(ref) {
-    this._ref = ref;
-  }
-  disconnect() {
-    this._ref = undefined;
-  }
-  reconnect(ref) {
-    this._ref = ref;
-  }
-  deref() {
-    return this._ref;
-  }
+class PseudoWeakRef<T> {
+	private _ref?: T;
+	constructor(ref: T) {
+		this._ref = ref;
+	}
+	disconnect() {
+		this._ref = undefined;
+	}
+	reconnect(ref: T) {
+		this._ref = ref;
+	}
+	deref() {
+		return this._ref;
+	}
 }
 
 class Pauser {
-   _promise = undefined;
-   _resolve = undefined;
-  get() {
-    return this._promise;
-  }
-  pause() {
-    this._promise ??= new Promise((resolve) => (this._resolve = resolve));
-  }
-  resume() {
-    this._resolve?.();
-    this._promise = this._resolve = undefined;
-  }
+	private _promise?: Promise<void> = undefined;
+	private _resolve?: () => void = undefined;
+	get() {
+		return this._promise;
+	}
+	pause() {
+		this._promise ??= new Promise((resolve) => (this._resolve = resolve));
+	}
+	resume() {
+		this._resolve?.();
+		this._promise = this._resolve = undefined;
+	}
 }
 
-const isPromise = (x) => {
-		return !isPrimitive(x) && typeof x.then === 'function';
+const isPromise = (x: unknown) => {
+		return (
+			!isPrimitive(x) && typeof (x as { then?: unknown }).then === 'function'
+		);
 	},
-	// Effectively infinity, but a SMI.
 	_infinity = 0x3fffffff;
 
 export class UntilDirective extends AsyncDirective {
-	__lastRenderedIndex = _infinity;
-	__values = [];
-	__weakThis = new PseudoWeakRef(this);
-	__pauser = new Pauser();
+	private __lastRenderedIndex: number = _infinity;
+	private __values: unknown[] = [];
+	private __weakThis = new PseudoWeakRef(this);
+	private __pauser = new Pauser();
 
-	render(...args) {
+	render(...args: Array<unknown>) {
 		return args.find((x) => !isPromise(x)) ?? noChange;
 	}
 
 	// eslint-disable-next-line max-statements
-	update(_part, args) {
+	override update(_part: Part, args: Array<unknown>) {
 		const previousValues = this.__values,
 			previousLength = previousValues.length;
 		this.__values = args;
