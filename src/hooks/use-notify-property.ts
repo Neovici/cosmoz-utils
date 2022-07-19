@@ -4,13 +4,12 @@ import { useHost } from './use-host';
 const UPPER = /([A-Z])/gu,
 	/* Emulate polymer notify props */
 	notifyProperty = <
-		T extends HTMLElement,
-		K extends Extract<keyof T, string>,
-		V extends T[K]
+		K extends string,
+		T extends HTMLElement & { [key in K]?: unknown }
 	>(
 		host: T,
 		name: K,
-		value: V
+		value: T[K]
 	) => {
 		// this is required to make polymer double-binding recognize the change
 		// @see https://github.com/Polymer/polymer/blob/76c71e186ecc605294c3575dd31ac7983a8b3ae3/lib/mixins/property-effects.js#L382
