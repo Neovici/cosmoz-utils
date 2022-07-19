@@ -1,7 +1,7 @@
 import { Hook, hook, State } from 'haunted';
 
 export const useImperativeApi = hook(
-	class<A, D extends unknown[] = unknown[]> extends Hook<[A, D[]], void> {
+	class<A, D = unknown> extends Hook<[A, D[]], void> {
 		values: D[];
 		constructor(id: number, state: State, api: A, values: D[]) {
 			super(id, state);
