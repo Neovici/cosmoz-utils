@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/neovici/cosmoz-utils/compare/v5.6.0...v5.7.0) (2022-07-19)
+
+
+### Features
+
+* **exports:** add money ([3c623b7](https://github.com/neovici/cosmoz-utils/commit/3c623b7c362c136af39a56038e41b701603533b4))
+
 # [5.6.0](https://github.com/neovici/cosmoz-utils/compare/v5.5.0...v5.6.0) (2022-07-19)
 
 
