@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/neovici/cosmoz-utils/compare/v5.5.0...v5.6.0) (2022-07-19)
+
+
+### Features
+
+* **exports:** add date ([91f8b03](https://github.com/neovici/cosmoz-utils/commit/91f8b03164f1ca5c7ae455994265a7e2745e3112))
+
 # [5.5.0](https://github.com/neovici/cosmoz-utils/compare/v5.4.0...v5.5.0) (2022-07-19)
 
 
