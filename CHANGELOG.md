@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/neovici/cosmoz-utils/compare/v5.4.0...v5.5.0) (2022-07-19)
+
+
+### Features
+
+* **exports:** template ([f6e7a19](https://github.com/neovici/cosmoz-utils/commit/f6e7a192934b49e0e9b3ce5d999445d4d5b25488))
+
 # [5.4.0](https://github.com/neovici/cosmoz-utils/compare/v5.3.0...v5.4.0) (2022-07-19)
 
 
