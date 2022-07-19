@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/neovici/cosmoz-utils/compare/v5.3.0...v5.4.0) (2022-07-19)
+
+
+### Features
+
+* **use-notify-property:** tweak definition ([fa84c63](https://github.com/neovici/cosmoz-utils/commit/fa84c6317f2e5b3abca93649360494b6ce9c9850))
+
 # [5.3.0](https://github.com/neovici/cosmoz-utils/compare/v5.2.0...v5.3.0) (2022-07-19)
 
 
