@@ -52,10 +52,11 @@
 	},
 	"exports": {
 		".": "./dist/index.js",
-		"./object": "./dist/object.js",
-		"./function": "./dist/function.js",
 		"./array": "./dist/array.js",
+		"./date": "./dist/date.js",
+		"./function": "./dist/function.js",
 		"./promise": "./dist/promise.js",
+		"./object": "./dist/object.js",
 		"./tag": "./dist/tag.js",
 		"./template": "./dist/template.js",
 		"./reduce": "./dist/reduce/index.js",
