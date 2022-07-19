@@ -57,6 +57,7 @@
 		"./array": "./dist/array.js",
 		"./promise": "./dist/promise.js",
 		"./tag": "./dist/tag.js",
+		"./template": "./dist/template.js",
 		"./reduce": "./dist/reduce/index.js",
 		"./elements": "./dist/elements/index.js",
 		"./elements/*": "./dist/elements/*.js",
