@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/neovici/cosmoz-utils/compare/v5.2.0...v5.3.0) (2022-07-19)
+
+
+### Features
+
+* **use-imperative-api:** fix def ([43cd532](https://github.com/neovici/cosmoz-utils/commit/43cd5328b0f4f73ef446b08cbda387f10d8d007b))
+
 # [5.2.0](https://github.com/neovici/cosmoz-utils/compare/v5.1.0...v5.2.0) (2022-07-19)
 
 
