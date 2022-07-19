@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/neovici/cosmoz-utils/compare/v5.1.0...v5.2.0) (2022-07-19)
+
+
+### Features
+
+* upgrade `tagged` def ([a24bf59](https://github.com/neovici/cosmoz-utils/commit/a24bf596ee76e684eebd0e92861245832b145503))
+
 # [5.1.0](https://github.com/neovici/cosmoz-utils/compare/v5.0.0...v5.1.0) (2022-07-18)
 
 
