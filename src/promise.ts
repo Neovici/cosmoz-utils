@@ -1,6 +1,5 @@
 /* eslint-disable import/group-exports */
-
-type Pfn<T> = (arg: T) => void;
+type Pfn<T> = (arg?: T) => void;
 interface Pfnc<T> {
 	resolve: Pfn<T>;
 	reject: Pfn<T>;
@@ -12,6 +11,8 @@ export class ManagedPromise<T> extends Promise<T> {
 		Object.assign(this, handles);
 		callback?.(handles.resolve, handles.reject);
 	}
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	resolve: Pfn<T> = () => {};
 }
 
 export const timeout$ = (ms?: number) =>
