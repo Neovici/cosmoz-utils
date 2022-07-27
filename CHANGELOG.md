@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/neovici/cosmoz-utils/compare/v5.7.0...v5.8.0) (2022-07-27)
+
+
+### Features
+
+* **promise:** update type def ([6ba3143](https://github.com/neovici/cosmoz-utils/commit/6ba3143aaf695b66174c090e295a0c5dc5326f9f))
+
 # [5.7.0](https://github.com/neovici/cosmoz-utils/compare/v5.6.0...v5.7.0) (2022-07-19)
 
 
