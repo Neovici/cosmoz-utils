@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { identity } from './function';
 
 const isIterable = (x: unknown): x is Iterable<unknown> => {

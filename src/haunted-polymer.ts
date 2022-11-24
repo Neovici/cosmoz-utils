@@ -6,6 +6,10 @@ import {
 } from 'haunted';
 import { ChildPart } from 'lit-html';
 
+export type Constructor<T> = new (...args: any[]) => T;
+type Hook = <T>(a: T) => void;
+type Obj = Record<string, any>;
+
 class Scheduler<
 	P extends object,
 	T extends HTMLElement | ChildPart,
@@ -37,10 +41,6 @@ interface PElement extends HTMLElement {
 	_hauntedUpdateFrameHandle: ReturnType<typeof requestAnimationFrame>;
 	_onlyHauntedPropertiesChanged<T extends Obj>(changedProps: T): boolean;
 }
-
-export type Constructor<T> = new (...args: any[]) => T;
-type Hook = <T>(a: T) => void;
-type Obj = Record<string, any>;
 
 /**
  * Creates a mixin that mixes a haunted hook with a polymer component.
