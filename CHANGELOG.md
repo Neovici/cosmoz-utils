@@ -1,3 +1,11 @@
+## [5.8.1](https://github.com/neovici/cosmoz-utils/compare/v5.8.0...v5.8.1) (2022-11-24)
+
+
+### Bug Fixes
+
+* **array:** add better typing ([520ac46](https://github.com/neovici/cosmoz-utils/commit/520ac4681c478b6b661ffbd8b6f3af2c0e665518))
+* update deps & type defs ([5829505](https://github.com/neovici/cosmoz-utils/commit/58295058ebfc26b61497c01fdb0f0cd75315ecd4))
+
 # [5.8.0](https://github.com/neovici/cosmoz-utils/compare/v5.7.0...v5.8.0) (2022-07-27)
 
 
