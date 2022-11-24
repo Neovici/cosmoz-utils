@@ -5,10 +5,12 @@ import {
 	ComponentOrVirtualComponent,
 } from 'haunted';
 import { ChildPart } from 'lit-html';
+import { Rec } from './object';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Constructor<T> = new (...args: any[]) => T;
 type Hook = <T>(a: T) => void;
-type Obj = Record<string, any>;
+type Obj = Rec<string>;
 
 class Scheduler<
 	P extends object,

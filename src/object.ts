@@ -2,7 +2,7 @@
 import { identity } from './function';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Rec<K extends PropertyKey = PropertyKey, V = any> = Record<K, V>;
+export type Rec<K extends PropertyKey = PropertyKey, V = any> = Record<K, V>;
 
 export function prop(): typeof identity;
 export function prop(a: '' | null | false | undefined | 0): typeof identity;
