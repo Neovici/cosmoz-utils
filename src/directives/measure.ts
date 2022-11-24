@@ -3,7 +3,7 @@ import { Directive, directive } from 'lit-html/directive.js';
 import { array } from '../array';
 
 type OnMeasure = (rects: DOMRectReadOnly[]) => void;
-type Select = (el: HTMLElement) => HTMLElement[];
+type Select = <T extends Element>(el: T) => T[];
 
 class MeasureDirective extends Directive {
 	_observer?: ResizeObserver;
@@ -16,7 +16,7 @@ class MeasureDirective extends Directive {
 		return noChange;
 	}
 
-	measure(element: HTMLElement, select: Select, onMeasure: OnMeasure) {
+	measure(element: Element, select: Select, onMeasure: OnMeasure) {
 		this._observer?.disconnect();
 		const elements = array(select(element)),
 			observer = (this._observer = new ResizeObserver((entries) => {

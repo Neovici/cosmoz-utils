@@ -5,6 +5,12 @@ import {
 	ComponentOrVirtualComponent,
 } from 'haunted';
 import { ChildPart } from 'lit-html';
+import { Rec } from './object';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Constructor<T> = new (...args: any[]) => T;
+type Hook = <T>(a: T) => void;
+type Obj = Rec<string>;
 
 class Scheduler<
 	P extends object,
@@ -29,18 +35,14 @@ interface PElement extends HTMLElement {
 	disconnectedCallback(): void;
 	set<T>(path: string, value: T): void;
 	setProperties<T>(props: T): void;
-	_propertiesChanged<P, C, O>(
+	_propertiesChanged<P extends Obj, C extends Obj, O>(
 		currentProps: P,
 		changedProps: C,
 		oldProps: O
 	): void;
 	_hauntedUpdateFrameHandle: ReturnType<typeof requestAnimationFrame>;
-	_onlyHauntedPropertiesChanged<T>(changedProps: T): boolean;
+	_onlyHauntedPropertiesChanged<T extends Obj>(changedProps: T): boolean;
 }
-
-export type Constructor<T> = new (...args: any[]) => T;
-type Hook = <T>(a: T) => void;
-type Obj = Record<string, any>;
 
 /**
  * Creates a mixin that mixes a haunted hook with a polymer component.

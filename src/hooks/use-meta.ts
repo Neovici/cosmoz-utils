@@ -1,4 +1,5 @@
 import { useMemo } from 'haunted';
+import { Rec } from '../object';
 
 /**
  * Copies properties of an Object into a memoized object.
@@ -7,7 +8,7 @@ import { useMemo } from 'haunted';
  * @param {Object} meta - The source object
  * @returns {Object} The memoized object.
  */
-export const useMeta = <T>(meta: T) => {
+export const useMeta = <T extends Rec>(meta: T) => {
 	const ref = useMemo(() => ({}), []);
 	return useMemo(
 		() => Object.assign(ref, meta) as T,
