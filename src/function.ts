@@ -22,3 +22,12 @@ export const constant =
 		let result;
 		return (...args: A[]) => (result ??= check(args) ? fn(...args) : undefined);
 	};
+
+export function invoke<A, R, F extends (...args: A[]) => R>(
+	fn: F,
+	...args: A[]
+): ReturnType<F>;
+export function invoke<F>(fn: F, ...args: unknown[]): F;
+export function invoke<F, A>(fn: F, ...args: A[]) {
+	return typeof fn === 'function' ? fn(...args) : fn;
+}

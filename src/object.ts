@@ -1,4 +1,4 @@
-/* eslint-disable func-style, no-use-before-define, import/group-exports */
+/* eslint-disable no-use-before-define, import/group-exports */
 import { identity } from './function';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
