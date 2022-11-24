@@ -7,7 +7,7 @@ import { useMemo } from 'haunted';
  * @param {Object} meta - The source object
  * @returns {Object} The memoized object.
  */
-export const useMeta = <T>(meta: T) => {
+export const useMeta = <T extends Record<PropertyKey, any>>(meta: T) => {
 	const ref = useMemo(() => ({}), []);
 	return useMemo(
 		() => Object.assign(ref, meta) as T,
