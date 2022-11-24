@@ -1,3 +1,10 @@
+# [5.9.0](https://github.com/neovici/cosmoz-utils/compare/v5.8.1...v5.9.0) (2022-11-24)
+
+
+### Features
+
+* **function:** add invoke helper ([904ee06](https://github.com/neovici/cosmoz-utils/commit/904ee06f0cda7976df3d6a7d63027fc5d09980a0))
+
 ## [5.8.1](https://github.com/neovici/cosmoz-utils/compare/v5.8.0...v5.8.1) (2022-11-24)
 
 
