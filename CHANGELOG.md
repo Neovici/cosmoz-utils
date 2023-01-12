@@ -1,3 +1,10 @@
+## [5.9.1](https://github.com/neovici/cosmoz-utils/compare/v5.9.0...v5.9.1) (2023-01-12)
+
+
+### Bug Fixes
+
+* **array:** improve array typedef ([d0f09c4](https://github.com/neovici/cosmoz-utils/commit/d0f09c42191ad860e74a4be2d4118f579251c928))
+
 # [5.9.0](https://github.com/neovici/cosmoz-utils/compare/v5.8.1...v5.9.0) (2022-11-24)
 
 
