@@ -6,7 +6,7 @@ const isIterable = (x: unknown): x is Iterable<unknown> => {
 
 export function array(): [];
 export function array(arr: null): [];
-export function array<T>(arr: T[]): T[];
+export function array<T>(arr?: T | T[]): T[];
 export function array<T>(arr: Iterable<T>): T[];
 export function array<T = unknown>(arr: T): T[];
 export function array(arr?: unknown) {
