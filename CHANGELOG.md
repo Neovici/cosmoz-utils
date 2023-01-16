@@ -1,3 +1,10 @@
+# [5.10.0](https://github.com/neovici/cosmoz-utils/compare/v5.9.1...v5.10.0) (2023-01-16)
+
+
+### Features
+
+* **location:** utils for parsing urls ([fee5dc1](https://github.com/neovici/cosmoz-utils/commit/fee5dc1bc1fc0dede5726ef728f57ac1e0839fd9))
+
 ## [5.9.1](https://github.com/neovici/cosmoz-utils/compare/v5.9.0...v5.9.1) (2023-01-12)
 
 
