@@ -1,3 +1,10 @@
+## [5.10.2](https://github.com/neovici/cosmoz-utils/compare/v5.10.1...v5.10.2) (2023-01-16)
+
+
+### Bug Fixes
+
+* **singleParse:** handle array params ([9bf6664](https://github.com/neovici/cosmoz-utils/commit/9bf666479000cf970fa30c4f683deb289cb9875e))
+
 ## [5.10.1](https://github.com/neovici/cosmoz-utils/compare/v5.10.0...v5.10.1) (2023-01-16)
 
 
