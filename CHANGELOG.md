@@ -1,3 +1,10 @@
+## [5.10.1](https://github.com/neovici/cosmoz-utils/compare/v5.10.0...v5.10.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* missing package export for location utils ([c9f3677](https://github.com/neovici/cosmoz-utils/commit/c9f3677e875e0e9ec9d5a4ed73ff4065ddeea67f))
+
 # [5.10.0](https://github.com/neovici/cosmoz-utils/compare/v5.9.1...v5.10.0) (2023-01-16)
 
 
