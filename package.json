@@ -55,6 +55,7 @@
 		"./array": "./dist/array.js",
 		"./date": "./dist/date.js",
 		"./function": "./dist/function.js",
+		"./location": "./dist/location.js",
 		"./money": "./dist/money.js",
 		"./promise": "./dist/promise.js",
 		"./object": "./dist/object.js",
