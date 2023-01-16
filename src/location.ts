@@ -5,8 +5,17 @@ export const hashUrl = () =>
 			location.hash.replace(/^#!?/iu, '').replace('%23', '#'),
 			location.origin
 		),
-	singleParse = (hashParam: string, codec = identity) =>
-		codec(new URLSearchParams(hashUrl().hash.replace('#', '')).get(hashParam)),
+	singleParse = (hashParam: string, codec = identity) => {
+		const values = new URLSearchParams(hashUrl().hash.replace('#', '')).getAll(
+			hashParam
+		);
+
+		if (Array.isArray(values)) {
+			return values.length === 1 ? codec(values[0]) : values.map(codec);
+		}
+
+		return codec(values);
+	},
 	multiParse = (hashParam: string, codec = identity) => {
 		const params = Array.from(
 			new URLSearchParams(hashUrl().hash.replace('#', '')).entries()
