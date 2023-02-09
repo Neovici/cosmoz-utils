@@ -55,6 +55,7 @@
 		"./array": "./dist/array.js",
 		"./date": "./dist/date.js",
 		"./function": "./dist/function.js",
+		"./number": "./dist/number.js",
 		"./location": "./dist/location.js",
 		"./money": "./dist/money.js",
 		"./promise": "./dist/promise.js",
@@ -68,6 +69,7 @@
 		"./hooks/*": "./dist/hooks/*.js"
 	},
 	"dependencies": {
+		"eslint-import-resolver-typescript": "^3.2.7",
 		"haunted": "^5.0.0"
 	},
 	"devDependencies": {
