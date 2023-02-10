@@ -69,7 +69,6 @@
 		"./hooks/*": "./dist/hooks/*.js"
 	},
 	"dependencies": {
-		"eslint-import-resolver-typescript": "^3.2.7",
 		"haunted": "^5.0.0"
 	},
 	"devDependencies": {
