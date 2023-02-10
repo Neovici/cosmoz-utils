@@ -1,3 +1,10 @@
+# [5.11.0](https://github.com/neovici/cosmoz-utils/compare/v5.10.2...v5.11.0) (2023-02-10)
+
+
+### Features
+
+* **number:** parse & round ([540dafb](https://github.com/neovici/cosmoz-utils/commit/540dafb4c16f4bc3ce0dd8b61eb7eb7e286ac1f1))
+
 ## [5.10.2](https://github.com/neovici/cosmoz-utils/compare/v5.10.1...v5.10.2) (2023-01-16)
 
 
