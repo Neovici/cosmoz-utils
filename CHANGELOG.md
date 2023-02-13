@@ -1,3 +1,10 @@
+## [5.12.1](https://github.com/neovici/cosmoz-utils/compare/v5.12.0...v5.12.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* export memoize utils ([e544d1d](https://github.com/neovici/cosmoz-utils/commit/e544d1d2c071abe2bcfdef2cf14778179cd28576))
+
 # [5.12.0](https://github.com/neovici/cosmoz-utils/compare/v5.11.0...v5.12.0) (2023-02-13)
 
 
