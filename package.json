@@ -69,6 +69,7 @@
 		"./hooks/*": "./dist/hooks/*.js",
 		"./memoize": "./dist/memoize.js"
 	},
+	
 	"dependencies": {
 		"haunted": "^5.0.0"
 	},
