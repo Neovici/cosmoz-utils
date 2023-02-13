@@ -1,4 +1,4 @@
-import { memoize, memooize, memoooize } from '@neovici/cosmoz-utils/memoize';
+import { memoize, memooize, memoooize } from '../src/memoize';
 import { assert } from '@open-wc/testing';
 
 suite('memoize', () => {
