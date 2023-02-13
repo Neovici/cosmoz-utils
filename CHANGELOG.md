@@ -1,3 +1,10 @@
+# [5.12.0](https://github.com/neovici/cosmoz-utils/compare/v5.11.0...v5.12.0) (2023-02-13)
+
+
+### Features
+
+* copied the memoize.js in utils ([#129](https://github.com/neovici/cosmoz-utils/issues/129)) ([c118bef](https://github.com/neovici/cosmoz-utils/commit/c118bef5836a386dc291cda055dd14484e3a85de))
+
 # [5.11.0](https://github.com/neovici/cosmoz-utils/compare/v5.10.2...v5.11.0) (2023-02-10)
 
 
