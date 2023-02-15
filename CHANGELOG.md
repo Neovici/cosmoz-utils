@@ -1,3 +1,10 @@
+# [5.13.0](https://github.com/neovici/cosmoz-utils/compare/v5.12.1...v5.13.0) (2023-02-15)
+
+
+### Features
+
+* **number:** add patterns ([fbf6941](https://github.com/neovici/cosmoz-utils/commit/fbf6941a9aff4068e9a11a9699503e1b137997c6))
+
 ## [5.12.1](https://github.com/neovici/cosmoz-utils/compare/v5.12.0...v5.12.1) (2023-02-13)
 
 
