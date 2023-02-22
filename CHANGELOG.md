@@ -1,3 +1,10 @@
+## [5.14.1](https://github.com/neovici/cosmoz-utils/compare/v5.14.0...v5.14.1) (2023-02-22)
+
+
+### Bug Fixes
+
+* **applyMove:** return items ([b501400](https://github.com/neovici/cosmoz-utils/commit/b50140079debc51bf223eadb9a4c93a9e3770d16))
+
 # [5.14.0](https://github.com/neovici/cosmoz-utils/compare/v5.13.0...v5.14.0) (2023-02-22)
 
 
