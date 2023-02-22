@@ -5,6 +5,7 @@ import { parse } from '../number';
 export const applyMove = <T>(list: T[], from: number, to: number) => {
 	const newList = list.slice();
 	newList.splice(to + (from >= to ? 0 : -1), 0, newList.splice(from, 1)[0]);
+	return newList;
 };
 
 export const useDragItems = (onMove?: (from: number, to: number) => void) => {
