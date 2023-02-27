@@ -1,8 +1,13 @@
+import { assert } from '@open-wc/testing';
 import {
-	assert
-} from '@open-wc/testing';
-import {
-	ensureDate, isoDate, isoDT, pastDate, renderDate, timeago, toLocalISOString, pad
+	ensureDate,
+	isoDate,
+	isoDT,
+	pastDate,
+	renderDate,
+	timeago,
+	toLocalISOString,
+	pad,
 } from '../src/date';
 
 suite('date', () => {
@@ -64,7 +69,6 @@ suite('date', () => {
 				return d;
 			})();
 
-
 		assert.include(timeago(secondsAgo), 'seconds ago');
 		assert.include(timeago(secondsAgo, 'sv'), 'sekunder sedan');
 
@@ -88,11 +92,13 @@ suite('date', () => {
 		assert.equal(timeago(new Date('bogus')), '');
 	});
 
-
 	test('toLocalISOString', () => {
 		const someDate = new Date('2019-06-26T12:00:00Z'),
 			tz = someDate.getTimezoneOffset() / 60;
-		assert.equal(toLocalISOString(someDate), `2019-06-26T${ pad(12 - tz) }:00:00.000`);
+		assert.equal(
+			toLocalISOString(someDate),
+			`2019-06-26T${pad(12 - tz)}:00:00.000`
+		);
 		assert.equal(toLocalISOString('not a date'), null);
 	});
 });

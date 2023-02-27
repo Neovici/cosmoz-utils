@@ -60,6 +60,7 @@
 		"./money": "./dist/money.js",
 		"./promise": "./dist/promise.js",
 		"./object": "./dist/object.js",
+		"./string": "./dist/string.js",
 		"./tag": "./dist/tag.js",
 		"./template": "./dist/template.js",
 		"./reduce": "./dist/reduce/index.js",
