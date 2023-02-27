@@ -1,3 +1,10 @@
+# [5.15.0](https://github.com/neovici/cosmoz-utils/compare/v5.14.1...v5.15.0) (2023-02-27)
+
+
+### Features
+
+* **string:** add some string utils ([c738f16](https://github.com/neovici/cosmoz-utils/commit/c738f166063729caa35a4abda97626ad8faece23))
+
 ## [5.14.1](https://github.com/neovici/cosmoz-utils/compare/v5.14.0...v5.14.1) (2023-02-22)
 
 
