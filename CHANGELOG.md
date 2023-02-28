@@ -1,3 +1,10 @@
+# [5.16.0](https://github.com/neovici/cosmoz-utils/compare/v5.15.0...v5.16.0) (2023-02-28)
+
+
+### Features
+
+* **use-notify-property:** add optional deps argument ([7c7cc42](https://github.com/neovici/cosmoz-utils/commit/7c7cc4255cfae9d83186fc0e96becd1ffd1f7106))
+
 # [5.15.0](https://github.com/neovici/cosmoz-utils/compare/v5.14.1...v5.15.0) (2023-02-27)
 
 
