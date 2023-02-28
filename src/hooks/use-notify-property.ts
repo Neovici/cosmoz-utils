@@ -28,12 +28,13 @@ const UPPER = /([A-Z])/gu,
 		V extends T[K]
 	>(
 		name: K,
-		value: V
+		value: V,
+		deps: unknown[] = [value]
 	) => {
 		const host = useHost<T>();
 		useEffect(() => {
 			notifyProperty(host, name, value);
-		}, [value]);
+		}, deps);
 	};
 
 export { notifyProperty, useNotifyProperty };
