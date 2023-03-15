@@ -14,7 +14,8 @@ const undefs = <T extends object, P extends object>(prev?: T, obj?: P) => {
 class SpreadPropsDirective<T extends object> extends Directive {
 	_props?: T;
 
-	render() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	render(props: T) {
 		return noChange;
 	}
 
