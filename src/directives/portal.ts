@@ -27,7 +27,8 @@ class PortalDirective extends AsyncDirective {
 	_op?: ChildPart;
 	_outlet?: HTMLElement;
 	_content?: Part;
-	render() {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	render(content: Part, outlet: HTMLElement = document.body) {
 		return html`<disconnect-observer
 			.onDisconnect=${() => {
 				this.isConnected = false;
@@ -35,9 +36,9 @@ class PortalDirective extends AsyncDirective {
 			}}
 		></disconnect-observer>`;
 	}
-	update(part: Part, [content, outlet = document.body]: [Part, HTMLElement]) {
+	update(part: Part, [content, outlet = document.body]: [Part, HTMLElement?]) {
 		this.updateOutlet(outlet, content);
-		return this.render();
+		return this.render(content, outlet);
 	}
 
 	updateOutlet(outlet: HTMLElement, content: Part) {
