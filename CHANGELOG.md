@@ -1,3 +1,10 @@
+# [5.18.0](https://github.com/neovici/cosmoz-utils/compare/v5.17.0...v5.18.0) (2023-03-15)
+
+
+### Features
+
+* **prop,strProp:** widen object type ([87cc7cc](https://github.com/neovici/cosmoz-utils/commit/87cc7cc97a0a23746b84f5488b2941ef502dc725))
+
 # [5.17.0](https://github.com/neovici/cosmoz-utils/compare/v5.16.1...v5.17.0) (2023-03-15)
 
 
