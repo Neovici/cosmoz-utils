@@ -1,3 +1,10 @@
+## [5.16.1](https://github.com/neovici/cosmoz-utils/compare/v5.16.0...v5.16.1) (2023-03-15)
+
+
+### Bug Fixes
+
+* **directives:** include params in def ([2d428ff](https://github.com/neovici/cosmoz-utils/commit/2d428ffc885b36e0adb54e120f0e211e904311c9))
+
 # [5.16.0](https://github.com/neovici/cosmoz-utils/compare/v5.15.0...v5.16.0) (2023-02-28)
 
 
