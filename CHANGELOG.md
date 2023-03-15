@@ -1,3 +1,10 @@
+# [5.17.0](https://github.com/neovici/cosmoz-utils/compare/v5.16.1...v5.17.0) (2023-03-15)
+
+
+### Features
+
+* **portal:** set content type to unknown ([ead4b45](https://github.com/neovici/cosmoz-utils/commit/ead4b45b0efa70cd90ccff63cd645825cec40fe2))
+
 ## [5.16.1](https://github.com/neovici/cosmoz-utils/compare/v5.16.0...v5.16.1) (2023-03-15)
 
 
