@@ -4,6 +4,7 @@ export const parse = (value?: string | number) => {
 	const num = parseFloat(
 		value
 			.replace(/[\s]/gu, '')
+			.replace(/^−/gu, '-')
 			.replace(/[,.]/gu, '.')
 			.replace(/[.](?=.*[.])/gu, '')
 	);
