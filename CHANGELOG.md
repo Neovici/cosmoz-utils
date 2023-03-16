@@ -1,3 +1,10 @@
+# [5.19.0](https://github.com/neovici/cosmoz-utils/compare/v5.18.0...v5.19.0) (2023-03-16)
+
+
+### Features
+
+* **number:** handle alternate minus in parse ([da87123](https://github.com/neovici/cosmoz-utils/commit/da8712333848f3e22a5f8b1aa3df2626901143d8))
+
 # [5.18.0](https://github.com/neovici/cosmoz-utils/compare/v5.17.0...v5.18.0) (2023-03-15)
 
 
