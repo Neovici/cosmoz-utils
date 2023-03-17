@@ -1,3 +1,10 @@
+# [5.20.0](https://github.com/neovici/cosmoz-utils/compare/v5.19.0...v5.20.0) (2023-03-17)
+
+
+### Features
+
+* update to ts 5 ([daab6e1](https://github.com/neovici/cosmoz-utils/commit/daab6e13b31bc5aa75eb5fb3220ee009474bdf82))
+
 # [5.19.0](https://github.com/neovici/cosmoz-utils/compare/v5.18.0...v5.19.0) (2023-03-16)
 
 
