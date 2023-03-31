@@ -1,3 +1,10 @@
 {
-	"extends": "./node_modules/@neovici/cfg/eslint"
+	"extends": "./node_modules/@neovici/cfg/eslint",
+	"settings": {
+		"import/resolver": {
+			"typescript": {
+				"project": "tsconfig.json"
+			}
+		}
+	}
 }
