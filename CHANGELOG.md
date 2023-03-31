@@ -1,3 +1,10 @@
+# [5.21.0](https://github.com/neovici/cosmoz-utils/compare/v5.20.0...v5.21.0) (2023-03-31)
+
+
+### Features
+
+* upgrade deps ([6f0bf8b](https://github.com/neovici/cosmoz-utils/commit/6f0bf8b4d8fecb9471d19807a58aac7ed6eae42b))
+
 # [5.20.0](https://github.com/neovici/cosmoz-utils/compare/v5.19.0...v5.20.0) (2023-03-17)
 
 
