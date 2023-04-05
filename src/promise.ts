@@ -48,7 +48,7 @@ interface Task<T, P> {
 	resolve: (a: P) => void;
 	reject: (a: P) => void;
 }
-export const limit$ = <T extends [], P>(
+export const limit$ = <T extends unknown[], P>(
 	fn: (...args: T) => PromiseLike<P>,
 	limit: number
 ) => {
@@ -83,7 +83,7 @@ export const limit$ = <T extends [], P>(
 };
 
 type Pending<T, P> = Pick<Task<T, P>, 'resolve' | 'reject'>;
-export const debounce$ = <T extends [], P>(
+export const debounce$ = <T extends unknown[], P>(
 	fn: (...args: T) => PromiseLike<P>,
 	ms?: number
 ) => {
