@@ -25,10 +25,12 @@ export function array(arr?: unknown) {
 	return [arr];
 }
 
-// TODO: Improve definition
 export const without =
-	(exclude: unknown, predicate = identity) =>
-	(list: unknown) => {
+	<E, L>(
+		exclude: E[],
+		predicate: <T extends E | L>(value: T) => unknown = identity
+	) =>
+	(list: L[]) => {
 		const excludes = array(exclude).map(predicate);
 		return array(list).filter((value) => !excludes.includes(predicate(value)));
 	};
