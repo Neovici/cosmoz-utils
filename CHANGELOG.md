@@ -1,3 +1,10 @@
+# [5.22.0](https://github.com/neovici/cosmoz-utils/compare/v5.21.0...v5.22.0) (2023-04-05)
+
+
+### Features
+
+* **array:** adjust type def ([3964cb6](https://github.com/neovici/cosmoz-utils/commit/3964cb6574e713f829d03acc7f48a2bb05d50b0b))
+
 # [5.21.0](https://github.com/neovici/cosmoz-utils/compare/v5.20.0...v5.21.0) (2023-03-31)
 
 
