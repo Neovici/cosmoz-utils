@@ -1,3 +1,10 @@
+# [5.23.0](https://github.com/neovici/cosmoz-utils/compare/v5.22.0...v5.23.0) (2023-04-05)
+
+
+### Features
+
+* **promise:** adjust type defs ([05796e8](https://github.com/neovici/cosmoz-utils/commit/05796e81d33bf95293020c93c126a18160672af5))
+
 # [5.22.0](https://github.com/neovici/cosmoz-utils/compare/v5.21.0...v5.22.0) (2023-04-05)
 
 
