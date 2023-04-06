@@ -89,7 +89,7 @@ export const debounce$ = <T extends unknown[], P>(
 ) => {
 	let timeoutId: ReturnType<typeof setTimeout>;
 	const pending: Pending<T, P>[] = [];
-	return (...args: T) =>
+	return (...args: T): Promise<P> =>
 		new Promise((res, rej) => {
 			clearTimeout(timeoutId);
 			timeoutId = setTimeout(() => {
