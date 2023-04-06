@@ -1,3 +1,10 @@
+# [5.24.0](https://github.com/neovici/cosmoz-utils/compare/v5.23.0...v5.24.0) (2023-04-06)
+
+
+### Features
+
+* **promise:** adjust debounce type ([b524f65](https://github.com/neovici/cosmoz-utils/commit/b524f652bf9934068d5fb7a3a92ca159c2244806))
+
 # [5.23.0](https://github.com/neovici/cosmoz-utils/compare/v5.22.0...v5.23.0) (2023-04-05)
 
 
