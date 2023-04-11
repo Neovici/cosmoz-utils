@@ -14,14 +14,15 @@ export const constant =
 	or =
 		<A, F extends OrFn<A>>(...fns: F[]) =>
 		(...args: A[]) =>
-			fns.reduce((res, fn) => res || fn(...args), false),
-	once = <A, R, F extends OnceFn<A, R>>(
-		fn: F,
-		check: OnceCheckFn<A> = constTrue
-	) => {
-		let result;
-		return (...args: A[]) => (result ??= check(args) ? fn(...args) : undefined);
-	};
+			fns.reduce((res, fn) => res || fn(...args), false);
+
+export const once = <A, R>(
+	fn: OnceFn<A, R>,
+	check: OnceCheckFn<A> = constTrue
+) => {
+	let result;
+	return (...args: A[]) => (result ??= check(args) ? fn(...args) : undefined);
+};
 
 export function invoke<A, R, F extends (...args: A[]) => R>(
 	fn: F,
