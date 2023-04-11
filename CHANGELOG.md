@@ -1,3 +1,10 @@
+# [5.25.0](https://github.com/neovici/cosmoz-utils/compare/v5.24.1...v5.25.0) (2023-04-11)
+
+
+### Features
+
+* adjust once type ([813c8cd](https://github.com/neovici/cosmoz-utils/commit/813c8cd2812707dfc81f5e3c5f77ecab9ded42b3))
+
 ## [5.24.1](https://github.com/neovici/cosmoz-utils/compare/v5.24.0...v5.24.1) (2023-04-11)
 
 
