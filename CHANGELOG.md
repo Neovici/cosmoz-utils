@@ -1,3 +1,10 @@
+## [5.24.1](https://github.com/neovici/cosmoz-utils/compare/v5.24.0...v5.24.1) (2023-04-11)
+
+
+### Bug Fixes
+
+* update once def ([b1ec907](https://github.com/neovici/cosmoz-utils/commit/b1ec907546091c2f63af639119d1350bcb8a6db5))
+
 # [5.24.0](https://github.com/neovici/cosmoz-utils/compare/v5.23.0...v5.24.0) (2023-04-06)
 
 
