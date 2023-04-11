@@ -1,7 +1,9 @@
 type OrFn<T> = (...args: T[]) => boolean;
 
-type OnceFn<A, R> = (...args: A[]) => R;
-type OnceCheckFn<T> = (args: T[]) => boolean | undefined;
+type Arr = any[];
+
+type OnceFn<A extends Arr, R> = (...args: A) => R;
+type OnceCheckFn<A extends Arr> = (args: A) => boolean | undefined;
 
 export const constant =
 		<T>(v?: T) =>
@@ -16,12 +18,12 @@ export const constant =
 		(...args: A[]) =>
 			fns.reduce((res, fn) => res || fn(...args), false);
 
-export const once = <A, R>(
-	fn: OnceFn<A, R>,
+export const once = <A extends Arr, R, F extends OnceFn<A, R>>(
+	fn: F,
 	check: OnceCheckFn<A> = constTrue
 ) => {
 	let result;
-	return (...args: A[]) => (result ??= check(args) ? fn(...args) : undefined);
+	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
 };
 
 export function invoke<A, R, F extends (...args: A[]) => R>(
