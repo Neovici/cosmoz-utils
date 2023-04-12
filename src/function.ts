@@ -18,7 +18,7 @@ export const constant =
 		(...args: A[]) =>
 			fns.reduce((res, fn) => res || fn(...args), false);
 
-export const once = <A extends Arr, R, F extends OnceFn<A, R>>(
+export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	fn: F,
 	check: OnceCheckFn<A> = constTrue
 ) => {
