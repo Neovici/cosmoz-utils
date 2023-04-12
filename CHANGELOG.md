@@ -1,3 +1,10 @@
+## [5.25.1](https://github.com/neovici/cosmoz-utils/compare/v5.25.0...v5.25.1) (2023-04-12)
+
+
+### Bug Fixes
+
+* **once:** type default ([387f140](https://github.com/neovici/cosmoz-utils/commit/387f1401531428913ce3b5ecaacf74957f8f6421))
+
 # [5.25.0](https://github.com/neovici/cosmoz-utils/compare/v5.24.1...v5.25.0) (2023-04-11)
 
 
