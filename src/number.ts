@@ -15,5 +15,5 @@ export const parse = (value?: string | number) => {
 export const round = (num: number, precision = 2) =>
 	parse(num.toFixed(precision));
 
-export const patternNumber = /[0-9.,e-]/u;
-export const patternInteger = /[0-9]/u;
+export const patternNumber = /^[0-9.,e-]+$/u;
+export const patternInteger = /^[0-9]+$/u;

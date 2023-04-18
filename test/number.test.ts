@@ -1,5 +1,5 @@
 import { assert } from '@open-wc/testing';
-import { parse, round } from '../src/number';
+import { parse, round, patternInteger } from '../src/number';
 
 suite('number', () => {
 	test('parse', () => {
@@ -11,5 +11,11 @@ suite('number', () => {
 	});
 	test('round', () => {
 		assert.equal(round(12.3158), 12.32);
+	});
+	test('patternInteger', () => {
+		assert.isTrue(patternInteger.test('120'));
+		assert.isTrue(patternInteger.test('1'));
+		assert.isFalse(patternInteger.test(''));
+		assert.isFalse(patternInteger.test('-120'));
 	});
 });
