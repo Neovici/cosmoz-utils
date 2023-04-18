@@ -1,3 +1,10 @@
+## [5.25.2](https://github.com/neovici/cosmoz-utils/compare/v5.25.1...v5.25.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* **number:** correct pattern ([a64f6e6](https://github.com/neovici/cosmoz-utils/commit/a64f6e6c0e18d8fe80161177f3872a214b32e7cd))
+
 ## [5.25.1](https://github.com/neovici/cosmoz-utils/compare/v5.25.0...v5.25.1) (2023-04-12)
 
 
