@@ -1,3 +1,10 @@
+# [5.27.0](https://github.com/neovici/cosmoz-utils/compare/v5.26.0...v5.27.0) (2023-04-19)
+
+
+### Features
+
+* **array:** adjust without inference ([08fc39a](https://github.com/neovici/cosmoz-utils/commit/08fc39aafe185cfd2de0e0a8d0997e3ac02cda04))
+
 # [5.26.0](https://github.com/neovici/cosmoz-utils/compare/v5.25.2...v5.26.0) (2023-04-19)
 
 
