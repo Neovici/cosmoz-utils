@@ -1,3 +1,10 @@
+# [5.26.0](https://github.com/neovici/cosmoz-utils/compare/v5.25.2...v5.26.0) (2023-04-19)
+
+
+### Features
+
+* **array/without:** adjust params typing ([8bdde57](https://github.com/neovici/cosmoz-utils/commit/8bdde57da40f872463da6c772d1c119857fb3fc0))
+
 ## [5.25.2](https://github.com/neovici/cosmoz-utils/compare/v5.25.1...v5.25.2) (2023-04-18)
 
 
