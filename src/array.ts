@@ -30,7 +30,7 @@ export const without =
 		exclude: E | E[],
 		predicate: <T extends E | L>(value: T) => unknown = identity
 	) =>
-	(list: L[]) => {
+	<T extends L = L>(list: T | T[]) => {
 		const excludes = array(exclude).map(predicate);
 		return array(list).filter((value) => !excludes.includes(predicate(value)));
 	};
