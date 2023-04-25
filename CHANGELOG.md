@@ -1,3 +1,10 @@
+# [5.28.0](https://github.com/neovici/cosmoz-utils/compare/v5.27.0...v5.28.0) (2023-04-25)
+
+
+### Features
+
+* **array:** without type fallback ([ea58b2c](https://github.com/neovici/cosmoz-utils/commit/ea58b2c75157c86b032a641dc5eca8c664dcb308))
+
 # [5.27.0](https://github.com/neovici/cosmoz-utils/compare/v5.26.0...v5.27.0) (2023-04-19)
 
 
