@@ -26,7 +26,7 @@ export function array(arr?: unknown) {
 }
 
 export const without =
-	<E, L>(
+	<E, L = E>(
 		exclude: E | E[],
 		predicate: <T extends E | L>(value: T) => unknown = identity
 	) =>
