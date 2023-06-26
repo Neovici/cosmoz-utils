@@ -34,3 +34,8 @@ export const without =
 		const excludes = array(exclude).map(predicate);
 		return array(list).filter((value) => !excludes.includes(predicate(value)));
 	};
+
+export const chunk = <T>(list: T[], size: number) =>
+	[...Array(Math.ceil(list.length / size)).keys()].map((i) =>
+		list.slice(i * size, (i + 1) * size)
+	);
