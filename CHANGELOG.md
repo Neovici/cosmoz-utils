@@ -1,3 +1,10 @@
+# [5.29.0](https://github.com/neovici/cosmoz-utils/compare/v5.28.0...v5.29.0) (2023-06-26)
+
+
+### Features
+
+* **array:** add chunk ([b92abc7](https://github.com/neovici/cosmoz-utils/commit/b92abc7754de805171f71c1273d9117e8a29005c))
+
 # [5.28.0](https://github.com/neovici/cosmoz-utils/compare/v5.27.0...v5.28.0) (2023-04-25)
 
 
