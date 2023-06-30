@@ -1,3 +1,10 @@
+# [5.30.0](https://github.com/neovici/cosmoz-utils/compare/v5.29.0...v5.30.0) (2023-06-30)
+
+
+### Features
+
+* **directives:** provide and consume context values ([4ab4897](https://github.com/neovici/cosmoz-utils/commit/4ab4897e32fe9c0dfb8a4d870ba00ea27905d300))
+
 # [5.29.0](https://github.com/neovici/cosmoz-utils/compare/v5.28.0...v5.29.0) (2023-06-26)
 
 
