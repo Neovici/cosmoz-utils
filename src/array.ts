@@ -39,3 +39,8 @@ export const chunk = <T>(list: T[], size: number) =>
 	[...Array(Math.ceil(list.length / size)).keys()].map((i) =>
 		list.slice(i * size, (i + 1) * size)
 	);
+
+export const intersect = <T>(list: T[][]) => {
+	const [first = [], ...rest] = list.sort();
+	return first.filter((e) => rest.every((arr) => arr.includes(e)));
+};
