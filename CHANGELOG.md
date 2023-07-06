@@ -1,3 +1,10 @@
+# [5.31.0](https://github.com/neovici/cosmoz-utils/compare/v5.30.0...v5.31.0) (2023-07-06)
+
+
+### Features
+
+* **array:** add intersec helper ([229b249](https://github.com/neovici/cosmoz-utils/commit/229b249c01f2a7ed2153facccfecbe3f355005f3))
+
 # [5.30.0](https://github.com/neovici/cosmoz-utils/compare/v5.29.0...v5.30.0) (2023-06-30)
 
 
