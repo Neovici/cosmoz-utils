@@ -1,6 +1,6 @@
 import { assert } from '@open-wc/testing';
 
-import { array, without, chunk } from '../src/array';
+import { array, without, chunk, intersect } from '../src/array';
 
 const empty = [],
 	obj = {};
@@ -35,5 +35,8 @@ suite('array', () => {
 			[4, 5, 6],
 			[7, 8],
 		]);
+	});
+	test('intersect', () => {
+		assert.deepEqual(intersect([[1], [1, 2], [1, 3]]), [1]);
 	});
 });
