@@ -91,6 +91,7 @@ const getValUnitDiff = (
 			hour: 'numeric',
 			minute: 'numeric',
 			second: 'numeric',
+			hourCycle: 'h23'
 		});
 	},
 	/**
