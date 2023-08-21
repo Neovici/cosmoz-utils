@@ -1,3 +1,10 @@
+# [5.33.0](https://github.com/neovici/cosmoz-utils/compare/v5.32.0...v5.33.0) (2023-08-21)
+
+
+### Features
+
+* **spread-props:** adjust type ([72ab067](https://github.com/neovici/cosmoz-utils/commit/72ab067a8af59111ac91d9438ed3d1f6951c8e42))
+
 # [5.32.0](https://github.com/neovici/cosmoz-utils/compare/v5.31.0...v5.32.0) (2023-07-18)
 
 
