@@ -15,11 +15,11 @@ class SpreadPropsDirective<T extends object> extends Directive {
 	_props?: T;
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	render(props: T) {
+	render(props?: T) {
 		return noChange;
 	}
 
-	update(part: AttributePart, [props]: [T]) {
+	update(part: AttributePart, [props]: [T?]) {
 		if (this._props !== props) {
 			Object.assign(
 				part.element,
