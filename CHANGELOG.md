@@ -1,3 +1,10 @@
+# [5.34.0](https://github.com/neovici/cosmoz-utils/compare/v5.33.0...v5.34.0) (2023-08-31)
+
+
+### Features
+
+* **use-drag-items:** add prefix ([8603c9e](https://github.com/neovici/cosmoz-utils/commit/8603c9e88e447895994b1b51dc0ef1024f5c6394))
+
 # [5.33.0](https://github.com/neovici/cosmoz-utils/compare/v5.32.0...v5.33.0) (2023-08-21)
 
 
