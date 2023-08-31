@@ -8,10 +8,35 @@ export const applyMove = <T>(list: T[], from: number, to: number) => {
 	return newList;
 };
 
-export const useDragItems = (onMove?: (from: number, to: number) => void) => {
+const getIndexer = (prefix?: string) => {
+	const key = ['move-index', prefix].filter(Boolean).join('-');
+	return {
+		set(dt: DataTransfer, index: string | number) {
+			const idx = index.toString();
+			dt.setData(key, idx);
+			dt.setData('text/plain', idx);
+		},
+		get(dt: DataTransfer) {
+			return parse(dt.getData(key));
+		},
+		has(dt: DataTransfer) {
+			return dt.types.includes(key);
+		},
+	};
+};
+
+interface Opts {
+	prefix?: string;
+}
+
+export const useDragItems = (
+	onMove?: (from: number, to: number) => void,
+	{ prefix }: Opts = {}
+) => {
 	const meta = useMeta<{ handle?: HTMLElement; onMove?: typeof onMove }>({
 		onMove,
 	});
+	const indexer = getIndexer(prefix);
 
 	return {
 		onDown: useCallback(
@@ -34,11 +59,9 @@ export const useDragItems = (onMove?: (from: number, to: number) => void) => {
 				}
 
 				meta.handle = undefined;
-				const dt = e.dataTransfer as DataTransfer;
-				const idx = index.toString();
+				const dt = e.dataTransfer!;
 				dt.effectAllowed = 'move';
-				dt.setData('move-index', idx);
-				dt.setData('text/plain', idx);
+				indexer.set(dt, index);
 				setTimeout(() => (target.dataset.drag = ''), 0);
 				target.addEventListener(
 					'dragend',
@@ -50,17 +73,16 @@ export const useDragItems = (onMove?: (from: number, to: number) => void) => {
 		),
 
 		onDragEnter: useCallback((e: DragEvent) => {
-			const ctg = e.currentTarget;
-			if (ctg !== e.target) {
-				return;
-			}
-
+			const ctg = e.currentTarget as HTMLElement;
+			const dt = e.dataTransfer as DataTransfer;
+			if (ctg !== e.target || !indexer.has(dt)) return;
 			e.preventDefault();
-			(e.dataTransfer as DataTransfer).dropEffect = 'move';
-			(ctg as HTMLElement).dataset.dragover = '';
+			dt.dropEffect = 'move';
+			ctg.dataset.dragover = '';
 		}, []),
 
 		onDragOver: useCallback((e: DragEvent) => {
+			if (!indexer.has(e.dataTransfer!)) return;
 			e.preventDefault();
 			(e.currentTarget as HTMLElement).dataset.dragover = '';
 		}, []),
@@ -75,10 +97,12 @@ export const useDragItems = (onMove?: (from: number, to: number) => void) => {
 
 		onDrop: useCallback(
 			(e: DragEvent) => {
-				const from =
-					parse((e.dataTransfer as DataTransfer).getData('move-index')) || 0;
-				const to = parse((e.currentTarget as HTMLElement).dataset.index) || 0;
-				delete (e.currentTarget as HTMLElement).dataset.dragover;
+				const ctg = e.currentTarget as HTMLElement;
+				const dt = e.dataTransfer as DataTransfer;
+				delete ctg.dataset.dragover;
+				if (!indexer.has(dt)) return;
+				const from = indexer.get(dt) || 0;
+				const to = parse(ctg.dataset.index) || 0;
 				e.preventDefault();
 				meta.onMove?.(from, to);
 			},
