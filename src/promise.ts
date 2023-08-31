@@ -11,7 +11,7 @@ export class ManagedPromise<T> extends Promise<T> {
 		Object.assign(this, handles);
 		callback?.(handles.resolve, handles.reject);
 	}
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	// eslint-disable-next-line no-empty-function
 	resolve: Pfn<T> = () => {};
 }
 
