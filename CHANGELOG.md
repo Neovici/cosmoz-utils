@@ -1,3 +1,10 @@
+# [5.35.0](https://github.com/neovici/cosmoz-utils/compare/v5.34.0...v5.35.0) (2023-09-05)
+
+
+### Features
+
+* **use-notify-property:** adjust type ([dfe1ed4](https://github.com/neovici/cosmoz-utils/commit/dfe1ed43f0f1e3b57d2ffe02f44a855315d7e1a9))
+
 # [5.34.0](https://github.com/neovici/cosmoz-utils/compare/v5.33.0...v5.34.0) (2023-08-31)
 
 
