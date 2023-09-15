@@ -1,3 +1,10 @@
+# [5.36.0](https://github.com/neovici/cosmoz-utils/compare/v5.35.0...v5.36.0) (2023-09-15)
+
+
+### Features
+
+* **useProperty:** implement ([def312b](https://github.com/neovici/cosmoz-utils/commit/def312b7f841b00598454783c44d839ad4889bf4))
+
 # [5.35.0](https://github.com/neovici/cosmoz-utils/compare/v5.34.0...v5.35.0) (2023-09-05)
 
 
