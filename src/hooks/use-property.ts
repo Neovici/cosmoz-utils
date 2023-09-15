@@ -5,8 +5,8 @@ import { invoke } from '../function';
 import { notifyProperty } from './use-notify-property';
 
 type Init<T> = T | (() => T);
-type Updater<T> = (prev: T) => T;
-type Update<T> = T | Updater<T>;
+type UpdateFn<T> = (prev: T) => T;
+type Update<T> = T | UpdateFn<T>;
 type Setter<T> = (update: Update<T>) => void;
 type Result<T> = [T, Setter<T>];
 
@@ -18,7 +18,7 @@ export function useProperty<T>(prop: string, init?: Init<T>): Result<T> {
 	const setValue = useCallback((update: Update<T>) => {
 		const val = host[prop];
 		const newVal =
-			typeof update === 'function' ? (update as Updater<T>)(val) : update;
+			typeof update === 'function' ? (update as UpdateFn<T>)(val) : update;
 		if (Object.is(val, newVal)) {
 			return;
 		}
