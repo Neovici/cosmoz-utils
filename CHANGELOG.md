@@ -1,3 +1,10 @@
+# [5.37.0](https://github.com/neovici/cosmoz-utils/compare/v5.36.0...v5.37.0) (2023-10-24)
+
+
+### Features
+
+* **promise:** relax type of debounce$ ([660647c](https://github.com/neovici/cosmoz-utils/commit/660647caa8fd50b27237c5083ae7b1ecafe12617))
+
 # [5.36.0](https://github.com/neovici/cosmoz-utils/compare/v5.35.0...v5.36.0) (2023-09-15)
 
 
