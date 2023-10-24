@@ -23,7 +23,7 @@ export const event$ = <E extends Event, P extends Predicate<E>>(
 	target: EventTarget,
 	type: string,
 	predicate?: P,
-	timeout = 300000
+	timeout = 300000,
 ) =>
 	new Promise((resolve, reject) => {
 		let handler: (e: Event) => void;
@@ -39,7 +39,7 @@ export const event$ = <E extends Event, P extends Predicate<E>>(
 					clearTimeout(tid);
 					resolve(e);
 				}
-			})
+			}),
 		);
 	});
 
@@ -50,7 +50,7 @@ interface Task<T, P> {
 }
 export const limit$ = <T extends unknown[], P>(
 	fn: (...args: T) => PromiseLike<P>,
-	limit: number
+	limit: number,
 ) => {
 	const state: Record<'queue' | 'pending', Task<T, P>[]> = {
 			queue: [],
@@ -84,8 +84,8 @@ export const limit$ = <T extends unknown[], P>(
 
 type Pending<T, P> = Pick<Task<T, P>, 'resolve' | 'reject'>;
 export const debounce$ = <T extends unknown[], P>(
-	fn: (...args: T) => PromiseLike<P>,
-	ms?: number
+	fn: (...args: T) => P | PromiseLike<P>,
+	ms?: number,
 ) => {
 	let timeoutId: ReturnType<typeof setTimeout>;
 	const pending: Pending<T, P>[] = [];
@@ -101,7 +101,7 @@ export const debounce$ = <T extends unknown[], P>(
 					},
 					(error) => {
 						currentPending.forEach(({ reject }) => reject(error));
-					}
+					},
 				);
 			}, ms);
 			pending.push({ resolve: res, reject: rej });
