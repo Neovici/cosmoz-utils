@@ -1,3 +1,10 @@
+## [5.37.1](https://github.com/neovici/cosmoz-utils/compare/v5.37.0...v5.37.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* **money:** handle invalid currency ([0a295aa](https://github.com/neovici/cosmoz-utils/commit/0a295aa68c3ac5d6273e15ae10e2ee446ed34928))
+
 # [5.37.0](https://github.com/neovici/cosmoz-utils/compare/v5.36.0...v5.37.0) (2023-10-24)
 
 
