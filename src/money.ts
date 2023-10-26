@@ -8,18 +8,24 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	_getCurrencyFormatter = function (
 		currency: string,
 		locale?: string,
-		currencyDisplay = 'code'
+		currencyDisplay = 'code',
 	) {
 		if (currency == null) {
 			return;
 		}
 		const key = currency.toUpperCase() + (locale || '');
 		if (CURRENCY_FORMATTERS[key] == null) {
-			CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(locale, {
-				style: 'currency',
-				currency,
-				currencyDisplay,
-			});
+			try {
+				CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(locale, {
+					style: 'currency',
+					currency,
+					currencyDisplay,
+				});
+			} catch (e) {
+				// eslint-disable-next-line no-console
+				console.error('Invalid format', e);
+				return;
+			}
 		}
 		return CURRENCY_FORMATTERS[key];
 	},
@@ -80,7 +86,7 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	 */
 	round = (number: number | string, precision: number) => {
 		const fixed = Number(
-			Math.round(Number(number + 'e' + precision)) + 'e-' + precision
+			Math.round(Number(number + 'e' + precision)) + 'e-' + precision,
 		).toFixed(precision);
 		return parseFloat(fixed);
 	},
