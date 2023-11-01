@@ -1,3 +1,11 @@
+# [5.38.0](https://github.com/neovici/cosmoz-utils/compare/v5.37.1...v5.38.0) (2023-11-01)
+
+
+### Features
+
+* update deps ([929bdb5](https://github.com/neovici/cosmoz-utils/commit/929bdb507ac98de61f1e6a9052ad5278b8cb436d))
+* **useAbortSignal:** new hook to help cleanup event listeners and requests ([82f9c30](https://github.com/neovici/cosmoz-utils/commit/82f9c304c8945e593f23f4c309013151dd61ba56))
+
 ## [5.37.1](https://github.com/neovici/cosmoz-utils/compare/v5.37.0...v5.37.1) (2023-10-26)
 
 
