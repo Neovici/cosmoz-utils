@@ -1,3 +1,10 @@
+# [5.39.0](https://github.com/neovici/cosmoz-utils/compare/v5.38.0...v5.39.0) (2023-11-02)
+
+
+### Features
+
+* update deps ([8511a5e](https://github.com/neovici/cosmoz-utils/commit/8511a5eff4406458478bf3957e97cedbd8e75a95))
+
 # [5.38.0](https://github.com/neovici/cosmoz-utils/compare/v5.37.1...v5.38.0) (2023-11-01)
 
 
