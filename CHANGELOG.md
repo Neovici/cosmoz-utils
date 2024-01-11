@@ -1,3 +1,20 @@
+# [6.0.0](https://github.com/neovici/cosmoz-utils/compare/v5.39.0...v6.0.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* adjust Icon type ([5cb0c9f](https://github.com/neovici/cosmoz-utils/commit/5cb0c9f95814a15e5b8c8bd615cfb5d0329bf009))
+
+
+### Features
+
+* update to pion ([3d3dbfe](https://github.com/neovici/cosmoz-utils/commit/3d3dbfee36404db2687649a31ba36214a2874d1a))
+
+
+### BREAKING CHANGES
+
+* Update to pion and allow lit@3
+
 # [5.39.0](https://github.com/neovici/cosmoz-utils/compare/v5.38.0...v5.39.0) (2023-11-02)
 
 
