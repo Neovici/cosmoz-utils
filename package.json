@@ -77,7 +77,7 @@
 		"@commitlint/cli": "^18.0.0",
 		"@commitlint/config-conventional": "^18.0.0",
 		"@neovici/cfg": "^1.15.1",
-		"@open-wc/testing": "^3.1.0",
+		"@open-wc/testing": "^4.0.0",
 		"@polymer/polymer": "^3.3.1",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
