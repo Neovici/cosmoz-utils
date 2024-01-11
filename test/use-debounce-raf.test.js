@@ -1,5 +1,5 @@
 import { useDebounceRaf } from '../src/hooks/use-debounce-raf';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import {
 	assert,
 	html,

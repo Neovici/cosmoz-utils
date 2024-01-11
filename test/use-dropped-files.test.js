@@ -1,5 +1,5 @@
 import { useDroppedFiles } from '../src/hooks/use-dropped-files';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
 
 customElements.define(

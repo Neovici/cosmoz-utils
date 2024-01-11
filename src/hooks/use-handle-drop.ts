@@ -1,4 +1,4 @@
-import { useEffect } from 'haunted';
+import { useEffect } from '@pionjs/pion';
 
 export const useHandleDrop = <T extends HTMLElement>(
 	el: T,

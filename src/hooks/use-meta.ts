@@ -1,4 +1,4 @@
-import { useMemo } from 'haunted';
+import { useMemo } from '@pionjs/pion';
 import { Rec } from '../object';
 
 /**

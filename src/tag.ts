@@ -1,13 +1,12 @@
-import { html as htm } from 'haunted';
+import { html as htm } from 'lit-html';
 
 const html: typeof htm = (arr, ...thru) =>
 	htm(
 		Object.assign(arr, { raw: true }) as unknown as TemplateStringsArray,
-		...thru
+		...thru,
 	);
 
-export const
-	/**
+export const /**
 	 * Dynamic component support for lit-html.
 	 *
 	 * Normally lit-html does not support interpolating the component tag, but we can trick it
@@ -28,7 +27,11 @@ export const
 	 *
 	 * @return  {TemplateResult}          The lit template result.
 	 */
-	tag = (strings: string[], component: string, ...values: unknown[]) => html([
-		strings[0] + component + strings[1],
-		...strings.slice(2)
-	] as unknown as  TemplateStringsArray, ...values);
+	tag = (strings: string[], component: string, ...values: unknown[]) =>
+		html(
+			[
+				strings[0] + component + strings[1],
+				...strings.slice(2),
+			] as unknown as TemplateStringsArray,
+			...values,
+		);

@@ -1,4 +1,4 @@
-import { Hook, hook, State } from 'haunted';
+import { Hook, hook, State } from '@pionjs/pion';
 
 export const useImperativeApi = hook(
 	class<A, D = unknown> extends Hook<[A, D[]], void> {

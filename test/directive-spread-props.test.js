@@ -1,4 +1,4 @@
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
 import { spreadProps } from '../src/directives/spread-props';
 

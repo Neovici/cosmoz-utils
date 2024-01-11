@@ -1,4 +1,4 @@
-import { useEffect } from 'haunted';
+import { useEffect } from '@pionjs/pion';
 import { useHost } from './use-host';
 
 const UPPER = /([A-Z])/gu;

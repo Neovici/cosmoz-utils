@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'haunted';
+import { useEffect, useCallback } from '@pionjs/pion';
 import { useMeta } from './use-meta';
 import { useHost } from './use-host';
 import { invoke } from '../function';

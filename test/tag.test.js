@@ -1,5 +1,5 @@
 import { assert, fixture, nextFrame } from '@open-wc/testing';
-import { component, html, useState } from 'haunted';
+import { component, html, useState } from '@pionjs/pion';
 import { tag } from '../src/tag';
 
 suite('tag', () => {

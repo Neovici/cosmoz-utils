@@ -1,5 +1,5 @@
 import { useHandleDrop } from '../src/hooks/use-handle-drop';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture } from '@open-wc/testing';
 import { spy } from 'sinon';
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'haunted';
+import { useState, useEffect } from '@pionjs/pion';
 
 /**
  * Debounces a value by updating it via a double requestAnimationFrame call.

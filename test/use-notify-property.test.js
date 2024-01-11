@@ -1,5 +1,5 @@
 import { useNotifyProperty } from '../src/hooks/use-notify-property';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture, oneEvent } from '@open-wc/testing';
 
 customElements.define(
