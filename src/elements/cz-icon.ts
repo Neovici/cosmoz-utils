@@ -32,7 +32,7 @@ export const arrowDropDown = svg`<path d="M7 10l5 5 5-5z"></path>`,
 
 customElements.define(
 	'cz-icon',
-	component(renderIcon, {
+	component<Ico>(renderIcon, {
 		observedAttributes: ['width', 'height'],
 	}),
 );
