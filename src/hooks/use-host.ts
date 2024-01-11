@@ -1,4 +1,4 @@
-import { hook, Hook } from 'haunted';
+import { hook, Hook } from '@pionjs/pion';
 
 type UseHost  = <T extends HTMLElement>()=>T;
 

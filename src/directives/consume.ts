@@ -1,5 +1,5 @@
-import { Context, ContextDetail } from 'haunted/lib/create-context';
-import { contextEvent } from 'haunted/lib/symbols';
+import { Context, ContextDetail } from '@pionjs/pion/lib/create-context';
+import { contextEvent } from '@pionjs/pion/lib/symbols';
 import { AttributePart, noChange } from 'lit-html';
 import { AsyncDirective, directive } from 'lit-html/async-directive.js';
 import { ChildPart, DirectiveParameters } from 'lit-html/directive.js';

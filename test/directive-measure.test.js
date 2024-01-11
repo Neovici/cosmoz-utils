@@ -1,4 +1,4 @@
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture, nextFrame } from '@open-wc/testing';
 import { measure } from '../src/directives/measure';
 import { spy, match } from 'sinon';

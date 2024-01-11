@@ -1,4 +1,4 @@
-import { component, html } from 'haunted';
+import { component, html } from '@pionjs/pion';
 
 export const Spinner = () => html`<style>
 	@keyframes rotating {

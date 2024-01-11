@@ -1,5 +1,4 @@
 import { assert } from '@open-wc/testing';
-
 import { array, without, chunk, intersect } from '../src/array';
 
 const empty = [],
@@ -24,9 +23,9 @@ suite('array', () => {
 		assert.lengthOf(
 			without(
 				[{ id: 1 }, { id: 2 }],
-				(o) => o.id
+				(o) => o.id,
 			)([{ id: 1 }, { id: 2 }, { id: 3 }]),
-			1
+			1,
 		);
 	});
 	test('chunk', () => {

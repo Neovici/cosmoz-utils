@@ -1,7 +1,7 @@
 import { assert, fixture, html, nextFrame } from '@open-wc/testing';
 import { PolymerElement, html as polymerHtml } from '@polymer/polymer';
 import { hauntedPolymer } from '../src/haunted-polymer';
-import { useCallback, useMemo } from 'haunted';
+import { useCallback, useMemo } from '@pionjs/pion';
 import { spy } from 'sinon';
 
 suite('haunted polymer', () => {

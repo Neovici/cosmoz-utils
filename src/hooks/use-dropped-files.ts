@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'haunted';
+import { useState, useCallback } from '@pionjs/pion';
 import { useHandleDrop } from './use-handle-drop';
 
 export const useDroppedFiles = <T extends HTMLElement>(el: T) => {

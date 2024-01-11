@@ -3,7 +3,7 @@ import {
 	render,
 	GenericRenderer,
 	ComponentOrVirtualComponent,
-} from 'haunted';
+} from '@pionjs/pion';
 import { ChildPart } from 'lit-html';
 import { Rec } from './object';
 

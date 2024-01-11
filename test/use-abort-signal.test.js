@@ -1,5 +1,5 @@
 import { useAbortSignal } from '../src/hooks/use-abort-signal';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import { assert, html, fixture } from '@open-wc/testing';
 import { spy } from 'sinon';
 

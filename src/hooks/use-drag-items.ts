@@ -1,4 +1,4 @@
-import { useCallback } from 'haunted';
+import { useCallback } from '@pionjs/pion';
 import { useMeta } from './use-meta';
 import { parse } from '../number';
 

@@ -1,5 +1,5 @@
 import { usePromise } from '../src/hooks/use-promise';
-import { component } from 'haunted';
+import { component } from '@pionjs/pion';
 import {
 	assert,
 	html,

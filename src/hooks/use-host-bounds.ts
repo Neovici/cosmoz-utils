@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'haunted';
+import { useLayoutEffect, useState } from '@pionjs/pion';
 import { useHost } from './use-host';
 
 const useHostBounds = () => {

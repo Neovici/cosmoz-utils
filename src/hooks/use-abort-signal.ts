@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'haunted';
+import { useEffect, useMemo } from '@pionjs/pion';
 
 export const useAbortSignal = () => {
 	const { controller, signal } = useMemo(() => {

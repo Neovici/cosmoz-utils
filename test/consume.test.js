@@ -1,5 +1,5 @@
 import { assert, fixture, html } from '@open-wc/testing';
-import { createContext } from 'haunted';
+import { createContext } from '@pionjs/pion';
 import { consume } from '../src/directives/consume';
 
 const Theme = createContext('light');
@@ -11,7 +11,9 @@ customElements.define('app-state-provider', AppState.Provider);
 suite('consume directive', () => {
 	test('gives access to the current context value', async () => {
 		const el = await fixture(
-			html`<theme-provider .value=${'light'}>${consume(Theme)}</theme-provider>`
+			html`<theme-provider .value=${'light'}
+				>${consume(Theme)}</theme-provider
+			>`,
 		);
 		assert.equal(el.textContent, 'light');
 	});
@@ -23,7 +25,9 @@ suite('consume directive', () => {
 
 	test('re-renders when the context value is updated', async () => {
 		const el = await fixture(
-			html`<theme-provider .value=${'light'}>${consume(Theme)}</theme-provider>`
+			html`<theme-provider .value=${'light'}
+				>${consume(Theme)}</theme-provider
+			>`,
 		);
 		el.value = 'dark';
 		assert.equal(el.textContent, 'dark');
@@ -33,7 +37,7 @@ suite('consume directive', () => {
 		const el = await fixture(
 			html`<theme-provider .value=${'light'}
 				><h1 theme=${consume(Theme)}>Heading</h1></theme-provider
-			>`
+			>`,
 		);
 		assert.dom.equal(
 			el,
@@ -41,7 +45,7 @@ suite('consume directive', () => {
                 <h1 theme="light">
                     Heading
                 </h1>
-            </theme-provider>`
+            </theme-provider>`,
 		);
 
 		el.value = 'dark';
@@ -51,7 +55,7 @@ suite('consume directive', () => {
                 <h1 theme="dark">
                     Heading
                 </h1>
-            </theme-provider>`
+            </theme-provider>`,
 		);
 	});
 
@@ -59,19 +63,19 @@ suite('consume directive', () => {
 		const el = await fixture(
 			html`<app-state-provider .value=${{ loggedIn: false }}
 				><span>Logged in:</span> ${consume(AppState, ({ loggedIn }) =>
-					loggedIn ? 'Yes' : 'No'
+					loggedIn ? 'Yes' : 'No',
 				)}</app-state-provider
-			>`
+			>`,
 		);
 		assert.dom.equal(
 			el,
-			'<app-state-provider><span>Logged in:</span> No</app-state-provider>'
+			'<app-state-provider><span>Logged in:</span> No</app-state-provider>',
 		);
 
 		el.value = { loggedIn: true };
 		assert.dom.equal(
 			el,
-			'<app-state-provider><span>Logged in:</span> Yes</app-state-provider>'
+			'<app-state-provider><span>Logged in:</span> Yes</app-state-provider>',
 		);
 	});
 });
