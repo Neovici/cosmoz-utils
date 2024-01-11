@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/neovici/cosmoz-utils/compare/v6.0.0...v6.1.0) (2024-01-11)
+
+
+### Features
+
+* update exported type def ([5f85d61](https://github.com/neovici/cosmoz-utils/commit/5f85d6170d4655fa07872759073a7512622121be))
+
 # [6.0.0](https://github.com/neovici/cosmoz-utils/compare/v5.39.0...v6.0.0) (2024-01-11)
 
 
