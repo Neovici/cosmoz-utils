@@ -5,11 +5,13 @@ type Arr = any[];
 type OnceFn<A extends Arr, R> = (...args: A) => R;
 type OnceCheckFn<A extends Arr> = (args: A) => boolean | undefined;
 
-export const constant =
-		<T>(v?: T) =>
-		() =>
-			v,
-	constTrue = constant(true),
+export function constant(): () => undefined;
+export function constant<T>(v: T): () => T;
+export function constant<T>(v?: T) {
+	return () => v;
+}
+
+export const constTrue = constant<true>(true),
 	constUndefined = constant(),
 	noop = constUndefined,
 	identity = <T>(obj: T) => obj,
@@ -20,7 +22,7 @@ export const constant =
 
 export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	fn: F,
-	check: OnceCheckFn<A> = constTrue
+	check: OnceCheckFn<A> = constTrue,
 ) => {
 	let result;
 	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
