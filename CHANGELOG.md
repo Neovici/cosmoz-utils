@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/neovici/cosmoz-utils/compare/v6.1.0...v6.2.0) (2024-01-29)
+
+
+### Features
+
+* **function/constant:** adjust type ([e1c0da2](https://github.com/neovici/cosmoz-utils/commit/e1c0da2ef368e5d01e566650603d5e3811eb065e))
+
 # [6.1.0](https://github.com/neovici/cosmoz-utils/compare/v6.0.0...v6.1.0) (2024-01-11)
 
 
