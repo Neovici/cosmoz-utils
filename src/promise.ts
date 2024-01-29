@@ -19,27 +19,27 @@ export const timeout$ = (ms?: number) =>
 	new Promise((res) => setTimeout(res, ms));
 
 type Predicate<T extends Event> = (e: T) => boolean;
-export const event$ = <E extends Event, P extends Predicate<E>>(
+export const event$ = <E extends Event, P extends Predicate<E> = Predicate<E>>(
 	target: EventTarget,
 	type: string,
 	predicate?: P,
 	timeout = 300000,
 ) =>
-	new Promise((resolve, reject) => {
-		let handler: (e: Event) => void;
+	new Promise<E>((resolve, reject) => {
+		let handler: (e: E) => void;
 		const tid = setTimeout(() => {
-			target.removeEventListener(type, handler);
+			target.removeEventListener(type, handler as EventListener);
 			reject(new Error('Timeout out'));
 		}, timeout);
 		target.addEventListener(
 			type,
-			(handler = (e: Event) => {
-				if (predicate == null || predicate(e as E)) {
-					target.removeEventListener(type, handler);
+			(handler = (e: E) => {
+				if (predicate == null || predicate(e)) {
+					target.removeEventListener(type, handler as EventListener);
 					clearTimeout(tid);
 					resolve(e);
 				}
-			}),
+			}) as EventListener,
 		);
 	});
 
