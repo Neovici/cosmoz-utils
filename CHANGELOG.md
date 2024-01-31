@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/neovici/cosmoz-utils/compare/v6.3.0...v6.4.0) (2024-01-31)
+
+
+### Features
+
+* hook for dynamic stylesheets ([23881e1](https://github.com/neovici/cosmoz-utils/commit/23881e18040a343b1e8bf2bd7909f790334efe81))
+
 # [6.3.0](https://github.com/neovici/cosmoz-utils/compare/v6.2.0...v6.3.0) (2024-01-29)
 
 
