@@ -333,4 +333,31 @@ suite('money utils', () => {
 			3,
 		);
 	});
+
+	test('renderAmount without decimals ', () => {
+		const formattedAmount = renderAmount(
+			{
+				amount: 100,
+				currency: 'SEK',
+			},
+			'en-GB',
+			0,
+		);
+		assert.isString(formattedAmount);
+		assert.equal(formattedAmount.length, 7);
+	});
+
+	test('renderNumberAmount without decimals ', () => {
+		const formattedAmount = renderNumberAmount(
+			{
+				amount: 100,
+				currency: 'SEK',
+			},
+			'en-GB',
+			0,
+			0,
+		);
+		assert.isString(formattedAmount);
+		assert.equal(formattedAmount.length, 3);
+	});
 });
