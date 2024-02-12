@@ -8,7 +8,7 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	_getCurrencyFormatter = function (
 		currency: string,
 		locale?: string,
-		currencyDisplay = 'code',
+		maximumFractionDigits = 2,
 	) {
 		if (currency == null) {
 			return;
@@ -19,7 +19,8 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 				CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(locale, {
 					style: 'currency',
 					currency,
-					currencyDisplay,
+					currencyDisplay: 'code',
+					maximumFractionDigits,
 				});
 			} catch (e) {
 				// eslint-disable-next-line no-console
@@ -44,13 +45,22 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	 * Render an amount with decimal separator and currency symbol.
 	 * @param	 {object} money Money with amount property and optionally currency property.
 	 * @param	{void|string} locale Locale to format the amount in.
+	 * @param	{number} maximumFractionDigits Maximum number of decimals to display.
 	 * @return {string} Formatted amount.
 	 */
-	renderAmount = (money: Amount | null, locale?: string) => {
+	renderAmount = (
+		money: Amount | null,
+		locale?: string,
+		maximumFractionDigits?: number,
+	) => {
 		if (money?.amount == null) {
 			return;
 		}
-		const formatter = _getCurrencyFormatter(money.currency, locale);
+		const formatter = _getCurrencyFormatter(
+			money.currency,
+			locale,
+			maximumFractionDigits,
+		);
 		if (formatter == null) {
 			return;
 		}
@@ -66,14 +76,21 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	 * Render an amount with decimal separator but without currency symbol.
 	 * @param	 {object} money Money with amount property and optionally currency property.
 	 * @param	{void|string} locale Locale to format the amount in.
+	 * @param	{number} minimumFractionDigits Minimum number of decimals to display.
+	 * @param 	{number} maximumFractionDigits Maximum number of decimals to display.
 	 * @return {string} Formatted number.
 	 */
-	renderNumberAmount = (money: Amount, locale?: string) => {
+	renderNumberAmount = (
+		money: Amount,
+		locale?: string,
+		minimumFractionDigits = 2,
+		maximumFractionDigits = 2,
+	) => {
 		const key = locale || '0';
 		if (NUMBER_FORMATTERS[key] == null) {
 			NUMBER_FORMATTERS[key] = new Intl.NumberFormat(locale, {
-				minimumFractionDigits: 2,
-				maximumFractionDigits: 2,
+				minimumFractionDigits,
+				maximumFractionDigits,
 			});
 		}
 		return NUMBER_FORMATTERS[key].format(money.amount);
