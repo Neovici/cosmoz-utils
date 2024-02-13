@@ -345,6 +345,7 @@ suite('money utils', () => {
 		);
 		assert.isString(formattedAmount);
 		assert.equal(formattedAmount.length, 7);
+		assert.equal(formattedAmount, 'SEK\xa0100');
 	});
 
 	test('renderNumberAmount without decimals ', () => {
@@ -359,5 +360,6 @@ suite('money utils', () => {
 		);
 		assert.isString(formattedAmount);
 		assert.equal(formattedAmount.length, 3);
+		assert.equal(formattedAmount, '100');
 	});
 });
