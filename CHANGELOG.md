@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/neovici/cosmoz-utils/compare/v6.4.0...v6.5.0) (2024-02-13)
+
+
+### Features
+
+* **money:** add min- & maxFractionDigits to renderAmount and renderNumberAmount ([e65c454](https://github.com/neovici/cosmoz-utils/commit/e65c4549d0ea17d67abfb4b94197eb03f68446b2))
+
 # [6.4.0](https://github.com/neovici/cosmoz-utils/compare/v6.3.0...v6.4.0) (2024-01-31)
 
 
