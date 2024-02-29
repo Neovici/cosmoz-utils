@@ -18,8 +18,7 @@
 
 import { hauntedPolymer, Constructor } from './haunted-polymer';
 
-
-const mixin = <H, S extends object>(helpers:H, superclass: Constructor<S>) => {
+const mixin = <H, S extends object>(helpers: H, superclass: Constructor<S>) => {
 	/**
 	 * @polymer
 	 * @mixinClass
@@ -33,15 +32,9 @@ import * as Template from './template';
 import * as DateUtils from './date';
 import * as Money from './money';
 
-
 // TODO remove deprecated Date export [issue #34]
-export {
-	hauntedPolymer,
-	Template,
-	DateUtils,
-	mixin,
-	Money,
-	DateUtils as Date
-};
+export { hauntedPolymer, Template, DateUtils, mixin, Money, DateUtils as Date };
 
-export * from './tagged';
+import { tagged } from './tagged';
+export { tagged, tagged as css };
+export * from './sheet';
