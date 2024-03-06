@@ -1,8 +1,18 @@
-export const
-	memoize = fn => {
-		let
-			lastArg,
+export const memize = (fn) => {
+		let called = false,
 			lastResult;
+		return function () {
+			if (called) {
+				return lastResult;
+			}
+			const result = fn();
+			lastResult = result;
+			called = true;
+			return result;
+		};
+	},
+	memoize = (fn) => {
+		let lastArg, lastResult;
 		return function (arg) {
 			if (lastArg === arg) {
 				return lastResult;
@@ -14,12 +24,8 @@ export const
 			return result;
 		};
 	},
-
-	memooize = fn => {
-		let
-			lastArg1,
-			lastArg2,
-			lastResult;
+	memooize = (fn) => {
+		let lastArg1, lastArg2, lastResult;
 		return function (arg1, arg2) {
 			if (lastArg1 === arg1 && lastArg2 === arg2) {
 				return lastResult;
@@ -32,13 +38,8 @@ export const
 			return result;
 		};
 	},
-
-	memoooize = fn => {
-		let
-			lastArg1,
-			lastArg2,
-			lastArg3,
-			lastResult;
+	memoooize = (fn) => {
+		let lastArg1, lastArg2, lastArg3, lastResult;
 		return function (arg1, arg2, arg3) {
 			if (lastArg1 === arg1 && lastArg2 === arg2 && lastArg3 === arg3) {
 				return lastResult;
