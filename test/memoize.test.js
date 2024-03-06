@@ -1,9 +1,39 @@
-import { memoize, memooize, memoooize } from '../src/memoize';
+import { memize, memoize, memooize, memoooize } from '../src/memoize';
 import { assert } from '@open-wc/testing';
+
+suite('memize', () => {
+	test('memoized function acts as original', () => {
+		const complex = () => 10,
+			complexMemoized = memize(complex);
+
+		assert.equal(complex(), complexMemoized());
+		assert.equal(complexMemoized(), 10);
+	});
+
+	test('memoizes a function with no arguments', () => {
+		let count = 0;
+		const complex = () => count++,
+			complexMemoized = memize(complex);
+
+		complexMemoized();
+		assert.equal(count, 1);
+		complexMemoized();
+		assert.equal(count, 1);
+		complexMemoized();
+		complexMemoized('it');
+		complexMemoized('does');
+		complexMemoized('not', 'matter');
+		complexMemoized();
+		complexMemoized();
+		assert.equal(count, 1);
+		complexMemoized();
+		assert.equal(count, 1);
+	});
+});
 
 suite('memoize', () => {
 	test('memoized function acts as original', () => {
-		const complex = a => a * 10,
+		const complex = (a) => a * 10,
 			complexMemoized = memoize(complex);
 
 		assert.equal(complex(1), complexMemoized(1));
@@ -11,7 +41,7 @@ suite('memoize', () => {
 		assert.equal(complexMemoized(2), 20);
 	});
 
-	test('memoizes a function', () => {
+	test('memoizes a function with one argument', () => {
 		let count = 0;
 		const complex = () => count++,
 			complexMemoized = memoize(complex);
