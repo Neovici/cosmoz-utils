@@ -7,6 +7,7 @@ suite('prop', () => {
 		assert.equal(prop('b')({ b: 2 }), 2);
 		assert.isUndefined(prop('b')({ c: 4 }));
 		assert.equal(prop(''), identity);
+		assert.equal(prop('b')(2), 2);
 	});
 
 	test('strProp', () => {
@@ -27,12 +28,12 @@ suite('merge', () => {
 					a: 1,
 					b: 3,
 				},
-				{ b: 2 }
+				{ b: 2 },
 			),
 			{
 				a: 1,
 				b: 2,
-			}
+			},
 		);
 		assert.deepEqual(
 			merge(
@@ -41,12 +42,12 @@ suite('merge', () => {
 					b: 3,
 				},
 				{ b: 2 },
-				null
+				null,
 			),
 			{
 				a: 1,
 				b: 2,
-			}
+			},
 		);
 	});
 
