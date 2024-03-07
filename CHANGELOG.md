@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/neovici/cosmoz-utils/compare/v6.6.0...v6.7.0) (2024-03-07)
+
+
+### Features
+
+* **memoize:** memize function for functions with no arguments ([055eae7](https://github.com/neovici/cosmoz-utils/commit/055eae79bd706991a7a0f151a4bc2b37a7d5259a))
+
 # [6.6.0](https://github.com/neovici/cosmoz-utils/compare/v6.5.0...v6.6.0) (2024-02-29)
 
 
