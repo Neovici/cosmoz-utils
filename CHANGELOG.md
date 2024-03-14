@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/neovici/cosmoz-utils/compare/v6.7.0...v6.8.0) (2024-03-14)
+
+
+### Features
+
+* **consume:** adjust types of consume ([474164b](https://github.com/neovici/cosmoz-utils/commit/474164b34560c1100be4f2a3a9796ef56930e5b0))
+
 # [6.7.0](https://github.com/neovici/cosmoz-utils/compare/v6.6.0...v6.7.0) (2024-03-07)
 
 
