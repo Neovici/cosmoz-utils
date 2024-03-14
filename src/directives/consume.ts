@@ -2,7 +2,11 @@ import { Context, ContextDetail } from '@pionjs/pion/lib/create-context';
 import { contextEvent } from '@pionjs/pion/lib/symbols';
 import { AttributePart, noChange } from 'lit-html';
 import { AsyncDirective, directive } from 'lit-html/async-directive.js';
-import { ChildPart, DirectiveParameters } from 'lit-html/directive.js';
+import {
+	ChildPart,
+	DirectiveParameters,
+	DirectiveResult,
+} from 'lit-html/directive.js';
 import { identity } from '../function';
 
 const getEmitter = (part: AttributePart | ChildPart) =>
@@ -17,7 +21,7 @@ class ConsumeDirective<T> extends AsyncDirective {
 
 	update(
 		part: AttributePart | ChildPart,
-		[context, pluck = identity]: DirectiveParameters<this>
+		[context, pluck = identity]: DirectiveParameters<this>,
 	) {
 		// if the context has changed OR we are not yet subscribed
 		if (this.context !== context || !this.unsubscribe) {
@@ -50,7 +54,7 @@ class ConsumeDirective<T> extends AsyncDirective {
 				bubbles: true,
 				cancelable: true,
 				composed: true,
-			})
+			}),
 		);
 		const { unsubscribe = null, value } = detail as ContextDetail<T>;
 
@@ -73,4 +77,11 @@ class ConsumeDirective<T> extends AsyncDirective {
 	}
 }
 
-export const consume = directive(ConsumeDirective);
+interface Consume {
+	<T>(
+		consume: Context<T>,
+		pluck: (value: T) => unknown,
+	): DirectiveResult<typeof ConsumeDirective<T>>;
+}
+
+export const consume: Consume = directive(ConsumeDirective) as Consume;
