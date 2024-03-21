@@ -1,3 +1,10 @@
+## [6.8.1](https://github.com/neovici/cosmoz-utils/compare/v6.8.0...v6.8.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* **object:** handle missing obj in prop ([24f7e92](https://github.com/neovici/cosmoz-utils/commit/24f7e921977348a7336cb182dbee710a7092d473))
+
 # [6.8.0](https://github.com/neovici/cosmoz-utils/compare/v6.7.0...v6.8.0) (2024-03-14)
 
 
