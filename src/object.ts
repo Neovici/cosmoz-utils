@@ -13,7 +13,7 @@ export function prop<K extends PropertyKey>(key?: K) {
 	if (!key) {
 		return identity;
 	}
-	return <O>(obj: O) => (obj as Rec<K>)[key];
+	return <O>(obj: O) => (obj as Rec<K>)?.[key];
 }
 
 export const strProp = <K extends PropertyKey>(key?: K) => {
