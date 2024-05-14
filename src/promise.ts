@@ -107,3 +107,12 @@ export const debounce$ = <T extends unknown[], P>(
 			pending.push({ resolve: res, reject: rej });
 		});
 };
+
+export const log$ =
+	<T extends unknown[], P>(fn: (...args: T) => PromiseLike<P>) =>
+	(...args: T) =>
+		fn(...args).then((response: P) => {
+			// eslint-disable-next-line no-console
+			console.log(response);
+			return response;
+		});
