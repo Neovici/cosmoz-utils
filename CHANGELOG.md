@@ -1,3 +1,10 @@
+# [6.9.0](https://github.com/neovici/cosmoz-utils/compare/v6.8.1...v6.9.0) (2024-05-14)
+
+
+### Features
+
+* **promise:** tiny helper to make a logging version of any async function ([46dcce3](https://github.com/neovici/cosmoz-utils/commit/46dcce31b34a9b66c5a0c38edba0385096957c8a))
+
 ## [6.8.1](https://github.com/neovici/cosmoz-utils/compare/v6.8.0...v6.8.1) (2024-03-21)
 
 
