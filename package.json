@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-utils",
-	"version": "6.9.0",
+	"version": "6.9.1",
 	"description": "Date, money and template management functions commonly needed in Cosmoz views.",
 	"keywords": [
 		"polymer",

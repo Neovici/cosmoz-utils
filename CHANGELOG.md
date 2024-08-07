@@ -1,3 +1,11 @@
+## [6.9.1](https://github.com/neovici/cosmoz-utils/compare/v6.9.0...v6.9.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* remove unused cz-icon code ([d29f099](https://github.com/neovici/cosmoz-utils/commit/d29f0995bd217bc70f8be80bce277f5da2f99161))
+* **vscode:** change eslint setting ([544fcc5](https://github.com/neovici/cosmoz-utils/commit/544fcc575192356c914d6a8e4beb2cd640dbbf3f))
+
 # [6.9.0](https://github.com/neovici/cosmoz-utils/compare/v6.8.1...v6.9.0) (2024-05-14)
 
 
