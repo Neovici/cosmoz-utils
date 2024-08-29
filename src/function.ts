@@ -1,5 +1,6 @@
 type OrFn<T> = (...args: T[]) => boolean;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Arr = any[];
 
 type OnceFn<A extends Arr, R> = (...args: A) => R;
@@ -28,11 +29,16 @@ export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
 };
 
-export function invoke<A, R, F extends (...args: A[]) => R>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type InvokedType<T> = T extends (...args: any[]) => infer R ? R : T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type InvokedParameters<F> = F extends (...args: infer A) => any
+	? A
+	: never;
+
+export function invoke<F>(
 	fn: F,
-	...args: A[]
-): ReturnType<F>;
-export function invoke<F>(fn: F, ...args: unknown[]): F;
-export function invoke<F, A>(fn: F, ...args: A[]) {
+	...args: InvokedParameters<F>
+): InvokedType<F> {
 	return typeof fn === 'function' ? fn(...args) : fn;
 }
