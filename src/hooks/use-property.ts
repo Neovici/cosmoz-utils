@@ -28,7 +28,7 @@ export function useProperty<T>(prop: string, init?: Init<T>): Result<T> {
 	useEffect(() => {
 		const { init } = meta;
 		if (init == null) return;
-		setValue(invoke(init));
+		setValue(<Update<T>>invoke(init));
 	}, []);
 	return [value, setValue];
 }
