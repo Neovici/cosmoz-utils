@@ -1,3 +1,10 @@
+# [6.10.0](https://github.com/neovici/cosmoz-utils/compare/v6.9.1...v6.10.0) (2024-08-30)
+
+
+### Features
+
+* improve type for invoke ([e8bb4b7](https://github.com/neovici/cosmoz-utils/commit/e8bb4b7434ca9e5251a2e7416cb13bf9c0763d64))
+
 ## [6.9.1](https://github.com/neovici/cosmoz-utils/compare/v6.9.0...v6.9.1) (2024-08-07)
 
 
