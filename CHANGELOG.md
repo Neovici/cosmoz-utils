@@ -1,3 +1,10 @@
+## [6.10.1](https://github.com/neovici/cosmoz-utils/compare/v6.10.0...v6.10.1) (2024-09-19)
+
+
+### Bug Fixes
+
+* **date:** add round up on date difference ([7b93503](https://github.com/neovici/cosmoz-utils/commit/7b935032280e345632322c46ec9afe22aaf7134e))
+
 # [6.10.0](https://github.com/neovici/cosmoz-utils/compare/v6.9.1...v6.10.0) (2024-08-30)
 
 
