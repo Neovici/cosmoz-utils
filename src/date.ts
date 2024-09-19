@@ -1,6 +1,6 @@
 const getValUnitDiff = (
 		date1: Date,
-		date2: Date
+		date2: Date,
 	): [number, Intl.RelativeTimeFormatUnit] => {
 		const msDiff = date1.getTime() - date2.getTime(),
 			secDiff = msDiff / 1000,
@@ -10,19 +10,19 @@ const getValUnitDiff = (
 			monthDiff = dayDiff / 30,
 			yearDiff = monthDiff / 12;
 		if (Math.abs(yearDiff) >= 1) {
-			return [yearDiff, 'year'];
+			return [Math.ceil(yearDiff), 'year'];
 		}
 		if (Math.abs(monthDiff) >= 1) {
-			return [monthDiff, 'month'];
+			return [Math.ceil(monthDiff), 'month'];
 		}
 		if (Math.abs(dayDiff) >= 1) {
-			return [dayDiff, 'day'];
+			return [Math.ceil(dayDiff), 'day'];
 		}
 		if (Math.abs(hourDiff) >= 1) {
-			return [hourDiff, 'hour'];
+			return [Math.ceil(hourDiff), 'hour'];
 		}
 		if (Math.abs(minDiff) >= 1) {
-			return [minDiff, 'minute'];
+			return [Math.ceil(minDiff), 'minute'];
 		}
 		return [secDiff, 'second'];
 	},
@@ -91,7 +91,7 @@ const getValUnitDiff = (
 			hour: 'numeric',
 			minute: 'numeric',
 			second: 'numeric',
-			hourCycle: 'h23'
+			hourCycle: 'h23',
 		});
 	},
 	/**
