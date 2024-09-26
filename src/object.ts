@@ -35,16 +35,16 @@ export const transform = <K extends string, V, RK extends PropertyKey, RV>(
 	) as { [key in RK]: RV };
 
 export const omit =
-	<K extends PropertyKey>(keys: K[]) =>
-	<T extends Rec>(obj: T): { [key in Exclude<keyof T, K>]: T[key] } => {
+	<const K extends readonly PropertyKey[]>(keys: K) =>
+	<const T extends Rec>(obj: T) => {
 		const ret: Rec = {};
 
 		for (const key in obj) {
-			if (!(keys as PropertyKey[]).includes(key)) {
+			if (!keys.includes(key)) {
 				ret[key] = obj[key];
 			}
 		}
-		return ret as Omit<T, K>;
+		return ret as Omit<T, K[number]>;
 	};
 
 export const props =
