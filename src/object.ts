@@ -7,7 +7,7 @@ export type Rec<K extends PropertyKey = PropertyKey, V = any> = Record<K, V>;
 export function prop(): typeof identity;
 export function prop(a: '' | null | false | undefined | 0): typeof identity;
 export function prop<K extends PropertyKey>(
-	key?: K
+	key?: K,
 ): <O>(obj: O) => K extends keyof O ? O[K] : undefined;
 export function prop<K extends PropertyKey>(key?: K) {
 	if (!key) {
@@ -28,10 +28,10 @@ export const strProp = <K extends PropertyKey>(key?: K) => {
 
 export const transform = <K extends string, V, RK extends PropertyKey, RV>(
 	obj: Record<K, V>,
-	trans: (entries: [Extract<K, string>, V][]) => Iterable<readonly [RK, RV]>
+	trans: (entries: [Extract<K, string>, V][]) => Iterable<readonly [RK, RV]>,
 ) =>
 	Object.fromEntries(
-		trans(Object.entries(obj) as [Extract<K, string>, V][])
+		trans(Object.entries(obj) as [Extract<K, string>, V][]),
 	) as { [key in RK]: RV };
 
 export const omit =
@@ -75,7 +75,7 @@ export const isObject = (obj: unknown): obj is object =>
 export function merge<T1, T2, T3>(
 	a1: T1,
 	a2: T2,
-	a3: T3
+	a3: T3,
 ): Merge<Merge<T1, T2>, T3>;
 export function merge<T1, T2>(a1: T1, b2: T2): Merge<T1, T2>;
 export function merge(...objs: Rec[]): Rec;
