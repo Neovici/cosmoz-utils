@@ -1,3 +1,11 @@
+# [6.11.0](https://github.com/neovici/cosmoz-utils/compare/v6.10.1...v6.11.0) (2024-10-07)
+
+
+### Features
+
+* **memoize:** added types ([9ee1991](https://github.com/neovici/cosmoz-utils/commit/9ee19912b2770d8fef0abd222e590c0326bdf112))
+* **omit:** make it properly infer when the arguments are const ([fd6b18e](https://github.com/neovici/cosmoz-utils/commit/fd6b18e64397d1b828955bf17b53c4d79c53886a))
+
 ## [6.10.1](https://github.com/neovici/cosmoz-utils/compare/v6.10.0...v6.10.1) (2024-09-19)
 
 
