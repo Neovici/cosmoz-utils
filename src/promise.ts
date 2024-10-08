@@ -116,3 +116,19 @@ export const log$ =
 			console.log(response);
 			return response;
 		});
+
+export const retry$ =
+	<T extends unknown[], P>(fn: (...args: T) => P | PromiseLike<P>, n: number) =>
+	async (...args: T) => {
+		let r = 0;
+		let error;
+		while (r < n) {
+			try {
+				return await fn(...args);
+			} catch (e) {
+				error = e;
+				r++;
+			}
+		}
+		throw error;
+	};
