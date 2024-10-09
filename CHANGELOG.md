@@ -1,3 +1,10 @@
+# [6.12.0](https://github.com/neovici/cosmoz-utils/compare/v6.11.0...v6.12.0) (2024-10-09)
+
+
+### Features
+
+* **promise:** retry$ helper to make any function auto-retry ([498be4c](https://github.com/neovici/cosmoz-utils/commit/498be4c9931ba5b8633804471c669548ee1f35e3))
+
 # [6.11.0](https://github.com/neovici/cosmoz-utils/compare/v6.10.1...v6.11.0) (2024-10-07)
 
 
