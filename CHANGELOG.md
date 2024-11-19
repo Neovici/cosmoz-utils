@@ -1,3 +1,10 @@
+## [6.12.1](https://github.com/neovici/cosmoz-utils/compare/v6.12.0...v6.12.1) (2024-11-19)
+
+
+### Bug Fixes
+
+* **tagged:** 0 gets interpolated as empty string ([5e5e0b9](https://github.com/neovici/cosmoz-utils/commit/5e5e0b9e54c78a4b2b9b08493157cc08643aa5df))
+
 # [6.12.0](https://github.com/neovici/cosmoz-utils/compare/v6.11.0...v6.12.0) (2024-10-09)
 
 
