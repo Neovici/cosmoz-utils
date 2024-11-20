@@ -71,7 +71,7 @@
 		"./memoize": "./dist/memoize.js"
 	},
 	"dependencies": {
-		"@pionjs/pion": "^2.0.0"
+		"@pionjs/pion": "^2.7.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^18.0.0",
