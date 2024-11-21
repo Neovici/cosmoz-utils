@@ -68,7 +68,9 @@
 		"./elements/*": "./dist/elements/*.js",
 		"./directives/*": "./dist/directives/*.js",
 		"./hooks/*": "./dist/hooks/*.js",
-		"./memoize": "./dist/memoize.js"
+		"./memoize": "./dist/memoize.js",
+		"./keybindings": "./dist/keybindings/index.js",
+		"./keybindings/*": "./dist/keybindings/*.js"
 	},
 	"dependencies": {
 		"@pionjs/pion": "^2.7.1"
