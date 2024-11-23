@@ -1,3 +1,10 @@
+# [6.13.0](https://github.com/neovici/cosmoz-utils/compare/v6.12.1...v6.13.0) (2024-11-23)
+
+
+### Features
+
+* **keybindings:** generic way of adding keybindings ([#191](https://github.com/neovici/cosmoz-utils/issues/191)) ([016d364](https://github.com/neovici/cosmoz-utils/commit/016d364f1e7dc5945569d81b7d498318ec78112e)), closes [AB#14428](https://github.com/AB/issues/14428)
+
 ## [6.12.1](https://github.com/neovici/cosmoz-utils/compare/v6.12.0...v6.12.1) (2024-11-19)
 
 
