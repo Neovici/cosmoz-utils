@@ -43,7 +43,7 @@ export const focusIsInEditableArea = (): boolean => {
 	const active = getActiveElement(document);
 
 	if (!active) return false;
-	if (active.matches('input, textarea')) return true;
+	if (active.matches('input:not([type="checkbox"]), textarea')) return true;
 	if ('isContentEditable' in active && active.isContentEditable) {
 		return true;
 	}
