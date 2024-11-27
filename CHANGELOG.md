@@ -1,3 +1,10 @@
+## [6.13.1](https://github.com/neovici/cosmoz-utils/compare/v6.13.0...v6.13.1) (2024-11-27)
+
+
+### Bug Fixes
+
+* **keybindings:** add check function property and exclude checkbox from focus check ([#192](https://github.com/neovici/cosmoz-utils/issues/192)) ([8a32883](https://github.com/neovici/cosmoz-utils/commit/8a328837051f5c98ce0c219b07d8d662b662b0e0))
+
 # [6.13.0](https://github.com/neovici/cosmoz-utils/compare/v6.12.1...v6.13.0) (2024-11-23)
 
 
