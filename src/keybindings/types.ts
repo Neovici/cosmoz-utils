@@ -13,6 +13,7 @@ export type KeyBinding = readonly [Matcher, Activity[], Info];
 export type ActivityHandler = {
 	activity: Activity;
 	callback: () => void;
+	check?: () => boolean;
 	element?: () => Element | null | undefined;
 };
 

@@ -12,7 +12,7 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 	const meta = useMeta<State>({ bindings });
 
 	useEffect(() => {
-		const handler = (e: KeyboardEvent) => {
+		const keyboardEventHandler = (e: KeyboardEvent) => {
 			if (e.defaultPrevented) {
 				return;
 			}
@@ -27,16 +27,25 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 			if (handlers.length === 0) return;
 
 			// find first actionable handler
-			const handler = handlers.find(
-				(handler) => !handler.element || isInteractive(handler.element()),
-			);
+			const handler = handlers.find((handler) => {
+				if (
+					(handler.check && !handler.check()) ||
+					(handler.element && !isInteractive(handler.element()))
+				) {
+					return false;
+				}
+
+				return handler;
+			});
+
 			if (!handler) return;
 
 			e.preventDefault();
 			handler.callback();
 		};
-		document.addEventListener('keydown', handler, true);
-		return () => document.removeEventListener('keydown', handler, true);
+		document.addEventListener('keydown', keyboardEventHandler, true);
+		return () =>
+			document.removeEventListener('keydown', keyboardEventHandler, true);
 	}, []);
 
 	const register = useCallback((handler: ActivityHandler) => {
