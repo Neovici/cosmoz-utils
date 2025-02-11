@@ -1,3 +1,10 @@
+## [6.13.2](https://github.com/neovici/cosmoz-utils/compare/v6.13.1...v6.13.2) (2025-02-11)
+
+
+### Bug Fixes
+
+* **memoize:** handle all undefined params ([#195](https://github.com/neovici/cosmoz-utils/issues/195)) ([f24d4c4](https://github.com/neovici/cosmoz-utils/commit/f24d4c409d688d7323daa14834d71f8c650f24ed))
+
 ## [6.13.1](https://github.com/neovici/cosmoz-utils/compare/v6.13.0...v6.13.1) (2024-11-27)
 
 
