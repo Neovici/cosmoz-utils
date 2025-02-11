@@ -130,4 +130,12 @@ suite('memoooize', () => {
 		complexMemoized();
 		assert.equal(count, 6);
 	});
+
+	test('calls memoized function without arguments', () => {
+		let count = 0;
+		const complex = () => count++,
+			complexMemoized = memoooize(complex);
+		complexMemoized();
+		assert.equal(count, 1);
+	});
 });

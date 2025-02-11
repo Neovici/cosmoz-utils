@@ -2,6 +2,7 @@ type SameAs<T extends (...args: any) => any> = (
 	...args: Parameters<T>
 ) => ReturnType<T>;
 
+const sym = Symbol('memo');
 export const memize = <T extends () => ReturnType<T>>(fn: T): SameAs<T> => {
 		let called = false,
 			lastResult: ReturnType<T>;
@@ -16,7 +17,8 @@ export const memize = <T extends () => ReturnType<T>>(fn: T): SameAs<T> => {
 		};
 	},
 	memoize = <T extends (arg: any) => ReturnType<T>>(fn: T): SameAs<T> => {
-		let lastArg: Parameters<T>[0], lastResult: ReturnType<T>;
+		let lastArg: Parameters<T>[0] = sym,
+			lastResult: ReturnType<T>;
 		return function (arg: Parameters<T>[0]) {
 			if (lastArg === arg) {
 				return lastResult;
@@ -31,8 +33,8 @@ export const memize = <T extends () => ReturnType<T>>(fn: T): SameAs<T> => {
 	memooize = <T extends (arg1: any, arg2: any) => ReturnType<T>>(
 		fn: T,
 	): SameAs<T> => {
-		let lastArg1: Parameters<T>[0],
-			lastArg2: Parameters<T>[1],
+		let lastArg1: Parameters<T>[0] = sym,
+			lastArg2: Parameters<T>[1] = sym,
 			lastResult: ReturnType<T>;
 		return function (arg1: Parameters<T>[0], arg2: Parameters<T>[1]) {
 			if (lastArg1 === arg1 && lastArg2 === arg2) {
@@ -49,9 +51,9 @@ export const memize = <T extends () => ReturnType<T>>(fn: T): SameAs<T> => {
 	memoooize = <T extends (arg1: any, arg2: any, arg3: any) => ReturnType<T>>(
 		fn: T,
 	): SameAs<T> => {
-		let lastArg1: Parameters<T>[0],
-			lastArg2: Parameters<T>[1],
-			lastArg3: Parameters<T>[2],
+		let lastArg1: Parameters<T>[0] = sym,
+			lastArg2: Parameters<T>[1] = sym,
+			lastArg3: Parameters<T>[2] = sym,
 			lastResult: ReturnType<T>;
 		return function (
 			arg1: Parameters<T>[0],
