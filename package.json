@@ -45,11 +45,6 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"commitlint": {
-		"extends": [
-			"@commitlint/config-conventional"
-		]
-	},
 	"exports": {
 		".": "./dist/index.js",
 		"./array": "./dist/array.js",
