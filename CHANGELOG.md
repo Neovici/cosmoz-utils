@@ -1,3 +1,11 @@
+## [6.13.3](https://github.com/neovici/cosmoz-utils/compare/v6.13.2...v6.13.3) (2025-03-25)
+
+
+### Bug Fixes
+
+* commitlint config and update ([d8c9732](https://github.com/neovici/cosmoz-utils/commit/d8c9732fc346b7296668deb975d3596abda3d560))
+* failing test ([b4a1db0](https://github.com/neovici/cosmoz-utils/commit/b4a1db0a7a0d52bbd8832939ba90afb33a2d03f2))
+
 ## [6.13.2](https://github.com/neovici/cosmoz-utils/compare/v6.13.1...v6.13.2) (2025-02-11)
 
 
