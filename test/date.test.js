@@ -58,11 +58,7 @@ suite('date', () => {
 			hourAgo = new Date(dateNow.getTime() - hour),
 			day = 24 * hour,
 			dayAgo = new Date(dateNow.getTime() - day),
-			monthsAgo = (() => {
-				const d = new Date();
-				d.setMonth(d.getMonth() - 2);
-				return d;
-			})(),
+			monthsAgo = new Date(dateNow.getTime() - 60 * day),
 			yearsAgo = (() => {
 				const d = new Date();
 				d.setFullYear(d.getFullYear() - 2);
@@ -97,7 +93,7 @@ suite('date', () => {
 			tz = someDate.getTimezoneOffset() / 60;
 		assert.equal(
 			toLocalISOString(someDate),
-			`2019-06-26T${pad(12 - tz)}:00:00.000`
+			`2019-06-26T${pad(12 - tz)}:00:00.000`,
 		);
 		assert.equal(toLocalISOString('not a date'), null);
 	});
