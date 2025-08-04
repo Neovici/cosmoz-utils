@@ -1,3 +1,10 @@
+## [6.14.1](https://github.com/neovici/cosmoz-utils/compare/v6.14.0...v6.14.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* automerge workflow ([37e80e7](https://github.com/neovici/cosmoz-utils/commit/37e80e72a78b85fb524b101a5c9bb7906b8e4f24))
+
 # [6.14.0](https://github.com/neovici/cosmoz-utils/compare/v6.13.3...v6.14.0) (2025-07-21)
 
 
