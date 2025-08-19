@@ -1,3 +1,10 @@
+## [6.14.2](https://github.com/neovici/cosmoz-utils/compare/v6.14.1...v6.14.2) (2025-08-19)
+
+
+### Bug Fixes
+
+* **singleParse:** should return undefined when the param is not part of the url ([9d42efb](https://github.com/neovici/cosmoz-utils/commit/9d42efb3b918d923350bc8cbcb56927c415f4d5a)), closes [#204](https://github.com/neovici/cosmoz-utils/issues/204)
+
 ## [6.14.1](https://github.com/neovici/cosmoz-utils/compare/v6.14.0...v6.14.1) (2025-08-04)
 
 
