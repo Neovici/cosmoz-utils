@@ -1,3 +1,10 @@
+# [6.15.0](https://github.com/neovici/cosmoz-utils/compare/v6.14.2...v6.15.0) (2025-09-23)
+
+
+### Features
+
+* better invoke ([3422ff9](https://github.com/neovici/cosmoz-utils/commit/3422ff9bcf12f96633013274036752113a9a648e))
+
 ## [6.14.2](https://github.com/neovici/cosmoz-utils/compare/v6.14.1...v6.14.2) (2025-08-19)
 
 
