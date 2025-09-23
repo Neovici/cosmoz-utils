@@ -29,16 +29,7 @@ export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type InvokedType<T> = T extends (...args: any[]) => infer R ? R : T;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type InvokedParameters<F> = F extends (...args: infer A) => any
-	? A
-	: never;
-
-export function invoke<F>(
-	fn: F,
-	...args: InvokedParameters<F>
-): InvokedType<F> {
-	return typeof fn === 'function' ? fn(...args) : fn;
-}
+export const invoke = <T, A extends unknown[]>(
+	fn: T | ((...args: A) => T),
+	...args: A
+) => (typeof fn === 'function' ? (fn as (...args: A) => T)(...args) : fn);
