@@ -61,11 +61,13 @@ suite('limit$', () => {
 
 suite('debounce$', () => {
 	test('debounces an async function', async () => {
+		const timeout = 50;
+		const race_condition_safety_margin = 10; // Add margin of safety to prevent race conditions. See issue #206
 		const callLater = (callback) =>
 				new Promise((resolve) =>
 					requestAnimationFrame(() => resolve(callback())),
 				),
-			callLater$ = debounce$(callLater, 50),
+			callLater$ = debounce$(callLater, timeout),
 			callback = spy();
 
 		callLater$(callback);
@@ -78,7 +80,7 @@ suite('debounce$', () => {
 		await nextFrame();
 		assert.isFalse(callback.called);
 
-		await aTimeout(50);
+		await aTimeout(timeout + race_condition_safety_margin);
 		assert.isTrue(callback.called);
 	});
 
