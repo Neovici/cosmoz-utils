@@ -1,3 +1,10 @@
+## [6.15.1](https://github.com/neovici/cosmoz-utils/compare/v6.15.0...v6.15.1) (2025-10-23)
+
+
+### Bug Fixes
+
+* **test:** stabilize flaky debounce$ test ([64e506e](https://github.com/neovici/cosmoz-utils/commit/64e506e201e7856ce0906e56646316234c655b14)), closes [#206](https://github.com/neovici/cosmoz-utils/issues/206)
+
 # [6.15.0](https://github.com/neovici/cosmoz-utils/compare/v6.14.2...v6.15.0) (2025-09-23)
 
 
