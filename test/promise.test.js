@@ -80,7 +80,7 @@ suite('debounce$', () => {
 		await nextFrame();
 		assert.isFalse(callback.called);
 
-		await aTimeout(timeout + race_condition_safety_margin);
+		await aTimeout(timeout + safetyMargin);
 		assert.isTrue(callback.called);
 	});
 
