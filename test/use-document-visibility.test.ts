@@ -1,6 +1,6 @@
 import { component } from '@pionjs/pion';
 import { useDocumentVisibility } from '../src/hooks/use-document-visibility';
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, assert } from '@open-wc/testing';
 import { spy } from 'sinon';
 
 interface UseDocumentVisibilityElement extends HTMLElement {
@@ -15,13 +15,6 @@ customElements.define(
 );
 
 suite('useDocumentVisibility', () => {
-	let originalVisibilityState: string;
-
-	// cleanup between tests and set the initial test state
-	setup(() => {
-		originalVisibilityState = document.visibilityState;
-	});
-
 	test('should return initial document visibility state', async () => {
 		const result = (await fixture(
 			html`<use-document-visibility></use-document-visibility>`,
@@ -63,11 +56,11 @@ suite('useDocumentVisibility', () => {
 			html`<use-document-visibility></use-document-visibility>`,
 		);
 
-		expect(addEventListenerSpy.calledWith('visibilitychange')).to.be.true;
+		assert.isTrue(addEventListenerSpy.calledWith('visibilitychange'));
 
 		result.remove();
 
-		expect(removeEventListenerSpy.calledWith('visibilitychange')).to.be.true;
+		assert.isTrue(removeEventListenerSpy.calledWith('visibilitychange'));
 
 		addEventListenerSpy.restore();
 		removeEventListenerSpy.restore();
