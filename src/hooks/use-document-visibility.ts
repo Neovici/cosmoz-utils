@@ -17,5 +17,5 @@ export const useDocumentVisibility = () => {
 		};
 	}, []);
 
-	return visibility;
+	return visibility === 'visible';
 };

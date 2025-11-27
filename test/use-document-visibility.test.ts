@@ -4,7 +4,7 @@ import { html, fixture, expect, assert } from '@open-wc/testing';
 import { spy } from 'sinon';
 
 interface UseDocumentVisibilityElement extends HTMLElement {
-	visibility: string;
+	visibility: boolean;
 }
 // set a custom property on custom-webcomponent
 customElements.define(
@@ -20,7 +20,7 @@ suite('useDocumentVisibility', () => {
 			html`<use-document-visibility></use-document-visibility>`,
 		)) as UseDocumentVisibilityElement;
 
-		expect(result.visibility).to.equal('visible');
+		assert.isTrue(result.visibility);
 	});
 
 	test('should update when visibility changes', async () => {
@@ -35,8 +35,7 @@ suite('useDocumentVisibility', () => {
 		const result = (await fixture(
 			html`<use-document-visibility></use-document-visibility>`,
 		)) as UseDocumentVisibilityElement;
-
-		expect(result.visibility).to.equal('visible');
+		assert.isTrue(result.visibility);
 
 		mockVisibility = 'hidden';
 
@@ -44,8 +43,7 @@ suite('useDocumentVisibility', () => {
 		document.dispatchEvent(event);
 
 		await new Promise((resolve) => setTimeout(resolve, 10));
-
-		expect(result.visibility).to.equal('hidden');
+		assert.isFalse(result.visibility);
 	});
 
 	test('should attach and remove event listener', async () => {
