@@ -1,3 +1,10 @@
+# [6.16.0](https://github.com/neovici/cosmoz-utils/compare/v6.15.1...v6.16.0) (2025-11-27)
+
+
+### Features
+
+* useDocumentVisibility hook ([#213](https://github.com/neovici/cosmoz-utils/issues/213)) ([134ad1c](https://github.com/neovici/cosmoz-utils/commit/134ad1c53c19462e963d939df9a8db31269c4d3c))
+
 ## [6.15.1](https://github.com/neovici/cosmoz-utils/compare/v6.15.0...v6.15.1) (2025-10-23)
 
 
