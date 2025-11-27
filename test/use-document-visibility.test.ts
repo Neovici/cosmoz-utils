@@ -1,7 +1,7 @@
+import { assert, fixture, html } from '@open-wc/testing';
 import { component } from '@pionjs/pion';
-import { useDocumentVisibility } from '../src/hooks/use-document-visibility';
-import { html, fixture, expect, assert } from '@open-wc/testing';
 import { spy } from 'sinon';
+import { useDocumentVisibility } from '../src/hooks/use-document-visibility';
 
 interface UseDocumentVisibilityElement extends HTMLElement {
 	visibility: boolean;
