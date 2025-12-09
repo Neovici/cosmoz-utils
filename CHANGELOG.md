@@ -1,3 +1,10 @@
+# [6.17.0](https://github.com/neovici/cosmoz-utils/compare/v6.16.1...v6.17.0) (2025-12-09)
+
+
+### Features
+
+* **consume:** improve type ([#216](https://github.com/neovici/cosmoz-utils/issues/216)) ([774e57a](https://github.com/neovici/cosmoz-utils/commit/774e57ab825cfb89c3b794c00ff40a37e69a20bf))
+
 ## [6.16.1](https://github.com/neovici/cosmoz-utils/compare/v6.16.0...v6.16.1) (2025-12-09)
 
 
