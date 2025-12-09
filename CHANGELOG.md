@@ -1,3 +1,10 @@
+## [6.16.1](https://github.com/neovici/cosmoz-utils/compare/v6.16.0...v6.16.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* **consume:** protected keyword causing build issues upstream ([#215](https://github.com/neovici/cosmoz-utils/issues/215)) ([97eb9b6](https://github.com/neovici/cosmoz-utils/commit/97eb9b6add5d3a4f71cf16abcf7876421c9bc1bc))
+
 # [6.16.0](https://github.com/neovici/cosmoz-utils/compare/v6.15.1...v6.16.0) (2025-11-27)
 
 
