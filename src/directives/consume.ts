@@ -72,7 +72,7 @@ class ConsumeDirective<T> extends AsyncDirective {
 		this.setValue(this.pluck(this.value));
 	}
 
-	protected disconnected(): void {
+	disconnected(): void {
 		this.unsubscribe?.();
 	}
 }
