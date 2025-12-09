@@ -12,16 +12,16 @@ import { identity } from '../function';
 const getEmitter = (part: AttributePart | ChildPart) =>
 	'element' in part ? part.element : part.parentNode;
 
-class ConsumeDirective<T> extends AsyncDirective {
+export class ConsumeDirective<T, V> extends AsyncDirective {
 	value!: T;
 	context!: Context<T>;
-	pluck!: (value: T) => unknown;
+	pluck!: (value: T) => V;
 	unsubscribe!: VoidFunction | null;
 	raf!: number;
 
 	update(
 		part: AttributePart | ChildPart,
-		[context, pluck = identity]: DirectiveParameters<this>,
+		[context, pluck = identity as (value: T) => V]: DirectiveParameters<this>,
 	) {
 		// if the context has changed OR we are not yet subscribed
 		if (this.context !== context || !this.unsubscribe) {
@@ -63,7 +63,7 @@ class ConsumeDirective<T> extends AsyncDirective {
 		this.setValue(this.pluck(this.value));
 	}
 
-	render(context: Context<T>, pluck: (value: T) => unknown) {
+	render(context: Context<T>, pluck: (value: T) => V) {
 		return pluck(this.value);
 	}
 
@@ -77,11 +77,10 @@ class ConsumeDirective<T> extends AsyncDirective {
 	}
 }
 
+export type Result<T, V> = DirectiveResult<typeof ConsumeDirective<T, V>>;
+
 interface Consume {
-	<T>(
-		consume: Context<T>,
-		pluck: (value: T) => unknown,
-	): DirectiveResult<typeof ConsumeDirective<T>>;
+	<T, V>(context: Context<T>, pluck: (value: T) => V): Result<T, V>;
 }
 
-export const consume: Consume = directive(ConsumeDirective) as Consume;
+export const consume = directive(ConsumeDirective) as Consume;
