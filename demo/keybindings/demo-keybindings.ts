@@ -1,8 +1,7 @@
-/* eslint-disable no-alert */
 import { component, css, html, useEffect, useState } from '@pionjs/pion';
 import { KeyBinding } from '../../src/keybindings/types';
-import { useKeybindings } from '../../src/keybindings/use-keybindings';
 import { useActivity } from '../../src/keybindings/use-activity';
+import { useKeybindings } from '../../src/keybindings/use-keybindings';
 
 const twist = Symbol('twist');
 const jump = Symbol('jump');

@@ -1,4 +1,3 @@
-/* eslint-disable import/group-exports */
 type Pfn<T> = (arg?: T) => void;
 interface Pfnc<T> {
 	resolve: Pfn<T>;
