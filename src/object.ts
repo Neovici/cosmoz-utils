@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define, import/group-exports */
 import { identity } from './function';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

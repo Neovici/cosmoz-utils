@@ -3,11 +3,11 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-/* eslint-disable import/group-exports */
+
 import { Part, noChange } from 'lit-html';
-import { directive } from 'lit-html/directive.js';
-import { isPrimitive } from 'lit-html/directive-helpers.js';
 import { AsyncDirective } from 'lit-html/async-directive.js';
+import { isPrimitive } from 'lit-html/directive-helpers.js';
+import { directive } from 'lit-html/directive.js';
 
 class PseudoWeakRef<T> {
 	private _ref?: T;

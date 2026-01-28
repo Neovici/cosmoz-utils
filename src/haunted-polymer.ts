@@ -1,8 +1,8 @@
 import {
 	BaseScheduler,
-	render,
-	GenericRenderer,
 	ComponentOrVirtualComponent,
+	GenericRenderer,
+	render,
 } from '@pionjs/pion';
 import { ChildPart } from 'lit-html';
 import { Rec } from './object';
@@ -17,7 +17,7 @@ class Scheduler<
 	T extends HTMLElement | ChildPart,
 	R extends GenericRenderer<T, P>,
 	H extends ComponentOrVirtualComponent<T, P>,
-	C extends (result: unknown) => void
+	C extends (result: unknown) => void,
 > extends BaseScheduler<P, T, R, H> {
 	_commit: C;
 	constructor(renderer: R, host: H, commitCallback: C) {
@@ -38,7 +38,7 @@ interface PElement extends HTMLElement {
 	_propertiesChanged<P extends Obj, C extends Obj, O>(
 		currentProps: P,
 		changedProps: C,
-		oldProps: O
+		oldProps: O,
 	): void;
 	_hauntedUpdateFrameHandle: ReturnType<typeof requestAnimationFrame>;
 	_onlyHauntedPropertiesChanged<T extends Obj>(changedProps: T): boolean;
@@ -52,7 +52,6 @@ interface PElement extends HTMLElement {
  * @returns {Function} The mixin
  */
 export const hauntedPolymer =
-	// eslint-disable-next-line max-lines-per-function
 	(outputPath: string | Hook, hook?: Hook) => (base: Constructor<PElement>) => {
 		const hasOutputPath = hook !== undefined,
 			_hook = hasOutputPath ? hook : (outputPath as unknown as Hook);
@@ -61,7 +60,7 @@ export const hauntedPolymer =
 		if (hasOutputPath) {
 			// eslint-disable-next-line no-console
 			console.warn(
-				'Haunted Polymer: use of outputPath is deprecated. Instead have the hook return an object with the keys being property names to update.'
+				'Haunted Polymer: use of outputPath is deprecated. Instead have the hook return an object with the keys being property names to update.',
 			);
 		}
 
@@ -82,7 +81,7 @@ export const hauntedPolymer =
 					(result) =>
 						hasOutputPath
 							? this.set(outputPath as string, result)
-							: this.setProperties(result) // and update the output path with the results
+							: this.setProperties(result), // and update the output path with the results
 				);
 			}
 
@@ -99,7 +98,7 @@ export const hauntedPolymer =
 			_propertiesChanged<P extends Obj, C extends Obj, O>(
 				currentProps: P,
 				changedProps: C,
-				oldProps: O
+				oldProps: O,
 			) {
 				super._propertiesChanged(currentProps, changedProps, oldProps);
 
@@ -121,7 +120,7 @@ export const hauntedPolymer =
 				// do it in the next animation frame, so the current loop finishes processing first
 				cancelAnimationFrame(this._hauntedUpdateFrameHandle);
 				this._hauntedUpdateFrameHandle = requestAnimationFrame(() =>
-					this._scheduler.update()
+					this._scheduler.update(),
 				);
 			}
 
@@ -149,14 +148,14 @@ export const hauntedPolymer =
 						outlet as unknown as {
 							__renderAF: ReturnType<typeof requestAnimationFrame>;
 						}
-					).__renderAF
+					).__renderAF,
 				);
 				(
 					outlet as unknown as {
 						__renderAF: ReturnType<typeof requestAnimationFrame>;
 					}
 				).__renderAF = requestAnimationFrame(() =>
-					render(typeof part === 'function' ? part() : part, outlet)
+					render(typeof part === 'function' ? part() : part, outlet),
 				);
 			}
 		};
