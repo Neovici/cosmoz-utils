@@ -1,3 +1,9 @@
+## [6.17.2](https://github.com/Neovici/cosmoz-utils/compare/v6.17.1...v6.17.2) (2026-02-01)
+
+### Bug Fixes
+
+- improve keybindings isInteractive check and null-safety ([#222](https://github.com/Neovici/cosmoz-utils/issues/222)) ([62e8356](https://github.com/Neovici/cosmoz-utils/commit/62e8356341c6858bcb610470f224481f757fbccb))
+
 ## [6.17.1](https://github.com/Neovici/cosmoz-utils/compare/v6.17.0...v6.17.1) (2026-01-28)
 
 ### Bug Fixes
