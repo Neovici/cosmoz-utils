@@ -3,16 +3,30 @@ import { identity } from './function';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Rec<K extends PropertyKey = PropertyKey, V = any> = Record<K, V>;
 
+export type IsObject<T> =
+	T extends object
+    ? T extends any[] ? false
+      : T extends Function ? false
+        : true
+    : false;
+
 export function prop(): typeof identity;
 export function prop(a: '' | null | false | undefined | 0): typeof identity;
 export function prop<K extends PropertyKey>(
 	key?: K,
-): <O>(obj: O) => K extends keyof O ? O[K] : undefined;
+): <O>(obj: O) => K extends keyof O ? O[K] : O extends IsObject<O> ? undefined : O;
 export function prop<K extends PropertyKey>(key?: K) {
 	if (!key) {
 		return identity;
 	}
-	return <O>(obj: O) => (obj as Rec<K>)?.[key];
+
+	return <O>(obj: O) => {
+		if (!isObject(obj)) {
+			return obj;
+		}
+
+		return (obj as Rec<K>)?.[key];
+	}
 }
 
 export const strProp = <K extends PropertyKey>(key?: K) => {
