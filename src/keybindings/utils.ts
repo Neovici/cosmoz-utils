@@ -20,7 +20,7 @@ export const isInteractive = (el: Element | null | undefined) => {
 			bounds.y + bounds.height / 2,
 		);
 
-	return el === topEl;
+	return topEl != null && (el === topEl || el.contains(topEl));
 };
 
 const getActiveElement = (

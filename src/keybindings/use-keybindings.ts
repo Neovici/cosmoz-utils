@@ -23,7 +23,8 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 			if (focusIsInEditableArea()) return;
 
 			const [, activities] = binding;
-			const handlers = activities.flatMap((activity) => meta[activity]);
+			const handlers = activities.flatMap((activity) => meta[activity] ?? []);
+
 			if (handlers.length === 0) return;
 
 			// find first actionable handler
