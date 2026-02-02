@@ -8,7 +8,11 @@ export type Info = {
 	description: string;
 };
 
-export type KeyBinding = readonly [Matcher, Activity[], Info];
+export type BindingOptions = {
+	allowInEditable?: boolean;
+};
+
+export type KeyBinding = readonly [Matcher, Activity[], Info, BindingOptions?];
 
 export type ActivityHandler = {
 	activity: Activity;

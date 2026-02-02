@@ -20,9 +20,8 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 			const binding = meta.bindings.find(matches(e));
 			if (!binding) return;
 
-			if (focusIsInEditableArea()) return;
-
-			const [, activities] = binding;
+			const [, activities, , options] = binding;
+			if (!options?.allowInEditable && focusIsInEditableArea()) return;
 			const handlers = activities.flatMap((activity) => meta[activity] ?? []);
 
 			if (handlers.length === 0) return;
