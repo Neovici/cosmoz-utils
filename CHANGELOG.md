@@ -1,3 +1,9 @@
+# [6.18.0](https://github.com/Neovici/cosmoz-utils/compare/v6.17.2...v6.18.0) (2026-02-02)
+
+### Features
+
+- add allowInEditable option to keybindings ([#223](https://github.com/Neovici/cosmoz-utils/issues/223)) ([88953c4](https://github.com/Neovici/cosmoz-utils/commit/88953c4739cddc4eb6a334e564397fc85710a803))
+
 ## [6.17.2](https://github.com/Neovici/cosmoz-utils/compare/v6.17.1...v6.17.2) (2026-02-01)
 
 ### Bug Fixes
