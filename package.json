@@ -49,6 +49,7 @@
 	"exports": {
 		".": "./dist/index.js",
 		"./array": "./dist/array.js",
+		"./connectable": "./dist/connectable.js",
 		"./date": "./dist/date.js",
 		"./function": "./dist/function.js",
 		"./number": "./dist/number.js",
