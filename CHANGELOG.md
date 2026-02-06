@@ -1,3 +1,9 @@
+# [6.19.0](https://github.com/Neovici/cosmoz-utils/compare/v6.18.0...v6.19.0) (2026-02-06)
+
+### Features
+
+- add connectable mixin for DOM connection lifecycle events ([#224](https://github.com/Neovici/cosmoz-utils/issues/224)) ([d22ff72](https://github.com/Neovici/cosmoz-utils/commit/d22ff728358fd630c27d682a9ca7572bac293126))
+
 # [6.18.0](https://github.com/Neovici/cosmoz-utils/compare/v6.17.2...v6.18.0) (2026-02-02)
 
 ### Features
