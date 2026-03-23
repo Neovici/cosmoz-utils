@@ -1,3 +1,9 @@
+# [6.20.0](https://github.com/Neovici/cosmoz-utils/compare/v6.19.0...v6.20.0) (2026-03-23)
+
+### Features
+
+- **use-keybindings:** add support for catch-all activities ([#232](https://github.com/Neovici/cosmoz-utils/issues/232)) ([c2e7be6](https://github.com/Neovici/cosmoz-utils/commit/c2e7be6b5ff6bddf1bad8f9887854845db425d86))
+
 # [6.19.0](https://github.com/Neovici/cosmoz-utils/compare/v6.18.0...v6.19.0) (2026-02-06)
 
 ### Features
