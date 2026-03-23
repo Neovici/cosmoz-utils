@@ -1,3 +1,4 @@
+import { ANY_KEY } from './consts';
 import { KeyBinding, Matcher } from './types';
 
 declare global {
@@ -8,7 +9,9 @@ declare global {
 export const matches =
 	(e: KeyboardEvent) =>
 	([matcher]: KeyBinding) =>
-		Object.entries(matcher).every(([key, value]) => e[key] === value);
+		Object.entries(matcher).every(
+			([key, value]) => e[key] === value || value === ANY_KEY,
+		);
 
 export const isInteractive = (el: Element | null | undefined) => {
 	if (el == null) return false;

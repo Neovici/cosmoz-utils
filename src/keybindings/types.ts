@@ -1,7 +1,12 @@
+import { ANY_KEY } from './consts';
+
 export type Activity = symbol;
 
-export type Matcher = Pick<KeyboardEvent, 'key'> &
-	Partial<Pick<KeyboardEvent, 'ctrlKey' | 'metaKey' | 'altKey' | 'shiftKey'>>;
+export type Matcher = Partial<
+	Pick<KeyboardEvent, 'ctrlKey' | 'metaKey' | 'altKey' | 'shiftKey'>
+> & {
+	key: KeyboardEvent['key'] | typeof ANY_KEY;
+};
 
 export type Info = {
 	title: string;
@@ -16,9 +21,10 @@ export type KeyBinding = readonly [Matcher, Activity[], Info, BindingOptions?];
 
 export type ActivityHandler = {
 	activity: Activity;
-	callback: () => void;
+	callback: (e: KeyboardEvent) => void;
 	check?: () => boolean;
 	element?: () => Element | null | undefined;
+	allowDefault?: boolean;
 };
 
 export type RegisterFn = (handler: ActivityHandler) => () => void;

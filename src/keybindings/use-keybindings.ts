@@ -39,9 +39,8 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 			});
 
 			if (!handler) return;
-
-			e.preventDefault();
-			handler.callback();
+			if (!handler.allowDefault) e.preventDefault();
+			handler.callback(e);
 		};
 		document.addEventListener('keydown', keyboardEventHandler, true);
 		return () =>
