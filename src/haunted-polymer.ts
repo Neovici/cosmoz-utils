@@ -87,11 +87,13 @@ export const hauntedPolymer =
 
 			connectedCallback() {
 				super.connectedCallback();
+				this._scheduler.resume();
 				this._scheduler.update();
 			}
 
 			disconnectedCallback() {
 				super.disconnectedCallback();
+				this._scheduler.pause();
 				this._scheduler.teardown();
 			}
 
