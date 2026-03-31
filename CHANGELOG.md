@@ -1,3 +1,9 @@
+## [6.20.1](https://github.com/Neovici/cosmoz-utils/compare/v6.20.0...v6.20.1) (2026-03-31)
+
+### Bug Fixes
+
+- **haunted-polymer:** add resume/pause lifecycle calls for pion 2.13.0 compatibility ([#235](https://github.com/Neovici/cosmoz-utils/issues/235)) ([941a7b2](https://github.com/Neovici/cosmoz-utils/commit/941a7b2f32f70464d26622efcc1874c4cb5504a5))
+
 # [6.20.0](https://github.com/Neovici/cosmoz-utils/compare/v6.19.0...v6.20.0) (2026-03-23)
 
 ### Features
