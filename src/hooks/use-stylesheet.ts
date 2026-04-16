@@ -6,7 +6,8 @@ export const useStyleSheet = (css: string) => {
 	const csRef = useRef<CSSStyleSheet | null>(null);
 	const getSheet = () => {
 		if (!csRef.current) {
-			csRef.current = new host.ownerDocument.defaultView.CSSStyleSheet();
+			const win = host.ownerDocument?.defaultView;
+			csRef.current = new win!.CSSStyleSheet();
 			host.shadowRoot!.adoptedStyleSheets = [
 				...host.shadowRoot!.adoptedStyleSheets,
 				csRef.current,
