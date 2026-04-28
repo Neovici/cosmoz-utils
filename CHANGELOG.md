@@ -1,3 +1,9 @@
+## [6.20.2](https://github.com/Neovici/cosmoz-utils/compare/v6.20.1...v6.20.2) (2026-04-28)
+
+### Bug Fixes
+
+- correct TypeScript types for singleParse and multiParse ([#241](https://github.com/Neovici/cosmoz-utils/issues/241)) ([1c1a6da](https://github.com/Neovici/cosmoz-utils/commit/1c1a6da29a6dfabd772b44e0316190f68b19bdb4))
+
 ## [6.20.1](https://github.com/Neovici/cosmoz-utils/compare/v6.20.0...v6.20.1) (2026-03-31)
 
 ### Bug Fixes
