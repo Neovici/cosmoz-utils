@@ -7,12 +7,13 @@ export function prop(): typeof identity;
 export function prop(a: '' | null | false | undefined | 0): typeof identity;
 export function prop<K extends PropertyKey>(
 	key?: K,
-): <O>(obj: O) => K extends keyof O ? O[K] : undefined;
+): <O>(obj: O) => O extends object ? (K extends keyof O ? O[K] : undefined) : O;
 export function prop<K extends PropertyKey>(key?: K) {
 	if (!key) {
 		return identity;
 	}
-	return <O>(obj: O) => (obj as Rec<K>)?.[key];
+	return <O>(obj: O) =>
+		typeof obj === 'object' && obj !== null ? (obj as Rec<K>)[key] : obj;
 }
 
 export const strProp = <K extends PropertyKey>(key?: K) => {
