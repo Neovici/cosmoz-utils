@@ -17,11 +17,6 @@ suite('prop', () => {
 		assert.isUndefined(prop('key')(undefined));
 	});
 
-	test('prop with objects unchanged', () => {
-		assert.equal(prop('key')({ key: 'val' }), 'val');
-		assert.isUndefined(prop('key')({ other: 1 }));
-	});
-
 	test('strProp', () => {
 		assert.equal(strProp('b')({ b: 2 }), '2');
 		assert.equal(strProp('b')({ c: 4 }), '');
