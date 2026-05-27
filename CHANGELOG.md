@@ -1,3 +1,9 @@
+# [6.21.0](https://github.com/Neovici/cosmoz-utils/compare/v6.20.2...v6.21.0) (2026-05-27)
+
+### Features
+
+- prop handles primitive values gracefully ([#245](https://github.com/Neovici/cosmoz-utils/issues/245)) ([3d4dfdd](https://github.com/Neovici/cosmoz-utils/commit/3d4dfdd073f1387a02a6e6a03cb41f601de16708))
+
 ## [6.20.2](https://github.com/Neovici/cosmoz-utils/compare/v6.20.1...v6.20.2) (2026-04-28)
 
 ### Bug Fixes
