@@ -1,3 +1,5 @@
+import { invoke } from './function';
+
 type Pfn<T> = (arg?: T) => void;
 interface Pfnc<T> {
 	resolve: Pfn<T>;
@@ -131,3 +133,8 @@ export const retry$ =
 		}
 		throw error;
 	};
+
+export const invoke$ = <T, A extends unknown[]>(
+	fn: T | ((...args: A) => T | PromiseLike<T>),
+	...args: A
+) => Promise.resolve(invoke(fn, ...args));
