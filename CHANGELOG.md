@@ -1,3 +1,9 @@
+# [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
+
+### Features
+
+- add invoke$ — async invoke that resolves Resolvable values ([4f50688](https://github.com/Neovici/cosmoz-utils/commit/4f50688359afe8fe22ca9fa8f93cc6f9654b32d5))
+
 # [6.21.0](https://github.com/Neovici/cosmoz-utils/compare/v6.20.2...v6.21.0) (2026-05-27)
 
 ### Features
