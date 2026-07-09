@@ -84,21 +84,57 @@ suite('debounce$', () => {
 		assert.isTrue(callback.called);
 	});
 
-	test('all debounced calls resolve with the same data', async () => {
+	test('only last debounced call resolves', async () => {
 		const fetch = (x) =>
 				new Promise((resolve) => requestAnimationFrame(() => resolve(x * 2))),
-			fetch$ = debounce$(fetch, 50),
-			result1 = fetch$(1);
+			fetch$ = debounce$(fetch, 50);
 
+		fetch$(1);
 		await nextFrame();
-
-		const result2 = fetch$(2);
-
+		fetch$(2);
 		await nextFrame();
 
 		const result3 = fetch$(3);
 
-		assert.deepEqual(await Promise.all([result1, result2, result3]), [6, 6, 6]);
+		assert.equal(await result3, 6);
+	});
+
+	test('superseded debounced calls do not settle', async () => {
+		const fetch = (x) =>
+				new Promise((resolve) => requestAnimationFrame(() => resolve(x * 2))),
+			fetch$ = debounce$(fetch, 50);
+
+		const result1 = fetch$(1);
+		await nextFrame();
+		fetch$(2);
+		await nextFrame();
+		fetch$(3);
+
+		let settled = false;
+		result1.then(() => {
+			settled = true;
+		});
+
+		await aTimeout(100);
+		assert.isFalse(settled, 'superseded promise should not settle');
+	});
+
+	test('only last call rejects on error', async () => {
+		const fail = () => Promise.reject(new Error('fail')),
+			fail$ = debounce$(fail, 50);
+
+		fail$(1);
+		await nextFrame();
+		fail$(2);
+		await nextFrame();
+		const result3 = fail$(3);
+
+		try {
+			await result3;
+			assert.fail('should have rejected');
+		} catch (e) {
+			assert.equal(e.message, 'fail');
+		}
 	});
 });
 
