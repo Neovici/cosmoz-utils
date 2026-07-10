@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.22.2
+
+### Patch Changes
+
+- 945d619: fix(debounce$): stop amplifying rejections across pending promises
+
 ## 6.22.1
 
 ### Patch Changes
