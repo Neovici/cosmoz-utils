@@ -83,29 +83,22 @@ export const limit$ = <T extends unknown[], P>(
 		});
 };
 
-type Pending<T, P> = Pick<Task<T, P>, 'resolve' | 'reject'>;
 export const debounce$ = <T extends unknown[], P>(
 	fn: (...args: T) => P | PromiseLike<P>,
 	ms?: number,
 ) => {
 	let timeoutId: ReturnType<typeof setTimeout>;
-	const pending: Pending<T, P>[] = [];
+	let resolve: ((value: P | PromiseLike<P>) => void) | null = null;
+	let reject: ((reason?: unknown) => void) | null = null;
 	return (...args: T): Promise<P> =>
 		new Promise((res, rej) => {
 			clearTimeout(timeoutId);
+			resolve = res;
+			reject = rej;
 			timeoutId = setTimeout(() => {
-				const currentPending = [...pending];
-				pending.length = 0;
-				Promise.resolve(fn(...args)).then(
-					(data) => {
-						currentPending.forEach(({ resolve }) => resolve(data));
-					},
-					(error) => {
-						currentPending.forEach(({ reject }) => reject(error));
-					},
-				);
+				Promise.resolve(fn(...args)).then(resolve, reject);
+				resolve = reject = null;
 			}, ms);
-			pending.push({ resolve: res, reject: rej });
 		});
 };
 
