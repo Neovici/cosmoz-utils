@@ -102,6 +102,47 @@ export const debounce$ = <T extends unknown[], P>(
 		});
 };
 
+interface Pending<P> {
+	resolve: (value: P) => void;
+	reject: (reason?: unknown) => void;
+}
+
+/**
+ * Broadcasts the result of the wrapped function to every caller that is
+ * waiting for a result. Compose with `debounce$` to turn N concurrent calls
+ * into a single invocation that resolves all callers:
+ *
+ * ```js
+ * import { debounce$, share$ } from '@neovici/cosmoz-utils/promise';
+ *
+ * const statistics$ = share$(debounce$(fetchStatistics, 320));
+ * ```
+ *
+ * Since `debounce$` only resolves the last pending call, `share$` keeps
+ * track of pending callers and settles them all when the inner promise
+ * settles. Only use with identical arguments: the first inner promise that
+ * settles broadcasts its result to all pending callers.
+ */
+export const share$ = <T extends unknown[], P>(
+	fn: (...args: T) => P | PromiseLike<P>,
+) => {
+	let pending: Pending<P>[] = [];
+	return (...args: T): Promise<P> =>
+		new Promise((resolve, reject) => {
+			pending.push({ resolve, reject });
+			Promise.resolve(fn(...args)).then(
+				(result) => {
+					pending.forEach(({ resolve }) => resolve(result));
+					pending = [];
+				},
+				(error) => {
+					pending.forEach(({ reject }) => reject(error));
+					pending = [];
+				},
+			);
+		});
+};
+
 export const log$ =
 	<T extends unknown[], P>(fn: (...args: T) => PromiseLike<P>) =>
 	(...args: T) =>
