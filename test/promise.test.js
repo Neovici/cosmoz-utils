@@ -186,19 +186,35 @@ suite('share$', () => {
 		}
 	});
 
-	test('rejects all pending callers on error', async () => {
+	test('only rejects the last pending caller on error', async () => {
 		const fail = () => Promise.reject(new Error('fail')),
 			fail$ = share$(debounce$(fail, 50));
 
 		const p1 = fail$(1);
 		await nextFrame();
 		const p2 = fail$(1);
+		await nextFrame();
+		const p3 = fail$(1);
 
-		const errors = await Promise.allSettled([p1, p2]);
-		assert.deepEqual(
-			errors.map((e) => e.reason?.message),
-			['fail', 'fail'],
-		);
+		let settled1 = false;
+		let settled2 = false;
+		p1.then(() => {
+			settled1 = true;
+		});
+		p2.then(() => {
+			settled2 = true;
+		});
+
+		try {
+			await p3;
+			assert.fail('should have rejected');
+		} catch (e) {
+			assert.equal(e.message, 'fail');
+		}
+
+		await aTimeout(100);
+		assert.isFalse(settled1, 'earlier pending caller should not settle');
+		assert.isFalse(settled2, 'earlier pending caller should not settle');
 	});
 
 	test('starts a new invocation after settling', async () => {

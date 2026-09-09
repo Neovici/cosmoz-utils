@@ -119,9 +119,11 @@ interface Pending<P> {
  * ```
  *
  * Since `debounce$` only resolves the last pending call, `share$` keeps
- * track of pending callers and settles them all when the inner promise
- * settles. Only use with identical arguments: the first inner promise that
- * settles broadcasts its result to all pending callers.
+ * track of pending callers and resolves them all when the inner promise
+ * resolves. In case of an error, only the last pending caller is rejected,
+ * to avoid amplifying one error into N rejections; earlier pending callers
+ * never settle. Only use with identical arguments: the first inner promise
+ * that settles broadcasts its result to all pending callers.
  */
 export const share$ = <T extends unknown[], P>(
 	fn: (...args: T) => P | PromiseLike<P>,
@@ -136,7 +138,8 @@ export const share$ = <T extends unknown[], P>(
 					pending = [];
 				},
 				(error) => {
-					pending.forEach(({ reject }) => reject(error));
+					const last = pending.pop();
+					last?.reject(error);
 					pending = [];
 				},
 			);
