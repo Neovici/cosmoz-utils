@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.23.0
+
+### Minor Changes
+
+- a1e570b: Add `share$` promise combinator: broadcasts the result of the wrapped function to every pending caller. Compose with `debounce$` to collapse N concurrent identical calls into one invocation that resolves all callers, e.g. `share$(debounce$(fn, 320))`.
+
 ## 6.22.2
 
 ### Patch Changes
