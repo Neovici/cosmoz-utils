@@ -60,7 +60,7 @@
 		"./keybindings/*": "./dist/keybindings/*.js"
 	},
 	"dependencies": {
-		"@pionjs/pion": "^2.7.1"
+		"@pionjs/pion": "^2.16.3"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^3.0.2",
