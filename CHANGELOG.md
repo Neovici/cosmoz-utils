@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.25.1
+
+### Patch Changes
+
+- 6745fc0: `invoke`'s type handles value-or-function unions (`string | ((item) => string)`). The return type is conditional on `F` — a function yields its own return, a plain value yields itself — and the arguments are checked against the function's own parameter tuple where TypeScript knows the callee. For unions (and opaque values), arguments stay admissible: the runtime dispatch (`typeof fn === 'function'`) decides which member runs. Runtime unchanged.
+
 ## 6.25.0
 
 ### Minor Changes
