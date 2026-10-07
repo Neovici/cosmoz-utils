@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.25.0
+
+### Minor Changes
+
+- f030256: New directive `assignedRef` (`cosmoz-utils/directives/assigned-ref`): writes the flattened assigned elements of the slot it is placed on into the given ref object, re-projecting on every commit and on slot changes.
+
 ## 6.24.0
 
 ### Minor Changes
