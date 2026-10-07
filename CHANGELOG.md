@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.24.0
+
+### Minor Changes
+
+- 869cd2e: New directive `forwardAttributes` (`cosmoz-utils/directives/forward-attributes`): projects a map of attributes onto every flattened assigned element of the slot it is placed on. Values are strings, nulls (removal), or functions of the assigned element. Re-projects on every render and on slot changes; stops while disconnected, resumes on reconnect.
+
 ## 6.23.0
 
 ### Minor Changes
