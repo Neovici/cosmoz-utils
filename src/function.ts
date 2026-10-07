@@ -29,7 +29,18 @@ export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
 };
 
-export const invoke = <T, A extends unknown[]>(
-	fn: T | ((...args: A) => T),
-	...args: A
-) => (typeof fn === 'function' ? (fn as (...args: A) => T)(...args) : fn);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Invoked<F> = F extends (...args: any[]) => infer R ? R : F;
+
+/**
+ * The args of a known function are checked against its tuple; for a
+ * value-or-function union the runtime dispatch decides the member, so
+ * the args cannot be typed.
+ */
+export const invoke = <F>(
+	fn: F,
+	...args: F extends (...args: infer P) => unknown ? P : unknown[]
+): Invoked<F> =>
+	typeof fn === 'function'
+		? (fn as (...args: unknown[]) => Invoked<F>)(...args)
+		: (fn as Invoked<F>);
