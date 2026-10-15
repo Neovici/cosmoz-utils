@@ -12,7 +12,7 @@ import {
 
 suite('date', () => {
 	const date = new Date('October 13, 2014 11:13:20'),
-		futureDate = new Date(Date.now() + 864e5),
+		futureDate = new Date('October 13, 2029 11:13:20'),
 		undefinedDate = undefined,
 		invalidDate = '';
 
