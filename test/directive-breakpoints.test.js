@@ -18,7 +18,7 @@ const TestHost = (host) => {
 };
 
 customElements.define(
-	'bp-test-host',
+	'breakpoints-test',
 	component(TestHost, { observedAttributes: ['direction'] }),
 );
 
@@ -28,19 +28,19 @@ const nextFrame = () =>
 		requestAnimationFrame(() => requestAnimationFrame(resolve)),
 	);
 
-const twoTier = () => [
+const twoBreakpoints = () => [
 	{ name: 'mobile', maxWidth: 480, attrs: { direction: 'vertical' } },
 	// unnamed base → data-breakpoint absent at wide width
 	{ attrs: { direction: 'horizontal' } },
 ];
 
-/** Mount the directive on a bp-test-host of the given width. */
-const mount = (tiers, deps = [], width = 600) =>
+/** Mount the directive on a breakpoints-test of the given width. */
+const mount = (factory, deps = [], width = 600) =>
 	fixture(
-		html`<bp-test-host
+		html`<breakpoints-test
 			style="display:block;width:${width}px;height:50px;"
-			${breakpoints(tiers, deps)}
-		></bp-test-host>`,
+			${breakpoints(factory, deps)}
+		></breakpoints-test>`,
 	);
 
 /** Resize the host box by restyling it, then let RO deliver (2 frames). */
@@ -50,22 +50,22 @@ const setWidth = async (el, width) => {
 };
 
 suite('breakpoints', () => {
-	test('applies base tier at wide width', async () => {
-		const el = await mount(twoTier);
+	test('applies base breakpoint at wide width', async () => {
+		const el = await mount(twoBreakpoints);
 		await nextFrame();
 		assert.equal(el.direction, 'horizontal');
 		assert.isFalse(el.hasAttribute('data-breakpoint'));
 	});
 
-	test('applies narrow tier under maxWidth and reflects data-breakpoint', async () => {
-		const el = await mount(twoTier);
+	test('applies narrow breakpoint under maxWidth and reflects data-breakpoint', async () => {
+		const el = await mount(twoBreakpoints);
 		await setWidth(el, 400);
 		assert.equal(el.direction, 'vertical');
 		assert.equal(el.getAttribute('data-breakpoint'), 'mobile');
 	});
 
-	test('exit restores base tier values', async () => {
-		const el = await mount(twoTier);
+	test('exit restores base breakpoint values', async () => {
+		const el = await mount(twoBreakpoints);
 		await setWidth(el, 400);
 		assert.equal(el.direction, 'vertical');
 
@@ -74,22 +74,22 @@ suite('breakpoints', () => {
 		assert.isFalse(el.hasAttribute('data-breakpoint'));
 	});
 
-	test('narrowest matching tier wins per key', async () => {
-		const el = await mount(twoTier);
+	test('narrowest matching breakpoint wins per key', async () => {
+		const el = await mount(twoBreakpoints);
 		await setWidth(el, 400);
 		await setWidth(el, 800); // only base matches
 		assert.equal(el.direction, 'horizontal');
 	});
 
-	test('RO initial fire evaluates tier without resize', async () => {
+	test('RO initial fire evaluates breakpoint without resize', async () => {
 		// fixture is 600 wide; base applied at first RO delivery:
-		const el = await mount(twoTier);
+		const el = await mount(twoBreakpoints);
 		await nextFrame();
 		assert.equal(el.direction, 'horizontal');
 	});
 
-	test('0x0 box holds — no tier applied, no reflection', async () => {
-		const el = await mount(twoTier);
+	test('0x0 box holds — no breakpoint applied, no reflection', async () => {
+		const el = await mount(twoBreakpoints);
 		el.style.display = 'none';
 		await nextFrame();
 		// hidden → no writes happen; last state persists
@@ -100,21 +100,21 @@ suite('breakpoints', () => {
 	});
 
 	test('unrelated re-renders do not churn (deps gate)', async () => {
-		const el = await mount(twoTier);
+		const el = await mount(twoBreakpoints);
 		el.dispatchEvent(new CustomEvent('noop')); // parent re-render surrogate
 		await nextFrame();
-		// no tier change → no re-apply
+		// no breakpoint change → no re-apply
 		assert.equal(el.direction, 'horizontal');
 	});
 
 	test('attr → prop loop: observed attribute change re-renders host', async () => {
-		const el = await mount(twoTier);
+		const el = await mount(twoBreakpoints);
 		await setWidth(el, 400);
 		assert.include(el.shadowRoot.querySelector('#out').textContent, 'vertical');
 	});
 
 	test('foreign writes to unmanaged keys are invisible to the directive', async () => {
-		const el = await mount(twoTier);
+		const el = await mount(twoBreakpoints);
 		el.foreign = 'app-state';
 		await nextFrame();
 		await setWidth(el, 400);
@@ -122,7 +122,7 @@ suite('breakpoints', () => {
 	});
 
 	test('shared-write: component effect re-asserts data-direction', async () => {
-		const el = await mount(twoTier);
+		const el = await mount(twoBreakpoints);
 		await setWidth(el, 400);
 		assert.equal(el.getAttribute('data-direction'), 'vertical');
 		await setWidth(el, 600);
@@ -143,26 +143,26 @@ suite('breakpoints', () => {
 
 	test('deps change rebuilds snapshot atomically', async () => {
 		const flag = { value: false };
-		const tiersWithFlag = () => [
+		const breakpointsWithFlag = () => [
 			...(flag.value
 				? [{ name: 'mobile', maxWidth: 480, attrs: { direction: 'vertical' } }]
 				: []),
 			{ name: 'base', attrs: { direction: 'horizontal' } },
 		];
-		const el = await mount(tiersWithFlag, [flag.value]);
+		const el = await mount(breakpointsWithFlag, [flag.value]);
 		await nextFrame();
 		assert.equal(el.direction, 'horizontal');
 
 		flag.value = true;
 		// re-render surrogate: applying the same directive factory via a
 		// re-fixture is heavy; instead assert that a fresh fixture with the
-		// flag on resolves the new tier
-		const el3 = await mount(tiersWithFlag, [flag.value], 400);
+		// flag on resolves the new breakpoint
+		const el3 = await mount(breakpointsWithFlag, [flag.value], 400);
 		await nextFrame();
 		assert.equal(el3.direction, 'vertical');
 	});
 
-	test('normalization: base tier required', () => {
+	test('normalization: base breakpoint required', () => {
 		// building the directive result is lazy — normalize runs on update
 		assert.doesNotThrow(() =>
 			breakpoints(
@@ -190,7 +190,7 @@ suite('breakpoints', () => {
 					{ name: 'a', attrs: { direction: 'x' } },
 					{ name: 'b', attrs: { direction: 'y' } },
 				]),
-			/exactly one tier without maxWidth/u,
+			/exactly one breakpoint without maxWidth/u,
 		);
 	});
 
@@ -220,7 +220,7 @@ suite('breakpoints', () => {
 		);
 	});
 
-	test('named base tier reflects data-breakpoint at rest', async () => {
+	test('named base breakpoint reflects data-breakpoint at rest', async () => {
 		const el = await mount(() => [
 			{ name: 'base', attrs: { direction: 'horizontal' } },
 		]);
@@ -228,7 +228,7 @@ suite('breakpoints', () => {
 		assert.equal(el.getAttribute('data-breakpoint'), 'base');
 	});
 
-	test('base tier prop null exits a narrow override (the exit path)', async () => {
+	test('base breakpoint prop null exits a narrow override (the exit path)', async () => {
 		// Regression: compute() used ?? so the base's null was reduced to
 		// "no opinion" and never written — a narrow renderItem stayed stuck.
 		const miniRenderItem = () => 'mini';

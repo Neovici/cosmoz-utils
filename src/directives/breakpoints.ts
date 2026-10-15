@@ -6,10 +6,10 @@ import {
 	PartType,
 } from 'lit-html/async-directive.js';
 
-export interface Tier {
-	/** Reflected as data-breakpoint when this tier is the narrowest match. */
+export interface Breakpoint {
+	/** Reflected as data-breakpoint when this breakpoint is the narrowest match. */
 	name?: string;
-	/** Matches when container width <= maxWidth. Omit for the base tier (always matches). */
+	/** Matches when container width <= maxWidth. Omit for the base breakpoint (maxWidth ∞, always matches). */
 	maxWidth?: number;
 	/** Element property writes. */
 	props?: Record<string, unknown>;
@@ -24,14 +24,14 @@ interface ManagedKey {
 }
 
 interface Resolved {
-	/** Name of the narrowest matching named tier, if any. */
-	tierName?: string;
+	/** Name of the narrowest matching named breakpoint, if any. */
+	breakpointName?: string;
 	/** Effective value per managed key. */
 	values: Map<string, unknown>;
 }
 
 interface Snapshot {
-	tiers: Tier[];
+	breakpoints: Breakpoint[];
 	keys: ManagedKey[];
 }
 
@@ -39,30 +39,30 @@ const depsEqual = (a: unknown[] | undefined, b: unknown[] | undefined) =>
 	(a ?? []).length === (b ?? []).length &&
 	(a ?? []).every((v, i) => (b ?? [])[i] === v);
 
-const matches = (tier: Tier, width: number) =>
-	tier.maxWidth == null || width <= tier.maxWidth;
+const matches = (breakpoint: Breakpoint, width: number) =>
+	breakpoint.maxWidth == null || width <= breakpoint.maxWidth;
 
 /**
- * Normalize tiers into a frozen snapshot.
- * - exactly one tier without maxWidth (the base, required)
- * - keys declared in bounded tiers must also be declared in the base tier
- *   (every managed key gets a resting value, so exit is well-defined)
- * - keys are the union across tiers, prop channel wins on conflicts
+ * Normalize breakpoints into a frozen snapshot.
+ * - exactly one breakpoint without maxWidth (the base, required)
+ * - keys declared in bounded breakpoints must also be declared in the base
+ *   breakpoint (every managed key gets a resting value, so exit is well-defined)
+ * - keys are the union across breakpoints, prop channel wins on conflicts
  */
-export const normalize = (tiers: Tier[]): Snapshot => {
-	const base = tiers.filter((t) => t.maxWidth == null);
+export const normalize = (breakpoints: Breakpoint[]): Snapshot => {
+	const base = breakpoints.filter((b) => b.maxWidth == null);
 	if (base.length !== 1) {
 		throw new Error(
-			`breakpoints: exactly one tier without maxWidth is required (the base), got ${base.length}`,
+			`breakpoints: exactly one breakpoint without maxWidth is required (the base), got ${base.length}`,
 		);
 	}
 
-	const sorted = [...tiers].sort(
+	const sorted = [...breakpoints].sort(
 		(a, b) => (a.maxWidth ?? Infinity) - (b.maxWidth ?? Infinity),
 	);
 
 	const collect = (channel: 'props' | 'attrs') =>
-		new Set(sorted.flatMap((t) => Object.keys(t[channel] ?? {})));
+		new Set(sorted.flatMap((b) => Object.keys(b[channel] ?? {})));
 
 	const propKeys = collect('props');
 	const attrKeys = collect('attrs');
@@ -81,18 +81,18 @@ export const normalize = (tiers: Tier[]): Snapshot => {
 	const orphans = [...propKeys, ...attrKeys].filter((k) => !baseKeys.has(k));
 	if (orphans.length > 0) {
 		throw new Error(
-			`breakpoints: key(s) [${orphans.join(', ')}] must also be declared in the base tier (no maxWidth)`,
+			`breakpoints: key(s) [${orphans.join(', ')}] must also be declared in the base breakpoint (no maxWidth)`,
 		);
 	}
 
-	return { tiers: sorted, keys };
+	return { breakpoints: sorted, keys };
 };
 
 /**
  * Pure: snapshot × width → resolved values. No host reads.
  * Returns undefined when the width is not resolvable (no layout box, <= 0):
  * the caller must hold last state instead of resolving — 0 would false-match
- * the narrowest tier.
+ * the narrowest breakpoint.
  */
 const compute = (snapshot: Snapshot, width: number): Resolved | undefined => {
 	if (width <= 0) {
@@ -100,25 +100,25 @@ const compute = (snapshot: Snapshot, width: number): Resolved | undefined => {
 	}
 	const values = new Map<string, unknown>();
 	for (const { name } of snapshot.keys) {
-		const tier = snapshot.tiers.find(
-			(t) =>
-				matches(t, width) &&
-				(t.props?.[name] !== undefined || t.attrs?.[name] !== undefined),
+		const breakpoint = snapshot.breakpoints.find(
+			(b) =>
+				matches(b, width) &&
+				(b.props?.[name] !== undefined || b.attrs?.[name] !== undefined),
 		);
-		if (!tier) {
+		if (!breakpoint) {
 			continue;
 		}
 		// Strict presence: null is a legitimate value (the exit path), so ??
 		// is wrong here — it would reduce a base `null` to "no opinion" and
-		// skip the write, stranding a previous tier's override.
+		// skip the write, stranding a previous breakpoint's override.
 		const value =
-			tier.props?.[name] !== undefined
-				? tier.props?.[name]
-				: tier.attrs?.[name];
+			breakpoint.props?.[name] !== undefined
+				? breakpoint.props?.[name]
+				: breakpoint.attrs?.[name];
 		values.set(name, value);
 	}
-	const named = snapshot.tiers.find((t) => t.name && matches(t, width));
-	return { tierName: named?.name, values };
+	const named = snapshot.breakpoints.find((b) => b.name && matches(b, width));
+	return { breakpointName: named?.name, values };
 };
 
 const applyValue = (el: HTMLElement, key: ManagedKey, value: unknown) => {
@@ -138,7 +138,7 @@ const applyValue = (el: HTMLElement, key: ManagedKey, value: unknown) => {
 };
 
 const sameResolved = (a?: Resolved, b?: Resolved) => {
-	if (!a || !b || a.tierName !== b.tierName) {
+	if (!a || !b || a.breakpointName !== b.breakpointName) {
 		return false;
 	}
 	if (a.values.size !== b.values.size) {
@@ -167,13 +167,13 @@ class BreakpointsDirective extends AsyncDirective {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	override render(_factory?: () => Tier[], _deps?: unknown[]) {
+	override render(_factory?: () => Breakpoint[], _deps?: unknown[]) {
 		return nothing;
 	}
 
 	override update(
 		part: ElementPart,
-		[factory, deps]: [() => Tier[], unknown[] | undefined],
+		[factory, deps]: [() => Breakpoint[], unknown[] | undefined],
 	) {
 		if (this._el !== undefined && this._el !== part.element) {
 			this._teardown();
@@ -223,7 +223,7 @@ class BreakpointsDirective extends AsyncDirective {
 		const width =
 			measured === undefined
 				? // No RO measurement yet (snapshot change outside an RO tick):
-					// measure synchronously to avoid a pre-tier flash.
+					// measure synchronously to avoid a pre-breakpoint flash.
 					this._el.getBoundingClientRect().width
 				: measured;
 		const resolved = compute(this._snapshot, width);
@@ -241,13 +241,13 @@ class BreakpointsDirective extends AsyncDirective {
 		for (const key of this._snapshot!.keys) {
 			const value = resolved.values.get(key.name);
 			if (value === undefined) {
-				continue; // no tier has an opinion — never write
+				continue; // no breakpoint has an opinion — never write
 			}
 			applyValue(el, key, value);
 		}
 
-		if (resolved.tierName) {
-			el.setAttribute('data-breakpoint', resolved.tierName);
+		if (resolved.breakpointName) {
+			el.setAttribute('data-breakpoint', resolved.breakpointName);
 		} else {
 			el.removeAttribute('data-breakpoint');
 		}
@@ -270,14 +270,15 @@ class BreakpointsDirective extends AsyncDirective {
 }
 
 /**
- * Container-width tier directive for element parts: applies the narrowest
- * matching tier's `props`/`attrs` onto the host and reflects its `name` as
- * `data-breakpoint`, driven by a ResizeObserver on the element.
+ * Container-width breakpoint directive for element parts: applies the
+ * narrowest matching breakpoint's `props`/`attrs` onto the host and
+ * reflects its `name` as `data-breakpoint`, driven by a ResizeObserver on
+ * the element.
  *
- * Exactly one base tier (no `maxWidth`) is required and must declare every
- * key used by bounded tiers — base values are the resting (exit) state.
- * Snapshots are rebuilt only when `deps` change, so unrelated re-renders
- * don't churn writes.
+ * Exactly one base breakpoint (no `maxWidth`) is required and must declare
+ * every key used by bounded breakpoints — base values are the resting
+ * (exit) state. Snapshots are rebuilt only when `deps` change, so
+ * unrelated re-renders don't churn writes.
  *
  * ```js
  * html`<my-list ${breakpoints(() => [
@@ -287,6 +288,6 @@ class BreakpointsDirective extends AsyncDirective {
  * ```
  */
 export const breakpoints = directive(BreakpointsDirective) as (
-	factory?: () => Tier[],
+	factory?: () => Breakpoint[],
 	deps?: unknown[],
 ) => unknown;

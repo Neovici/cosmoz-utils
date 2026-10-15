@@ -2,4 +2,4 @@
 '@neovici/cosmoz-utils': minor
 ---
 
-New directive `breakpoints` (`cosmoz-utils/directives/breakpoints`): container-width tiers for element parts — writes configured props/attributes per matching tier, reflects the narrowest named tier as `data-breakpoint`, driven by a ResizeObserver. Exports the `Tier` type and the `normalize` helper.
+New directive `breakpoints` (`cosmoz-utils/directives/breakpoints`): applies each matching breakpoint's configured props/attributes to the element part host and reflects the narrowest named breakpoint as `data-breakpoint`, driven by a ResizeObserver. Exports the `Breakpoint` type and the `normalize` helper.
