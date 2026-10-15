@@ -3,16 +3,16 @@ import {
 	ensureDate,
 	isoDate,
 	isoDT,
+	pad,
 	pastDate,
 	renderDate,
 	timeago,
 	toLocalISOString,
-	pad,
 } from '../src/date';
 
 suite('date', () => {
 	const date = new Date('October 13, 2014 11:13:20'),
-		futureDate = new Date('October 13, 2026 11:13:20'),
+		futureDate = new Date('October 13, 2029 11:13:20'),
 		undefinedDate = undefined,
 		invalidDate = '';
 
