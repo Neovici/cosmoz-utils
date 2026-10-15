@@ -1,5 +1,11 @@
 # [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
 
+## 6.26.0
+
+### Minor Changes
+
+- 15b39da: New directive `breakpoints` (`cosmoz-utils/directives/breakpoints`): applies each matching breakpoint's configured props/attributes to the element part host and reflects the narrowest named breakpoint as `data-breakpoint`, driven by a ResizeObserver. Exports the `Breakpoint` type and the `normalize` helper.
+
 ## 6.25.1
 
 ### Patch Changes
