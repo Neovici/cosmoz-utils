@@ -1,5 +1,3 @@
-# [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
-
 ## 6.27.0
 
 ### Minor Changes
