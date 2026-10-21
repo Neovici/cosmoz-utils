@@ -104,6 +104,8 @@ export const useListNavigation = ({
 		setActiveIndex,
 		/** Returns true when it handled the key (and called preventDefault). */
 		onKeyDown: (e: KeyboardEvent) => {
+			// keyCode 229: Safari fires the composition-ending keydown after compositionend
+			if (e.isComposing || e.keyCode === 229) return false;
 			if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return false;
 			const next = nextIndex(activeIndex, e.key, options);
 			if (next === undefined) return false;

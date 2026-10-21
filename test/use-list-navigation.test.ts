@@ -208,6 +208,13 @@ suite('useListNavigation', () => {
 		}),
 	);
 
+	test('ignores keys while an input method is composing', async () => {
+		const { nav, press } = await setup({ count: 5, defaultIndex: 1 });
+		const e = await press('ArrowDown', { isComposing: true });
+		assert.isFalse(e.defaultPrevented);
+		assert.strictEqual(nav().activeIndex, 1);
+	});
+
 	test('clamps the highlight when the list shrinks', async () => {
 		const { el, nav, press } = await setup({ count: 5 });
 		await press('End');
