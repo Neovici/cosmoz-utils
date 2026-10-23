@@ -1,4 +1,24 @@
-# [6.22.0](https://github.com/Neovici/cosmoz-utils/compare/v6.21.0...v6.22.0) (2026-06-09)
+## 6.27.0
+
+### Minor Changes
+
+- 6bd540b: Add an `overflow` directive (`cosmoz-utils/directives/overflow`):
+  placed on a slot, it marks assigned members whose box has zero
+  intersection with the slot's box with an `overflowing` attribute and
+  reports the marked set to `onOverflow` whenever it changes - a member
+  wrapped to a row past the band. Ported from cosmoz-tabs' next overflow
+  directive.
+
+  Also exports `overflowStyle`: the canonical band and mark styling as a
+  `CSSStyleSheet` - adopt it on the shadow host, mark the band slot with
+  the `cz-overflow-band` class, and keep the one-row `max-height` (and
+  any uncap variants) in the consumer's own styles.
+
+## 6.26.0
+
+### Minor Changes
+
+- 15b39da: New directive `breakpoints` (`cosmoz-utils/directives/breakpoints`): applies each matching breakpoint's configured props/attributes to the element part host and reflects the narrowest named breakpoint as `data-breakpoint`, driven by a ResizeObserver. Exports the `Breakpoint` type and the `normalize` helper.
 
 ## 6.25.1
 
