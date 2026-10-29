@@ -29,18 +29,15 @@ export const once = <A extends Arr, R, F extends OnceFn<A, R> = OnceFn<A, R>>(
 	return (...args: A) => (result ??= check(args) ? fn(...args) : undefined);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Invoked<F> = F extends (...args: any[]) => infer R ? R : F;
-
 /**
- * The args of a known function are checked against its tuple; for a
- * value-or-function union the runtime dispatch decides the member, so
- * the args cannot be typed.
+ * A thing, or a function giving that thing: both produce T, which
+ * binds at inference. A known function's args are its own tuple as a
+ * minimum; extras are dropped by the runtime and left untyped.
  */
-export const invoke = <F>(
-	fn: F,
-	...args: F extends (...args: infer P) => unknown ? P : unknown[]
-): Invoked<F> =>
+export const invoke = <T, A extends unknown[]>(
+	fn: T | ((...args: A) => T),
+	...args: [...A, ...unknown[]]
+): T =>
 	typeof fn === 'function'
-		? (fn as (...args: unknown[]) => Invoked<F>)(...args)
-		: (fn as Invoked<F>);
+		? (fn as (...args: [...A, ...unknown[]]) => T)(...args)
+		: (fn as T);
