@@ -1,3 +1,10 @@
+## 6.28.0
+
+### Minor Changes
+
+- 2d5b92a: Add `liveEq` (`cosmoz-utils/live-eq`): a `live` directive with pluggable equality. The dirty check runs the element's current value and the bound value through `eq(currentElementValue, boundValue)` instead of comparing with `===`, for bindings where the element normalizes the bound value internally — `input.value` coerces numbers to strings, so `live(2)` rewrites the element's text on every render and resets the caret. Ships `stringEquals` and a NaN-safe `numericEquals` (partially typed numbers like `2.` never blank out). With no `eq`, behaves exactly like `live`.
+- 7d67a0c: Add `cosmoz-announcer` (`cosmoz-utils/elements/cosmoz-announcer`): a polite live region a component renders to keep its own announcements working (visually hidden, `aria-atomic`). It announces the `.message` and releases it after ~1 s so re-rendering the same text doesn't re-announce it.
+
 ## 6.27.0
 
 ### Minor Changes
