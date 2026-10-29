@@ -173,5 +173,5 @@ export const retry$ =
 
 export const invoke$ = <T, A extends unknown[]>(
 	fn: T | ((...args: A) => T | PromiseLike<T>),
-	...args: A
+	...args: [...A, ...unknown[]]
 ) => Promise.resolve(invoke(fn, ...args));
