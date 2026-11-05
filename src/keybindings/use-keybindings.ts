@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from '@pionjs/pion';
+import { useEffect, useMemo } from '@pionjs/pion';
 import { useMeta } from '../hooks/use-meta';
 import { Activity, ActivityHandler, KeyBinding, RegisterFn } from './types';
 import { focusIsInEditableArea, isInteractive, matches } from './utils';
@@ -47,14 +47,19 @@ export const useKeybindings = (bindings: readonly KeyBinding[]): RegisterFn => {
 			document.removeEventListener('keydown', keyboardEventHandler, true);
 	}, []);
 
-	const register = useCallback((handler: ActivityHandler) => {
-		meta[handler.activity] = [handler, ...(meta[handler.activity] ?? [])];
+	const register = useMemo(() => {
+		const fn = (handler: ActivityHandler) => {
+			meta[handler.activity] = [handler, ...(meta[handler.activity] ?? [])];
 
-		return () => {
-			meta[handler.activity] = meta[handler.activity]?.filter(
-				(h) => h !== handler,
-			);
+			return () => {
+				meta[handler.activity] = meta[handler.activity]?.filter(
+					(h) => h !== handler,
+				);
+			};
 		};
+		return Object.defineProperty(fn, 'bindings', {
+			get: () => meta.bindings,
+		}) as RegisterFn;
 	}, []);
 
 	return register;
