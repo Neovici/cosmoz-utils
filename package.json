@@ -56,6 +56,7 @@
 		"./directives/*": "./dist/directives/*.js",
 		"./hooks/*": "./dist/hooks/*.js",
 		"./memoize": "./dist/memoize.js",
+		"./motion": "./dist/motion.js",
 		"./keybindings": "./dist/keybindings/index.js",
 		"./keybindings/*": "./dist/keybindings/*.js"
 	},
