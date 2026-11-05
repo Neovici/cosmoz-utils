@@ -15,7 +15,7 @@ const fakeScope = () => {
 	scope.startViewTransition = spy((arg) => {
 		const update = typeof arg === 'function' ? arg : arg.update,
 			done = update();
-		return { ready: done, finished: done };
+		return { ready: done, updateCallbackDone: done, finished: done };
 	});
 	return scope;
 };
@@ -68,6 +68,35 @@ suite('motion', () => {
 			timeout: 50,
 		});
 		assert.isBelow(performance.now() - start, 1000);
+	});
+
+	test('lets the render scheduled by update commit before the capture', async () => {
+		let committed = false;
+		const scope = document.createElement('div') as HTMLDivElement & {
+			startViewTransition: unknown;
+		};
+		let atCapture: boolean | undefined;
+		scope.startViewTransition = (arg: { update: () => Promise<void> }) => {
+			const done = (typeof arg === 'function' ? arg : arg.update)().then(() => {
+				atCapture = committed;
+			});
+			return { ready: done, updateCallbackDone: done, finished: done };
+		};
+		await scopedTransition(scope, () => {
+			setTimeout(() => (committed = true));
+		});
+		assert.isTrue(atCapture);
+	});
+
+	test('rejects when update fails, with or without transitions', async () => {
+		const fail = () => {
+			throw new Error('nope');
+		};
+		for (const scope of [fakeScope(), document.createElement('div')]) {
+			let error: unknown;
+			await scopedTransition(scope, fail).catch((e) => (error = e));
+			assert.instanceOf(error, Error);
+		}
 	});
 
 	test('passes view transition types', async () => {

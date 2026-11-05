@@ -2,6 +2,7 @@ import { useEffect, useState } from '@pionjs/pion';
 
 type ScopedViewTransition = {
 	ready: Promise<void>;
+	updateCallbackDone: Promise<void>;
 	finished: Promise<void>;
 };
 
@@ -12,6 +13,8 @@ type Scope = Element & {
 			| { update: () => Promise<void>; types?: string[] },
 	) => ScopedViewTransition;
 };
+
+const noop = () => undefined;
 
 const query = () => matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -56,13 +59,19 @@ export const scopedTransition = async (
 	}
 	const run = async () => {
 			await update();
-			if (!ready) return;
-			await Promise.race([
-				ready.catch(() => undefined),
-				new Promise((resolve) => setTimeout(resolve, timeout)),
-			]);
+			if (ready) {
+				await Promise.race([
+					ready.then(noop, noop),
+					new Promise((resolve) => setTimeout(resolve, timeout)),
+				]);
+			}
+			// Lets a render scheduled by `update` commit before the capture.
+			await new Promise((resolve) => setTimeout(resolve));
 		},
 		transition = start(types ? { update: run, types } : run);
-	transition.ready.catch(() => undefined);
-	await transition.finished.catch(() => undefined);
+	transition.ready.catch(noop);
+	transition.finished.catch(noop);
+	// Rethrows a failed `update`, as the plain update above does.
+	await transition.updateCallbackDone;
+	await transition.finished.catch(noop);
 };
