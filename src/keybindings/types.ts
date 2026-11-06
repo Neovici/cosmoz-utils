@@ -27,4 +27,7 @@ export type ActivityHandler = {
 	allowDefault?: boolean;
 };
 
-export type RegisterFn = (handler: ActivityHandler) => () => void;
+export type RegisterFn = ((handler: ActivityHandler) => () => void) & {
+	/** The app's bindings, set by `useKeybindings`. */
+	readonly bindings?: readonly KeyBinding[];
+};
