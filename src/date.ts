@@ -1,3 +1,5 @@
+import { pageLocale } from './locale';
+
 const getValUnitDiff = (
 		date1: Date,
 		date2: Date,
@@ -117,14 +119,11 @@ const getValUnitDiff = (
 		if (d == null) {
 			return '';
 		}
-		return new Intl.RelativeTimeFormat(
-			locale || globalThis.document?.documentElement.lang || undefined,
-			{
-				localeMatcher: 'best fit', // other values: "lookup"
-				numeric: 'auto', // other values: "auto"
-				style: 'long', // other values: "short" or "narrow"
-			},
-		).format(...getValUnitDiff(d, new Date()));
+		return new Intl.RelativeTimeFormat(pageLocale(locale), {
+			localeMatcher: 'best fit', // other values: "lookup"
+			numeric: 'auto', // other values: "auto"
+			style: 'long', // other values: "short" or "narrow"
+		}).format(...getValUnitDiff(d, new Date()));
 	},
 	/**
 	 * Alias for isoDate(date), format a date as an ISO-date - YYYY-MM-DD.
@@ -173,8 +172,8 @@ const getValUnitDiff = (
 export {
 	ensureDate,
 	inputDate,
-	isoDT,
 	isoDate,
+	isoDT,
 	pad,
 	parseDate,
 	pastDate,

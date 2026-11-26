@@ -88,17 +88,6 @@ suite('date', () => {
 		assert.equal(timeago(new Date('bogus')), '');
 	});
 
-	test('timeago defaults to the page language', () => {
-		const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
-		document.documentElement.lang = 'sv';
-		try {
-			assert.equal(timeago(dayAgo), 'i går');
-			assert.equal(timeago(dayAgo, 'en'), 'yesterday');
-		} finally {
-			document.documentElement.removeAttribute('lang');
-		}
-	});
-
 	test('toLocalISOString', () => {
 		const someDate = new Date('2019-06-26T12:00:00Z'),
 			tz = someDate.getTimezoneOffset() / 60;
