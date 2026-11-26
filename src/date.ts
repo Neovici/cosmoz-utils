@@ -1,3 +1,5 @@
+import { pageLocale } from './locale';
+
 const getValUnitDiff = (
 		date1: Date,
 		date2: Date,
@@ -109,7 +111,7 @@ const getValUnitDiff = (
 	/**
 	 * Get human readable string describing date's difference from now in the current locale language.
 	 * @param {date/string} date Date to check.
-	 * @param {string} locale Localized lang to return string in (undefined = browser)
+	 * @param {string} locale Localized lang to return string in (default: the page's `lang`, then the browser's)
 	 * @return {string}		Date representation string in the current locale language.
 	 */
 	timeago = <T>(date: T, locale?: string) => {
@@ -117,7 +119,7 @@ const getValUnitDiff = (
 		if (d == null) {
 			return '';
 		}
-		return new Intl.RelativeTimeFormat(locale, {
+		return new Intl.RelativeTimeFormat(pageLocale(locale), {
 			localeMatcher: 'best fit', // other values: "lookup"
 			numeric: 'auto', // other values: "auto"
 			style: 'long', // other values: "short" or "narrow"
@@ -169,13 +171,13 @@ const getValUnitDiff = (
 
 export {
 	ensureDate,
+	inputDate,
 	isoDate,
 	isoDT,
 	pad,
+	parseDate,
 	pastDate,
 	renderDate,
-	toLocalISOString,
 	timeago,
-	parseDate,
-	inputDate,
+	toLocalISOString,
 };

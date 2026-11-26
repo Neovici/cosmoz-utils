@@ -1,3 +1,5 @@
+import { pageLocale } from './locale';
+
 export interface Amount {
 	amount: number;
 	currency: string;
@@ -13,10 +15,11 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 		if (currency == null) {
 			return;
 		}
-		const key = currency.toUpperCase() + (locale || '');
+		const lang = pageLocale(locale),
+			key = currency.toUpperCase() + (lang ?? '');
 		if (CURRENCY_FORMATTERS[key] == null) {
 			try {
-				CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(locale, {
+				CURRENCY_FORMATTERS[key] = new Intl.NumberFormat(lang, {
 					style: 'currency',
 					currency,
 					currencyDisplay: 'code',
@@ -86,9 +89,10 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 		minimumFractionDigits = 2,
 		maximumFractionDigits = 2,
 	) => {
-		const key = locale || '0';
+		const lang = pageLocale(locale),
+			key = lang ?? '0';
 		if (NUMBER_FORMATTERS[key] == null) {
-			NUMBER_FORMATTERS[key] = new Intl.NumberFormat(locale, {
+			NUMBER_FORMATTERS[key] = new Intl.NumberFormat(lang, {
 				minimumFractionDigits,
 				maximumFractionDigits,
 			});
@@ -124,10 +128,10 @@ const CURRENCY_FORMATTERS: Record<string, Intl.NumberFormat> = {},
 	};
 
 export {
+	amountEquals,
 	isAmount,
 	renderAmount,
 	renderMoney,
 	renderNumberAmount,
 	round,
-	amountEquals,
 };
